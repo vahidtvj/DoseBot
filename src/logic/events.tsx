@@ -17,6 +17,5 @@ export async function unregisterBackgroundFetchAsync() {
 }
 
 export function AppLaunch() {
-	Sentry.captureMessage(`AppLaunch: ${new Date().toLocaleString()}`)
 	onScheduleRunEvent()
 }

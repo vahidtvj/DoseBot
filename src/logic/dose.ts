@@ -2,7 +2,13 @@ import { Constants } from "@/config"
 import { useAppState } from "@/stores/app"
 import { useDoseStore } from "@/stores/doseStore"
 import { useMedicineStore } from "@/stores/medicineStore"
-import { isFuture, isToday, isYesterday, startOfTomorrow } from "date-fns"
+import {
+	isFuture,
+	isToday,
+	isYesterday,
+	startOfTomorrow,
+	startOfToday,
+} from "date-fns"
 import { noop } from "lodash"
 import { getDosage } from "./getDosage"
 /**
@@ -19,6 +25,9 @@ function addDoses(tomorrow = false) {
 	const { data } = useMedicineStore.getState()
 	const list = getDosage(data, tomorrow ? startOfTomorrow() : undefined)
 	store.add(list)
+	useAppState.setState({
+		doseStoreDay: tomorrow ? startOfTomorrow() : startOfToday(),
+	})
 }
 
 function clearDoses() {
