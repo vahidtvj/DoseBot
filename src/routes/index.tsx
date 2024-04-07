@@ -22,7 +22,7 @@ export function App() {
 			<Stack.Screen
 				name="Home"
 				component={Tabs}
-				options={{ headerShown: true, title: "DoseRite" }}
+				options={{ headerShown: true, title: "DoseBot" }}
 			/>
 			<Stack.Screen
 				name="MedicineDetail"

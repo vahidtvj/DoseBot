@@ -1,19 +1,19 @@
 const APP_VARIANT = process.env.APP_VARIANT
 
-let packageName = "com.vahidtvj.DoseRiteDev"
-let name = "DoseRiteDev"
+let packageName = "com.vahidtvj.DoseBotDev"
+let name = "DoseBotDev"
 if (APP_VARIANT === "preview") {
-	name = "DoseRitePreview"
-	packageName = "com.vahidtvj.DoseRitePreview"
+	name = "DoseBotPreview"
+	packageName = "com.vahidtvj.DoseBotPreview"
 } else if (APP_VARIANT === "production") {
-	name = "DoseRite"
-	packageName = "com.vahidtvj.DoseRite"
+	name = "DoseBot"
+	packageName = "com.vahidtvj.DoseBot"
 }
 
 module.exports = {
 	expo: {
 		name: name,
-		slug: "DoseRite",
+		slug: "DoseBot",
 		version: "0.0.1",
 		orientation: "portrait",
 		icon: "./assets/icon.png",
