@@ -41,7 +41,7 @@ export function MedicineForm(props: Props) {
 	})
 
 	function onScheduleSubmit(data: Schedule, index?: number) {
-		if (index) scheduleArray.update(index, data)
+		if (index !== undefined) scheduleArray.update(index, data)
 		else scheduleArray.append(data)
 		// scheduleArray.update()
 	}
