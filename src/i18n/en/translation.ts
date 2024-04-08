@@ -1,14 +1,9 @@
 const en = {
-	title: "Welcome {{name}}, to react using react-i18next fully type-safe",
-	description: {
-		part1: "This is a simple example.",
-		part2: "😉",
-	},
-	userMessagesUnread_one: "You have {{count}} unread message.",
-	userMessagesUnread_other: "You have {{count}} unread messages.",
+	appName: "DoseBot",
 	medicine: {
 		skip: "Skip",
 		confirm: "Confirm",
+		pills: "pills",
 		pill_one: "{{count}} pill",
 		pill_other: "{{count}} pills",
 		remaining: "{{count}} left",
@@ -41,7 +36,10 @@ const en = {
 		Sat: "Sat",
 	},
 	join: ", ",
+	add: "Add",
 	save: "Save",
+	start: "Start",
+	end: "End",
 	startDate: "Start Date",
 	endDate: "End Date",
 	time: "Time",
@@ -49,6 +47,18 @@ const en = {
 	tomorrow: "Tomorrow",
 	yesterday: "Yesterday",
 	inventoryLow: "Inventory Low",
+	navigation: {
+		settings: "Settings",
+		permissions: "Permissions",
+		rate: "Rate Us",
+		about: "About",
+		medDetails: "Medicine Details",
+		scheduleDetails: "Schedule Details",
+		overview: "Overview",
+		medications: "Medications",
+		newMed: "New Medication",
+		newSchedule: "New Schedule",
+	},
 } as const
 
 export default en

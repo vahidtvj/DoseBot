@@ -3,6 +3,7 @@ import { IMedicine, Schedule } from "@/models"
 import type { RootStackScreenProps } from "@/routes/types"
 import { useMedicineStore } from "@/stores/medicineStore"
 import { useEffect } from "react"
+import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Appbar } from "react-native-paper"
 
@@ -12,6 +13,7 @@ export default function Page({
 }: RootStackScreenProps<"MedicineDetail">) {
 	const { id } = route.params
 	const medStore = useMedicineStore()
+	const { t } = useTranslation()
 
 	function onDelete() {
 		if (!id) return
@@ -20,12 +22,12 @@ export default function Page({
 	}
 
 	useEffect(() => {
-		if (!id) navigation.setOptions({ title: "New Medication" })
+		if (!id) navigation.setOptions({ title: t("navigation.newMed") })
 		if (id)
 			navigation.setOptions({
 				headerRight: () => <Appbar.Action icon="delete" onPress={onDelete} />,
 			})
-	}, [navigation, id])
+	}, [navigation, id, t])
 
 	const data = id ? medStore.data.find((x) => x.id === id) : undefined
 

@@ -67,14 +67,14 @@ export function ScheduleCard(props: Props) {
 								variant="bodySmall"
 								style={{ color: theme.colors.secondary }}
 							>
-								Start: {startDate.toLocaleDateString()}
+								{t("start")}: {startDate.toLocaleDateString()}
 							</Text>
 							{endDate && (
 								<Text
 									variant="bodySmall"
 									style={{ color: theme.colors.secondary }}
 								>
-									End: {endDate.toLocaleDateString()}
+									{t("end")}: {endDate.toLocaleDateString()}
 								</Text>
 							)}
 						</View>

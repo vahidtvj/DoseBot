@@ -4,11 +4,13 @@ import { FlatList, StyleSheet, View } from "react-native"
 import { FAB } from "react-native-paper"
 
 import type { HomeTabScreenProps } from "@/routes/types"
+import { useTranslation } from "react-i18next"
 
 export default function Page({
 	navigation,
 }: HomeTabScreenProps<"Medications">) {
 	const medStore = useMedicineStore()
+	const { t } = useTranslation()
 	return (
 		<View style={styles.page}>
 			<FlatList
@@ -25,7 +27,7 @@ export default function Page({
 				mode="flat"
 				icon="plus"
 				style={styles.fab}
-				label="Add"
+				label={t("add")}
 				onPress={() => navigation.navigate("MedicineDetail", { id: undefined })}
 			/>
 		</View>

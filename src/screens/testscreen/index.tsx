@@ -7,15 +7,11 @@ import { useUIStore } from "@/stores/uiStore"
 import { useTranslation } from "react-i18next"
 
 export default function Page() {
-	const { t } = useTranslation()
 	const ui = useUIStore()
 	const config = useConfigState()
 	return (
 		<View style={styles.container}>
 			<Text>Open up App.tsx to start working on your app!</Text>
-			<Text>{t("title", { name: "vahid" })}</Text>
-			<Text>{t("description.part1")}</Text>
-			<Text>{t("userMessagesUnread", { count: 1 })}</Text>
 			<Text>Language is: {ui.lang}</Text>
 			<Text>Color scheme is: {ui.colorScheme}</Text>
 			<IconButton

@@ -2,6 +2,7 @@ import { ScheduleForm } from "@/components/forms/schedule"
 import { Schedule } from "@/models"
 import type { RootStackScreenProps } from "@/routes/types"
 import { useEffect } from "react"
+import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Appbar } from "react-native-paper"
 
@@ -10,14 +11,15 @@ export default function Page({
 	route,
 }: RootStackScreenProps<"MedicineSchedule">) {
 	const { schedule } = route.params
+	const { t } = useTranslation()
 
 	useEffect(() => {
-		if (!schedule) navigation.setOptions({ title: "New Schedule" })
+		if (!schedule) navigation.setOptions({ title: t("navigation.newSchedule") })
 		if (route.params.onDelete)
 			navigation.setOptions({
 				headerRight: () => <Appbar.Action icon="delete" onPress={onDelete} />,
 			})
-	}, [navigation, schedule, route.params.onDelete])
+	}, [navigation, schedule, route.params.onDelete, t])
 
 	function onSubmit(data: Schedule) {
 		route.params.onSubmit?.(data)

@@ -8,11 +8,13 @@ import { createDrawerNavigator } from "@react-navigation/drawer"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { Tabs } from "./tabs"
 import type { RootDrawerParamList, RootStackParamList } from "./types"
+import { useTranslation } from "react-i18next"
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const Drawer = createDrawerNavigator<RootDrawerParamList>()
 
 export function App() {
+	const { t } = useTranslation()
 	return (
 		<Stack.Navigator
 			screenOptions={{
@@ -22,23 +24,23 @@ export function App() {
 			<Stack.Screen
 				name="Home"
 				component={Tabs}
-				options={{ headerShown: true, title: "DoseBot" }}
+				options={{ headerShown: true, title: t("appName") }}
 			/>
 			<Stack.Screen
 				name="MedicineDetail"
 				component={MedicineDetail}
 				options={{
 					headerShown: true,
-					title: "Medicine Details",
+					title: t("navigation.medDetails"),
 				}}
 			/>
 			<Stack.Screen
 				name="MedicineSchedule"
 				component={MedicineSchedule}
-				options={{ headerShown: true, title: "Schedule Details" }}
+				options={{ headerShown: true, title: t("navigation.scheduleDetails") }}
 			/>
 			<Stack.Screen
-				name="Permissions"
+				name={t("navigation.permissions")}
 				component={Permissions}
 				options={{ headerShown: true }}
 			/>

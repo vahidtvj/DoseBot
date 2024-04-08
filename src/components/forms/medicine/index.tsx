@@ -65,7 +65,7 @@ export function MedicineForm(props: Props) {
 						<Text variant="bodyLarge">{t("medicine.type")}:</Text>
 						{/* TODO pills */}
 						<Chip mode="flat" icon="pill">
-							pills
+							{t("medicine.pills")}
 						</Chip>
 					</View>
 					<Card>
@@ -100,6 +100,7 @@ export function MedicineForm(props: Props) {
 						</Card.Content>
 					</Card>
 					<Text variant="bodyLarge">{t("priority")}: </Text>
+					{/* TODO */}
 					<SegmentedButtons
 						value="Low"
 						onValueChange={() => {}}
@@ -131,7 +132,7 @@ export function MedicineForm(props: Props) {
 										)
 									}
 								>
-									Add
+									{t("add")}
 								</Button>
 							</View>
 						</View>

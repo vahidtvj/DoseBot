@@ -9,7 +9,7 @@ export async function showInventoryAlert(props: Props) {
 	const channelId = await notifee.createChannel(Channels.inventory)
 
 	await notifee.displayNotification({
-		title: "inventory low",
+		title: i18n.t("inventoryLow"),
 		body: `${props.name} ${i18n.t("medicine.remaining", {
 			count: props.inventory.count,
 		})}`,
