@@ -1,8 +1,8 @@
 import MedScreen from "@/screens/medications"
 import OverviewScreen from "@/screens/overview"
+import { useTranslation } from "react-i18next"
 import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation"
 import type { HomeTabParamList, RootStackScreenProps } from "./types"
-import { useTranslation } from "react-i18next"
 
 const Tab = createMaterialBottomTabNavigator<HomeTabParamList>()
 

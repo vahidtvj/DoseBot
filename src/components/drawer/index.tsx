@@ -1,7 +1,7 @@
 import type { DrawerContentComponentProps } from "@react-navigation/drawer"
+import { useTranslation } from "react-i18next"
 import { Drawer } from "react-native-paper"
 import { SafePage } from "../common"
-import { useTranslation } from "react-i18next"
 
 export function AppDrawer(props: DrawerContentComponentProps) {
 	const { navigation } = props

@@ -6,9 +6,9 @@ import Permissions from "@/screens/permissions"
 import TestScreen from "@/screens/testscreen"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import { useTranslation } from "react-i18next"
 import { Tabs } from "./tabs"
 import type { RootDrawerParamList, RootStackParamList } from "./types"
-import { useTranslation } from "react-i18next"
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const Drawer = createDrawerNavigator<RootDrawerParamList>()
