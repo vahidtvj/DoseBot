@@ -37,7 +37,7 @@ function clearDoses() {
 	const store = useDoseStore.getState()
 	const list: string[] = []
 	for (const dose of store.data) {
-		if (isYesterday(dose.time)) list.push(dose.id)
+		if (!isFuture(dose.time) && !isToday(dose.time)) list.push(dose.id)
 	}
 	store.clear(list)
 }
