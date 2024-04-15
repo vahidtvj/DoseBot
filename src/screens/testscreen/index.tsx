@@ -4,8 +4,6 @@ import { Button, IconButton, Text } from "react-native-paper"
 import { useConfigState } from "@/stores/configStore"
 import { useUIStore } from "@/stores/uiStore"
 
-import { useTranslation } from "react-i18next"
-
 export default function Page() {
 	const ui = useUIStore()
 	const config = useConfigState()

@@ -17,9 +17,10 @@ import "@/utils/ignoreLogs"
 import "@/logic/registerEvents"
 import "@/utils/notifications"
 
-// App
 import { BaseLayout } from "@/layout/base"
 import Constants from "expo-constants"
+// App
+import { useFonts } from "expo-font"
 import "react-native-gesture-handler"
 const MainApp =
 	Constants.expoConfig?.extra?.storybookEnabled === "true"
@@ -27,6 +28,11 @@ const MainApp =
 		: require("./src/main")
 
 function App() {
+	// TODO add font to config instead
+	const [fontsLoaded] = useFonts({
+		MyFont: require("./assets/fonts/MyFont.ttf"),
+	})
+	if (!fontsLoaded) return null
 	return (
 		<BaseLayout>
 			<MainApp.default />

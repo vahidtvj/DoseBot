@@ -1,5 +1,6 @@
 import { ScheduleCard } from "@/components/cards/schedule"
 import { CheckboxField } from "@/components/fields/CheckboxField"
+import { MedTypeField } from "@/components/fields/MedType"
 import { TextInputField } from "@/components/fields/TextInputField"
 import { IMedicine, Schedule } from "@/models"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -7,14 +8,7 @@ import { randomUUID } from "expo-crypto"
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { ScrollView, StyleSheet, View } from "react-native"
-import {
-	Button,
-	Card,
-	Chip,
-	FAB,
-	SegmentedButtons,
-	Text,
-} from "react-native-paper"
+import { Button, Card, FAB, SegmentedButtons, Text } from "react-native-paper"
 import { Inputs, Props, defaultValues, schema } from "./data"
 
 export function MedicineForm(props: Props) {
@@ -63,10 +57,7 @@ export function MedicineForm(props: Props) {
 					/>
 					<View style={styles.row}>
 						<Text variant="bodyLarge">{t("medicine.type")}:</Text>
-						{/* TODO pills */}
-						<Chip mode="flat" icon="pill">
-							{t("medicine.pills")}
-						</Chip>
+						<MedTypeField control={control} name="type" />
 					</View>
 					<Card>
 						<Card.Content style={styles.card}>

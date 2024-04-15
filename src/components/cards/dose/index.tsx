@@ -1,4 +1,4 @@
-import { IDose } from "@/models"
+import { IDose, MedIconMap } from "@/models"
 import { useDateUtils } from "@/utils"
 import { isPast } from "date-fns"
 import { useTranslation } from "react-i18next"
@@ -12,7 +12,7 @@ type IProps = IDose & {
 
 export function DoseCard(props: IProps) {
 	const theme = useTheme()
-	const { name: title, amount: dose, time, status, id } = props
+	const { name: title, amount: dose, time, status, id, type } = props
 	const { t } = useTranslation()
 	const showBtns = status === "pending"
 
@@ -26,7 +26,7 @@ export function DoseCard(props: IProps) {
 	return (
 		<Card mode="contained" style={styles.card}>
 			<Card.Content style={styles.content}>
-				<IconButton icon="pill" />
+				<IconButton icon={MedIconMap[type]} style={styles.icon} size={32} />
 				<View style={styles.body}>
 					<View style={styles.titleDose}>
 						<Text variant="titleLarge">{title}</Text>
@@ -69,5 +69,8 @@ const styles = StyleSheet.create({
 		display: "flex",
 		flexDirection: "row",
 		justifyContent: "space-between",
+	},
+	icon: {
+		alignSelf: "center",
 	},
 })

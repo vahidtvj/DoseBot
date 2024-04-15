@@ -1,4 +1,4 @@
-import { IMedicine, Schedule } from "@/models"
+import { IMedicine, MedIconMap, Schedule } from "@/models"
 import { hasEnded, hasStarted } from "@/utils"
 import { compareAsc } from "date-fns"
 import { useTranslation } from "react-i18next"
@@ -9,7 +9,7 @@ type IProps = IMedicine & { onPress?: (id: string) => void }
 
 export function MedicineCard(props: IProps) {
 	const theme = useTheme()
-	const { name, inventory, schedule, notification, onPress, id } = props
+	const { name, inventory, schedule, notification, onPress, id, type } = props
 	const { t } = useTranslation()
 
 	function getScheduleText(schedule: Schedule) {
@@ -31,7 +31,7 @@ export function MedicineCard(props: IProps) {
 	return (
 		<Card mode="contained" style={styles.card} onPress={() => onPress?.(id)}>
 			<Card.Content style={styles.content}>
-				<IconButton icon="pill" />
+				<IconButton icon={MedIconMap[type]} style={styles.icon} size={32} />
 				<View style={styles.body}>
 					<View style={styles.left}>
 						<Text variant="titleLarge">{name}</Text>
@@ -120,5 +120,8 @@ const styles = StyleSheet.create({
 		// justifyContent: "space-between",
 		gap: 10,
 		alignItems: "baseline",
+	},
+	icon: {
+		alignSelf: "center",
 	},
 })
