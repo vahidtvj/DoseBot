@@ -17,6 +17,18 @@ const en = {
 		type: "Type",
 		addDose: "Add Dose",
 	},
+	medType: {
+		pill: "Pill",
+		injection: "Injection",
+		iv: "IV",
+		drop: "Drop",
+		suppository: "Suppository",
+		inhaler: "Inhaler",
+		syrup: "Syrup",
+		spray: "Spray",
+		patch: "Patch",
+		generic: "Generic",
+	},
 	medicineName: "Medicine Name",
 	count: "Count",
 	threshold: "Threshold",
@@ -58,6 +70,22 @@ const en = {
 		medications: "Medications",
 		newMed: "New Medication",
 		newSchedule: "New Schedule",
+	},
+
+	settings: {
+		theme: "Theme",
+		themes: {
+			system: "System",
+			light: "Light",
+			dark: "Dark",
+		},
+		materialYou: "Material You",
+		language: "Language",
+		languages: {
+			system: "System", //  languages are always translated regardless of user choice (always fallback to English)
+			en: "English",
+			fa: "فارسی",
+		},
 	},
 } as const
 

@@ -22,6 +22,7 @@ export type RootHeaderProps = NativeStackHeaderProps
 export type RootStackParamList = {
 	Home: NavigatorScreenParams<HomeTabParamList>
 	Permissions: undefined
+	Settings: undefined
 	Test: undefined
 	MedicineDetail: { id?: string }
 	MedicineSchedule: {

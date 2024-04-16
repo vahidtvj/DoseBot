@@ -92,7 +92,7 @@ export const data: IMedicine[] = [
 	{
 		id: randomUUID(),
 		name: "Amoxicillin",
-		type: "capsule",
+		type: "pill",
 		inventory: {
 			count: 0,
 			notifyOn: 0,

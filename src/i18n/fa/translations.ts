@@ -58,6 +58,19 @@ const en = {
 		newMed: "داروی جدید",
 		newSchedule: "دوز جدید",
 	},
+	settings: {
+		theme: "تم",
+		themes: {
+			system: "سیستم",
+			light: "روشن",
+			dark: "تیره",
+		},
+		materialYou: "Material You",
+		language: "زبان",
+		languages: {
+			system: "سیستم", //  languages are always translated regardless of user choice (always fallback to English)
+		},
+	},
 } as const
 
 export default en

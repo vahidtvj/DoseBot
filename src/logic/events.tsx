@@ -1,4 +1,4 @@
-import * as Sentry from "@sentry/react-native"
+// import * as Sentry from "@sentry/react-native"
 import * as BackgroundFetch from "expo-background-fetch"
 import { onScheduleRunEvent } from "./dose"
 
