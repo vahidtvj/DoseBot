@@ -13,7 +13,7 @@ export function AppDrawer(props: DrawerContentComponentProps) {
 					label={t("navigation.settings")}
 					icon="cog"
 					active={false}
-					// onPress={() => setActive("first")}
+					onPress={() => navigation.navigate("Settings")}
 				/>
 				<Drawer.Item
 					label={t("navigation.permissions")}

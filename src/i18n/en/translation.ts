@@ -71,6 +71,22 @@ const en = {
 		newMed: "New Medication",
 		newSchedule: "New Schedule",
 	},
+
+	settings: {
+		theme: "Theme",
+		themes: {
+			system: "System",
+			light: "Light",
+			dark: "Dark",
+		},
+		materialYou: "Material You",
+		language: "Language",
+		languages: {
+			system: "System", //  languages are always translated regardless of user choice (always fallback to English)
+			en: "English",
+			fa: "فارسی",
+		},
+	},
 } as const
 
 export default en

@@ -1,5 +1,6 @@
 import { PaperStatusBar } from "@/components/common/PaperStatusBar"
 import "@/i18n/i18n"
+import { useConfigState } from "@/stores/configStore"
 import { useUIStore } from "@/stores/uiStore"
 import { darkTheme, lightTheme } from "@/theme"
 // import * as Updates from "expo-updates"
@@ -22,6 +23,7 @@ type Props = {
 }
 
 export function BaseLayout({ children }: Props) {
+	const useMaterialYou = useConfigState((x) => x.useMaterialYou)
 	const colorScheme = useUIStore((state) => state.colorScheme)
 	const shouldBeRTL = useUIStore((state) => state.lang) === "fa"
 	if (shouldBeRTL !== I18nManager.isRTL && Platform.OS !== "web") {
@@ -33,10 +35,14 @@ export function BaseLayout({ children }: Props) {
 
 	const paperTheme = useMemo(
 		() =>
-			colorScheme === "dark"
-				? { ...darkTheme, colors: { ...darkTheme.colors, ...theme.dark } }
-				: { ...lightTheme, colors: { ...lightTheme.colors, ...theme.light } },
-		[colorScheme, theme],
+			useMaterialYou
+				? colorScheme === "dark"
+					? { ...darkTheme, colors: { ...darkTheme.colors, ...theme.dark } }
+					: { ...lightTheme, colors: { ...lightTheme.colors, ...theme.light } }
+				: colorScheme === "dark"
+				  ? { ...darkTheme, colors: darkTheme.colors }
+				  : { ...lightTheme, colors: lightTheme.colors },
+		[colorScheme, theme, useMaterialYou],
 	)
 
 	const navTheme = useMemo(() => {

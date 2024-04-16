@@ -3,6 +3,7 @@ import { AppDrawer } from "@/components/drawer"
 import MedicineDetail from "@/screens/medicineDetail"
 import MedicineSchedule from "@/screens/medicineSchedule"
 import Permissions from "@/screens/permissions"
+import Settings from "@/screens/settings"
 import TestScreen from "@/screens/testscreen"
 import { createDrawerNavigator } from "@react-navigation/drawer"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
@@ -40,9 +41,14 @@ export function App() {
 				options={{ headerShown: true, title: t("navigation.scheduleDetails") }}
 			/>
 			<Stack.Screen
-				name={t("navigation.permissions")}
+				name="Permissions"
 				component={Permissions}
-				options={{ headerShown: true }}
+				options={{ headerShown: true, title: t("navigation.permissions") }}
+			/>
+			<Stack.Screen
+				name="Settings"
+				component={Settings}
+				options={{ headerShown: true, title: t("navigation.settings") }}
 			/>
 			<Stack.Screen
 				name="Test"

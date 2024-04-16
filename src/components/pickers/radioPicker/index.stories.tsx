@@ -3,11 +3,11 @@ import { useArgs } from "@storybook/preview-api"
 import type { Meta, StoryObj } from "@storybook/react"
 import { View } from "react-native"
 import { Text } from "react-native-paper"
-import { ItemPicker } from "."
+import { RadioPicker } from "./picker"
 
 const meta = {
 	title: "Pickers/Radio Picker",
-	component: ItemPicker,
+	component: RadioPicker,
 	decorators: [withSafeView],
 	args: {
 		title: "Choose Language",
@@ -32,10 +32,10 @@ const meta = {
 		onSelect: (_x) => {},
 	},
 	argTypes: {},
-} satisfies Meta<typeof ItemPicker>
+} satisfies Meta<typeof RadioPicker>
 
 export default meta
-type Story = StoryObj<typeof ItemPicker>
+type Story = StoryObj<typeof RadioPicker>
 
 export const Primary: Story = {
 	render: (args) => {
@@ -55,7 +55,7 @@ export const Primary: Story = {
 				<Text variant="displayLarge">Random Text</Text>
 				<Text variant="displayLarge">Random Text</Text>
 				<Text variant="displayLarge">Random Text</Text>
-				<ItemPicker
+				<RadioPicker
 					{...args}
 					onSelect={(value) => setArgs({ selected: value })}
 				/>

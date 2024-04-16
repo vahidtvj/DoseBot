@@ -1,27 +1,20 @@
 import { useAppTheme } from "@/theme"
 import { StyleSheet, View } from "react-native"
-import {
-	Button,
-	Icon,
-	Modal,
-	Portal,
-	RadioButton,
-	Text,
-} from "react-native-paper"
+import { Modal, Portal, RadioButton, Text } from "react-native-paper"
 
-type Props<T extends string> = {
+type Props = {
 	title?: string
 	values: {
 		label: string
 		subtitle?: string
-		key: T
+		key: string
 	}[]
-	selected?: T
-	onSelect: (value?: T) => void
+	selected?: string
+	onSelect: (value?: string) => void
 	open: boolean
 }
 
-export function ItemPicker<T extends string>(props: Props<T>) {
+export function RadioPicker(props: Props) {
 	const { selected, values, onSelect, open, title } = props
 	const theme = useAppTheme()
 
