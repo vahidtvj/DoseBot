@@ -2,13 +2,8 @@ import { Constants } from "@/config"
 import { useAppState } from "@/stores/app"
 import { useDoseStore } from "@/stores/doseStore"
 import { useMedicineStore } from "@/stores/medicineStore"
-import {
-	isFuture,
-	isToday,
-	isYesterday,
-	startOfToday,
-	startOfTomorrow,
-} from "date-fns"
+import * as Sentry from "@sentry/react-native"
+import { isFuture, isToday, startOfToday, startOfTomorrow } from "date-fns"
 import { noop } from "lodash"
 import { getDosage } from "./getDosage"
 /**
@@ -21,6 +16,7 @@ export function fillDoseStore() {
 }
 
 function addDoses(tomorrow = false) {
+	Sentry.captureMessage(`add dose. day: ${tomorrow ? "tomorrow" : "today"}`)
 	const store = useDoseStore.getState()
 	const { data } = useMedicineStore.getState()
 	const list = getDosage(data, tomorrow ? startOfTomorrow() : undefined)
@@ -34,7 +30,7 @@ function clearDoses() {
 	const store = useDoseStore.getState()
 	const list: string[] = []
 	for (const dose of store.data) {
-		if (isYesterday(dose.time)) list.push(dose.id)
+		if (!isFuture(dose.time) && !isToday(dose.time)) list.push(dose.id)
 	}
 	store.clear(list)
 }
@@ -42,9 +38,7 @@ function clearDoses() {
 export function onScheduleRunEvent() {
 	// on background service, boot, app start, ...
 	const { doseStoreDay } = useAppState.getState()
-	console.log(`doseStoreDay: ${doseStoreDay}`)
 	const now = new Date()
-	console.log(`now: ${now}`)
 
 	const { data } = useDoseStore.getState()
 
@@ -61,5 +55,5 @@ export function onScheduleRunEvent() {
 	// doseStoreDay isPast (!isFuture) & no dose generated for today
 	else if (!isToday(doseStoreDay)) addDoses()
 	// doseStoreDay isToday but we are past refill hour
-	else if (doseStoreDay.getHours() <= Constants.rescheduleHour) addDoses(true) // run for tomorrow
+	else if (now.getHours() >= Constants.rescheduleHour) addDoses(true) // run for tomorrow
 }

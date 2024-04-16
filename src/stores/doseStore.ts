@@ -54,8 +54,8 @@ export const useDoseStore = create<IState>()(
 			},
 			clear: (idList) => {
 				const data = get().data
-				const oldDoses = data.filter((x) => x.id in idList)
-				const rest = data.filter((x) => !(x.id in idList))
+				const oldDoses = data.filter((x) => idList.includes(x.id))
+				const rest = data.filter((x) => !idList.includes(x.id))
 				for (const dose of oldDoses) notifee.cancelNotification(dose.id)
 				set({ data: rest })
 			},
