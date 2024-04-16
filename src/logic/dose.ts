@@ -2,10 +2,10 @@ import { Constants } from "@/config"
 import { useAppState } from "@/stores/app"
 import { useDoseStore } from "@/stores/doseStore"
 import { useMedicineStore } from "@/stores/medicineStore"
+import * as Sentry from "@sentry/react-native"
 import { isFuture, isToday, startOfToday, startOfTomorrow } from "date-fns"
 import { noop } from "lodash"
 import { getDosage } from "./getDosage"
-import * as Sentry from "@sentry/react-native"
 /**
  * ! Test. Do not use
  */
