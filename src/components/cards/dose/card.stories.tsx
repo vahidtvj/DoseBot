@@ -28,11 +28,12 @@ export const Multiple: Story = {
 		<>
 			<DoseCard
 				{...args}
-				name="Acetaminophen"
+				name="Ibuprofin"
 				time={new Date(Date.now() - 1000 * 60 * 60)}
 				amount={2}
 				type="pill"
 				status="skip"
+				note="take with food take with food "
 			/>
 			<DoseCard
 				{...args}
@@ -41,6 +42,7 @@ export const Multiple: Story = {
 				amount={2.5}
 				type="pill"
 				status="pending"
+				note="after meal"
 			/>
 			<DoseCard
 				{...args}
@@ -57,6 +59,7 @@ export const Multiple: Story = {
 				amount={1}
 				type="pill"
 				status="pending"
+				note="Before sleep"
 			/>
 		</>
 	),

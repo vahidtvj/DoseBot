@@ -8,7 +8,14 @@ import { randomUUID } from "expo-crypto"
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { ScrollView, StyleSheet, View } from "react-native"
-import { Button, Card, FAB, SegmentedButtons, Text } from "react-native-paper"
+import {
+	Button,
+	Card,
+	FAB,
+	SegmentedButtons,
+	Surface,
+	Text,
+} from "react-native-paper"
 import { Inputs, Props, defaultValues, schema } from "./data"
 
 export function MedicineForm(props: Props) {
@@ -53,11 +60,23 @@ export function MedicineForm(props: Props) {
 						name="name"
 						mode="outlined"
 						label={t("medicineName")}
-						rules={{ required: true }}
 					/>
-					<View style={styles.row}>
-						<Text variant="bodyLarge">{t("medicine.type")}:</Text>
-						<MedTypeField control={control} name="type" />
+
+					<View style={{ flexDirection: "row", gap: 12 }}>
+						<Surface style={{ padding: 8, flex: 1 }}>
+							<View style={styles.row}>
+								<Text variant="bodyLarge">{t("medicine.type")}:</Text>
+								<MedTypeField control={control} name="type" />
+							</View>
+						</Surface>
+						<TextInputField
+							containerStyle={{ flex: 1 }}
+							control={control}
+							name="note"
+							mode="outlined"
+							dense
+							label={t("intakeAdvice")}
+						/>
 					</View>
 					<Card>
 						<Card.Content style={styles.card}>
@@ -73,7 +92,6 @@ export function MedicineForm(props: Props) {
 										name="inventory.count"
 										mode="outlined"
 										label={t("count")}
-										rules={{ required: true, min: 0 }}
 										inputMode="numeric"
 										containerStyle={{ flexGrow: 1 }}
 									/>
@@ -82,7 +100,6 @@ export function MedicineForm(props: Props) {
 										name="inventory.notifyOn"
 										mode="outlined"
 										label={t("threshold")}
-										rules={{ required: true, min: 0 }}
 										inputMode="numeric"
 										containerStyle={{ flexGrow: 1 }}
 									/>
@@ -164,7 +181,7 @@ const styles = StyleSheet.create({
 	content: {
 		flex: 1,
 		margin: 10,
-		gap: 16,
+		gap: 12,
 	},
 	row: {
 		display: "flex",

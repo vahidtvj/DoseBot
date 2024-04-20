@@ -17,13 +17,13 @@ export function TextInputField<T extends object>(
 	return (
 		<View style={containerStyle}>
 			<TextInput
-				value={String(field.value)}
+				value={field.value && String(field.value)}
 				onChangeText={field.onChange}
 				onBlur={field.onBlur}
 				error={hasError}
 				{...rest}
 			/>
-			{!noHelper && (
+			{!noHelper && hasError && (
 				<HelperText type="error" visible={hasError}>
 					{/*  TODO translate errors*/}
 					{fieldState.error?.type}
