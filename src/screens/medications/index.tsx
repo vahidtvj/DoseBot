@@ -14,7 +14,7 @@ export default function Page({
 	return (
 		<View style={styles.page}>
 			<FlatList
-				data={medStore.data}
+				data={medStore.data.sort((a, b) => a.name.localeCompare(b.name))}
 				keyExtractor={(item) => item.id}
 				renderItem={(item) => (
 					<MedicineCard
