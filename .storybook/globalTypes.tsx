@@ -22,4 +22,14 @@ export const globalTypes = {
 			dynamicTitle: true,
 		},
 	},
+	colors: {
+		description: "Colors",
+		defaultValue: "MaterialYou",
+		toolbar: {
+			title: "MaterialYou",
+			icon: "circle",
+			items: ["MaterialYou", "Default"],
+			dynamicTitle: true,
+		},
+	},
 }
