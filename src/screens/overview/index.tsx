@@ -2,9 +2,9 @@ import { DoseCard } from "@/components/cards/dose"
 import type { HomeTabScreenProps } from "@/routes/types"
 import { useAppState } from "@/stores/app"
 import { useDoseStore } from "@/stores/doseStore"
+import { compareAsc } from "date-fns"
 import { useEffect } from "react"
 import { FlatList, StyleSheet, View } from "react-native"
-
 export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	const firstLaunch = useAppState((state) => state.firstLaunch)
 
@@ -16,7 +16,7 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	return (
 		<View style={styles.page}>
 			<FlatList
-				data={doseStore.data}
+				data={doseStore.data.sort((a, b) => compareAsc(a.time, b.time))}
 				keyExtractor={(item) => item.id}
 				renderItem={(item) => (
 					<DoseCard
