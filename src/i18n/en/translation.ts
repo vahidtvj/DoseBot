@@ -30,6 +30,7 @@ const en = {
 		generic: "Generic",
 	},
 	medicineName: "Medicine Name",
+	intakeAdvice: "Intake Advice",
 	count: "Count",
 	threshold: "Threshold",
 	inventory: "Inventory",

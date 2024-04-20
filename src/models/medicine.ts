@@ -1,7 +1,6 @@
+import { zExtras } from "@/utils"
 import { z } from "zod"
-import { Weekday } from "."
-
-export type IDoseStatus = "pending" | "skip" | "confirm"
+import { ScheduleSchema } from "./schedule"
 
 export const MedTypeList: IMedicineType[] = [
 	"pill",
@@ -43,61 +42,22 @@ export const MedicineTypeSchema = z.union([
 ])
 export type IMedicineType = z.infer<typeof MedicineTypeSchema>
 
-export type IDose = {
+export const MedicineSchema = z.object({
+	name: z.string().min(1),
+	inventory: z.object({
+		enabled: z.boolean(),
+		count: z.coerce.number(),
+		notifyOn: z.coerce.number(),
+	}),
+	notification: z.object({
+		enabled: z.boolean(),
+	}),
+	type: MedicineTypeSchema,
+	paused: z.boolean(),
+	schedule: z.array(ScheduleSchema).optional(),
+	note: zExtras.StringOrUndefined,
+})
+
+export type IMedicine = z.infer<typeof MedicineSchema> & {
 	id: string
-	medId: string
-	name: string
-	type: IMedicineType
-	time: Date
-	amount: number
-	status: IDoseStatus
-	// priority: "Low" | "Normal" | "High"
-	// repeatInterval?: number
-}
-
-export type IMedicine = {
-	id: string
-	name: string
-	type: IMedicineType
-	notification: {
-		enabled: boolean
-		// priority: "Low" | "Normal" | "High"
-		// repeatInterval?: number
-	}
-	inventory: {
-		count: number
-		notifyOn: number
-		enabled: boolean
-	}
-	paused: boolean
-	schedule?: Schedule[]
-}
-export type DoseType = "Daily" | "EveryXdays" | "Weekly"
-export type Schedule = Daily | EveryXdays | Weekly
-export type Dosing = {
-	time: Date // Time only
-	amount: number
-}
-
-type Daily = {
-	startDate: Date
-	endDate?: Date
-	dosing: Dosing[]
-	type: "Daily"
-}
-
-type EveryXdays = {
-	startDate: Date
-	endDate?: Date
-	interval: number
-	dosing: Dosing[]
-	type: "EveryXdays"
-}
-
-type Weekly = {
-	startDate: Date
-	endDate?: Date
-	dosing: Dosing[]
-	days: Weekday[]
-	type: "Weekly"
 }

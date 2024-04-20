@@ -12,7 +12,7 @@ type IProps = IDose & {
 
 export function DoseCard(props: IProps) {
 	const theme = useTheme()
-	const { name: title, amount: dose, time, status, id, type } = props
+	const { name: title, amount: dose, time, status, id, type, note } = props
 	const { t } = useTranslation()
 	const showBtns = status === "pending"
 
@@ -28,15 +28,30 @@ export function DoseCard(props: IProps) {
 			<Card.Content style={styles.content}>
 				<IconButton icon={MedIconMap[type]} style={styles.icon} size={32} />
 				<View style={styles.body}>
-					<View style={styles.titleDose}>
-						<Text variant="titleLarge">{title}</Text>
+					<View style={styles.left}>
+						<Text variant="titleLarge" numberOfLines={1}>
+							{title}
+						</Text>
+						<Text variant="bodyLarge" style={timeStyle}>
+							{formatAlertTime(time)}
+						</Text>
+					</View>
+					<View style={styles.right}>
 						<Text variant="bodyLarge">
 							{t("medicine.pill", { count: dose })}
 						</Text>
+						{note && (
+							<Text
+								variant="bodySmall"
+								numberOfLines={1}
+								style={{
+									color: theme.colors.secondary,
+								}}
+							>
+								{note}
+							</Text>
+						)}
 					</View>
-					<Text variant="bodyLarge" style={timeStyle}>
-						{formatAlertTime(time)}
-					</Text>
 				</View>
 			</Card.Content>
 
@@ -55,9 +70,6 @@ export function DoseCard(props: IProps) {
 }
 
 const styles = StyleSheet.create({
-	body: {
-		flex: 1,
-	},
 	card: {
 		margin: 7,
 	},
@@ -65,12 +77,24 @@ const styles = StyleSheet.create({
 		display: "flex",
 		flexDirection: "row",
 	},
-	titleDose: {
-		display: "flex",
-		flexDirection: "row",
-		justifyContent: "space-between",
-	},
 	icon: {
 		alignSelf: "center",
+	},
+	body: {
+		flex: 1,
+		flexDirection: "row",
+		justifyContent: "space-between",
+		gap: 6,
+	},
+	left: {
+		flex: 1,
+		justifyContent: "space-around",
+		maxWidth: "65%",
+	},
+	right: {
+		flex: 1,
+		alignItems: "flex-end",
+		justifyContent: "space-around",
+		maxWidth: "35%",
 	},
 })
