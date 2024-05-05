@@ -1,5 +1,5 @@
-import { IMedicine, MedIconMap, Schedule } from "@/models"
-import { hasEnded, hasStarted } from "@/utils"
+import { IMedicine, MedIconMap } from "@/models"
+import { hasEnded, hasStarted, useDateUtils } from "@/utils"
 import { compareAsc } from "date-fns"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
@@ -11,22 +11,7 @@ export function MedicineCard(props: IProps) {
 	const theme = useTheme()
 	const { name, inventory, schedule, notification, onPress, id, type } = props
 	const { t } = useTranslation()
-
-	function getScheduleText(schedule: Schedule) {
-		if (schedule.type === "Daily") {
-			return t("medicine.dailyDose", {
-				count: schedule.dosing.length,
-			})
-		}
-		if (schedule.type === "EveryXdays") {
-			return t("medicine.everyXdayDose", {
-				count: schedule.interval,
-			})
-		}
-		if (schedule.type === "Weekly") {
-			return schedule.days.join(", ")
-		}
-	}
+	const { getScheduleText } = useDateUtils()
 
 	return (
 		<Card mode="contained" style={styles.card} onPress={() => onPress?.(id)}>

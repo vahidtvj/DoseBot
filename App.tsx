@@ -31,6 +31,7 @@ function App() {
 	// TODO add font to config instead
 	const [fontsLoaded] = useFonts({
 		MyFont: require("./assets/fonts/MyFont.ttf"),
+		IRANSansXFaNum: require("./assets/fonts/IRANSans/IRANSansXFaNum-Regular.ttf"),
 	})
 	if (!fontsLoaded) return null
 	return (

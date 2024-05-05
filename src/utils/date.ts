@@ -1,5 +1,6 @@
 import { Schedule, Weekday } from "@/models"
-import { isPast, isToday, isTomorrow, isYesterday } from "date-fns"
+import { format, isPast, isToday, isTomorrow, isYesterday } from "date-fns"
+import { format as jFormat } from "date-fns-jalali"
 import { useTranslation } from "react-i18next"
 export const Weekdays: Weekday[] = [
 	"Sun",
@@ -11,6 +12,7 @@ export const Weekdays: Weekday[] = [
 	"Sat",
 ]
 
+// TODO translate this func
 export function formatAlertTime(date: Date) {
 	if (isToday(date))
 		return date.toLocaleTimeString([], {
@@ -33,6 +35,8 @@ export function toTimeString(date: Date) {
 
 export const useDateUtils = () => {
 	const { t, i18n } = useTranslation()
+	const iFormat = i18n.language === "fa" ? jFormat : format
+
 	function getOrderedWeekdays(): Weekday[] {
 		return i18n.language === "fa"
 			? ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]
@@ -54,31 +58,26 @@ export const useDateUtils = () => {
 		}
 	}
 	function formatAlertTime(date: Date) {
-		if (isToday(date))
-			return date.toLocaleTimeString([], {
-				hour: "2-digit",
-				minute: "2-digit",
-			})
-		if (isYesterday(date))
-			return `${t("yesterday")} ${date.toLocaleTimeString([], {
-				hour: "2-digit",
-				minute: "2-digit",
-			})}`
-		if (isTomorrow(date))
-			return `${t("tomorrow")} ${date.toLocaleTimeString([], {
-				hour: "2-digit",
-				minute: "2-digit",
-			})}`
-		return date.toLocaleDateString([], {
-			hour: "2-digit",
-			minute: "2-digit",
-		})
+		if (isToday(date)) return iFormat(date, "p")
+		if (isYesterday(date)) return `${t("yesterday")} ${iFormat(date, "p")}`
+		if (isTomorrow(date)) return `${t("tomorrow")} ${iFormat(date, "p")}`
+		// return date.toLocaleDateString("fa", {
+		// 	hour: "2-digit",
+		// 	minute: "2-digit",
+		// })
+		return iFormat(date, "Pp")
 	}
-	return { getScheduleText, getOrderedWeekdays, formatAlertTime }
-}
+	const formatDoseTime = (date: Date) => iFormat(date, "p")
 
-export function formatDoseTime(date: Date) {
-	return date.toLocaleTimeString()
+	const formatDate = (date: Date) => iFormat(date, "P")
+
+	return {
+		formatDate,
+		getScheduleText,
+		getOrderedWeekdays,
+		formatAlertTime,
+		formatDoseTime,
+	}
 }
 
 // TODO past, future

@@ -32,6 +32,7 @@
 		"@react-navigation/native-stack": "^6.9.22",
 		"@sentry/react-native": "5.19.1",
 		"date-fns": "^3.4.0",
+		"date-fns-jalali": "3.6.0-0",
 		"expo": "~50.0.6",
 		"expo-background-fetch": "~11.8.1",
 		"expo-constants": "^15.4.5",

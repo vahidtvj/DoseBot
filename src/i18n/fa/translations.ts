@@ -17,6 +17,7 @@ const en = {
 		addDose: "افزودن دوز",
 	},
 	medicineName: "نام دارو",
+	intakeAdvice: "نحوه مصرف",
 	count: "تعداد",
 	threshold: "آستانه",
 	inventory: "موجودی",
