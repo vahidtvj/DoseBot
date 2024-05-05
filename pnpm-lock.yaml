@@ -32,6 +32,9 @@ dependencies:
   date-fns:
     specifier: ^3.4.0
     version: 3.4.0
+  date-fns-jalali:
+    specifier: 3.6.0-0
+    version: 3.6.0-0
   expo:
     specifier: ~50.0.6
     version: 50.0.6(@babel/core@7.23.9)(@react-native/babel-preset@0.73.21)
@@ -7157,6 +7160,10 @@ packages:
       abab: 2.0.6
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
+    dev: false
+
+  /date-fns-jalali@3.6.0-0:
+    resolution: {integrity: sha512-rcOocwhBFgEN4i+vXPoEp/irCxAmX8yloK/l/oeMOVCLpaFQfkq7jVn0vCWK91P2H9I/doSAPEN4WSWQeqwsug==}
     dev: false
 
   /date-fns@2.30.0:

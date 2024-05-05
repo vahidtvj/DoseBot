@@ -1,6 +1,6 @@
 import { Schedule } from "@/models"
 import { useAppTheme } from "@/theme"
-import { formatDoseTime, hasEnded, hasStarted, useDateUtils } from "@/utils"
+import { hasEnded, hasStarted, useDateUtils } from "@/utils"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Card, IconButton, Text } from "react-native-paper"
@@ -18,7 +18,7 @@ export function ScheduleCard(props: Props) {
 	const theme = useAppTheme()
 	const { t } = useTranslation()
 
-	const { getScheduleText } = useDateUtils()
+	const { getScheduleText, formatDoseTime, formatDate } = useDateUtils()
 
 	return (
 		<Card mode="contained" style={styles.card} onPress={() => onPress?.()}>
@@ -67,14 +67,14 @@ export function ScheduleCard(props: Props) {
 								variant="bodySmall"
 								style={{ color: theme.colors.secondary }}
 							>
-								{t("start")}: {startDate.toLocaleDateString()}
+								{t("start")}: {formatDate(startDate)}
 							</Text>
 							{endDate && (
 								<Text
 									variant="bodySmall"
 									style={{ color: theme.colors.secondary }}
 								>
-									{t("end")}: {endDate.toLocaleDateString()}
+									{t("end")}: {formatDate(endDate)}
 								</Text>
 							)}
 						</View>

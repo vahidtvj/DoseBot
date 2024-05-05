@@ -14,7 +14,11 @@ import * as Updates from "expo-updates"
 import { useMemo } from "react"
 import { StyleSheet, View } from "react-native"
 import { I18nManager, Platform } from "react-native"
-import { PaperProvider, adaptNavigationTheme } from "react-native-paper"
+import {
+	PaperProvider,
+	adaptNavigationTheme,
+	configureFonts,
+} from "react-native-paper"
 // import { Icon } from "react-native-paper"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
@@ -25,7 +29,8 @@ type Props = {
 export function BaseLayout({ children }: Props) {
 	const useMaterialYou = useConfigState((x) => x.useMaterialYou)
 	const colorScheme = useUIStore((state) => state.colorScheme)
-	const shouldBeRTL = useUIStore((state) => state.lang) === "fa"
+	const lang = useUIStore((state) => state.lang)
+	const shouldBeRTL = lang === "fa"
 	if (shouldBeRTL !== I18nManager.isRTL && Platform.OS !== "web") {
 		I18nManager.allowRTL(shouldBeRTL)
 		I18nManager.forceRTL(shouldBeRTL)
@@ -33,16 +38,37 @@ export function BaseLayout({ children }: Props) {
 	}
 	const { theme } = useMaterial3Theme({ fallbackSourceColor: "#3E8260" })
 
+	const fonts = useMemo(
+		() =>
+			lang === "fa"
+				? {
+						fonts: configureFonts({
+							config: { fontFamily: "IRANSansXFaNum" },
+							isV3: true,
+						}),
+				  }
+				: {},
+		[lang],
+	)
+
 	const paperTheme = useMemo(
 		() =>
 			useMaterialYou
 				? colorScheme === "dark"
-					? { ...darkTheme, colors: { ...darkTheme.colors, ...theme.dark } }
-					: { ...lightTheme, colors: { ...lightTheme.colors, ...theme.light } }
+					? {
+							...darkTheme,
+							colors: { ...darkTheme.colors, ...theme.dark },
+							...fonts,
+					  }
+					: {
+							...lightTheme,
+							colors: { ...lightTheme.colors, ...theme.light },
+							...fonts,
+					  }
 				: colorScheme === "dark"
-				  ? { ...darkTheme, colors: darkTheme.colors }
-				  : { ...lightTheme, colors: lightTheme.colors },
-		[colorScheme, theme, useMaterialYou],
+				  ? { ...darkTheme, colors: darkTheme.colors, ...fonts }
+				  : { ...lightTheme, colors: lightTheme.colors, ...fonts },
+		[colorScheme, theme, useMaterialYou, fonts],
 	)
 
 	const navTheme = useMemo(() => {

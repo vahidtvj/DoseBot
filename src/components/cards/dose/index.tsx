@@ -32,7 +32,7 @@ export function DoseCard(props: IProps) {
 						<Text variant="titleLarge" numberOfLines={1}>
 							{title}
 						</Text>
-						<Text variant="bodyLarge" style={timeStyle}>
+						<Text variant="bodyMedium" style={timeStyle}>
 							{formatAlertTime(time)}
 						</Text>
 					</View>
