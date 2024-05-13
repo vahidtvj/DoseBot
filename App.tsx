@@ -22,6 +22,7 @@ import Constants from "expo-constants"
 // App
 import { useFonts } from "expo-font"
 import "react-native-gesture-handler"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
 const MainApp =
 	Constants.expoConfig?.extra?.storybookEnabled === "true"
 		? require("./.storybook")
@@ -35,9 +36,11 @@ function App() {
 	})
 	if (!fontsLoaded) return null
 	return (
-		<BaseLayout>
-			<MainApp.default />
-		</BaseLayout>
+		<GestureHandlerRootView style={{ flex: 1 }}>
+			<BaseLayout>
+				<MainApp.default />
+			</BaseLayout>
+		</GestureHandlerRootView>
 	)
 }
 export default Sentry.wrap(App)
