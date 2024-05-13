@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from "react"
 import { useDateFunc } from "./locale"
 type UseDatePickerProps = {
 	date?: Date
-	onSelect: (date?: Date) => void
+	onSelect: (date: Date) => void
 	minDate?: Date
 	maxDate?: Date
 }
@@ -35,9 +35,6 @@ export const useDatePicker = (props: UseDatePickerProps) => {
 		dateObj.setDate(selectedDay)
 		props.onSelect(dateObj)
 	}
-	function onClose() {
-		props.onSelect()
-	}
 
 	return {
 		index,
@@ -51,7 +48,6 @@ export const useDatePicker = (props: UseDatePickerProps) => {
 		dateIndex,
 		onIndexChange,
 		onSelect,
-		onClose,
 		...func,
 	}
 }

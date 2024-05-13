@@ -1,6 +1,7 @@
 import { StyleSheet, View } from "react-native"
 import { Button, IconButton, Text } from "react-native-paper"
 
+import { datePicker } from "@/components/pickers/datepicker"
 import { useConfigState } from "@/stores/configStore"
 import { useUIStore } from "@/stores/uiStore"
 
@@ -39,6 +40,16 @@ export default function Page() {
 				}}
 			>
 				Test Sentry
+			</Button>
+			<Button
+				mode="outlined"
+				onPress={() => {
+					datePicker.open({
+						onSelect: (date) => console.log(date.toLocaleString()),
+					})
+				}}
+			>
+				datepicker
 			</Button>
 		</View>
 	)

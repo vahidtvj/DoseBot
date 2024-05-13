@@ -55,7 +55,7 @@ export function Calendar(props: Props) {
 										data.index < 7
 											? { color: theme.colors.primary }
 											: !isActive && {
-													color: "gray",
+													color: theme.colors.onSurfaceDisabled,
 													// display: 'none'
 											  },
 										isToday && {
