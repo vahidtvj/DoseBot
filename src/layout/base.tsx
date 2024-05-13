@@ -1,4 +1,5 @@
 import { PaperStatusBar } from "@/components/common/PaperStatusBar"
+import { DatePickerModal } from "@/components/pickers/datepicker"
 import "@/i18n/i18n"
 import { useConfigState } from "@/stores/configStore"
 import { useUIStore } from "@/stores/uiStore"
@@ -103,6 +104,7 @@ export function BaseLayout({ children }: Props) {
 			<NavigationContainer theme={navTheme}>
 				<View style={[styles.safeView]}>{children}</View>
 			</NavigationContainer>
+			<DatePickerModal />
 			<PaperStatusBar />
 		</PaperProvider>
 	)

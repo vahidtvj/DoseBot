@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { useEffect } from "react"
 import { View } from "react-native"
 import { Text } from "react-native-paper"
-import { DatePicker } from "."
+import { DatePicker } from "./datepicker"
 const meta = {
 	title: "Pickers/DatePicker",
 	component: DatePicker,
@@ -22,12 +22,12 @@ export const Primary: Story = {
 	render: (args) => {
 		const [_args, setArgs] = useArgs()
 		useEffect(() => {}, [])
-		function onSelect(date?: Date) {
-			date && console.log(date.toLocaleString())
+		function onSelect(date: Date) {
+			console.log(date.toLocaleString())
 			setArgs({ open: false })
-			setTimeout(() => {
-				setArgs({ open: true })
-			}, 2000)
+		}
+		function onDismiss() {
+			setArgs({ open: false })
 		}
 		return (
 			<View>
@@ -43,7 +43,7 @@ export const Primary: Story = {
 				<Text variant="displayLarge">Random Text</Text>
 				<Text variant="displayLarge">Random Text</Text>
 				<Text variant="displayLarge">Random Text</Text>
-				<DatePicker {...args} onSelect={onSelect} />
+				<DatePicker {...args} onSelect={onSelect} onDismiss={onDismiss} />
 			</View>
 		)
 	},
