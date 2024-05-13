@@ -88,6 +88,9 @@ const en = {
 			fa: "فارسی",
 		},
 	},
+	select: "Select",
+	cancel: "Cancel",
+	today: "Today",
 } as const
 
 export default en

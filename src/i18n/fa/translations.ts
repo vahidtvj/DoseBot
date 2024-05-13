@@ -72,6 +72,9 @@ const en = {
 			system: "سیستم", //  languages are always translated regardless of user choice (always fallback to English)
 		},
 	},
+	select: "انتخاب",
+	cancel: "انصراف",
+	today: "امروز",
 } as const
 
 export default en
