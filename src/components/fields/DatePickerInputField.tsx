@@ -1,29 +1,44 @@
+import { datePicker } from "@/components/pickers/datepicker"
 import { useProps } from "@/utils"
-import { type UseControllerProps, useController } from "react-hook-form"
-import { type StyleProp, View, type ViewStyle } from "react-native"
-import { HelperText } from "react-native-paper"
-import { DatePickerInput } from "react-native-paper-dates"
-import type { DatePickerInputProps } from "react-native-paper-dates/lib/typescript/Date/DatePickerInput.shared"
+import { useDateFunc } from "@/utils"
+import { FieldValues, UseControllerProps, useController } from "react-hook-form"
+import { StyleProp, View, ViewStyle } from "react-native"
+import { HelperText, TextInput, TextInputProps } from "react-native-paper"
 
-export function DatePickerInputField<T extends object>(
+export function DatePickerInputField<T extends FieldValues>(
 	props: UseControllerProps<T> &
-		Omit<DatePickerInputProps, "value" | "onChange"> & {
+		Omit<TextInputProps, "value" | "onChange" | "readOnly" | "right"> & {
 			containerStyle?: StyleProp<ViewStyle>
+			minDate?: Date
+			maxDate?: Date
 		},
 ) {
 	const { field, fieldState } = useController(props)
-	const { containerStyle, ...rest } = useProps(props)
+	const { containerStyle, minDate, maxDate, ...rest } = useProps(props)
 	const hasError = fieldState.error !== undefined
+	const { format } = useDateFunc()
 
+	const value = field.value && format(field.value as Date, "P")
 	return (
 		<View style={containerStyle}>
-			<DatePickerInput
-				value={field.value}
-				onBlur={field.onBlur}
-				// onChangeText={() => console.log("c")}
-				onChange={field.onChange}
+			<TextInput
+				value={value}
+				readOnly
 				error={hasError}
 				{...rest}
+				right={
+					<TextInput.Icon
+						icon="calendar"
+						onPress={() =>
+							datePicker.open({
+								value: field.value,
+								onSelect: field.onChange,
+								minDate,
+								maxDate,
+							})
+						}
+					/>
+				}
 			/>
 			<HelperText type="error" visible={hasError}>
 				{/*  TODO translate errors*/}
