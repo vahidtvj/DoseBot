@@ -1,5 +1,5 @@
+import { useDateFunc } from "@/utils"
 import { useCallback, useMemo, useState } from "react"
-import { useDateFunc } from "./locale"
 type UseDatePickerProps = {
 	date?: Date
 	onSelect: (date: Date) => void
@@ -9,7 +9,8 @@ type UseDatePickerProps = {
 
 export const useDatePicker = (props: UseDatePickerProps) => {
 	const func = useDateFunc()
-	const { differenceInMonths, getDate, getDaysInMonth, addMonths } = func
+	const { differenceInMonths, getDate, getDaysInMonth, addMonths, setDate } =
+		func
 
 	const minDate = props.minDate || new Date(1900, 0)
 	const maxDate = props.maxDate || new Date(2100, 0)
@@ -31,8 +32,7 @@ export const useDatePicker = (props: UseDatePickerProps) => {
 	}
 
 	function onSelect() {
-		const dateObj = addMonths(minDate, index)
-		dateObj.setDate(selectedDay)
+		const dateObj = setDate(addMonths(minDate, index), selectedDay)
 		props.onSelect(dateObj)
 	}
 

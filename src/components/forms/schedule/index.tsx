@@ -92,19 +92,13 @@ export function ScheduleForm(props: Props) {
 					control={control}
 					name="startDate"
 					label={t("startDate")}
-					locale="en"
-					readOnly
-					inputMode="start"
 					mode="outlined"
 					containerStyle={styles.date}
 				/>
 				<DatePickerInputField
 					control={control}
 					name="endDate"
-					locale="en"
 					label={t("endDate")}
-					readOnly
-					inputMode="start"
 					mode="outlined"
 					containerStyle={styles.date}
 				/>
@@ -156,12 +150,11 @@ const styles = StyleSheet.create({
 	dateView: {
 		flexDirection: "row",
 		alignItems: "center",
-		justifyContent: "space-around",
 		gap: 12,
-		marginTop: 26,
+		marginTop: 6,
 	},
 	date: {
-		flexShrink: 1,
+		flexGrow: 1,
 	},
 	addTime: {
 		// alignSelf: "flex-end",
