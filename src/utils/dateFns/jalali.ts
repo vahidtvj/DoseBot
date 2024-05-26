@@ -20,8 +20,10 @@ export {
 	endOfYear,
 	setMonth,
 	differenceInCalendarYears,
+	differenceInCalendarMonths,
 	isBefore,
 	isAfter,
+	subDays,
 } from "date-fns-jalali"
 import { getDay as jGetDay } from "date-fns-jalali"
 

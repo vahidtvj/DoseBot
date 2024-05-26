@@ -10,24 +10,24 @@ type UseDatePickerProps = {
 export const useDatePicker = (props: UseDatePickerProps) => {
 	const func = useDateFunc()
 	const {
-		differenceInMonths,
-		differenceInYears,
 		getDate,
 		getDaysInMonth,
 		addMonths,
 		setDate,
+		differenceInCalendarMonths,
+		subDays,
 	} = func
 
 	const minDate = props.minDate || new Date(1900, 0)
-	const maxDate = props.maxDate || new Date(2100, 0)
+	const maxDate = subDays(props.maxDate || new Date(2100, 0), 1)
 	const today = new Date()
 	const date = props.date || today
-	const todayIndex = differenceInMonths(today, minDate)
-	const dateIndex = differenceInMonths(date, minDate)
+	const todayIndex = differenceInCalendarMonths(today, minDate)
+	const dateIndex = differenceInCalendarMonths(date, minDate)
 
-	const monthArray = [...Array(differenceInMonths(maxDate, minDate)).keys()]
-
-	const yearArray = [...Array(differenceInYears(maxDate, minDate)).keys()]
+	const monthArray = [
+		...Array(differenceInCalendarMonths(maxDate, minDate) + 1).keys(),
+	]
 
 	const [index, setIndex] = useState(dateIndex)
 
@@ -51,7 +51,6 @@ export const useDatePicker = (props: UseDatePickerProps) => {
 		selectedDay,
 		setSelectedDay,
 		monthArray,
-		yearArray,
 		today,
 		todayIndex,
 		minDate,
@@ -75,7 +74,7 @@ export const useHeaderPicker = (props: {
 	const func = useDateFunc()
 	const {
 		differenceInCalendarYears,
-		differenceInMonths,
+		differenceInCalendarMonths,
 		getYear,
 		getMonth,
 		addMonths,
@@ -84,9 +83,11 @@ export const useHeaderPicker = (props: {
 		setMonth,
 		isAfter,
 		isBefore,
+		format,
 	} = func
 	const { maxDate, minDate } = props
 	const today = props.today || new Date()
+	console.log(format(maxDate, "P"))
 
 	const date =
 		props.monthIndex !== undefined
@@ -95,7 +96,7 @@ export const useHeaderPicker = (props: {
 
 	const startYear = getYear(minDate)
 	const yearArray = Array.from(
-		{ length: differenceInCalendarYears(maxDate, minDate) },
+		{ length: differenceInCalendarYears(maxDate, minDate) + 1 },
 		(_x, i) => startYear + i,
 	)
 
@@ -109,9 +110,9 @@ export const useHeaderPicker = (props: {
 	function onDismiss() {
 		const date = setMonth(addYears(minDate, yearIndex - 2), monthIndex % 12)
 		if (isBefore(date, minDate)) props.onSelect(0)
-		// TODO test this
-		else if (isAfter(date, maxDate)) props.onSelect(yearArray.length - 2 - 1)
-		else props.onSelect(differenceInMonths(date, minDate))
+		else if (isAfter(date, maxDate))
+			props.onSelect(differenceInCalendarMonths(maxDate, minDate))
+		else props.onSelect(differenceInCalendarMonths(date, minDate))
 	}
 	return {
 		yearArray,

@@ -21,6 +21,8 @@ export {
 	endOfYear,
 	setMonth,
 	differenceInCalendarYears,
+	differenceInCalendarMonths,
 	isAfter,
 	isBefore,
+	subDays,
 } from "date-fns"
