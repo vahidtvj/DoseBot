@@ -7,10 +7,21 @@ export {
 	addMonths,
 	subMonths,
 	differenceInMonths,
+	differenceInYears,
 	getDate,
 	eachDayOfInterval,
 	startOfWeek,
 	addDays,
+	getYear,
+	getMonth,
+	addYears,
+	eachMonthOfInterval,
+	startOfYear,
+	endOfYear,
+	setMonth,
+	differenceInCalendarYears,
+	isBefore,
+	isAfter,
 } from "date-fns-jalali"
 import { getDay as jGetDay } from "date-fns-jalali"
 
