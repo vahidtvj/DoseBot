@@ -1,35 +1,28 @@
 import { withSafeView } from "@/decorators"
-import { useArgs } from "@storybook/preview-api"
 import type { Meta, StoryObj } from "@storybook/react"
-import { randomUUID } from "expo-crypto"
 import { useEffect } from "react"
 import { View } from "react-native"
 import { Text } from "react-native-paper"
-import { DatePicker } from "./datepicker"
+import { HeaderModal } from "./headerModal"
 const meta = {
-	title: "Pickers/DatePicker",
-	component: DatePicker,
+	title: "Pickers/DatePicker/header",
+	component: HeaderModal,
 	decorators: [withSafeView],
 	args: {
 		open: true,
+		minDate: new Date(1900, 0),
+		maxDate: new Date(2100, 0),
+		onSelect: () => {},
 	},
 	argTypes: {},
-} satisfies Meta<typeof DatePicker>
+} satisfies Meta<typeof HeaderModal>
 
 export default meta
-type Story = StoryObj<typeof DatePicker>
+type Story = StoryObj<typeof HeaderModal>
 
 export const Primary: Story = {
 	render: (args) => {
-		const [_args, setArgs] = useArgs()
 		useEffect(() => {}, [])
-		function onSelect(date: Date) {
-			console.log(date.toLocaleString())
-			setArgs({ open: false })
-		}
-		function onDismiss() {
-			setArgs({ open: false })
-		}
 		return (
 			<View>
 				<Text variant="displayLarge">Random Text</Text>
@@ -44,12 +37,7 @@ export const Primary: Story = {
 				<Text variant="displayLarge">Random Text</Text>
 				<Text variant="displayLarge">Random Text</Text>
 				<Text variant="displayLarge">Random Text</Text>
-				<DatePicker
-					{...args}
-					key={randomUUID()}
-					onSelect={onSelect}
-					onDismiss={onDismiss}
-				/>
+				<HeaderModal {...args} />
 			</View>
 		)
 	},

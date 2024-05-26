@@ -1,11 +1,18 @@
 import { useAppTheme } from "@/theme"
+import { randomUUID } from "expo-crypto"
 import { useCallback, useRef } from "react"
 import { useTranslation } from "react-i18next"
-import { FlatList, StyleSheet, View, ViewToken } from "react-native"
+import {
+	FlatList,
+	StyleSheet,
+	TouchableOpacity,
+	View,
+	ViewToken,
+} from "react-native"
 import { Button, IconButton, Modal, Portal, Text } from "react-native-paper"
 import { Calendar } from "./calendar"
+import { HeaderModal } from "./headerModal"
 import { useDatePicker } from "./logic"
-
 type IProps = {
 	open: boolean
 	onSelect: (date: Date) => void
@@ -30,10 +37,19 @@ export function DatePicker(props: IProps) {
 		monthArray,
 		todayIndex,
 		minDate,
+		maxDate,
 		today,
 		dateIndex,
 		onSelect,
+		headerIsOpen,
+		setHeaderOpen,
 	} = useDatePicker(props)
+
+	function onHeaderSelect(index: number) {
+		setHeaderOpen(false)
+		calendarRef.current?.scrollToIndex({ index, animated: false })
+		headerRef.current?.scrollToIndex({ index, animated: false })
+	}
 
 	// TODO check date between min max
 	const theme = useAppTheme()
@@ -126,33 +142,35 @@ export function DatePicker(props: IProps) {
 						{/* <TouchableOpacity onPress={prevMonth}>
 							<Icon source={isRTL ? "menu-right" : "menu-left"} size={40} />
 						</TouchableOpacity> */}
-						<View style={styles.headerContent}>
-							<FlatList
-								removeClippedSubviews
-								maxToRenderPerBatch={3}
-								updateCellsBatchingPeriod={50}
-								windowSize={3}
-								ref={headerRef}
-								contentContainerStyle={{ alignItems: "center" }}
-								data={monthArray}
-								pagingEnabled
-								snapToAlignment="center"
-								decelerationRate="fast"
-								snapToInterval={styles.headerContent.height}
-								showsVerticalScrollIndicator={false}
-								disableIntervalMomentum
-								scrollEnabled={false}
-								initialNumToRender={3}
-								initialScrollIndex={dateIndex}
-								onScrollToIndexFailed={(x) => console.error(x)}
-								getItemLayout={(_x, i) => ({
-									index: i,
-									length: styles.headerContent.height,
-									offset: styles.headerContent.height * i,
-								})}
-								renderItem={renderCalendarHeader}
-							/>
-						</View>
+						<TouchableOpacity onPress={() => setHeaderOpen(true)}>
+							<View style={styles.headerContent}>
+								<FlatList
+									removeClippedSubviews
+									maxToRenderPerBatch={3}
+									updateCellsBatchingPeriod={50}
+									windowSize={3}
+									ref={headerRef}
+									contentContainerStyle={{ alignItems: "center" }}
+									data={monthArray}
+									pagingEnabled
+									snapToAlignment="center"
+									decelerationRate="fast"
+									snapToInterval={styles.headerContent.height}
+									showsVerticalScrollIndicator={false}
+									disableIntervalMomentum
+									scrollEnabled={false}
+									initialNumToRender={3}
+									initialScrollIndex={dateIndex}
+									onScrollToIndexFailed={(x) => console.error(x)}
+									getItemLayout={(_x, i) => ({
+										index: i,
+										length: styles.headerContent.height,
+										offset: styles.headerContent.height * i,
+									})}
+									renderItem={renderCalendarHeader}
+								/>
+							</View>
+						</TouchableOpacity>
 						<IconButton
 							icon={isRTL ? "menu-left" : "menu-right"}
 							onPress={nextMonth}
@@ -219,6 +237,15 @@ export function DatePicker(props: IProps) {
 					</View>
 				</Modal>
 			</View>
+			<HeaderModal
+				key={randomUUID()}
+				minDate={minDate}
+				maxDate={maxDate}
+				monthIndex={index}
+				onSelect={onHeaderSelect}
+				open={headerIsOpen}
+				today={today}
+			/>
 		</Portal>
 	)
 }
@@ -254,6 +281,7 @@ const styles = StyleSheet.create({
 	},
 	headerContent: {
 		height: 48,
+		paddingHorizontal: 12,
 	},
 	calendarContet: {
 		width: 340,
