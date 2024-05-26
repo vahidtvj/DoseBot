@@ -36,7 +36,14 @@ export const useDatePicker = (props: UseDatePickerProps) => {
 	function onIndexChange(newIndex: number) {
 		setIndex(newIndex)
 		const daysInMonth = getDaysInMonth(addMonths(minDate, newIndex))
-		if (daysInMonth < selectedDay) setSelectedDay(daysInMonth)
+		if (newIndex === 0 && selectedDay < getDate(minDate))
+			setSelectedDay(getDate(minDate))
+		else if (
+			newIndex === monthArray.length - 1 &&
+			selectedDay > getDate(maxDate)
+		)
+			setSelectedDay(getDate(maxDate))
+		else if (daysInMonth < selectedDay) setSelectedDay(daysInMonth)
 	}
 
 	function onSelect() {
