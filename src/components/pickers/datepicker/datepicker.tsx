@@ -43,6 +43,7 @@ export function DatePicker(props: IProps) {
 		onSelect,
 		headerIsOpen,
 		setHeaderOpen,
+		getDate,
 	} = useDatePicker(props)
 
 	function onHeaderSelect(index: number) {
@@ -75,9 +76,21 @@ export function DatePicker(props: IProps) {
 				hasToday={i === todayIndex}
 				selectedDay={selectedDay}
 				onSelect={setSelectedDay}
+				end={i === monthArray.length - 1 ? getDate(maxDate) : undefined}
+				start={i === 0 ? getDate(minDate) : undefined}
 			/>
 		),
-		[minDate, todayIndex, selectedDay, today, addMonths, setSelectedDay],
+		[
+			minDate,
+			todayIndex,
+			selectedDay,
+			today,
+			addMonths,
+			setSelectedDay,
+			monthArray,
+			getDate,
+			maxDate,
+		],
 	)
 
 	const renderCalendarHeader = useCallback(

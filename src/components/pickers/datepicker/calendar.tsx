@@ -14,9 +14,11 @@ type Props = {
 	hasToday: boolean
 	selectedDay: number
 	today: Date
+	start?: number
+	end?: number
 }
 export function Calendar(props: Props) {
-	const { hasToday, selectedDay, onSelect } = props
+	const { hasToday, selectedDay, onSelect, end, start } = props
 	const { todayDate, days, isActiveDay } = useCalendar(props)
 
 	const theme = useAppTheme()
@@ -32,10 +34,14 @@ export function Calendar(props: Props) {
 					const isActive = isActiveDay(data.index, data.item)
 					const isSelected = isActive && (data.item as number) === selectedDay
 					const isToday = isActive && hasToday && todayDate === data.item
+					const isAllowed =
+						isActive &&
+						(!end || (data.item as number) <= end) &&
+						(!start || (data.item as number) >= start)
 					return (
 						<TouchableWithoutFeedback
 							onPress={
-								!isActive ? undefined : () => onSelect?.(data.item as number)
+								!isAllowed ? undefined : () => onSelect?.(data.item as number)
 							}
 						>
 							<View
@@ -47,14 +53,17 @@ export function Calendar(props: Props) {
 								]}
 							>
 								<Text
-									variant={data.index < 7 ? "labelSmall" : "bodyLarge"}
+									variant={data.index < 7 ? "titleSmall" : "bodyLarge"}
 									style={[
-										data.index < 7
-											? { color: theme.colors.primary }
-											: !isActive && {
-													color: theme.colors.onSurfaceDisabled,
-													// display: 'none'
-											  },
+										!isAllowed && {
+											color: theme.colors.onSurfaceDisabled,
+											// display: 'none'
+										},
+										!isActive && {
+											color: theme.colors.surfaceDisabled,
+											// display: 'none'
+										},
+										data.index < 7 && { color: theme.colors.primary },
 										isSelected && {
 											color: theme.colors.onPrimary,
 										},
