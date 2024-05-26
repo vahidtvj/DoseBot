@@ -41,9 +41,6 @@ export function Calendar(props: Props) {
 							<View
 								style={[
 									styles.calendarItem,
-									isToday && {
-										backgroundColor: theme.colors.secondary,
-									},
 									isSelected && {
 										backgroundColor: theme.colors.primary,
 									},
@@ -58,9 +55,6 @@ export function Calendar(props: Props) {
 													color: theme.colors.onSurfaceDisabled,
 													// display: 'none'
 											  },
-										isToday && {
-											color: theme.colors.onSecondary,
-										},
 										isSelected && {
 											color: theme.colors.onPrimary,
 										},
@@ -68,6 +62,14 @@ export function Calendar(props: Props) {
 								>
 									{data.item}
 								</Text>
+								{isToday && !isSelected && (
+									<View
+										style={[
+											styles.today,
+											{ backgroundColor: theme.colors.primary },
+										]}
+									/>
+								)}
 							</View>
 						</TouchableWithoutFeedback>
 					)
@@ -91,5 +93,13 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 		borderRadius: 8,
+	},
+	today: {
+		width: 16,
+		height: 4,
+		marginTop: 1,
+		marginHorizontal: 1,
+		borderRadius: 2,
+		opacity: 1,
 	},
 })
