@@ -40,6 +40,7 @@ module.exports = {
 		},
 		extra: {
 			supportsRTL: true,
+			// forcesRTL: true,
 			eas: {
 				projectId: process.env.PROJECT_ID,
 			},

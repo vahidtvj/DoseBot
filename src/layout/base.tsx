@@ -6,9 +6,9 @@ import { darkTheme, lightTheme } from "@/theme"
 import { Icon as CustomIcon } from "@/utils/icons"
 import { useMaterial3Theme } from "@pchmn/expo-material3-theme"
 import {
+	NavigationContainer,
 	DarkTheme as NavigationDarkTheme,
 	DefaultTheme as NavigationDefaultTheme,
-	NavigationContainer,
 } from "@react-navigation/native"
 import * as Updates from "expo-updates"
 import { useMemo } from "react"
@@ -34,7 +34,7 @@ export function BaseLayout({ children }: Props) {
 	if (shouldBeRTL !== I18nManager.isRTL && Platform.OS !== "web") {
 		I18nManager.allowRTL(shouldBeRTL)
 		I18nManager.forceRTL(shouldBeRTL)
-		if (!__DEV__) Updates.reloadAsync()
+		Updates.reloadAsync()
 	}
 	const { theme } = useMaterial3Theme({ fallbackSourceColor: "#3E8260" })
 
@@ -46,7 +46,7 @@ export function BaseLayout({ children }: Props) {
 							config: { fontFamily: "IRANSansXFaNum" },
 							isV3: true,
 						}),
-				  }
+					}
 				: {},
 		[lang],
 	)
@@ -59,15 +59,15 @@ export function BaseLayout({ children }: Props) {
 							...darkTheme,
 							colors: { ...darkTheme.colors, ...theme.dark },
 							...fonts,
-					  }
+						}
 					: {
 							...lightTheme,
 							colors: { ...lightTheme.colors, ...theme.light },
 							...fonts,
-					  }
+						}
 				: colorScheme === "dark"
-				  ? { ...darkTheme, colors: darkTheme.colors, ...fonts }
-				  : { ...lightTheme, colors: lightTheme.colors, ...fonts },
+					? { ...darkTheme, colors: darkTheme.colors, ...fonts }
+					: { ...lightTheme, colors: lightTheme.colors, ...fonts },
 		[colorScheme, theme, useMaterialYou, fonts],
 	)
 

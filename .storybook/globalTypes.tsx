@@ -2,7 +2,6 @@ export const globalTypes = {
 	locale: {
 		name: "Locale",
 		description: "Internationalization locale",
-		defaultValue: "en",
 		toolbar: {
 			icon: "globe",
 			items: [
@@ -14,7 +13,6 @@ export const globalTypes = {
 	},
 	colorScheme: {
 		description: "Global colorScheme for components",
-		defaultValue: "dark",
 		toolbar: {
 			title: "ColorScheme",
 			icon: "circlehollow",
@@ -24,7 +22,6 @@ export const globalTypes = {
 	},
 	colors: {
 		description: "Colors",
-		defaultValue: "MaterialYou",
 		toolbar: {
 			title: "MaterialYou",
 			icon: "circle",
