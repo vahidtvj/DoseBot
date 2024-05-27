@@ -11,7 +11,8 @@ import {
 	DefaultTheme as NavigationDefaultTheme,
 } from "@react-navigation/native"
 import * as Updates from "expo-updates"
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
+import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { I18nManager, Platform } from "react-native"
 import {
@@ -31,11 +32,15 @@ export function BaseLayout({ children }: Props) {
 	const colorScheme = useUIStore((state) => state.colorScheme)
 	const lang = useUIStore((state) => state.lang)
 	const shouldBeRTL = lang === "fa"
-	if (shouldBeRTL !== I18nManager.isRTL && Platform.OS !== "web") {
-		I18nManager.allowRTL(shouldBeRTL)
-		I18nManager.forceRTL(shouldBeRTL)
-		Updates.reloadAsync()
-	}
+
+	useEffect(() => {
+		if (shouldBeRTL !== I18nManager.isRTL && Platform.OS !== "web") {
+			I18nManager.allowRTL(shouldBeRTL)
+			I18nManager.forceRTL(shouldBeRTL)
+			Updates.reloadAsync()
+		}
+	}, [shouldBeRTL])
+
 	const { theme } = useMaterial3Theme({ fallbackSourceColor: "#3E8260" })
 
 	const fonts = useMemo(
