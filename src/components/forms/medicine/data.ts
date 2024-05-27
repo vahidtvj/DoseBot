@@ -1,5 +1,5 @@
-import { IMedicine, MedicineSchema, Schedule } from "@/models"
-import { z } from "zod"
+import { type IMedicine, MedicineSchema, type Schedule } from "@/models"
+import type { z } from "zod"
 
 export type Props = (
 	| {

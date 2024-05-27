@@ -32,8 +32,8 @@ export const useConfigState = create<IState & Actions>()(
 							theme === "system"
 								? "light"
 								: theme === "light"
-								  ? "dark"
-								  : "system",
+									? "dark"
+									: "system",
 					})
 				},
 			}),

@@ -1,5 +1,5 @@
 import { randomUUID } from "expo-crypto"
-import { IMedicine } from ".."
+import type { IMedicine } from ".."
 
 const now = new Date(Date.now())
 const today = new Date(2022, now.getMonth(), now.getDate())

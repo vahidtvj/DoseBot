@@ -1,6 +1,6 @@
 import { useAppTheme } from "@/theme"
-import { StyleSheet, View, ViewProps } from "react-native"
-import { Icon, Text, TextProps } from "react-native-paper"
+import { StyleSheet, View, type ViewProps } from "react-native"
+import { Icon, Text, type TextProps } from "react-native-paper"
 
 type Props<T> = TextProps<T> & {
 	icon?: string

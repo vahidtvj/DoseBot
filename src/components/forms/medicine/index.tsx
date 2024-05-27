@@ -2,10 +2,10 @@ import { ScheduleCard } from "@/components/cards/schedule"
 import { CheckboxField } from "@/components/fields/CheckboxField"
 import { MedTypeField } from "@/components/fields/MedType"
 import { TextInputField } from "@/components/fields/TextInputField"
-import { IMedicine, Schedule } from "@/models"
+import type { IMedicine, Schedule } from "@/models"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { randomUUID } from "expo-crypto"
-import { SubmitHandler, useFieldArray, useForm } from "react-hook-form"
+import { type SubmitHandler, useFieldArray, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { ScrollView, StyleSheet, View } from "react-native"
 import {
@@ -16,7 +16,7 @@ import {
 	Surface,
 	Text,
 } from "react-native-paper"
-import { Inputs, Props, defaultValues, schema } from "./data"
+import { type Inputs, type Props, defaultValues, schema } from "./data"
 
 export function MedicineForm(props: Props) {
 	const data = props.data || defaultValues

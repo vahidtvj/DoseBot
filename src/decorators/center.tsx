@@ -1,4 +1,4 @@
-import { StoryContext, StoryFn } from "@storybook/react"
+import type { StoryContext, StoryFn } from "@storybook/react"
 import { StyleSheet, View } from "react-native"
 
 export const center = (Story: StoryFn, _context: StoryContext) => {

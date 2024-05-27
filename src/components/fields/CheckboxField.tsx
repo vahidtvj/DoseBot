@@ -1,6 +1,6 @@
 import { useProps } from "@/utils"
-import { UseControllerProps, useController } from "react-hook-form"
-import { Checkbox, CheckboxProps } from "react-native-paper"
+import { type UseControllerProps, useController } from "react-hook-form"
+import { Checkbox, type CheckboxProps } from "react-native-paper"
 
 export function CheckboxField<T extends object>(
 	props: UseControllerProps<T> & Omit<CheckboxProps, "status" | "onPress">,

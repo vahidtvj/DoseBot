@@ -1,3 +1,4 @@
+// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
 const path = require("path")
 // const { getDefaultConfig } = require("expo/metro-config")
 const { getSentryExpoConfig } = require("@sentry/react-native/metro")

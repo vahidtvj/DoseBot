@@ -1,4 +1,4 @@
-import { Weekday } from "@/models"
+import type { Weekday } from "@/models"
 import { useDateUtils } from "@/utils"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"

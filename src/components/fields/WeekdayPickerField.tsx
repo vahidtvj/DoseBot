@@ -1,4 +1,4 @@
-import { UseControllerProps, useController } from "react-hook-form"
+import { type UseControllerProps, useController } from "react-hook-form"
 import { View } from "react-native"
 import { HelperText } from "react-native-paper"
 import { WeekdayPicker } from "../pickers/weekdayPicker"

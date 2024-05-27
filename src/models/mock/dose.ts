@@ -1,5 +1,5 @@
 import { randomUUID } from "expo-crypto"
-import { IDose } from ".."
+import type { IDose } from ".."
 
 export const data: IDose[] = [
 	{

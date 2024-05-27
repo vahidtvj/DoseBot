@@ -1,6 +1,6 @@
-import { IMedicineType, MedIconMap, MedTypeList } from "@/models"
+import { type IMedicineType, MedIconMap, MedTypeList } from "@/models"
 import { useState } from "react"
-import { UseControllerProps, useController } from "react-hook-form"
+import { type UseControllerProps, useController } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 import { Chip } from "react-native-paper"

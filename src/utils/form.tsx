@@ -1,4 +1,4 @@
-import { UseControllerProps } from "react-hook-form"
+import type { UseControllerProps } from "react-hook-form"
 
 export function useProps<T extends object, U>(
 	props: UseControllerProps<T> & U,

@@ -1,4 +1,4 @@
-import { Schedule, Weekday } from "@/models"
+import type { Schedule, Weekday } from "@/models"
 import { format, isPast, isToday, isTomorrow, isYesterday } from "date-fns"
 import { format as jFormat } from "date-fns-jalali"
 import { useTranslation } from "react-i18next"

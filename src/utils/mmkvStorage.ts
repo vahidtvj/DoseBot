@@ -1,6 +1,10 @@
 import { MMKV } from "react-native-mmkv"
 import superjson from "superjson"
-import { PersistStorage, StateStorage, StorageValue } from "zustand/middleware"
+import type {
+	PersistStorage,
+	StateStorage,
+	StorageValue,
+} from "zustand/middleware"
 // import { initializeMMKVFlipper } from 'react-native-mmkv-flipper-plugin'
 
 export const storage = new MMKV()

@@ -1,5 +1,5 @@
 import { ScheduleForm } from "@/components/forms/schedule"
-import { Schedule } from "@/models"
+import type { Schedule } from "@/models"
 import type { RootStackScreenProps } from "@/routes/types"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"

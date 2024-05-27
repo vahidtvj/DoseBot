@@ -1,4 +1,4 @@
-import { RootHeaderProps } from "@/routes/types"
+import type { RootHeaderProps } from "@/routes/types"
 import { useAppTheme } from "@/theme"
 import { getHeaderTitle } from "@react-navigation/elements"
 import { Appbar } from "react-native-paper"

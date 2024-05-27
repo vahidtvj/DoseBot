@@ -1,9 +1,9 @@
 import { TextInputField } from "@/components/fields/TextInputField"
-import { Inputs } from "@/components/forms/schedule/data"
-import { Dosing } from "@/models"
+import type { Inputs } from "@/components/forms/schedule/data"
+import type { Dosing } from "@/models"
 import { toTimeString } from "@/utils"
 import { useState } from "react"
-import { UseControllerProps, useController } from "react-hook-form"
+import { type UseControllerProps, useController } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { StyleSheet } from "react-native"
 import { Card, IconButton, TextInput } from "react-native-paper"
@@ -23,7 +23,7 @@ export function DosingCard(props: UseControllerProps<Inputs> & IProps) {
 	const { t } = useTranslation()
 
 	const [visible, setVisible] = useState(false)
-	const i = parseInt(props.name.split(".").pop() || "")
+	const i = Number.parseInt(props.name.split(".").pop() || "")
 
 	function onPickerClose(time?: TimePickerReturnType) {
 		setVisible(false)

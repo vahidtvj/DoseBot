@@ -1,4 +1,4 @@
-import { IDose, MedIconMap } from "@/models"
+import { type IDose, MedIconMap } from "@/models"
 import { useDateUtils } from "@/utils"
 import { isPast } from "date-fns"
 import { useTranslation } from "react-i18next"

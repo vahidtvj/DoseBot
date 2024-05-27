@@ -1,6 +1,6 @@
 import { Channels } from "@/config/notification"
 import { i18n } from "@/i18n/i18n"
-import { IDose, IDoseStatus } from "@/models"
+import type { IDose, IDoseStatus } from "@/models"
 import { formatAlertTime } from "@/utils"
 import notifee, { AlarmType, TriggerType } from "@notifee/react-native"
 import { isPast } from "date-fns"
