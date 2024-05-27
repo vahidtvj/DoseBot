@@ -1,5 +1,5 @@
 import { scheduleAlert } from "@/components/notification"
-import { IDose, IDoseStatus, IMedicine } from "@/models"
+import type { IDose, IDoseStatus, IMedicine } from "@/models"
 import { data } from "@/models/mock/dose"
 import { createSuperJSONStorage, zustandStorage } from "@/utils/mmkvStorage"
 import notifee from "@notifee/react-native"

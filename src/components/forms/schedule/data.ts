@@ -1,4 +1,4 @@
-import { Schedule, ScheduleSchema } from "@/models"
+import { type Schedule, ScheduleSchema } from "@/models"
 
 export type Props = (
 	| {

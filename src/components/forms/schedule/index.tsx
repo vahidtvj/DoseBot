@@ -9,9 +9,9 @@ import { TextInputField } from "@/components/fields/TextInputField"
 import { WeekdayPickerField } from "@/components/fields/WeekdayPickerField"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { compareAsc } from "date-fns"
-import { SubmitHandler, useFieldArray, useForm } from "react-hook-form"
+import { type SubmitHandler, useFieldArray, useForm } from "react-hook-form"
 import { enGB, registerTranslation } from "react-native-paper-dates"
-import { Inputs, Props, defaultValues, schema } from "./data"
+import { type Inputs, type Props, defaultValues, schema } from "./data"
 
 registerTranslation("en-GB", enGB)
 

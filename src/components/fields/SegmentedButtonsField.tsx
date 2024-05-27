@@ -1,6 +1,9 @@
 import { useProps } from "@/utils"
-import { UseControllerProps, useController } from "react-hook-form"
-import { SegmentedButtons, SegmentedButtonsProps } from "react-native-paper"
+import { type UseControllerProps, useController } from "react-hook-form"
+import {
+	SegmentedButtons,
+	type SegmentedButtonsProps,
+} from "react-native-paper"
 
 export function SegmentedButtonsField<T extends object>(
 	props: UseControllerProps<T> &

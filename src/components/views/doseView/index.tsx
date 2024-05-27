@@ -1,5 +1,5 @@
 import { DoseCard } from "@/components/cards/dose"
-import { IDose, IDoseStatus } from "@/models"
+import type { IDose, IDoseStatus } from "@/models"
 import { isTomorrow, isYesterday } from "date-fns"
 import { FlatList, View } from "react-native"
 import { Text } from "react-native-paper"

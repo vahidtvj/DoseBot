@@ -1,4 +1,4 @@
-import { StoryContext, StoryFn } from "@storybook/react"
+import type { StoryContext, StoryFn } from "@storybook/react"
 import { Appbar, useTheme } from "react-native-paper"
 
 export const withAppbar = (Story: StoryFn, _context: StoryContext) => {

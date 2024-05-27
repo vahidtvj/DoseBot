@@ -1,4 +1,4 @@
-import { Schedule } from "@/models"
+import type { Schedule } from "@/models"
 import type { DrawerScreenProps } from "@react-navigation/drawer"
 import type {
 	CompositeScreenProps,

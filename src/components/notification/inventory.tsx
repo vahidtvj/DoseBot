@@ -1,6 +1,6 @@
 import { Channels } from "@/config/notification"
 import { i18n } from "@/i18n/i18n"
-import { IMedicine } from "@/models"
+import type { IMedicine } from "@/models"
 import notifee from "@notifee/react-native"
 
 type Props = IMedicine

@@ -1,4 +1,4 @@
-import { IDoseStatus } from "@/models"
+import type { IDoseStatus } from "@/models"
 import { useDoseStore } from "@/stores/doseStore"
 import notifee, { EventType } from "@notifee/react-native"
 import * as BackgroundFetch from "expo-background-fetch"

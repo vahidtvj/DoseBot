@@ -1,5 +1,5 @@
 import { MedicineForm } from "@/components/forms/medicine"
-import { IMedicine, Schedule } from "@/models"
+import type { IMedicine, Schedule } from "@/models"
 import type { RootStackScreenProps } from "@/routes/types"
 import { useMedicineStore } from "@/stores/medicineStore"
 import { useEffect } from "react"
@@ -27,7 +27,7 @@ export default function Page({
 			navigation.setOptions({
 				headerRight: () => <Appbar.Action icon="delete" onPress={onDelete} />,
 			})
-	}, [navigation, id, t])
+	}, [navigation, id, t, onDelete])
 
 	const data = id ? medStore.data.find((x) => x.id === id) : undefined
 

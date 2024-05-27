@@ -1,6 +1,6 @@
 import { showInventoryAlert } from "@/components/notification"
 import { getDosage } from "@/logic/getDosage"
-import { IMedicine } from "@/models"
+import type { IMedicine } from "@/models"
 import { data as defaultData } from "@/models/mock/medicine"
 import { createSuperJSONStorage, zustandStorage } from "@/utils/mmkvStorage"
 import { isEqual } from "lodash"

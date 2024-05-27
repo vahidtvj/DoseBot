@@ -1,4 +1,4 @@
-import { IMedicineType } from "./medicine"
+import type { IMedicineType } from "./medicine"
 
 export type IDoseStatus = "pending" | "skip" | "confirm"
 

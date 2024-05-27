@@ -1,11 +1,11 @@
 import { showAlert } from "@/components/notification"
 import { center } from "@/decorators"
-import { IDose } from "@/models"
+import type { IDose } from "@/models"
 import notifee, {
 	AndroidNotificationSetting,
 	AuthorizationStatus,
 } from "@notifee/react-native"
-import { PowerManagerInfo } from "@notifee/react-native/dist/types/PowerManagerInfo"
+import type { PowerManagerInfo } from "@notifee/react-native/dist/types/PowerManagerInfo"
 import type { Meta, StoryObj } from "@storybook/react"
 import React, { useEffect, Suspense } from "react"
 import { StyleSheet, View } from "react-native"

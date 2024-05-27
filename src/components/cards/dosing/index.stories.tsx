@@ -1,4 +1,4 @@
-import { Inputs, schema } from "@/components/forms/schedule/data"
+import { type Inputs, schema } from "@/components/forms/schedule/data"
 import { withSafeView } from "@/decorators"
 import { data } from "@/models/mock/medicine"
 import { zodResolver } from "@hookform/resolvers/zod"

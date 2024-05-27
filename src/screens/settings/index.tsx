@@ -19,8 +19,8 @@ export default function Page() {
 							store.colorScheme === "system"
 								? "theme-light-dark"
 								: store.colorScheme === "light"
-								  ? "white-balance-sunny"
-								  : "weather-night"
+									? "white-balance-sunny"
+									: "weather-night"
 						}
 					>
 						{t(`settings.themes.${store.colorScheme}`)}

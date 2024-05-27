@@ -1,4 +1,4 @@
-import { IDose, IMedicine, Weekday } from "@/models"
+import type { IDose, IMedicine, Weekday } from "@/models"
 import { hasEnded, hasStarted } from "@/utils"
 import { differenceInDays, startOfToday } from "date-fns"
 import { randomUUID } from "expo-crypto"

@@ -1,4 +1,4 @@
-import { IMedicine, MedIconMap } from "@/models"
+import { type IMedicine, MedIconMap } from "@/models"
 import { hasEnded, hasStarted, useDateUtils } from "@/utils"
 import { compareAsc } from "date-fns"
 import { useTranslation } from "react-i18next"
