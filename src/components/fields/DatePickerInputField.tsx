@@ -1,9 +1,13 @@
 import { datePicker } from "@/components/pickers/datepicker"
 import { useProps } from "@/utils"
 import { useDateFunc } from "@/utils"
-import { FieldValues, UseControllerProps, useController } from "react-hook-form"
-import { StyleProp, View, ViewStyle } from "react-native"
-import { HelperText, TextInput, TextInputProps } from "react-native-paper"
+import {
+	type FieldValues,
+	type UseControllerProps,
+	useController,
+} from "react-hook-form"
+import { type StyleProp, View, type ViewStyle } from "react-native"
+import { HelperText, TextInput, type TextInputProps } from "react-native-paper"
 
 export function DatePickerInputField<T extends FieldValues>(
 	props: UseControllerProps<T> &

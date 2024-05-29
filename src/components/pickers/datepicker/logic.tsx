@@ -90,11 +90,9 @@ export const useHeaderPicker = (props: {
 		setMonth,
 		isAfter,
 		isBefore,
-		format,
 	} = func
 	const { maxDate, minDate } = props
 	const today = props.today || new Date()
-	console.log(format(maxDate, "P"))
 
 	const date =
 		props.monthIndex !== undefined
