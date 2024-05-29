@@ -1,7 +1,7 @@
 import { useAppTheme } from "@/theme"
 import MaskedView from "@react-native-masked-view/masked-view"
 import { useCallback } from "react"
-import { FlatList, StyleSheet, View, ViewToken } from "react-native"
+import { FlatList, StyleSheet, View, type ViewToken } from "react-native"
 import LinearGradient from "react-native-linear-gradient"
 import { Modal, Portal, Text } from "react-native-paper"
 import { useHeaderPicker } from "./logic"

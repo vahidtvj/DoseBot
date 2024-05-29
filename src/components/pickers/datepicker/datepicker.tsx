@@ -7,7 +7,7 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 	View,
-	ViewToken,
+	type ViewToken,
 } from "react-native"
 import { Button, IconButton, Modal, Portal, Text } from "react-native-paper"
 import { Calendar } from "./calendar"
