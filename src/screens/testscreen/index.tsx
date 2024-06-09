@@ -1,13 +1,15 @@
-import { StyleSheet, View } from "react-native"
+import { ScrollView, StyleSheet, View } from "react-native"
 import { Button, IconButton, Text } from "react-native-paper"
 
 import { datePicker } from "@/components/pickers/datepicker"
+import { useAppState } from "@/stores/app"
 import { useConfigState } from "@/stores/configStore"
 import { useUIStore } from "@/stores/uiStore"
 
 export default function Page() {
 	const ui = useUIStore()
 	const config = useConfigState()
+	const { eventFireTimes } = useAppState()
 	return (
 		<View style={styles.container}>
 			<Text>Open up App.tsx to start working on your app!</Text>
@@ -51,6 +53,11 @@ export default function Page() {
 			>
 				datepicker
 			</Button>
+			<ScrollView>
+				{eventFireTimes.map((x, i) => (
+					<Text key={i}>{x.toLocaleString()}</Text>
+				))}
+			</ScrollView>
 		</View>
 	)
 }

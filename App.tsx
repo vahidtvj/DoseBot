@@ -29,12 +29,14 @@ const MainApp =
 		: require("./src/main")
 
 function App() {
-	// TODO add font to config instead
-	const [fontsLoaded] = useFonts({
-		MyFont: require("./assets/fonts/MyFont.ttf"),
-		IRANSansXFaNum: require("./assets/fonts/IRANSans/IRANSansXFaNum-Regular.ttf"),
-	})
-	if (!fontsLoaded) return null
+	if (__DEV__) {
+		// load custom icon font
+		// required for dev only to update the font file without the need for a dev build
+		const [fontsLoaded] = useFonts({
+			MyFont: require("./assets/fonts/MyFont.ttf"),
+		})
+		if (!fontsLoaded) return null
+	}
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
 			<BaseLayout>

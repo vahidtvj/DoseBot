@@ -56,6 +56,15 @@ module.exports = {
 					project: process.env.SENTRY_PROJECT,
 				},
 			],
+			[
+				"expo-font",
+				{
+					fonts: [
+						"./assets/fonts/IRANSans/IRANSansXFaNum.ttf",
+						"./assets/fonts/MyFont.ttf",
+					],
+				},
+			],
 		],
 	},
 }
