@@ -16,7 +16,6 @@ export function fillDoseStore() {
 }
 
 function addDoses(tomorrow = false) {
-	Sentry.captureMessage(`add dose. day: ${tomorrow ? "tomorrow" : "today"}`)
 	const store = useDoseStore.getState()
 	const { data } = useMedicineStore.getState()
 	const list = getDosage(data, tomorrow ? startOfTomorrow() : undefined)

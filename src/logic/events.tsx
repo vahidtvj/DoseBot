@@ -2,7 +2,7 @@
 import * as BackgroundFetch from "expo-background-fetch"
 import { onScheduleRunEvent } from "./dose"
 
-export const BACKGROUND_FETCH_TASK = "background-fetch"
+export const BACKGROUND_FETCH_TASK = "backgroundWorker"
 
 export async function registerBackgroundFetchAsync() {
 	return BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
@@ -18,4 +18,5 @@ export async function unregisterBackgroundFetchAsync() {
 
 export function AppLaunch() {
 	onScheduleRunEvent()
+	registerBackgroundFetchAsync()
 }
