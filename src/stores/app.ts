@@ -5,7 +5,6 @@ import { persist, subscribeWithSelector } from "zustand/middleware"
 type IState = {
 	firstLaunch: boolean
 	doseStoreDay: Date | null
-	eventFireTimes: Date[]
 }
 
 export const useAppState = create<IState>()(
@@ -14,7 +13,6 @@ export const useAppState = create<IState>()(
 			(_set) => ({
 				firstLaunch: true,
 				doseStoreDay: null,
-				eventFireTimes: [],
 			}),
 			{
 				name: "appStore",
