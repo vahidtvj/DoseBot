@@ -1,6 +1,4 @@
-import { Channels } from "@/config"
 import type { IDoseStatus } from "@/models"
-import { useAppState } from "@/stores/app"
 import { useDoseStore } from "@/stores/doseStore"
 import notifee, { EventType } from "@notifee/react-native"
 import * as BackgroundFetch from "expo-background-fetch"
@@ -22,9 +20,6 @@ notifee.onForegroundEvent(({ type, detail }) => {
 })
 
 TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
-	const now = new Date()
-
-	useAppState.setState((x) => ({ eventFireTimes: [...x.eventFireTimes, now] }))
 	onScheduleRunEvent()
 
 	// Be sure to return the successful result type!
