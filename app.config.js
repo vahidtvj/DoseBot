@@ -60,7 +60,7 @@ module.exports = {
 				"expo-font",
 				{
 					fonts: [
-						"./assets/fonts/IRANSans/IRANSansXFaNum.ttf",
+						"./assets/fonts/IRANSans/IRANSansMobile(FaNum).ttf",
 						"./assets/fonts/customIcon.ttf",
 					],
 				},
