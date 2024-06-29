@@ -61,7 +61,7 @@ module.exports = {
 				{
 					fonts: [
 						"./assets/fonts/IRANSans/IRANSansXFaNum.ttf",
-						"./assets/fonts/MyFont.ttf",
+						"./assets/fonts/customIcon.ttf",
 					],
 				},
 			],
