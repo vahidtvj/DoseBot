@@ -44,87 +44,93 @@ export function ScheduleForm(props: Props) {
 
 	return (
 		<View style={styles.page}>
-			<SegmentedButtonsField
-				control={control}
-				name="type"
-				buttons={[
-					{
-						value: "Daily",
-						label: t("medicine.daily"),
-						icon: "calendar-today",
-					},
-					{
-						value: "EveryXdays",
-						label: t("medicine.everyXday"),
-						icon: "calendar-sync",
-					},
-					{
-						value: "Weekly",
-						label: t("medicine.weekly"),
-						icon: "calendar-week",
-					},
-				]}
-			/>
-			{type === "Weekly" && (
-				<View>
-					{/* <Text>Days:</Text> */}
-					{/* <WeekdayPicker selected={[]} onSelect={() => {}} /> */}
-					<WeekdayPickerField control={control} name="days" defaultValue={[]} />
-				</View>
-			)}
-			{type === "EveryXdays" && (
-				<TextInputField
+			<View style={styles.pageContent}>
+				<SegmentedButtonsField
 					control={control}
-					name="interval"
-					mode="outlined"
-					label={t("medicine.interval")}
-					inputMode="numeric"
-					right={<TextInput.Affix text={t("medicine.daysAffix")} />}
-					// @ts-ignore I have no idea why this is an error! */
-					defaultValue={2}
+					name="type"
+					buttons={[
+						{
+							value: "Daily",
+							label: t("medicine.daily"),
+							icon: "calendar-today",
+						},
+						{
+							value: "EveryXdays",
+							label: t("medicine.everyXday"),
+							icon: "calendar-sync",
+						},
+						{
+							value: "Weekly",
+							label: t("medicine.weekly"),
+							icon: "calendar-week",
+						},
+					]}
 				/>
-			)}
-			<View style={styles.dateView}>
-				{/* <DatePickerInputField control={control} name={"startDate"} /> */}
-				{/* TODO date picker locales */}
-				{/* TODO picker icon hit box very small */}
-				<DatePickerInputField
-					control={control}
-					name="startDate"
-					label={t("startDate")}
-					mode="outlined"
-					containerStyle={styles.date}
-				/>
-				<DatePickerInputField
-					control={control}
-					name="endDate"
-					label={t("endDate")}
-					mode="outlined"
-					containerStyle={styles.date}
-				/>
-			</View>
-			<View style={styles.addTime}>
-				{/* <Text>Doses</Text> */}
-				<Button
-					mode="contained"
-					icon="plus"
-					onPress={() => dosingArray.append({ amount: 1, time: new Date() })}
-				>
-					{t("medicine.addDose")}
-				</Button>
-			</View>
-			<ScrollView>
-				<View style={styles.doses}>
-					{dosingArray.fields.map((dose, i) => (
-						<DosingCard
-							key={dose.id}
+				{type === "Weekly" && (
+					<View>
+						{/* <Text>Days:</Text> */}
+						{/* <WeekdayPicker selected={[]} onSelect={() => {}} /> */}
+						<WeekdayPickerField
 							control={control}
-							name={`dosing.${i}`}
-							onRemove={() => dosingArray.remove(i)}
+							name="days"
+							defaultValue={[]}
 						/>
-					))}
+					</View>
+				)}
+				{type === "EveryXdays" && (
+					<TextInputField
+						control={control}
+						name="interval"
+						mode="outlined"
+						label={t("medicine.interval")}
+						inputMode="numeric"
+						right={<TextInput.Affix text={t("medicine.daysAffix")} />}
+						// @ts-ignore I have no idea why this is an error! */
+						defaultValue={2}
+					/>
+				)}
+				<View style={styles.dateView}>
+					{/* <DatePickerInputField control={control} name={"startDate"} /> */}
+					{/* TODO date picker locales */}
+					{/* TODO picker icon hit box very small */}
+					<DatePickerInputField
+						control={control}
+						name="startDate"
+						label={t("startDate")}
+						mode="outlined"
+						containerStyle={styles.date}
+					/>
+					<DatePickerInputField
+						control={control}
+						name="endDate"
+						label={t("endDate")}
+						mode="outlined"
+						containerStyle={styles.date}
+					/>
 				</View>
-			</ScrollView>
+				<View style={styles.addTime}>
+					{/* <Text>Doses</Text> */}
+					<Button
+						mode="contained"
+						icon="plus"
+						onPress={() => dosingArray.append({ amount: 1, time: new Date() })}
+					>
+						{t("medicine.addDose")}
+					</Button>
+				</View>
+				<ScrollView>
+					<View style={styles.doses}>
+						{dosingArray.fields.map((dose, i) => (
+							<DosingCard
+								key={dose.id}
+								control={control}
+								name={`dosing.${i}`}
+								onRemove={() => dosingArray.remove(i)}
+							/>
+						))}
+					</View>
+				</ScrollView>
+			</View>
 			<FAB
 				mode="flat"
 				icon="content-save"
@@ -138,9 +144,11 @@ export function ScheduleForm(props: Props) {
 
 const styles = StyleSheet.create({
 	page: {
+		flex: 1,
+	},
+	pageContent: {
 		margin: 10,
 		gap: 16,
-		flex: 1,
 	},
 	row: {
 		flexDirection: "row",
