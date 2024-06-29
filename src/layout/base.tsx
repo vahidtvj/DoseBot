@@ -49,7 +49,7 @@ export function BaseLayout({ children }: Props) {
 			lang === "fa"
 				? {
 						fonts: configureFonts({
-							config: { fontFamily: "IRANSansXFaNum" },
+							config: { fontFamily: "IRANSansMobile(FaNum)" },
 							isV3: true,
 						}),
 					}
