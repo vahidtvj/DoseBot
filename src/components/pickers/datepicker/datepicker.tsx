@@ -235,7 +235,7 @@ export function DatePicker(props: IProps) {
 							{t("today")}
 						</Button> */}
 						<IconButton
-							icon="arrow-down-right"
+							icon={isRTL ? "arrow-down-right" : "arrow-down-left"}
 							onPress={thisMonth}
 							iconColor={theme.colors.secondary}
 						/>
