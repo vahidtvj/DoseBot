@@ -33,7 +33,7 @@ function App() {
 		// load custom icon font
 		// required for dev only to update the font file without the need for a dev build
 		const [fontsLoaded] = useFonts({
-			MyFont: require("./assets/fonts/MyFont.ttf"),
+			customIcon: require("./assets/fonts/customIcon.ttf"),
 		})
 		if (!fontsLoaded) return null
 	}
