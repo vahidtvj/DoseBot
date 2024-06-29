@@ -44,7 +44,7 @@ const meta = {
 			},
 			{
 				key: "syrup",
-				icon: "$syrup-bottle2",
+				icon: "$syrup-bottle",
 				label: "Syrup",
 			},
 			{
