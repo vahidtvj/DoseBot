@@ -13,11 +13,11 @@ export function TextInputField<T extends object>(
 	const { field, fieldState } = useController(props)
 	const { containerStyle, noHelper, ...rest } = useProps(props)
 	const hasError = fieldState.error !== undefined
-
+	const value = field.value !== undefined ? String(field.value) : undefined
 	return (
 		<View style={containerStyle}>
 			<TextInput
-				value={field.value && String(field.value)}
+				value={value}
 				onChangeText={field.onChange}
 				onBlur={field.onBlur}
 				error={hasError}

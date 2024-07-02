@@ -27,7 +27,7 @@ const en = {
 		syrup: "Syrup",
 		spray: "Spray",
 		patch: "Patch",
-		generic: "Generic",
+		generic: "Other",
 	},
 	medicineName: "Medicine Name",
 	intakeAdvice: "Intake Advice",
