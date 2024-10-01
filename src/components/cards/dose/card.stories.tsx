@@ -40,7 +40,7 @@ export const Multiple: Story = {
 				name="Acetaminophen"
 				time={new Date(Date.now() - 1000 * 60 * 60)}
 				amount={2.5}
-				type="pill"
+				type="injection"
 				status="pending"
 				note="after meal"
 			/>
@@ -49,7 +49,7 @@ export const Multiple: Story = {
 				name="Acetaminophen"
 				time={new Date(Date.now())}
 				amount={0.5}
-				type="pill"
+				type="iv"
 				status="confirm"
 			/>
 			<DoseCard

@@ -3,7 +3,7 @@ import { hasEnded, hasStarted, useDateUtils } from "@/utils"
 import { compareAsc } from "date-fns"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
-import { Card, IconButton, Text, useTheme } from "react-native-paper"
+import { Avatar, Card, IconButton, Text, useTheme } from "react-native-paper"
 
 type IProps = IMedicine & { onPress?: (id: string) => void }
 
@@ -15,11 +15,16 @@ export function MedicineCard(props: IProps) {
 
 	return (
 		<Card mode="contained" style={styles.card} onPress={() => onPress?.(id)}>
+			<Card.Title
+				title="Acetaminophen"
+				titleVariant="titleLarge"
+				left={(props) => (
+					<IconButton icon={MedIconMap[type]} style={styles.icon} {...props} />
+				)}
+			/>
 			<Card.Content style={styles.content}>
-				<IconButton icon={MedIconMap[type]} style={styles.icon} size={32} />
 				<View style={styles.body}>
 					<View style={styles.left}>
-						<Text variant="titleLarge">{name}</Text>
 						{schedule
 							?.sort((a, b) => compareAsc(a.startDate, b.startDate))
 							.map((schedule, i) => (
@@ -44,17 +49,9 @@ export function MedicineCard(props: IProps) {
 											variant="bodySmall"
 											style={{ color: theme.colors.secondary }}
 										>
-											x{schedule.dosing.length}
+											×{schedule.dosing.length}
 										</Text>
 									)}
-									{/* {schedule.type !== "Daily" && (
-										<Text
-											variant="bodySmall"
-											style={{ color: theme.colors.secondary }}
-										>
-											{t("medicine.pill", { count: schedule.dosing.amount })}
-										</Text>
-									)} */}
 								</View>
 							))}
 					</View>
@@ -62,7 +59,7 @@ export function MedicineCard(props: IProps) {
 				<View style={styles.right}>
 					{inventory.enabled && (
 						<Text
-							variant="bodyMedium"
+							variant="bodySmall"
 							style={
 								inventory.count <= inventory.notifyOn && {
 									color: theme.colors.error,
@@ -72,9 +69,9 @@ export function MedicineCard(props: IProps) {
 							{t("medicine.remaining", { count: inventory.count })}
 						</Text>
 					)}
-					<View style={styles.alarmIcon}>
+					{/* <View style={styles.alarmIcon}>
 						{notification.enabled && <IconButton icon="bell" />}
-					</View>
+					</View> */}
 				</View>
 			</Card.Content>
 		</Card>
@@ -96,7 +93,7 @@ const styles = StyleSheet.create({
 		display: "flex",
 	},
 	right: {
-		alignItems: "flex-end",
+		justifyContent: "flex-end",
 	},
 	alarmIcon: {},
 	row: {
