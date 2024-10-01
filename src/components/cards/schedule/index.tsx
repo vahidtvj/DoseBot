@@ -57,7 +57,7 @@ export function ScheduleCard(props: Props) {
 										variant="bodySmall"
 										style={{ color: theme.colors.secondary }}
 									>
-										{t("medicine.pill", { count: dose.amount })}
+										×{dose.amount}
 									</Text>
 								</View>
 							))}

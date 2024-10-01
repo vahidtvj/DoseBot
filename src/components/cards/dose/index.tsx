@@ -25,34 +25,32 @@ export function DoseCard(props: IProps) {
 
 	return (
 		<Card mode="contained" style={styles.card}>
-			<Card.Content style={styles.content}>
-				<IconButton icon={MedIconMap[type]} style={styles.icon} size={32} />
-				<View style={styles.body}>
-					<View style={styles.left}>
-						<Text variant="titleLarge" numberOfLines={1}>
-							{title}
-						</Text>
-						<Text variant="bodyMedium" style={timeStyle}>
-							{formatAlertTime(time)}
-						</Text>
-					</View>
+			<Card.Title
+				title={title}
+				titleVariant="titleLarge"
+				left={(props) => (
+					<IconButton icon={MedIconMap[type]} style={styles.icon} {...props} />
+				)}
+				right={(props) => (
 					<View style={styles.right}>
-						<Text variant="bodyLarge">
-							{t("medicine.pill", { count: dose })}
-						</Text>
-						{note && (
-							<Text
-								variant="bodySmall"
-								numberOfLines={1}
-								style={{
-									color: theme.colors.secondary,
-								}}
-							>
-								{note}
-							</Text>
-						)}
+						<Text variant="bodyMedium">× {dose}</Text>
 					</View>
-				</View>
+				)}
+				subtitle={formatAlertTime(time)}
+				subtitleStyle={timeStyle}
+			/>
+			<Card.Content style={styles.content}>
+				{note && (
+					<Text
+						variant="bodySmall"
+						numberOfLines={3}
+						style={{
+							color: theme.colors.secondary,
+						}}
+					>
+						{note}
+					</Text>
+				)}
 			</Card.Content>
 
 			<Card.Actions>
@@ -86,15 +84,7 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 		gap: 6,
 	},
-	left: {
-		flex: 1,
-		justifyContent: "space-around",
-		maxWidth: "65%",
-	},
 	right: {
-		flex: 1,
-		alignItems: "flex-end",
-		justifyContent: "space-around",
-		maxWidth: "35%",
+		margin: 12,
 	},
 })
