@@ -13,6 +13,11 @@ Sentry.init({
 // import group 2
 import "@/utils/ignoreLogs"
 
+// sqlite - drizzle
+import { useDrizzleStudio } from "expo-drizzle-studio-plugin"
+import * as SQLite from "expo-sqlite"
+const db = SQLite.openDatabaseSync("db")
+
 // import group 3
 import "@/logic/registerEvents"
 import "@/utils/notifications"
@@ -30,6 +35,7 @@ const MainApp =
 
 function App() {
 	if (__DEV__) {
+		useDrizzleStudio(db)
 		// load custom icon font
 		// required for dev only to update the font file without the need for a dev build
 		const [fontsLoaded] = useFonts({
