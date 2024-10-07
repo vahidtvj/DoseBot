@@ -1,24 +1,27 @@
 import { MedicineCard } from "@/components/cards/medicine"
-import { useMedicineStore } from "@/stores/medicineStore"
-import { FlatList, StyleSheet, View } from "react-native"
+import { FlatList, StyleSheet, View, Text } from "react-native"
 import { FAB } from "react-native-paper"
+
+import { getAllMeds } from "@/db/query"
+import { useLiveQuery } from "drizzle-orm/expo-sqlite"
 
 import type { HomeTabScreenProps } from "@/routes/types"
 import { useTranslation } from "react-i18next"
-
 export default function Page({
 	navigation,
 }: HomeTabScreenProps<"Medications">) {
-	const medStore = useMedicineStore()
+	// const medStore = useMedicineStore()
+	const meds = useLiveQuery(getAllMeds)
+
 	const { t } = useTranslation()
 	return (
 		<View style={styles.page}>
 			<FlatList
-				data={medStore.data.sort((a, b) => a.name.localeCompare(b.name))}
-				keyExtractor={(item) => item.id}
+				data={meds.data}
 				renderItem={(item) => (
 					<MedicineCard
 						{...item.item}
+						key={item.item.id}
 						onPress={(id) => navigation.navigate("MedicineDetail", { id })}
 					/>
 				)}

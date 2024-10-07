@@ -13,10 +13,11 @@ Sentry.init({
 // import group 2
 import "@/utils/ignoreLogs"
 
+import { db, expoDb } from "@/db/query/client"
+import { useMigrations } from "drizzle-orm/expo-sqlite/migrator"
 // sqlite - drizzle
 import { useDrizzleStudio } from "expo-drizzle-studio-plugin"
-import * as SQLite from "expo-sqlite"
-const db = SQLite.openDatabaseSync("db")
+import migrations from "./drizzle/migrations"
 
 // import group 3
 import "@/logic/registerEvents"
@@ -33,9 +34,20 @@ const MainApp =
 		? require("./.storybook")
 		: require("./src/main")
 
+// TODO: Temporary
+import { Text, View } from "react-native"
 function App() {
+	const { error } = useMigrations(db, migrations)
+	if (error) {
+		return (
+			<View>
+				<Text>Migration error: {error.message}</Text>
+			</View>
+		)
+	}
+
 	if (__DEV__) {
-		useDrizzleStudio(db)
+		useDrizzleStudio(expoDb)
 		// load custom icon font
 		// required for dev only to update the font file without the need for a dev build
 		const [fontsLoaded] = useFonts({
@@ -43,6 +55,8 @@ function App() {
 		})
 		if (!fontsLoaded) return null
 	}
+	// console.log(getAllMeds.execute())
+
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
 			<BaseLayout>

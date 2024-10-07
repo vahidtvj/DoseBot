@@ -1,0 +1,247 @@
+Date : 2024-10-06 20:17:21
+Directory : /home/vahid/Documents/PROJ/Personal/DoseBot
+Total : 151 files,  19824 codes, 279 comments, 4102 blanks, all 24205 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| YAML               |          6 |     13,563 |         66 |      3,472 |     17,101 |
+| TypeScript JSX     |         78 |      4,022 |        124 |        402 |      4,548 |
+| TypeScript         |         51 |      1,501 |         80 |        174 |      1,755 |
+| JSON               |          4 |        342 |          0 |          4 |        346 |
+| Draw.io            |          1 |        159 |          0 |          0 |        159 |
+| JavaScript         |          4 |         93 |          7 |         14 |        114 |
+| Markdown           |          4 |         77 |          0 |         33 |        110 |
+| JSON with Comments |          2 |         41 |          0 |          2 |         43 |
+| MS SQL             |          1 |         26 |          2 |          1 |         29 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                  | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                     |        151 |     19,824 |        279 |      4,102 |     24,205 |
+| . (Files)                                                                                             |         13 |     13,751 |         32 |      3,488 |     17,271 |
+| .github                                                                                               |          5 |        194 |         52 |         39 |        285 |
+| .github/ISSUE_TEMPLATE                                                                                |          2 |         74 |          0 |          6 |         80 |
+| .github/workflows                                                                                     |          3 |        120 |         52 |         33 |        205 |
+| .storybook                                                                                            |          6 |        109 |          1 |         17 |        127 |
+| .storybook-web                                                                                        |          2 |         45 |          5 |          6 |         56 |
+| docs                                                                                                  |          2 |        175 |          0 |          4 |        179 |
+| drizzle                                                                                               |          4 |        237 |          3 |          6 |        246 |
+| drizzle (Files)                                                                                       |          2 |         34 |          3 |          4 |         41 |
+| drizzle/meta                                                                                          |          2 |        203 |          0 |          2 |        205 |
+| src                                                                                                   |        119 |      5,313 |        186 |        542 |      6,041 |
+| src (Files)                                                                                           |          2 |         23 |          0 |          8 |         31 |
+| src/@types                                                                                            |          4 |         14 |          5 |          7 |         26 |
+| src/components                                                                                        |         50 |      2,859 |         85 |        252 |      3,196 |
+| src/components/cards                                                                                  |          8 |        518 |         22 |         43 |        583 |
+| src/components/cards/dose                                                                             |          2 |        146 |          0 |         12 |        158 |
+| src/components/cards/dosing                                                                           |          2 |        109 |          4 |         11 |        124 |
+| src/components/cards/medicine                                                                         |          2 |        117 |         16 |          9 |        142 |
+| src/components/cards/schedule                                                                         |          2 |        146 |          2 |         11 |        159 |
+| src/components/common                                                                                 |          6 |         85 |          2 |         18 |        105 |
+| src/components/common (Files)                                                                         |          4 |         41 |          2 |          9 |         52 |
+| src/components/common/IconText                                                                        |          2 |         44 |          0 |          9 |         53 |
+| src/components/drawer                                                                                 |          1 |         32 |          1 |          2 |         35 |
+| src/components/fields                                                                                 |          7 |        230 |          9 |         26 |        265 |
+| src/components/forms                                                                                  |          6 |        462 |         17 |         39 |        518 |
+| src/components/forms/medicine                                                                         |          3 |        260 |          6 |         19 |        285 |
+| src/components/forms/schedule                                                                         |          3 |        202 |         11 |         20 |        233 |
+| src/components/notification                                                                           |          3 |        103 |          9 |         16 |        128 |
+| src/components/pickers                                                                                |         17 |      1,343 |         24 |         99 |      1,466 |
+| src/components/pickers/datepicker                                                                     |          8 |        873 |         19 |         64 |        956 |
+| src/components/pickers/itemPicker                                                                     |          2 |        183 |          3 |          9 |        195 |
+| src/components/pickers/radioPicker                                                                    |          5 |        220 |          2 |         17 |        239 |
+| src/components/pickers/weekdayPicker                                                                  |          2 |         67 |          0 |          9 |         76 |
+| src/components/views                                                                                  |          2 |         86 |          1 |          9 |         96 |
+| src/components/views/doseView                                                                         |          2 |         86 |          1 |          9 |         96 |
+| src/config                                                                                            |          2 |          9 |          0 |          3 |         12 |
+| src/db                                                                                                |          4 |         96 |          7 |         17 |        120 |
+| src/db/query                                                                                          |          2 |         20 |          2 |          4 |         26 |
+| src/db/schema                                                                                         |          2 |         76 |          5 |         13 |         94 |
+| src/decorators                                                                                        |          4 |         55 |          0 |          8 |         63 |
+| src/i18n                                                                                              |          3 |        206 |          3 |         10 |        219 |
+| src/i18n (Files)                                                                                      |          1 |         21 |          3 |          5 |         29 |
+| src/i18n/en                                                                                           |          1 |         94 |          0 |          3 |         97 |
+| src/i18n/fa                                                                                           |          1 |         91 |          0 |          2 |         93 |
+| src/layout                                                                                            |          1 |        106 |          1 |         11 |        118 |
+| src/logic                                                                                             |          5 |        136 |         14 |         24 |        174 |
+| src/models                                                                                            |          6 |        306 |          4 |         20 |        330 |
+| src/models (Files)                                                                                    |          4 |        120 |          4 |         15 |        139 |
+| src/models/mock                                                                                       |          2 |        186 |          0 |          5 |        191 |
+| src/routes                                                                                            |          3 |        142 |          3 |         16 |        161 |
+| src/screens                                                                                           |         15 |        555 |         19 |         72 |        646 |
+| src/screens/medications                                                                               |          2 |         60 |          1 |          9 |         70 |
+| src/screens/medicineDetail                                                                            |          2 |         85 |          2 |         13 |        100 |
+| src/screens/medicineSchedule                                                                          |          2 |         65 |          2 |         10 |         77 |
+| src/screens/overview                                                                                  |          2 |         65 |          0 |         10 |         75 |
+| src/screens/permissions                                                                               |          2 |        100 |          0 |         11 |        111 |
+| src/screens/settings                                                                                  |          3 |        105 |         14 |         10 |        129 |
+| src/screens/testscreen                                                                                |          2 |         75 |          0 |          9 |         84 |
+| src/stores                                                                                            |          6 |        263 |          8 |         21 |        292 |
+| src/tests                                                                                             |          2 |        240 |          2 |         25 |        267 |
+| src/theme                                                                                             |          1 |         21 |          0 |          5 |         26 |
+| src/utils                                                                                             |         11 |        282 |         35 |         43 |        360 |
+| src/utils (Files)                                                                                     |          8 |        188 |         15 |         32 |        235 |
+| src/utils/dateFns                                                                                     |          3 |         94 |         20 |         11 |        125 |
++-------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                              | language           | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.github/ISSUE_TEMPLATE/bug.yml                            | YAML               |         59 |          0 |          0 |         59 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.github/ISSUE_TEMPLATE/feature_request.md                 | Markdown           |         15 |          0 |          6 |         21 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.github/workflows/build-dev.yaml                          | YAML               |         48 |         16 |         11 |         75 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.github/workflows/build-preview.yaml                      | YAML               |         48 |         16 |         12 |         76 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.github/workflows/quality.yaml                            | YAML               |         24 |         20 |         10 |         54 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.storybook-web/main.ts                                    | TypeScript         |         30 |          4 |          4 |         38 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.storybook-web/preview.tsx                                | TypeScript JSX     |         15 |          1 |          2 |         18 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/globalTypes.tsx                                | TypeScript JSX     |         32 |          0 |          1 |         33 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/index.ts                                       | TypeScript         |         25 |          1 |          4 |         30 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/main.ts                                        | TypeScript         |          6 |          0 |          3 |          9 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/preview.tsx                                    | TypeScript JSX     |         10 |          0 |          3 |         13 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/withGlobals.tsx                                | TypeScript JSX     |         19 |          0 |          3 |         22 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/withTheme.tsx                                  | TypeScript JSX     |         17 |          0 |          3 |         20 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/App.tsx                                                   | TypeScript JSX     |         49 |         12 |          9 |         70 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/CONTRIBUTING.md                                           | Markdown           |         28 |          0 |         13 |         41 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/README.md                                                 | Markdown           |         18 |          0 |         10 |         28 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/app.config.js                                             | JavaScript         |         67 |          1 |          3 |         71 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/babel.config.js                                           | JavaScript         |          7 |          0 |          1 |          8 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/biome.json                                                | JSON               |         33 |          0 |          1 |         34 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/docs/activity.drawio                                      | Draw.io            |        159 |          0 |          0 |        159 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/docs/useCases.md                                          | Markdown           |         16 |          0 |          4 |         20 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/drizzle.config.ts                                         | TypeScript         |          7 |          0 |          2 |          9 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/drizzle/0000_lowly_alice.sql                              | MS SQL             |         26 |          2 |          1 |         29 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/drizzle/meta/0000_snapshot.json                           | JSON               |        190 |          0 |          1 |        191 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/drizzle/meta/_journal.json                                | JSON               |         13 |          0 |          1 |         14 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/drizzle/migrations.js                                     | JavaScript         |          8 |          1 |          3 |         12 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/eas.json                                                  | JSON with Comments |         32 |          0 |          1 |         33 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/lefthook.yml                                              | YAML               |          7 |         14 |          0 |         21 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/metro.config.js                                           | JavaScript         |         11 |          5 |          7 |         23 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/package.json                                              | JSON               |        106 |          0 |          1 |        107 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/pnpm-lock.yaml                                            | YAML               |     13,377 |          0 |      3,439 |     16,816 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/@types/extras.d.ts                                    | TypeScript         |          3 |          0 |          1 |          4 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/@types/i18next.d.ts                                   | TypeScript         |          6 |          4 |          2 |         12 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/@types/react-app-env.d.ts                             | TypeScript         |          0 |          1 |          1 |          2 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/@types/resources.ts                                   | TypeScript         |          5 |          0 |          3 |          8 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/app.stories.tsx                                       | TypeScript JSX     |         14 |          0 |          5 |         19 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/dose/card.stories.tsx                | TypeScript JSX     |         62 |          0 |          5 |         67 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/dose/index.tsx                       | TypeScript JSX     |         84 |          0 |          7 |         91 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/dosing/index.stories.tsx             | TypeScript JSX     |         63 |          4 |          5 |         72 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/dosing/index.tsx                     | TypeScript JSX     |         46 |          0 |          6 |         52 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/medicine/card.stories.tsx            | TypeScript JSX     |         25 |          0 |          5 |         30 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/medicine/index.tsx                   | TypeScript JSX     |         92 |         16 |          4 |        112 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/schedule/index.stories.tsx           | TypeScript JSX     |         35 |          1 |          5 |         41 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/schedule/index.tsx                   | TypeScript JSX     |        111 |          1 |          6 |        118 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/Appbar.tsx                          | TypeScript JSX     |         19 |          2 |          4 |         25 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/IconText/index.stories.tsx          | TypeScript JSX     |         16 |          0 |          4 |         20 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/IconText/index.tsx                  | TypeScript JSX     |         28 |          0 |          5 |         33 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/PaperStatusBar.tsx                  | TypeScript JSX     |          6 |          0 |          2 |          8 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/SafePage.tsx                        | TypeScript JSX     |         13 |          0 |          2 |         15 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/index.ts                            | TypeScript         |          3 |          0 |          1 |          4 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/drawer/index.tsx                           | TypeScript JSX     |         32 |          1 |          2 |         35 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/CheckboxField.tsx                   | TypeScript JSX     |         16 |          1 |          3 |         20 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/DatePickerInputField.tsx            | TypeScript JSX     |         50 |          1 |          3 |         54 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/MedType.tsx                         | TypeScript JSX     |         33 |          2 |          5 |         40 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/SegmentedButtonsField.tsx           | TypeScript JSX     |         20 |          1 |          3 |         24 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/TextInputField.tsx                  | TypeScript JSX     |         32 |          1 |          2 |         35 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/TimePickerInputField.tsx            | TypeScript JSX     |         59 |          1 |          7 |         67 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/WeekdayPickerField.tsx              | TypeScript JSX     |         20 |          2 |          3 |         25 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/medicine/data.ts                     | TypeScript         |         32 |          0 |          5 |         37 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/medicine/index.stories.tsx           | TypeScript JSX     |         21 |          0 |          5 |         26 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/medicine/index.tsx                   | TypeScript JSX     |        207 |          6 |          9 |        222 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/schedule/data.ts                     | TypeScript         |         17 |          1 |          5 |         23 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/schedule/index.stories.tsx           | TypeScript JSX     |         21 |          1 |          5 |         27 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/schedule/index.tsx                   | TypeScript JSX     |        164 |          9 |         10 |        183 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/notification/dose.tsx                      | TypeScript JSX     |         79 |          8 |         11 |         98 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/notification/index.ts                      | TypeScript         |          2 |          0 |          1 |          3 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/notification/inventory.tsx                 | TypeScript JSX     |         22 |          1 |          4 |         27 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/calendar.tsx            | TypeScript JSX     |        108 |          2 |          5 |        115 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/datepicker.stories.tsx  | TypeScript JSX     |         54 |          0 |          3 |         57 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/datepicker.tsx          | TypeScript JSX     |        273 |         16 |         14 |        303 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/headerModal.stories.tsx | TypeScript JSX     |         42 |          0 |          3 |         45 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/headerModal.tsx         | TypeScript JSX     |        177 |          1 |          8 |        186 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/index.tsx               | TypeScript JSX     |         19 |          0 |          3 |         22 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/logic.tsx               | TypeScript JSX     |        158 |          0 |         24 |        182 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/store.ts                | TypeScript         |         42 |          0 |          4 |         46 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/itemPicker/index.stories.tsx       | TypeScript JSX     |         96 |          1 |          5 |        102 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/itemPicker/index.tsx               | TypeScript JSX     |         87 |          2 |          4 |         93 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/radioPicker/global.tsx             | TypeScript JSX     |         19 |          0 |          2 |         21 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/radioPicker/index.stories.tsx      | TypeScript JSX     |         61 |          0 |          5 |         66 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/radioPicker/index.ts               | TypeScript         |          3 |          0 |          1 |          4 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/radioPicker/picker.tsx             | TypeScript JSX     |        100 |          2 |          5 |        107 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/radioPicker/store.ts               | TypeScript         |         37 |          0 |          4 |         41 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/weekdayPicker/index.stories.tsx    | TypeScript JSX     |         26 |          0 |          5 |         31 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/weekdayPicker/index.tsx            | TypeScript JSX     |         41 |          0 |          4 |         45 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/views/doseView/index.stories.tsx           | TypeScript JSX     |         18 |          0 |          4 |         22 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/components/views/doseView/index.tsx                   | TypeScript JSX     |         68 |          1 |          5 |         74 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/config/index.ts                                       | TypeScript         |          5 |          0 |          2 |          7 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/config/notification.ts                                | TypeScript         |          4 |          0 |          1 |          5 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/db/query/client.ts                                    | TypeScript         |          5 |          0 |          2 |          7 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/db/query/index.ts                                     | TypeScript         |         15 |          2 |          2 |         19 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/db/schema/index.ts                                    | TypeScript         |          1 |          0 |          1 |          2 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/db/schema/medicine.ts                                 | TypeScript         |         75 |          5 |         12 |         92 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/decorators/appbar.tsx                                 | TypeScript JSX     |         16 |          0 |          2 |         18 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/decorators/center.tsx                                 | TypeScript JSX     |         16 |          0 |          2 |         18 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/decorators/index.ts                                   | TypeScript         |          3 |          0 |          1 |          4 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/decorators/safeView.tsx                               | TypeScript JSX     |         20 |          0 |          3 |         23 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/i18n/en/translation.ts                                | TypeScript         |         94 |          0 |          3 |         97 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/i18n/fa/translations.ts                               | TypeScript         |         91 |          0 |          2 |         93 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/i18n/i18n.ts                                          | TypeScript         |         21 |          3 |          5 |         29 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/layout/base.tsx                                       | TypeScript JSX     |        106 |          1 |         11 |        118 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/logic/dosage.test.ts                                  | TypeScript         |          8 |          0 |          2 |         10 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/logic/dose.ts                                         | TypeScript         |         41 |         11 |          7 |         59 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/logic/events.tsx                                      | TypeScript JSX     |         17 |          1 |          5 |         23 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/logic/getDosage.ts                                    | TypeScript         |         48 |          0 |          6 |         54 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/logic/registerEvents.tsx                              | TypeScript JSX     |         22 |          2 |          4 |         28 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/main.tsx                                              | TypeScript JSX     |          9 |          0 |          3 |         12 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/models/dose.ts                                        | TypeScript         |         13 |          2 |          3 |         18 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/models/index.ts                                       | TypeScript         |          4 |          0 |          1 |          5 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/models/medicine.ts                                    | TypeScript         |         58 |          0 |          6 |         64 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/models/mock/dose.ts                                   | TypeScript         |         58 |          0 |          2 |         60 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/models/mock/medicine.ts                               | TypeScript         |        128 |          0 |          3 |        131 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/models/schedule.ts                                    | TypeScript         |         45 |          2 |          5 |         52 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/routes/index.tsx                                      | TypeScript JSX     |         71 |          0 |          5 |         76 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/routes/tabs.tsx                                       | TypeScript JSX     |         23 |          0 |          3 |         26 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/routes/types.tsx                                      | TypeScript JSX     |         48 |          3 |          8 |         59 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medications/index.stories.tsx                 | TypeScript JSX     |         15 |          0 |          5 |         20 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medications/index.tsx                         | TypeScript JSX     |         45 |          1 |          4 |         50 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medicineDetail/index.stories.tsx              | TypeScript JSX     |         19 |          1 |          5 |         25 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medicineDetail/index.tsx                      | TypeScript JSX     |         66 |          1 |          8 |         75 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medicineSchedule/index.stories.tsx            | TypeScript JSX     |         19 |          1 |          5 |         25 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medicineSchedule/index.tsx                    | TypeScript JSX     |         46 |          1 |          5 |         52 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/overview/index.tsx                            | TypeScript JSX     |         34 |          0 |          4 |         38 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/overview/overview.stories.tsx                 | TypeScript JSX     |         31 |          0 |          6 |         37 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/permissions/index.stories.tsx                 | TypeScript JSX     |         13 |          0 |          5 |         18 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/permissions/index.tsx                         | TypeScript JSX     |         87 |          0 |          6 |         93 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/settings/index.stories.tsx                    | TypeScript JSX     |         13 |          0 |          5 |         18 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/settings/index.tsx                            | TypeScript JSX     |         70 |         13 |          3 |         86 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/settings/logic.ts                             | TypeScript         |         22 |          1 |          2 |         25 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/testscreen/index.tsx                          | TypeScript JSX     |         64 |          0 |          4 |         68 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/testscreen/test.stories.tsx                   | TypeScript JSX     |         11 |          0 |          5 |         16 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/app.ts                                         | TypeScript         |         21 |          0 |          3 |         24 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/configStore.ts                                 | TypeScript         |         44 |          0 |          3 |         47 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/doseStore.ts                                   | TypeScript         |         69 |          2 |          4 |         75 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/medicineStore.ts                               | TypeScript         |         61 |          3 |          3 |         67 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/permissions.ts                                 | TypeScript         |         36 |          0 |          2 |         38 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/uiStore.ts                                     | TypeScript         |         32 |          3 |          6 |         41 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/tests/Notifications.stories.tsx                       | TypeScript JSX     |        155 |          0 |         14 |        169 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/tests/Task.stories.tsx                                | TypeScript JSX     |         85 |          2 |         11 |         98 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/theme/index.ts                                        | TypeScript         |         21 |          0 |          5 |         26 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/date.ts                                         | TypeScript         |         79 |          6 |          9 |         94 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/dateFns/default.ts                              | TypeScript         |         28 |          0 |          1 |         29 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/dateFns/index.ts                                | TypeScript         |         37 |          1 |          8 |         46 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/dateFns/jalali.ts                               | TypeScript         |         29 |         19 |          2 |         50 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/form.tsx                                        | TypeScript JSX     |         15 |          0 |          2 |         17 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/icons.tsx                                       | TypeScript JSX     |          7 |          0 |          2 |          9 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/ignoreLogs.ts                                   | TypeScript         |         17 |          0 |          4 |         21 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/index.ts                                        | TypeScript         |          4 |          0 |          1 |          5 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/mmkvStorage.ts                                  | TypeScript         |         45 |          9 |          8 |         62 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/notifications.ts                                | TypeScript         |         16 |          0 |          3 |         19 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/zodExtras.ts                                    | TypeScript         |          5 |          0 |          3 |          8 |
+| /home/vahid/Documents/PROJ/Personal/DoseBot/tsconfig.json                                             | JSON with Comments |          9 |          0 |          1 |         10 |
+| Total                                                                                                 |                    |     19,824 |        279 |      4,102 |     24,205 |
++-------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

@@ -1,3 +1,4 @@
+import type { IScheduleFull } from "@/db/query"
 import type { Schedule, Weekday } from "@/models"
 import { format, isPast, isToday, isTomorrow, isYesterday } from "date-fns"
 import { format as jFormat } from "date-fns-jalali"
@@ -42,19 +43,22 @@ export const useDateUtils = () => {
 			? ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]
 			: Weekdays
 	}
-	function getScheduleText(schedule: Schedule) {
+	function getScheduleText(schedule: IScheduleFull) {
 		if (schedule.type === "Daily") {
 			return t("medicine.dailyDose", {
 				count: schedule.dosing.length,
 			})
 		}
 		if (schedule.type === "EveryXdays") {
-			return t("medicine.everyXdayDose", {
-				count: schedule.interval,
-			})
+			return (
+				schedule.interval &&
+				t("medicine.everyXdayDose", {
+					count: schedule.interval,
+				})
+			)
 		}
 		if (schedule.type === "Weekly") {
-			return schedule.days.map((day) => t(`date.${day}`)).join(t("join"))
+			return schedule.days?.map((day) => t(`date.${day}`)).join(t("join"))
 		}
 	}
 	function formatAlertTime(date: Date) {

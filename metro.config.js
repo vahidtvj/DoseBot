@@ -17,5 +17,6 @@ const config = getSentryExpoConfig(__dirname)
 config.transformer.unstable_allowRequireContext = true
 
 config.resolver.sourceExts.push("mjs")
+config.resolver.sourceExts.push("sql")
 
 module.exports = config
