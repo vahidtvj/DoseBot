@@ -1,22 +1,26 @@
-import { type IMedicine, MedIconMap } from "@/models"
+import type { IMedicineFull } from "@/db/query"
+import { MedIconMap } from "@/models"
 import { hasEnded, hasStarted, useDateUtils } from "@/utils"
 import { compareAsc } from "date-fns"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Avatar, Card, IconButton, Text, useTheme } from "react-native-paper"
-
-type IProps = IMedicine & { onPress?: (id: string) => void }
+type IProps = IMedicineFull & { onPress?: (id: string) => void }
 
 export function MedicineCard(props: IProps) {
 	const theme = useTheme()
-	const { name, inventory, schedule, notification, onPress, id, type } = props
+	const { name, onPress, id, type, schedules } = props
 	const { t } = useTranslation()
 	const { getScheduleText } = useDateUtils()
 
 	return (
-		<Card mode="contained" style={styles.card} onPress={() => onPress?.(id)}>
+		<Card
+			mode="contained"
+			style={styles.card}
+			onPress={() => onPress?.(String(id))}
+		>
 			<Card.Title
-				title="Acetaminophen"
+				title={name}
 				titleVariant="titleLarge"
 				left={(props) => (
 					<IconButton icon={MedIconMap[type]} style={styles.icon} {...props} />
@@ -25,39 +29,37 @@ export function MedicineCard(props: IProps) {
 			<Card.Content style={styles.content}>
 				<View style={styles.body}>
 					<View style={styles.left}>
-						{schedule
-							?.sort((a, b) => compareAsc(a.startDate, b.startDate))
-							.map((schedule, i) => (
-								<View key={i} style={styles.row}>
-									<Text
-										variant="bodyLarge"
-										style={[
-											schedule.endDate &&
-												hasEnded(schedule.endDate) && {
-													color: theme.colors.outline,
-													textDecorationLine: "line-through",
-												},
-											!hasStarted(schedule.startDate) && {
+						{schedules.map((schedule, i) => (
+							<View key={i} style={styles.row}>
+								<Text
+									variant="bodyLarge"
+									style={[
+										schedule.endDate &&
+											hasEnded(schedule.endDate) && {
 												color: theme.colors.outline,
+												textDecorationLine: "line-through",
 											},
-										]}
+										!hasStarted(schedule.startDate) && {
+											color: theme.colors.outline,
+										},
+									]}
+								>
+									{getScheduleText(schedule)}
+								</Text>
+								{schedule.type !== "Daily" && (
+									<Text
+										variant="bodySmall"
+										style={{ color: theme.colors.secondary }}
 									>
-										{getScheduleText(schedule)}
+										×{schedule.dosing.length}
 									</Text>
-									{schedule.type !== "Daily" && (
-										<Text
-											variant="bodySmall"
-											style={{ color: theme.colors.secondary }}
-										>
-											×{schedule.dosing.length}
-										</Text>
-									)}
-								</View>
-							))}
+								)}
+							</View>
+						))}
 					</View>
 				</View>
 				<View style={styles.right}>
-					{inventory.enabled && (
+					{/* {inventory.enabled && (
 						<Text
 							variant="bodySmall"
 							style={
@@ -68,7 +70,7 @@ export function MedicineCard(props: IProps) {
 						>
 							{t("medicine.remaining", { count: inventory.count })}
 						</Text>
-					)}
+					)} */}
 					{/* <View style={styles.alarmIcon}>
 						{notification.enabled && <IconButton icon="bell" />}
 					</View> */}

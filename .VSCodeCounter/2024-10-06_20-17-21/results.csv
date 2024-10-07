@@ -1,0 +1,153 @@
+"filename", "language", "JavaScript", "MS SQL", "TypeScript", "JSON", "TypeScript JSX", "JSON with Comments", "Markdown", "YAML", "Draw.io", "comment", "blank", "total"
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.github/ISSUE_TEMPLATE/bug.yml", "YAML", 0, 0, 0, 0, 0, 0, 0, 59, 0, 0, 0, 59
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.github/ISSUE_TEMPLATE/feature_request.md", "Markdown", 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 6, 21
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.github/workflows/build-dev.yaml", "YAML", 0, 0, 0, 0, 0, 0, 0, 48, 0, 16, 11, 75
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.github/workflows/build-preview.yaml", "YAML", 0, 0, 0, 0, 0, 0, 0, 48, 0, 16, 12, 76
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.github/workflows/quality.yaml", "YAML", 0, 0, 0, 0, 0, 0, 0, 24, 0, 20, 10, 54
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.storybook-web/main.ts", "TypeScript", 0, 0, 30, 0, 0, 0, 0, 0, 0, 4, 4, 38
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.storybook-web/preview.tsx", "TypeScript JSX", 0, 0, 0, 0, 15, 0, 0, 0, 0, 1, 2, 18
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/globalTypes.tsx", "TypeScript JSX", 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 1, 33
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/index.ts", "TypeScript", 0, 0, 25, 0, 0, 0, 0, 0, 0, 1, 4, 30
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/main.ts", "TypeScript", 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 3, 9
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/preview.tsx", "TypeScript JSX", 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 3, 13
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/withGlobals.tsx", "TypeScript JSX", 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 3, 22
+"/home/vahid/Documents/PROJ/Personal/DoseBot/.storybook/withTheme.tsx", "TypeScript JSX", 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 3, 20
+"/home/vahid/Documents/PROJ/Personal/DoseBot/App.tsx", "TypeScript JSX", 0, 0, 0, 0, 49, 0, 0, 0, 0, 12, 9, 70
+"/home/vahid/Documents/PROJ/Personal/DoseBot/CONTRIBUTING.md", "Markdown", 0, 0, 0, 0, 0, 0, 28, 0, 0, 0, 13, 41
+"/home/vahid/Documents/PROJ/Personal/DoseBot/README.md", "Markdown", 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 10, 28
+"/home/vahid/Documents/PROJ/Personal/DoseBot/app.config.js", "JavaScript", 67, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 71
+"/home/vahid/Documents/PROJ/Personal/DoseBot/babel.config.js", "JavaScript", 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 8
+"/home/vahid/Documents/PROJ/Personal/DoseBot/biome.json", "JSON", 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 1, 34
+"/home/vahid/Documents/PROJ/Personal/DoseBot/docs/activity.drawio", "Draw.io", 0, 0, 0, 0, 0, 0, 0, 0, 159, 0, 0, 159
+"/home/vahid/Documents/PROJ/Personal/DoseBot/docs/useCases.md", "Markdown", 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 4, 20
+"/home/vahid/Documents/PROJ/Personal/DoseBot/drizzle.config.ts", "TypeScript", 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 2, 9
+"/home/vahid/Documents/PROJ/Personal/DoseBot/drizzle/0000_lowly_alice.sql", "MS SQL", 0, 26, 0, 0, 0, 0, 0, 0, 0, 2, 1, 29
+"/home/vahid/Documents/PROJ/Personal/DoseBot/drizzle/meta/0000_snapshot.json", "JSON", 0, 0, 0, 190, 0, 0, 0, 0, 0, 0, 1, 191
+"/home/vahid/Documents/PROJ/Personal/DoseBot/drizzle/meta/_journal.json", "JSON", 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 1, 14
+"/home/vahid/Documents/PROJ/Personal/DoseBot/drizzle/migrations.js", "JavaScript", 8, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 12
+"/home/vahid/Documents/PROJ/Personal/DoseBot/eas.json", "JSON with Comments", 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 1, 33
+"/home/vahid/Documents/PROJ/Personal/DoseBot/lefthook.yml", "YAML", 0, 0, 0, 0, 0, 0, 0, 7, 0, 14, 0, 21
+"/home/vahid/Documents/PROJ/Personal/DoseBot/metro.config.js", "JavaScript", 11, 0, 0, 0, 0, 0, 0, 0, 0, 5, 7, 23
+"/home/vahid/Documents/PROJ/Personal/DoseBot/package.json", "JSON", 0, 0, 0, 106, 0, 0, 0, 0, 0, 0, 1, 107
+"/home/vahid/Documents/PROJ/Personal/DoseBot/pnpm-lock.yaml", "YAML", 0, 0, 0, 0, 0, 0, 0, 13377, 0, 0, 3439, 16816
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/@types/extras.d.ts", "TypeScript", 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/@types/i18next.d.ts", "TypeScript", 0, 0, 6, 0, 0, 0, 0, 0, 0, 4, 2, 12
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/@types/react-app-env.d.ts", "TypeScript", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/@types/resources.ts", "TypeScript", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 3, 8
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/app.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 14, 0, 0, 0, 0, 0, 5, 19
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/dose/card.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 62, 0, 0, 0, 0, 0, 5, 67
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/dose/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 84, 0, 0, 0, 0, 0, 7, 91
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/dosing/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 63, 0, 0, 0, 0, 4, 5, 72
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/dosing/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 46, 0, 0, 0, 0, 0, 6, 52
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/medicine/card.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 5, 30
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/medicine/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 92, 0, 0, 0, 0, 16, 4, 112
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/schedule/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 35, 0, 0, 0, 0, 1, 5, 41
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/cards/schedule/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 111, 0, 0, 0, 0, 1, 6, 118
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/Appbar.tsx", "TypeScript JSX", 0, 0, 0, 0, 19, 0, 0, 0, 0, 2, 4, 25
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/IconText/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 4, 20
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/IconText/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 28, 0, 0, 0, 0, 0, 5, 33
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/PaperStatusBar.tsx", "TypeScript JSX", 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 2, 8
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/SafePage.tsx", "TypeScript JSX", 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 2, 15
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/common/index.ts", "TypeScript", 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/drawer/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 32, 0, 0, 0, 0, 1, 2, 35
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/CheckboxField.tsx", "TypeScript JSX", 0, 0, 0, 0, 16, 0, 0, 0, 0, 1, 3, 20
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/DatePickerInputField.tsx", "TypeScript JSX", 0, 0, 0, 0, 50, 0, 0, 0, 0, 1, 3, 54
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/MedType.tsx", "TypeScript JSX", 0, 0, 0, 0, 33, 0, 0, 0, 0, 2, 5, 40
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/SegmentedButtonsField.tsx", "TypeScript JSX", 0, 0, 0, 0, 20, 0, 0, 0, 0, 1, 3, 24
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/TextInputField.tsx", "TypeScript JSX", 0, 0, 0, 0, 32, 0, 0, 0, 0, 1, 2, 35
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/TimePickerInputField.tsx", "TypeScript JSX", 0, 0, 0, 0, 59, 0, 0, 0, 0, 1, 7, 67
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/fields/WeekdayPickerField.tsx", "TypeScript JSX", 0, 0, 0, 0, 20, 0, 0, 0, 0, 2, 3, 25
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/medicine/data.ts", "TypeScript", 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 5, 37
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/medicine/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 21, 0, 0, 0, 0, 0, 5, 26
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/medicine/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 207, 0, 0, 0, 0, 6, 9, 222
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/schedule/data.ts", "TypeScript", 0, 0, 17, 0, 0, 0, 0, 0, 0, 1, 5, 23
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/schedule/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 21, 0, 0, 0, 0, 1, 5, 27
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/forms/schedule/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 164, 0, 0, 0, 0, 9, 10, 183
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/notification/dose.tsx", "TypeScript JSX", 0, 0, 0, 0, 79, 0, 0, 0, 0, 8, 11, 98
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/notification/index.ts", "TypeScript", 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 3
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/notification/inventory.tsx", "TypeScript JSX", 0, 0, 0, 0, 22, 0, 0, 0, 0, 1, 4, 27
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/calendar.tsx", "TypeScript JSX", 0, 0, 0, 0, 108, 0, 0, 0, 0, 2, 5, 115
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/datepicker.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 54, 0, 0, 0, 0, 0, 3, 57
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/datepicker.tsx", "TypeScript JSX", 0, 0, 0, 0, 273, 0, 0, 0, 0, 16, 14, 303
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/headerModal.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 42, 0, 0, 0, 0, 0, 3, 45
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/headerModal.tsx", "TypeScript JSX", 0, 0, 0, 0, 177, 0, 0, 0, 0, 1, 8, 186
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 3, 22
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/logic.tsx", "TypeScript JSX", 0, 0, 0, 0, 158, 0, 0, 0, 0, 0, 24, 182
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/datepicker/store.ts", "TypeScript", 0, 0, 42, 0, 0, 0, 0, 0, 0, 0, 4, 46
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/itemPicker/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 96, 0, 0, 0, 0, 1, 5, 102
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/itemPicker/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 87, 0, 0, 0, 0, 2, 4, 93
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/radioPicker/global.tsx", "TypeScript JSX", 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 2, 21
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/radioPicker/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 61, 0, 0, 0, 0, 0, 5, 66
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/radioPicker/index.ts", "TypeScript", 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/radioPicker/picker.tsx", "TypeScript JSX", 0, 0, 0, 0, 100, 0, 0, 0, 0, 2, 5, 107
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/radioPicker/store.ts", "TypeScript", 0, 0, 37, 0, 0, 0, 0, 0, 0, 0, 4, 41
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/weekdayPicker/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 5, 31
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/pickers/weekdayPicker/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 4, 45
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/views/doseView/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 4, 22
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/components/views/doseView/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 68, 0, 0, 0, 0, 1, 5, 74
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/config/index.ts", "TypeScript", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 2, 7
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/config/notification.ts", "TypeScript", 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 5
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/db/query/client.ts", "TypeScript", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 2, 7
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/db/query/index.ts", "TypeScript", 0, 0, 15, 0, 0, 0, 0, 0, 0, 2, 2, 19
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/db/schema/index.ts", "TypeScript", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/db/schema/medicine.ts", "TypeScript", 0, 0, 75, 0, 0, 0, 0, 0, 0, 5, 12, 92
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/decorators/appbar.tsx", "TypeScript JSX", 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 2, 18
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/decorators/center.tsx", "TypeScript JSX", 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 2, 18
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/decorators/index.ts", "TypeScript", 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 1, 4
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/decorators/safeView.tsx", "TypeScript JSX", 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 3, 23
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/i18n/en/translation.ts", "TypeScript", 0, 0, 94, 0, 0, 0, 0, 0, 0, 0, 3, 97
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/i18n/fa/translations.ts", "TypeScript", 0, 0, 91, 0, 0, 0, 0, 0, 0, 0, 2, 93
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/i18n/i18n.ts", "TypeScript", 0, 0, 21, 0, 0, 0, 0, 0, 0, 3, 5, 29
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/layout/base.tsx", "TypeScript JSX", 0, 0, 0, 0, 106, 0, 0, 0, 0, 1, 11, 118
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/logic/dosage.test.ts", "TypeScript", 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 2, 10
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/logic/dose.ts", "TypeScript", 0, 0, 41, 0, 0, 0, 0, 0, 0, 11, 7, 59
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/logic/events.tsx", "TypeScript JSX", 0, 0, 0, 0, 17, 0, 0, 0, 0, 1, 5, 23
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/logic/getDosage.ts", "TypeScript", 0, 0, 48, 0, 0, 0, 0, 0, 0, 0, 6, 54
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/logic/registerEvents.tsx", "TypeScript JSX", 0, 0, 0, 0, 22, 0, 0, 0, 0, 2, 4, 28
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/main.tsx", "TypeScript JSX", 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 3, 12
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/models/dose.ts", "TypeScript", 0, 0, 13, 0, 0, 0, 0, 0, 0, 2, 3, 18
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/models/index.ts", "TypeScript", 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 5
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/models/medicine.ts", "TypeScript", 0, 0, 58, 0, 0, 0, 0, 0, 0, 0, 6, 64
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/models/mock/dose.ts", "TypeScript", 0, 0, 58, 0, 0, 0, 0, 0, 0, 0, 2, 60
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/models/mock/medicine.ts", "TypeScript", 0, 0, 128, 0, 0, 0, 0, 0, 0, 0, 3, 131
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/models/schedule.ts", "TypeScript", 0, 0, 45, 0, 0, 0, 0, 0, 0, 2, 5, 52
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/routes/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 71, 0, 0, 0, 0, 0, 5, 76
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/routes/tabs.tsx", "TypeScript JSX", 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 3, 26
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/routes/types.tsx", "TypeScript JSX", 0, 0, 0, 0, 48, 0, 0, 0, 0, 3, 8, 59
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medications/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 5, 20
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medications/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 45, 0, 0, 0, 0, 1, 4, 50
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medicineDetail/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 19, 0, 0, 0, 0, 1, 5, 25
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medicineDetail/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 66, 0, 0, 0, 0, 1, 8, 75
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medicineSchedule/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 19, 0, 0, 0, 0, 1, 5, 25
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/medicineSchedule/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 46, 0, 0, 0, 0, 1, 5, 52
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/overview/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 34, 0, 0, 0, 0, 0, 4, 38
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/overview/overview.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 31, 0, 0, 0, 0, 0, 6, 37
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/permissions/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 5, 18
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/permissions/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 87, 0, 0, 0, 0, 0, 6, 93
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/settings/index.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 5, 18
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/settings/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 70, 0, 0, 0, 0, 13, 3, 86
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/settings/logic.ts", "TypeScript", 0, 0, 22, 0, 0, 0, 0, 0, 0, 1, 2, 25
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/testscreen/index.tsx", "TypeScript JSX", 0, 0, 0, 0, 64, 0, 0, 0, 0, 0, 4, 68
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/screens/testscreen/test.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 5, 16
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/app.ts", "TypeScript", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 3, 24
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/configStore.ts", "TypeScript", 0, 0, 44, 0, 0, 0, 0, 0, 0, 0, 3, 47
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/doseStore.ts", "TypeScript", 0, 0, 69, 0, 0, 0, 0, 0, 0, 2, 4, 75
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/medicineStore.ts", "TypeScript", 0, 0, 61, 0, 0, 0, 0, 0, 0, 3, 3, 67
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/permissions.ts", "TypeScript", 0, 0, 36, 0, 0, 0, 0, 0, 0, 0, 2, 38
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/stores/uiStore.ts", "TypeScript", 0, 0, 32, 0, 0, 0, 0, 0, 0, 3, 6, 41
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/tests/Notifications.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 155, 0, 0, 0, 0, 0, 14, 169
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/tests/Task.stories.tsx", "TypeScript JSX", 0, 0, 0, 0, 85, 0, 0, 0, 0, 2, 11, 98
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/theme/index.ts", "TypeScript", 0, 0, 21, 0, 0, 0, 0, 0, 0, 0, 5, 26
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/date.ts", "TypeScript", 0, 0, 79, 0, 0, 0, 0, 0, 0, 6, 9, 94
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/dateFns/default.ts", "TypeScript", 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 1, 29
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/dateFns/index.ts", "TypeScript", 0, 0, 37, 0, 0, 0, 0, 0, 0, 1, 8, 46
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/dateFns/jalali.ts", "TypeScript", 0, 0, 29, 0, 0, 0, 0, 0, 0, 19, 2, 50
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/form.tsx", "TypeScript JSX", 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 2, 17
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/icons.tsx", "TypeScript JSX", 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 2, 9
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/ignoreLogs.ts", "TypeScript", 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 4, 21
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/index.ts", "TypeScript", 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 1, 5
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/mmkvStorage.ts", "TypeScript", 0, 0, 45, 0, 0, 0, 0, 0, 0, 9, 8, 62
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/notifications.ts", "TypeScript", 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 3, 19
+"/home/vahid/Documents/PROJ/Personal/DoseBot/src/utils/zodExtras.ts", "TypeScript", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 3, 8
+"/home/vahid/Documents/PROJ/Personal/DoseBot/tsconfig.json", "JSON with Comments", 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 1, 10
+"Total", "-", 93, 26, 1501, 342, 4022, 41, 77, 13563, 159, 279, 4102, 24205
