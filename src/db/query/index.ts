@@ -54,18 +54,41 @@ export const deleteMed = db
 	.where(eq(schema.medicine.id, sql.placeholder("id")))
 	.prepare()
 
-export const updateFullMedTransaction = (
-	med: WithOptional<IMedicine, "id">,
-	schedules: ISchedule[],
-	dosing: IDosing[],
-) => {
-	const medId = med.id
+export const updateFullMedTransaction = (data: {
+	med: WithOptional<IMedicine, "id">
+	schedules: (WithOptional<ISchedule, "medicineId" | "id"> & {
+		dosing: WithOptional<IDosing, "scheduleId" | "id">[]
+	})[]
+}) => {
+	const medId = data.med.id
 	db.transaction(async (tx) => {
-		const medId = med.id
-		if (medId) {
-			// update
-			db.query.medicine
-		}
+		let medId = data.med.id
+		const create = !medId
+
+		medId = (await db.insert(schema.medicine).values(data.med).returning())[0]
+			.id
+		const scheduleIds = (
+			await db
+				.insert(schema.schedule)
+				.values(
+					data.schedules.map((x) => ({
+						...x,
+						medicineId: medId,
+						dosing: undefined,
+					})),
+				)
+				.returning()
+		).map((x) => x.id)
+		const dosingIds = (
+			await db
+				.insert(schema.dosing)
+				.values(
+					data.schedules.flatMap((x, i) =>
+						x.dosing.map((y) => ({ ...y, scheduleId: scheduleIds[i] })),
+					),
+				)
+				.returning()
+		).map((x) => x.id)
 	})
 }
 // export const insertMed = db.insert(schema.medicine).values().prepare()
