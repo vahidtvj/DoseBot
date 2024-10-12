@@ -1,5 +1,3 @@
-// import { MedTypeList } from "@/models"
-
 import type { Weekday } from "@/models"
 import { relations } from "drizzle-orm"
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core"
@@ -16,9 +14,6 @@ export const medicine = sqliteTable("medicine", {
 	inventoryNotifyOn: integer("inventory_notifyOn", {
 		mode: "number",
 	}).notNull(),
-	// notification: z.object({
-	// 	enabled: z.boolean(),
-	// }),
 	type: text("type", {
 		enum: [
 			"pill",
@@ -33,7 +28,6 @@ export const medicine = sqliteTable("medicine", {
 			"generic",
 		],
 	}).notNull(),
-	// type: MedicineTypeSchema,
 	paused: integer("paused", { mode: "boolean" }).notNull(),
 	note: text("note"),
 	removed: integer("paused", { mode: "boolean" }).default(false),
@@ -88,5 +82,3 @@ export const dosingRelations = relations(dosing, ({ one }) => ({
 		references: [schedule.id],
 	}),
 }))
-
-type mytype = typeof medicine.$inferSelect

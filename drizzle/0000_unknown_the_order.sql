@@ -13,7 +13,7 @@ CREATE TABLE `medicine` (
 	`inventory_count` integer NOT NULL,
 	`inventory_notifyOn` integer NOT NULL,
 	`type` text NOT NULL,
-	`paused` integer NOT NULL,
+	`paused` integer DEFAULT false,
 	`note` text
 );
 --> statement-breakpoint
@@ -24,5 +24,15 @@ CREATE TABLE `schedule` (
 	`startDate` integer NOT NULL,
 	`endDate` integer,
 	`days` text,
+	`interval` integer,
 	FOREIGN KEY (`medicine_id`) REFERENCES `medicine`(`id`) ON UPDATE no action ON DELETE cascade
+);
+--> statement-breakpoint
+CREATE TABLE `dose` (
+	`id` integer PRIMARY KEY NOT NULL,
+	`medicine_id` integer,
+	`time` integer NOT NULL,
+	`amount` integer NOT NULL,
+	`status` text NOT NULL,
+	FOREIGN KEY (`medicine_id`) REFERENCES `medicine`(`id`) ON UPDATE no action ON DELETE no action
 );
