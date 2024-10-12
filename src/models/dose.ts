@@ -10,7 +10,7 @@ export type IDose = {
 	time: Date
 	amount: number
 	status: IDoseStatus
-	note?: string
+	note?: string | null
 	// priority: "Low" | "Normal" | "High"
 	// repeatInterval?: number
 }

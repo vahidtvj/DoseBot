@@ -20,7 +20,8 @@
 		"storybook-generate": "sb-rn-get-stories",
 		"storybook": "cross-env STORYBOOK_ENABLED='true' expo start",
 		"storybook-server": "storybook dev -p 6006 -c ./.storybook-web",
-		"test": "jest"
+		"test": "jest",
+		"migrate": "drizzle-kit generate"
 	},
 	"dependencies": {
 		"@expo/vector-icons": "^14.0.2",
@@ -35,6 +36,7 @@
 		"date-fns": "^3.6.0",
 		"date-fns-jalali": "3.6.0-0",
 		"drizzle-orm": "^0.33.0",
+		"drizzle-zod": "^0.5.1",
 		"expo": "~51.0.11",
 		"expo-background-fetch": "~12.0.1",
 		"expo-constants": "^16.0.2",

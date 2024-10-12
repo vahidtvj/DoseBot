@@ -5,7 +5,7 @@ import { formatAlertTime } from "@/utils"
 import notifee, { AlarmType, TriggerType } from "@notifee/react-native"
 import { isPast } from "date-fns"
 
-type Props = IDose
+type Props = Omit<IDose, "medId">
 
 export async function showAlert(props: Props) {
 	// Request permissions (required for iOS)

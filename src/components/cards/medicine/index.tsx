@@ -5,7 +5,7 @@ import { compareAsc } from "date-fns"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Avatar, Card, IconButton, Text, useTheme } from "react-native-paper"
-type IProps = IMedicineFull & { onPress?: (id: string) => void }
+type IProps = IMedicineFull & { onPress?: (id: number) => void }
 
 export function MedicineCard(props: IProps) {
 	const theme = useTheme()
@@ -14,11 +14,7 @@ export function MedicineCard(props: IProps) {
 	const { getScheduleText } = useDateUtils()
 
 	return (
-		<Card
-			mode="contained"
-			style={styles.card}
-			onPress={() => onPress?.(String(id))}
-		>
+		<Card mode="contained" style={styles.card} onPress={() => onPress?.(id)}>
 			<Card.Title
 				title={name}
 				titleVariant="titleLarge"
