@@ -1,6 +1,7 @@
 import { ScheduleForm } from "@/components/forms/schedule"
-import type { Schedule } from "@/models"
+import { type ISchedule, getDosings, getSchedule } from "@/db/query"
 import type { RootStackScreenProps } from "@/routes/types"
+import { useLiveQuery } from "drizzle-orm/expo-sqlite"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
@@ -10,29 +11,29 @@ export default function Page({
 	navigation,
 	route,
 }: RootStackScreenProps<"MedicineSchedule">) {
-	const { schedule } = route.params
+	const { id } = route.params
 	const { t } = useTranslation()
+	const data = id ? useLiveQuery(getSchedule(id)).data : undefined
+	const dosing = id ? useLiveQuery(getDosings(id)).data : undefined
+
+	function onDelete() {
+		navigation.goBack()
+	}
 
 	useEffect(() => {
-		if (!schedule) navigation.setOptions({ title: t("navigation.newSchedule") })
-		if (route.params.onDelete)
-			navigation.setOptions({
-				headerRight: () => <Appbar.Action icon="delete" onPress={onDelete} />,
-			})
-	}, [navigation, schedule, route.params.onDelete, t])
+		if (!id) navigation.setOptions({ title: t("navigation.newSchedule") })
+		navigation.setOptions({
+			headerRight: () => <Appbar.Action icon="delete" onPress={onDelete} />,
+		})
+	}, [navigation, t, id, onDelete])
 
-	function onSubmit(data: Schedule) {
-		route.params.onSubmit?.(data)
+	function onSubmit(data: ISchedule) {
 		navigation.goBack()
 	}
-	function onDelete() {
-		route.params.onDelete?.()
-		navigation.goBack()
-	}
-	const data = schedule
+	if (id && !data) return null
 	return (
 		<View style={styles.page}>
-			<ScheduleForm data={data} edit={false} onSubmit={onSubmit} />
+			<ScheduleForm data={data} onSubmit={onSubmit} dosing={dosing} />
 			{/* <FAB mode="flat" icon="pencil" style={styles.fab} label="Edit" /> */}
 		</View>
 	)

@@ -1,7 +1,7 @@
+import * as schema from "@/db/schema"
 import { zExtras } from "@/utils"
+import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 import { z } from "zod"
-import { ScheduleSchema } from "./schedule"
-
 export const MedTypeList: IMedicineType[] = [
 	"pill",
 	"injection",
@@ -42,22 +42,26 @@ export const MedicineTypeSchema = z.union([
 ])
 export type IMedicineType = z.infer<typeof MedicineTypeSchema>
 
-export const MedicineSchema = z.object({
-	name: z.string().min(1),
-	inventory: z.object({
-		enabled: z.boolean(),
-		count: z.coerce.number(),
-		notifyOn: z.coerce.number(),
-	}),
-	notification: z.object({
-		enabled: z.boolean(),
-	}),
-	type: MedicineTypeSchema,
-	paused: z.boolean(),
-	schedule: z.array(ScheduleSchema).optional(),
-	note: zExtras.StringOrUndefined,
+export const MedicineSchema = createSelectSchema(schema.medicine).omit({
+	id: true,
+})
+export const ScheduleSchema = createInsertSchema(schema.schedule).omit({
+	id: true,
+	medicineId: true,
 })
 
-export type IMedicine = z.infer<typeof MedicineSchema> & {
-	id: string
-}
+// export const MedicineSchema = z.object({
+// 	name: z.string().min(1),
+// 	inventory: z.object({
+// 		enabled: z.boolean(),
+// 		count: z.coerce.number(),
+// 		notifyOn: z.coerce.number(),
+// 	}),
+// 	notification: z.object({
+// 		enabled: z.boolean(),
+// 	}),
+// 	type: MedicineTypeSchema,
+// 	paused: z.boolean(),
+// 	schedule: z.array(ScheduleSchema).optional(),
+// 	note: zExtras.StringOrUndefined,
+// })

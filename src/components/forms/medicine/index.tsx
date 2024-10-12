@@ -2,10 +2,8 @@ import { ScheduleCard } from "@/components/cards/schedule"
 import { CheckboxField } from "@/components/fields/CheckboxField"
 import { MedTypeField } from "@/components/fields/MedType"
 import { TextInputField } from "@/components/fields/TextInputField"
-import type { IMedicine, Schedule } from "@/models"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { randomUUID } from "expo-crypto"
-import { type SubmitHandler, useFieldArray, useForm } from "react-hook-form"
+import { type SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { ScrollView, StyleSheet, View } from "react-native"
 import {
@@ -20,6 +18,8 @@ import { type Inputs, type Props, defaultValues, schema } from "./data"
 
 export function MedicineForm(props: Props) {
 	const data = props.data || defaultValues
+	const schedules = props.schedules || []
+	const { scheduleActions } = props
 	const { t } = useTranslation()
 
 	const { control, handleSubmit, watch } = useForm<Inputs>({
@@ -28,29 +28,10 @@ export function MedicineForm(props: Props) {
 	})
 
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
-		const id =
-			props.data && "id" in props.data && props.data.id
-				? (props.data.id as string)
-				: randomUUID()
-		const pdata: IMedicine = { ...data, id }
-		props.onSubmit?.(pdata)
+		props.onSubmit(data)
 	}
 
-	const scheduleArray = useFieldArray({
-		control,
-		name: "schedule",
-	})
-
-	function onScheduleSubmit(data: Schedule, index?: number) {
-		if (index !== undefined) scheduleArray.update(index, data)
-		else scheduleArray.append(data)
-		// scheduleArray.update()
-	}
-	function onScheduleDelete(index: number) {
-		scheduleArray.remove(index)
-	}
-
-	const inventoryEnabled = watch("inventory.enabled")
+	const inventoryEnabled = watch("inventoryEnabled")
 	return (
 		<View style={styles.page}>
 			<ScrollView>
@@ -83,13 +64,13 @@ export function MedicineForm(props: Props) {
 							<View style={styles.row}>
 								<Text variant="bodyLarge">{t("inventory")}: </Text>
 								{/* <Checkbox status={data.inventory.enabled ? "checked" : "unchecked"} /> */}
-								<CheckboxField control={control} name="inventory.enabled" />
+								<CheckboxField control={control} name="inventoryEnabled" />
 							</View>
 							{inventoryEnabled && (
 								<View style={styles.inv}>
 									<TextInputField
 										control={control}
-										name="inventory.count"
+										name="inventoryCount"
 										mode="outlined"
 										label={t("count")}
 										inputMode="numeric"
@@ -97,7 +78,7 @@ export function MedicineForm(props: Props) {
 									/>
 									<TextInputField
 										control={control}
-										name="inventory.notifyOn"
+										name="inventoryNotifyOn"
 										mode="outlined"
 										label={t("threshold")}
 										inputMode="numeric"
@@ -130,33 +111,22 @@ export function MedicineForm(props: Props) {
 						<View style={[styles.row, { marginHorizontal: 7 }]}>
 							<Text variant="titleLarge">{t("schedules")}:</Text>
 							<View style={styles.row2}>
-								{/* <IconButton icon="plus-box" /> */}
 								<Button
 									mode="contained-tonal"
 									icon="plus"
-									onPress={() =>
-										props.openSchedule?.(undefined, (data) =>
-											onScheduleSubmit(data),
-										)
-									}
+									onPress={() => scheduleActions.open()}
 								>
 									{t("add")}
 								</Button>
 							</View>
 						</View>
 						<View>
-							{scheduleArray.fields?.map((schedule, i) => (
+							{schedules.map((schedule) => (
 								<ScheduleCard
 									key={schedule.id}
 									data={schedule}
 									edit={false}
-									onPress={() =>
-										props.openSchedule?.(
-											schedule,
-											(data) => onScheduleSubmit(data, i),
-											() => onScheduleDelete(i),
-										)
-									}
+									onPress={() => scheduleActions.open(schedule.id)}
 								/>
 							))}
 						</View>

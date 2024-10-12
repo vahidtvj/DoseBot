@@ -1,4 +1,3 @@
-import type { Schedule } from "@/models"
 import type { DrawerScreenProps } from "@react-navigation/drawer"
 import type {
 	CompositeScreenProps,
@@ -24,12 +23,8 @@ export type RootStackParamList = {
 	Permissions: undefined
 	Settings: undefined
 	Test: undefined
-	MedicineDetail: { id?: string }
-	MedicineSchedule: {
-		schedule?: Schedule
-		onSubmit?: (data: Schedule) => void
-		onDelete?: () => void
-	}
+	MedicineDetail: { id?: number }
+	MedicineSchedule: { id?: number }
 }
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =

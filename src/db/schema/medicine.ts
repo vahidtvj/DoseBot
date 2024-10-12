@@ -36,6 +36,7 @@ export const medicine = sqliteTable("medicine", {
 	// type: MedicineTypeSchema,
 	paused: integer("paused", { mode: "boolean" }).notNull(),
 	note: text("note"),
+	removed: integer("paused", { mode: "boolean" }).default(false),
 })
 
 export type IMedicine = typeof medicine.$inferSelect
