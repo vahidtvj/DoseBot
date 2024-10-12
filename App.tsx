@@ -56,7 +56,6 @@ function App() {
 		if (!fontsLoaded) return null
 	}
 	// console.log(getAllMeds.execute())
-
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
 			<BaseLayout>

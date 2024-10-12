@@ -168,7 +168,7 @@ export const updateFullMed = async (data: {
 		// 	// ! include this in transaction??
 		// }
 	}
-	db.transaction(async (tx) => {
+	await db.transaction(async (tx) => {
 		medId = (
 			await tx
 				.insert(schema.medicine)

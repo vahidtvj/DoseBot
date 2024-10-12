@@ -1,1 +1,0 @@
-ALTER TABLE `schedule` ADD `interval` integer;
