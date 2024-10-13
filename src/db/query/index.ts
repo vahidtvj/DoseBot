@@ -35,6 +35,7 @@ export type IDoseFull = IDose & {
 // 	removed: boolean | null
 // }
 export const getAllMeds = db.query.medicine.findMany({
+	where: eq(schema.medicine.removed, false),
 	with: {
 		schedules: {
 			with: { dosing: true },

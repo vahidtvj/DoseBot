@@ -13,8 +13,9 @@ CREATE TABLE `medicine` (
 	`inventory_count` integer NOT NULL,
 	`inventory_notifyOn` integer NOT NULL,
 	`type` text NOT NULL,
-	`paused` integer DEFAULT false,
-	`note` text
+	`paused` integer NOT NULL,
+	`note` text,
+	`removed` integer DEFAULT false
 );
 --> statement-breakpoint
 CREATE TABLE `schedule` (

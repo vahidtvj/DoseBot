@@ -30,7 +30,7 @@ export const medicine = sqliteTable("medicine", {
 	}).notNull(),
 	paused: integer("paused", { mode: "boolean" }).notNull(),
 	note: text("note"),
-	removed: integer("paused", { mode: "boolean" }).default(false),
+	removed: integer("removed", { mode: "boolean" }).default(false),
 })
 
 export type IMedicine = typeof medicine.$inferSelect
