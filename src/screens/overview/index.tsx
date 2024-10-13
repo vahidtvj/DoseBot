@@ -11,11 +11,11 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	useEffect(() => {
 		if (firstLaunch) navigation.navigate("Permissions")
 	}, [firstLaunch, navigation])
-	const doseStore = useDoseStore()
+	// const doseStore = useDoseStore()
 
 	return (
 		<View style={styles.page}>
-			<FlatList
+			{/* <FlatList
 				data={doseStore.data.sort((a, b) => compareAsc(a.time, b.time))}
 				keyExtractor={(item) => item.id}
 				renderItem={(item) => (
@@ -25,7 +25,7 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 						onSkip={(id) => doseStore.changeStatus(id, "skip")}
 					/>
 				)}
-			/>
+			/> */}
 		</View>
 	)
 }
