@@ -1,15 +1,14 @@
-import type { IMedicineFull } from "@/db/query"
-import { MedIconMap } from "@/models"
+import { MedIconMap } from "@/constants"
+import type { IMedicineFull } from "@/db"
 import { hasEnded, hasStarted, useDateUtils } from "@/utils"
-import { compareAsc } from "date-fns"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
-import { Avatar, Card, IconButton, Text, useTheme } from "react-native-paper"
+import { Card, IconButton, Text, useTheme } from "react-native-paper"
 type IProps = IMedicineFull & { onPress?: (id: number) => void }
 
 export function MedicineCard(props: IProps) {
 	const theme = useTheme()
-	const { name, onPress, id, type, schedules } = props
+	const { name, onPress, id, type, schedules, ...data } = props
 	const { t } = useTranslation()
 	const { getScheduleText } = useDateUtils()
 
@@ -55,18 +54,18 @@ export function MedicineCard(props: IProps) {
 					</View>
 				</View>
 				<View style={styles.right}>
-					{/* {inventory.enabled && (
+					{data.inventoryEnabled && (
 						<Text
 							variant="bodySmall"
 							style={
-								inventory.count <= inventory.notifyOn && {
+								data.inventoryCount <= data.inventoryNotifyOn && {
 									color: theme.colors.error,
 								}
 							}
 						>
-							{t("medicine.remaining", { count: inventory.count })}
+							{t("medicine.remaining", { count: data.inventoryCount })}
 						</Text>
-					)} */}
+					)}
 					{/* <View style={styles.alarmIcon}>
 						{notification.enabled && <IconButton icon="bell" />}
 					</View> */}

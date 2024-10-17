@@ -1,4 +1,4 @@
-import { type IMedicineType, MedIconMap, MedTypeList } from "@/models"
+import { type IMedicineType, MedIconMap, MedTypeList } from "@/constants"
 import { useState } from "react"
 import { type UseControllerProps, useController } from "react-hook-form"
 import { useTranslation } from "react-i18next"

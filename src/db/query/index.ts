@@ -1,39 +1,12 @@
-import { removeNotification } from "@/logic/notification"
-import { and, asc, desc, eq, inArray, notInArray, sql } from "drizzle-orm"
-import { useLiveQuery } from "drizzle-orm/expo-sqlite"
+import { removeNotification, updateNotifications } from "@/logic/notification"
+import { and, asc, eq, inArray } from "drizzle-orm"
 import * as schema from "../schema"
+import type { IDoseCreate } from "../types"
 import { db } from "./client"
+type IMedicine = schema.IMedicine
+type ISchedule = schema.ISchedule
+type IDosing = schema.IDosing
 
-export type IMedicine = schema.IMedicine
-export type ISchedule = schema.ISchedule
-export type IDosing = schema.IDosing
-export type IScheduleFull = ISchedule & { dosing: schema.IDosing[] }
-export type IMedicineFull = IMedicine & { schedules: IScheduleFull[] }
-export type IDose = schema.IDose
-export type IDoseFull = IDose & {
-	medicine: Pick<IMedicine, "name" | "note" | "type">
-}
-// type MedCheck = {
-// 	type:
-// 		| "pill"
-// 		| "injection"
-// 		| "iv"
-// 		| "drop"
-// 		| "suppository"
-// 		| "inhaler"
-// 		| "syrup"
-// 		| "spray"
-// 		| "patch"
-// 		| "generic"
-// 	id: number
-// 	name: string
-// 	inventoryEnabled: boolean
-// 	inventoryCount: number
-// 	inventoryNotifyOn: number
-// 	paused: boolean
-// 	note: string | null
-// 	removed: boolean | null
-// }
 export const getAllMeds = db.query.medicine.findMany({
 	where: eq(schema.medicine.removed, false),
 	with: {
@@ -47,7 +20,6 @@ export const getAllMeds = db.query.medicine.findMany({
 
 export const getMed = (id: number) =>
 	db.query.medicine.findFirst({
-		with: { schedules: { with: { dosing: true } } },
 		where: eq(schema.medicine.id, id),
 	})
 
@@ -68,27 +40,6 @@ export const getDosings = (scheduleId: number) =>
 	db.query.dosing.findMany({
 		where: eq(schema.dosing.scheduleId, scheduleId),
 	})
-
-// export const createMed = (data: Omit<schema.IMedicine, "id">) =>
-// 	db.insert(schema.medicine).values(data).run()
-
-// export const updateMed = async (
-// 	id: number,
-// 	data: Omit<schema.IMedicine, "id">,
-// ) => {
-// 	const pendingDoseIds = (
-// 		await db.query.dose.findMany({
-// 			where: and(
-// 				eq(schema.dose.medicineId, id),
-// 				eq(schema.dose.status, "pending"),
-// 			),
-// 		})
-// 	).map((x) => x.id)
-// 	if (pendingDoseIds.length > 0) {
-// 		// TODO update notifs
-// 	}
-// 	db.update(schema.medicine).set(data).where(eq(schema.medicine.id, id)).run()
-// }
 
 export const deleteMed = async (id: number) => {
 	const pendingDoseIds = (
@@ -288,19 +239,36 @@ export const updateFullMed = async (data: {
 		// todo create doses and scheduleAlerts
 	})
 }
-// export const insertMed = db.insert(schema.medicine).values().prepare()
-// const a = getAllMeds.execute()
 
-export const getDoseFull = (id: number) =>
-	db.query.dose.findFirst({
+export const getDoseFull = async (id: number) =>
+	await db.query.dose.findFirst({
 		where: eq(schema.dose.id, id),
 		with: { medicine: { columns: { name: true, note: true, type: true } } },
 	})
-export const getDoseListFull = (idList: number[]) =>
-	db.query.dose.findMany({
+export const getDoseListFull = async (idList: number[]) =>
+	await db.query.dose.findMany({
 		where: inArray(schema.dose.id, idList),
 		with: { medicine: { columns: { name: true, note: true, type: true } } },
 	})
+export const getPendingDoseListFull = db.query.dose.findMany({
+	where: eq(schema.dose.status, "pending"),
+	orderBy: asc(schema.dose.time),
+	with: { medicine: { columns: { name: true, note: true, type: true } } },
+})
+
+export const clearPendingDoses = async (idList: number[]) =>
+	await db
+		.update(schema.dose)
+		.set({ status: "skip" })
+		.where(inArray(schema.dose.id, idList))
+
+export const insertDoses = async (data: IDoseCreate[]) => {
+	const doseIds = await (
+		await db.insert(schema.dose).values(data).returning()
+	).map((x) => x.id)
+	const doses = await getDoseListFull(doseIds)
+	updateNotifications(doses)
+}
 
 export const changeDoseStatus = async (
 	id: number,

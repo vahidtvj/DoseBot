@@ -1,5 +1,5 @@
+import { data } from "@/db/mock/medicine"
 import { withSafeView } from "@/decorators"
-import { data } from "@/models/mock/medicine"
 import type { Meta, StoryObj } from "@storybook/react"
 import { MedicineForm } from "."
 
@@ -21,5 +21,5 @@ export const Primary: Story = {
 }
 
 export const Create: Story = {
-	render: () => <MedicineForm data={undefined} />,
+	render: (args) => <MedicineForm {...args} data={undefined} />,
 }

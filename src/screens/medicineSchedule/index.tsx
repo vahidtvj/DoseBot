@@ -1,40 +1,47 @@
 import { ScheduleForm } from "@/components/forms/schedule"
-import { type ISchedule, getDosings, getSchedule } from "@/db/query"
+import type { IScheduleFullCreate } from "@/db"
 import type { RootStackScreenProps } from "@/routes/types"
-import { useLiveQuery } from "drizzle-orm/expo-sqlite"
+import { randomUUID } from "expo-crypto"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Appbar } from "react-native-paper"
+import { useMedicineFormState } from "../medicineDetail/store"
 
 export default function Page({
 	navigation,
 	route,
 }: RootStackScreenProps<"MedicineSchedule">) {
-	const { id } = route.params
+	const { index } = route.params
+
 	const { t } = useTranslation()
-	const data = id ? useLiveQuery(getSchedule(id)).data : undefined
-	const dosing = id ? useLiveQuery(getDosings(id)).data : undefined
+	const { schedules, setSchedule, removeSchedule } = useMedicineFormState()
+	if (index !== undefined && !schedules) return null
+	const data = index !== undefined && schedules ? schedules[index] : undefined
+	const key = data?._id
 
 	function onDelete() {
+		if (key) removeSchedule(key)
 		navigation.goBack()
 	}
 
 	useEffect(() => {
-		if (!id) navigation.setOptions({ title: t("navigation.newSchedule") })
+		if (index === undefined || !schedules || !schedules[index].id)
+			navigation.setOptions({ title: t("navigation.newSchedule") })
+
 		navigation.setOptions({
 			headerRight: () => <Appbar.Action icon="delete" onPress={onDelete} />,
 		})
-	}, [navigation, t, id, onDelete])
+	}, [navigation, t, schedules, index, onDelete])
 
-	function onSubmit(data: ISchedule) {
+	function onSubmit(data: IScheduleFullCreate) {
+		setSchedule(data, key)
 		navigation.goBack()
 	}
-	if (id && !data) return null
+
 	return (
 		<View style={styles.page}>
-			<ScheduleForm data={data} onSubmit={onSubmit} dosing={dosing} />
-			{/* <FAB mode="flat" icon="pencil" style={styles.fab} label="Edit" /> */}
+			<ScheduleForm data={data} onSubmit={onSubmit} key={randomUUID()} />
 		</View>
 	)
 }

@@ -1,5 +1,5 @@
+import { data } from "@/db/mock/medicine"
 import { withSafeView } from "@/decorators"
-import { data } from "@/models/mock/medicine"
 import type { Meta, StoryObj } from "@storybook/react"
 import { ScheduleCard } from "."
 
@@ -8,10 +8,7 @@ const meta = {
 	component: ScheduleCard,
 	decorators: [withSafeView],
 	args: {
-		// biome-ignore lint/style/noNonNullAssertion: <explanation>
-		data: data[0].schedule![0],
-		edit: false,
-		onRemove: () => {},
+		data: data[0].schedules[0],
 	},
 } satisfies Meta<typeof ScheduleCard>
 
@@ -26,13 +23,8 @@ export const Multiple: Story = {
 	render: () => (
 		<>
 			{data.map((item, i) =>
-				item.schedule?.map((schedule, j) => (
-					<ScheduleCard
-						key={`${i}${j}`}
-						data={schedule}
-						edit={false}
-						onRemove={() => {}}
-					/>
+				item.schedules.map((schedule, j) => (
+					<ScheduleCard key={`${i}${j}`} data={schedule} />
 				)),
 			)}
 		</>

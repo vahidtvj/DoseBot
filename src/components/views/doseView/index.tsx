@@ -1,12 +1,13 @@
 import { DoseCard } from "@/components/cards/dose"
-import type { IDose, IDoseStatus } from "@/models"
+import type { DoseStatus } from "@/constants"
+import type { IDoseFull } from "@/db"
 import { isTomorrow, isYesterday } from "date-fns"
 import { FlatList, View } from "react-native"
 import { Text } from "react-native-paper"
 
 type Props = {
-	data: IDose[]
-	changeStatus: (id: string, status: IDoseStatus) => void
+	data: IDoseFull[]
+	changeStatus: (id: number, status: DoseStatus) => void
 }
 
 export function DoseView(props: Props) {
@@ -27,7 +28,7 @@ export function DoseView(props: Props) {
 		<View>
 			<FlatList
 				data={today}
-				keyExtractor={(item) => item.id}
+				keyExtractor={(item) => String(item.id)}
 				renderItem={(item) => (
 					<DoseCard
 						{...item.item}
@@ -41,7 +42,7 @@ export function DoseView(props: Props) {
 					<Text style={{ marginStart: 20 }}>Yesterday</Text>
 					<FlatList
 						data={yesterday}
-						keyExtractor={(item) => item.id}
+						keyExtractor={(item) => String(item.id)}
 						renderItem={(item) => (
 							<DoseCard
 								{...item.item}
@@ -57,7 +58,7 @@ export function DoseView(props: Props) {
 					<Text style={{ marginStart: 20 }}>Tomorrow</Text>
 					<FlatList
 						data={tomorrow}
-						keyExtractor={(item) => item.id}
+						keyExtractor={(item) => String(item.id)}
 						renderItem={(item) => (
 							<DoseCard
 								{...item.item}

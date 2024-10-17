@@ -13,7 +13,7 @@ const en = {
 		interval: "Interval",
 		daysAffix: "days",
 		everyXdayDose: "Every {{count}} days",
-		weekly: "weekly",
+		weekly: "Weekly",
 		type: "Type",
 		addDose: "Add Dose",
 	},

@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next"
-import { ScrollView, StyleSheet, Text, View } from "react-native"
+import { ScrollView, StyleSheet, View } from "react-native"
 import { Button, FAB, TextInput } from "react-native-paper"
 
 import { DosingCard } from "@/components/cards/dosing"
@@ -8,7 +8,6 @@ import { SegmentedButtonsField } from "@/components/fields/SegmentedButtonsField
 import { TextInputField } from "@/components/fields/TextInputField"
 import { WeekdayPickerField } from "@/components/fields/WeekdayPickerField"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { compareAsc } from "date-fns"
 import { type SubmitHandler, useFieldArray, useForm } from "react-hook-form"
 import { enGB, registerTranslation } from "react-native-paper-dates"
 import { type Inputs, type Props, defaultValues, schema } from "./data"
@@ -17,31 +16,30 @@ registerTranslation("en-GB", enGB)
 
 export function ScheduleForm(props: Props) {
 	const data = props.data || defaultValues
-	const dosing = props.dosing || []
 	const { t } = useTranslation()
 
 	const { control, handleSubmit, watch } = useForm<Inputs>({
 		defaultValues: data,
 		resolver: zodResolver(schema),
 	})
-	// const dosingArray = useFieldArray({
-	// 	control,
-	// 	name: "dosing",
-	// })
+
+	const dosingArray = useFieldArray({
+		keyName: "_id",
+		control,
+		name: "dosing",
+	})
+
+	function addDose() {
+		dosingArray.append({ amount: 1, time: new Date() })
+	}
+	function removeDose(key: string) {
+		dosingArray.remove(dosingArray.fields.findIndex((x) => x._id === key))
+	}
 
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
 		props.onSubmit(data)
 	}
 	const type = watch("type")
-
-	// TODO sort dosing array
-	// function _sortDosingArray() {
-	// 	const arr = [...dosingArray.fields].toSorted((a, b) =>
-	// 		compareAsc(a.time, b.time),
-	// 	)
-	// 	dosingArray.replace(arr)
-	// }
-	console.log(data)
 
 	return (
 		<View style={styles.page}>
@@ -69,8 +67,6 @@ export function ScheduleForm(props: Props) {
 				/>
 				{type === "Weekly" && (
 					<View>
-						{/* <Text>Days:</Text> */}
-						{/* <WeekdayPicker selected={[]} onSelect={() => {}} /> */}
 						<WeekdayPickerField
 							control={control}
 							name="days"
@@ -91,7 +87,6 @@ export function ScheduleForm(props: Props) {
 					/>
 				)}
 				<View style={styles.dateView}>
-					{/* <DatePickerInputField control={control} name={"startDate"} /> */}
 					{/* TODO date picker locales */}
 					{/* TODO picker icon hit box very small */}
 					<DatePickerInputField
@@ -110,27 +105,22 @@ export function ScheduleForm(props: Props) {
 					/>
 				</View>
 				<View style={styles.addTime}>
-					<Button
-						mode="contained"
-						icon="plus"
-						// onPress={() => dosingArray.append({ amount: 1, time: new Date() })}
-					>
+					<Button mode="contained" icon="plus" onPress={addDose}>
 						{t("medicine.addDose")}
 					</Button>
 				</View>
-				{/* <ScrollView>
+				<ScrollView>
 					<View style={styles.doses}>
-						{dosing.map((dose, i) => (
+						{dosingArray.fields.map((dose, i) => (
 							<DosingCard
-								key={dose.id}
+								key={dose._id}
 								control={control}
 								name={`dosing.${i}`}
-								onRemove={() => dosingArray.remove(i)}
+								onRemove={() => removeDose(dose._id)}
 							/>
-							// <Text>dd</Text>
 						))}
 					</View>
-				</ScrollView> */}
+				</ScrollView>
 			</View>
 			<FAB
 				mode="flat"
