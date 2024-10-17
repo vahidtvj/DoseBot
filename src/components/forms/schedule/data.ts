@@ -1,20 +1,21 @@
-import type { IDosing, ISchedule } from "@/db/query"
-import { ScheduleSchema } from "@/models"
+import { FormScheduleSchema, type IScheduleFullCreate } from "@/db"
 import type { z } from "zod"
 
 export type Props = {
-	data?: ISchedule
-	dosing?: IDosing[]
+	data?: IScheduleFullCreate
 } & {
-	onSubmit: (data: Omit<ISchedule, "id" | "medicineId">) => void
+	onSubmit: (data: IScheduleFullCreate) => void
 }
 
-export const schema = ScheduleSchema
+export const schema = FormScheduleSchema
 
 export type Inputs = z.infer<typeof schema>
 
 export const defaultValues: Inputs = {
+	days: null,
 	type: "Daily",
+	interval: null,
 	startDate: new Date(),
-	// endDate: new Date(),
+	endDate: null,
+	dosing: [],
 }

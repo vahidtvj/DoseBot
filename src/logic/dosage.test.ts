@@ -1,4 +1,4 @@
-import { data } from "@/models/mock/medicine"
+import { data } from "@/db/mock/medicine"
 import { getDosage } from "./getDosage"
 
 describe("Dosage", () => {

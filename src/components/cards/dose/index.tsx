@@ -1,18 +1,21 @@
-import { type IDose, MedIconMap } from "@/models"
+import { MedIconMap } from "@/constants"
+import type { IDoseFull } from "@/db"
 import { useDateUtils } from "@/utils"
 import { isPast } from "date-fns"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Button, Card, IconButton, Text, useTheme } from "react-native-paper"
 
-type IProps = IDose & {
-	onConfirm: (id: string) => void
-	onSkip: (id: string) => void
+type IProps = IDoseFull & {
+	onConfirm: (id: number) => void
+	onSkip: (id: number) => void
 }
 
 export function DoseCard(props: IProps) {
 	const theme = useTheme()
-	const { name: title, amount: dose, time, status, id, type, note } = props
+	const { amount: dose, time, status, id, medicine } = props
+	if (!medicine) return
+	const { name: title, type, note } = medicine
 	const { t } = useTranslation()
 	const showBtns = status === "pending"
 
@@ -31,7 +34,7 @@ export function DoseCard(props: IProps) {
 				left={(props) => (
 					<IconButton icon={MedIconMap[type]} style={styles.icon} {...props} />
 				)}
-				right={(props) => (
+				right={() => (
 					<View style={styles.right}>
 						<Text variant="bodyMedium">× {dose}</Text>
 					</View>

@@ -1,5 +1,7 @@
+import { data } from "@/db/mock/dose"
 import { withSafeView } from "@/decorators"
 import type { Meta, StoryObj } from "@storybook/react"
+import { FlatList } from "react-native"
 import { DoseCard } from "."
 
 const meta = {
@@ -7,10 +9,9 @@ const meta = {
 	component: DoseCard,
 	decorators: [withSafeView],
 	args: {
-		name: "Acetaminophen",
+		medicine: { name: "Acetaminophen", type: "pill", note: "After meal" },
 		time: new Date(Date.now() - 1000 * 60 * 60),
 		amount: 2,
-		type: "pill",
 		status: "pending",
 	},
 	argTypes: {},
@@ -24,43 +25,18 @@ export const Primary: Story = {
 }
 
 export const Multiple: Story = {
-	render: (args) => (
-		<>
-			<DoseCard
-				{...args}
-				name="Ibuprofin"
-				time={new Date(Date.now() - 1000 * 60 * 60)}
-				amount={2}
-				type="pill"
-				status="skip"
-				note="take with food take with food "
-			/>
-			<DoseCard
-				{...args}
-				name="Acetaminophen"
-				time={new Date(Date.now() - 1000 * 60 * 60)}
-				amount={2.5}
-				type="injection"
-				status="pending"
-				note="after meal"
-			/>
-			<DoseCard
-				{...args}
-				name="Acetaminophen"
-				time={new Date(Date.now())}
-				amount={0.5}
-				type="iv"
-				status="confirm"
-			/>
-			<DoseCard
-				{...args}
-				name="Ibuprofin"
-				time={new Date(Date.now() + 24 * 60 * 60 * 1000)}
-				amount={1}
-				type="pill"
-				status="pending"
-				note="Before sleep"
-			/>
-		</>
+	render: () => (
+		<FlatList
+			data={data}
+			keyExtractor={(item) => String(item.id)}
+			renderItem={(item) => (
+				<DoseCard
+					key={item.item.id}
+					{...item.item}
+					onConfirm={() => {}}
+					onSkip={() => {}}
+				/>
+			)}
+		/>
 	),
 }

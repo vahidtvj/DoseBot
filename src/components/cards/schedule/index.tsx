@@ -1,20 +1,18 @@
-import type { Schedule } from "@/models"
+import type { IScheduleFullCreate } from "@/db"
 import { useAppTheme } from "@/theme"
 import { hasEnded, hasStarted, useDateUtils } from "@/utils"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
-import { Card, IconButton, Text } from "react-native-paper"
+import { Card, Text } from "react-native-paper"
 
 type Props = {
-	data: Schedule
-	edit: boolean
-	onRemove?: () => void
+	data: IScheduleFullCreate
 	onPress?: () => void
 }
 
 export function ScheduleCard(props: Props) {
-	const { data, edit, onRemove, onPress } = props
-	const { dosing, startDate, endDate } = data
+	const { data, onPress } = props
+	const { startDate, endDate, dosing } = data
 	const theme = useAppTheme()
 	const { t } = useTranslation()
 
@@ -23,13 +21,6 @@ export function ScheduleCard(props: Props) {
 	return (
 		<Card mode="contained" style={styles.card} onPress={() => onPress?.()}>
 			<Card.Content style={styles.content}>
-				{edit && (
-					<IconButton
-						icon="minus-circle-outline"
-						iconColor={theme.colors.red}
-						onPress={onRemove}
-					/>
-				)}
 				<View style={styles.body}>
 					<View style={styles.row}>
 						<Text

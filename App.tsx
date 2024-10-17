@@ -38,13 +38,7 @@ const MainApp =
 import { Text, View } from "react-native"
 function App() {
 	const { error, success } = useMigrations(db, migrations)
-	if (error) {
-		return (
-			<View>
-				<Text>Migration error: {error.message}</Text>
-			</View>
-		)
-	}
+
 	if (__DEV__) {
 		useDrizzleStudio(expoDb)
 		// load custom icon font
@@ -54,8 +48,14 @@ function App() {
 		})
 		if (!fontsLoaded) return null
 	}
+	if (error) {
+		return (
+			<View>
+				<Text>Migration error: {error.message}</Text>
+			</View>
+		)
+	}
 	if (!success) return <Text>Loading</Text>
-	// console.log(getAllMeds.execute())
 	return (
 		<GestureHandlerRootView style={{ flex: 1 }}>
 			<BaseLayout>

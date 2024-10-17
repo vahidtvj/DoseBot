@@ -1,17 +1,8 @@
-import type { IScheduleFull } from "@/db/query"
-import type { Schedule, Weekday } from "@/models"
+import { type Weekday, Weekdays } from "@/constants"
+import type { IScheduleFullCreate } from "@/db"
 import { format, isPast, isToday, isTomorrow, isYesterday } from "date-fns"
 import { format as jFormat } from "date-fns-jalali"
 import { useTranslation } from "react-i18next"
-export const Weekdays: Weekday[] = [
-	"Sun",
-	"Mon",
-	"Tue",
-	"Wed",
-	"Thu",
-	"Fri",
-	"Sat",
-]
 
 // TODO translate this func
 export function formatAlertTime(date: Date) {
@@ -43,7 +34,7 @@ export const useDateUtils = () => {
 			? ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"]
 			: Weekdays
 	}
-	function getScheduleText(schedule: IScheduleFull) {
+	function getScheduleText(schedule: IScheduleFullCreate) {
 		if (schedule.type === "Daily") {
 			return t("medicine.dailyDose", {
 				count: schedule.dosing.length,

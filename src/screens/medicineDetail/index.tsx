@@ -1,32 +1,23 @@
 import { MedicineForm } from "@/components/forms/medicine"
-import {
-	type IMedicineFull,
-	type ISchedule,
-	createMed,
-	deleteMed,
-	getMed,
-	getSchedules,
-	updateMed,
-} from "@/db/query"
-import type { IMedicine } from "@/db/schema"
+import { type IMedicineCreate, deleteMed, updateFullMed } from "@/db"
 import type { RootStackScreenProps } from "@/routes/types"
-import { useLiveQuery } from "drizzle-orm/expo-sqlite"
+import { randomUUID } from "expo-crypto"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Appbar } from "react-native-paper"
+import { useMedicineFormState } from "./store"
 export default function Page({
 	navigation,
 	route,
 }: RootStackScreenProps<"MedicineDetail">) {
 	const id = route.params.id
-	const data = id ? useLiveQuery(getMed(id)).data : undefined
-	const schedules = id ? useLiveQuery(getSchedules(id)).data : undefined
 	const { t } = useTranslation()
+	const { medicine, schedules, setMed } = useMedicineFormState()
 
 	function onDelete() {
 		if (!id) return
-		deleteMed.run({ id })
+		deleteMed(id)
 		navigation.goBack()
 	}
 
@@ -38,46 +29,28 @@ export default function Page({
 			})
 	}, [navigation, id, t, onDelete])
 
-	// const data = id ? medStore.data.find((x) => x.id === id) : undefined
-
-	// function openSchedule(
-	// 	schedule?: ISchedule,
-	// 	onSubmit?: (data: ISchedule, index?: number) => void,
-	// 	onDelete?: () => void,
-	// ) {
-	// 	navigation.navigate("MedicineSchedule", {
-	// 		schedule,
-	// 		onSubmit,
-	// 		onDelete,
-	// 	})
-	// }
-
 	const scheduleActions = {
-		open: (scheduleId?: number) =>
+		open: (medData: IMedicineCreate, index?: number) => {
+			setMed(medData)
 			navigation.navigate("MedicineSchedule", {
-				id: scheduleId,
-			}),
-		onDelete: (id: number) => {},
-		onSubmit: (data: ISchedule) => {},
+				index: index,
+			})
+		},
 	}
 
-	function onSubmit(data: Omit<IMedicine, "id">) {
-		// if (!id) medStore.create(data)
-		// else medStore.update(data)
-		if (id) updateMed(id, data)
-		else createMed(data)
-		navigation.goBack()
+	function onSubmit(data: IMedicineCreate) {
+		updateFullMed({ med: data, schedules: schedules || [] })
 	}
-	if (id && !data) return null
+	if (id && !medicine) return null
 	return (
 		<View style={styles.page}>
 			<MedicineForm
-				data={data}
+				key={randomUUID()}
+				data={medicine}
 				scheduleActions={scheduleActions}
 				schedules={schedules}
 				onSubmit={onSubmit}
 			/>
-			{/* <FAB mode="flat" icon="pencil" style={styles.fab} label="Edit" /> */}
 		</View>
 	)
 }

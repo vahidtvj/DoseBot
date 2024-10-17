@@ -1,6 +1,6 @@
 import { type Inputs, schema } from "@/components/forms/schedule/data"
+import { data } from "@/db/mock/medicine"
 import { withSafeView } from "@/decorators"
-import { data } from "@/models/mock/medicine"
 import { zodResolver } from "@hookform/resolvers/zod"
 import type { Meta, StoryObj } from "@storybook/react"
 import { useFieldArray, useForm } from "react-hook-form"
@@ -47,8 +47,7 @@ export const Multiple: Story = {
 				type: "Daily",
 				startDate: new Date(),
 				// endDate: new Date(),
-				// biome-ignore lint/style/noNonNullAssertion: <explanation>
-				dosing: data[0].schedule![0].dosing,
+				dosing: data[0].schedules[0].dosing,
 			},
 			resolver: zodResolver(schema),
 		})

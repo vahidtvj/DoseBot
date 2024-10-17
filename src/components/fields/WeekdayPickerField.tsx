@@ -9,10 +9,10 @@ export function WeekdayPickerField<T extends object>(
 	const { field, fieldState } = useController(props)
 	// const rest = useProps(props)
 	const hasError = fieldState.error !== undefined
-
+	const value = field.value || []
 	return (
 		<View>
-			<WeekdayPicker selected={field.value} onSelect={field.onChange} />
+			<WeekdayPicker selected={value} onSelect={field.onChange} />
 			{hasError && (
 				<HelperText type="error" visible={hasError}>
 					{/*  TODO translate errors*/}

@@ -1,6 +1,6 @@
 import { showAlert } from "@/components/notification"
+import type { IDoseFull } from "@/db"
 import { center } from "@/decorators"
-import type { IDose } from "@/models"
 import notifee, {
 	AndroidNotificationSetting,
 	AuthorizationStatus,
@@ -42,13 +42,12 @@ function PowerInfo() {
 }
 
 function testDoseAlert() {
-	const dose: IDose = {
-		id: "test",
-		medId: "test",
+	const dose: IDoseFull = {
+		id: 255255,
 		amount: 2,
-		name: "Acetaminophen",
+		medicineId: 255255,
+		medicine: { name: "Acetaminophen", type: "pill", note: "notenote" },
 		status: "pending",
-		type: "pill",
 		time: new Date(),
 	}
 	showAlert(dose)
@@ -95,12 +94,17 @@ function NotificationTestScreen() {
 	}, [checkPermissions])
 
 	return (
-		<Suspense>
+		<View>
 			<List.Section>
 				<List.Subheader>Test notifications</List.Subheader>
-				<Button mode="outlined" onPress={testDoseAlert}>
-					simple notification
-				</Button>
+				<View style={styles.row}>
+					<Button mode="outlined" onPress={testDoseAlert}>
+						dose notification
+					</Button>
+					<Button mode="outlined" onPress={testDoseAlert}>
+						inventory notification
+					</Button>
+				</View>
 			</List.Section>
 			<Divider />
 			<View style={styles.row}>
@@ -141,7 +145,7 @@ function NotificationTestScreen() {
 					<PowerInfo />
 				</List.Section>
 			</View>
-		</Suspense>
+		</View>
 	)
 }
 

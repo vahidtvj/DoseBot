@@ -1,8 +1,8 @@
 import { DoseCard } from "@/components/cards/dose"
+import { changeDoseStatus, getPendingDoseListFull } from "@/db"
 import type { HomeTabScreenProps } from "@/routes/types"
 import { useAppState } from "@/stores/app"
-import { useDoseStore } from "@/stores/doseStore"
-import { compareAsc } from "date-fns"
+import { useLiveQuery } from "drizzle-orm/expo-sqlite"
 import { useEffect } from "react"
 import { FlatList, StyleSheet, View } from "react-native"
 export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
@@ -11,21 +11,21 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	useEffect(() => {
 		if (firstLaunch) navigation.navigate("Permissions")
 	}, [firstLaunch, navigation])
-	// const doseStore = useDoseStore()
+	const { data } = useLiveQuery(getPendingDoseListFull)
 
 	return (
 		<View style={styles.page}>
-			{/* <FlatList
-				data={doseStore.data.sort((a, b) => compareAsc(a.time, b.time))}
-				keyExtractor={(item) => item.id}
-				renderItem={(item) => (
+			<FlatList
+				data={data}
+				keyExtractor={(item) => String(item.id)}
+				renderItem={({ item }) => (
 					<DoseCard
-						{...item.item}
-						onConfirm={(id) => doseStore.changeStatus(id, "confirm")}
-						onSkip={(id) => doseStore.changeStatus(id, "skip")}
+						{...item}
+						onConfirm={() => changeDoseStatus(item.id, "confirm")}
+						onSkip={() => changeDoseStatus(item.id, "skip")}
 					/>
 				)}
-			/> */}
+			/>
 		</View>
 	)
 }

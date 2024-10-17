@@ -1,5 +1,5 @@
+import { data } from "@/db/mock/medicine"
 import { withAppbar } from "@/decorators"
-import { data } from "@/models/mock/medicine"
 import type { Meta, StoryObj } from "@storybook/react"
 import { ScheduleForm } from "."
 
@@ -9,7 +9,7 @@ const meta = {
 	decorators: [withAppbar],
 	args: {
 		// biome-ignore lint/style/noNonNullAssertion: <explanation>
-		data: data[0].schedule![0],
+		data: data[0].schedules![0],
 	},
 	argTypes: {},
 } satisfies Meta<typeof ScheduleForm>
@@ -22,5 +22,5 @@ export const Primary: Story = {
 }
 
 export const Create: Story = {
-	render: () => <ScheduleForm data={undefined} />,
+	render: (args) => <ScheduleForm {...args} data={undefined} />,
 }

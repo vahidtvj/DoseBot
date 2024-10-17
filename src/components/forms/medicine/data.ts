@@ -1,20 +1,21 @@
-import type { IMedicine, IMedicineFull, ISchedule } from "@/db/query"
-import { MedicineSchema } from "@/models"
+import {
+	FormMedicineSchema,
+	type IMedicineCreate,
+	type IScheduleFullCreate,
+} from "@/db"
 import type { z } from "zod"
 
 export type Props = {
-	data?: IMedicine
-	schedules?: ISchedule[]
+	data?: IMedicineCreate
+	schedules?: (IScheduleFullCreate & { _id: string })[]
 } & {
-	onSubmit: (data: Omit<IMedicine, "id">) => void
+	onSubmit: (data: Omit<IMedicineCreate, "id">) => void
 	scheduleActions: {
-		open: (id?: number) => void
-		onSubmit: (data: ISchedule) => void
-		onDelete: (id: number) => void
+		open: (medData: IMedicineCreate, id?: number) => void
 	}
 }
 
-export const schema = MedicineSchema
+export const schema = FormMedicineSchema
 
 export type Inputs = z.infer<typeof schema>
 
@@ -26,4 +27,5 @@ export const defaultValues: Inputs = {
 	paused: false,
 	type: "pill",
 	note: "",
+	removed: false,
 }

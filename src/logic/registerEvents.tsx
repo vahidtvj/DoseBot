@@ -1,5 +1,4 @@
-import type { IDoseStatus } from "@/models"
-import { useDoseStore } from "@/stores/doseStore"
+import { changeDoseStatus } from "@/db"
 import notifee, { EventType } from "@notifee/react-native"
 import * as BackgroundFetch from "expo-background-fetch"
 import * as TaskManager from "expo-task-manager"
@@ -13,9 +12,9 @@ notifee.onForegroundEvent(({ type, detail }) => {
 		detail.pressAction?.id &&
 		detail.notification?.id
 	) {
-		const id = detail.notification.id
-		const action = detail.pressAction.id as IDoseStatus
-		useDoseStore.getState().changeStatus(id, action)
+		const id = Number.parseInt(detail.notification.id)
+		const action = detail.pressAction.id as "skip" | "confirm"
+		changeDoseStatus(id, action)
 	}
 })
 

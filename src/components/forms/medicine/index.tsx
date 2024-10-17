@@ -22,7 +22,7 @@ export function MedicineForm(props: Props) {
 	const { scheduleActions } = props
 	const { t } = useTranslation()
 
-	const { control, handleSubmit, watch } = useForm<Inputs>({
+	const { control, handleSubmit, watch, getValues } = useForm<Inputs>({
 		defaultValues: data,
 		resolver: zodResolver(schema),
 	})
@@ -63,7 +63,6 @@ export function MedicineForm(props: Props) {
 						<Card.Content style={styles.card}>
 							<View style={styles.row}>
 								<Text variant="bodyLarge">{t("inventory")}: </Text>
-								{/* <Checkbox status={data.inventory.enabled ? "checked" : "unchecked"} /> */}
 								<CheckboxField control={control} name="inventoryEnabled" />
 							</View>
 							{inventoryEnabled && (
@@ -88,25 +87,6 @@ export function MedicineForm(props: Props) {
 							)}
 						</Card.Content>
 					</Card>
-					<Text variant="bodyLarge">{t("priority")}: </Text>
-					{/* TODO */}
-					<SegmentedButtons
-						value="Low"
-						onValueChange={() => {}}
-						buttons={[
-							{
-								value: "Low",
-								label: "Low",
-								icon: "alarm-off",
-							},
-							{
-								value: "Normal",
-								label: "Normal",
-								icon: "alarm",
-							},
-							{ value: "High", label: "High", icon: "alarm-note" },
-						]}
-					/>
 					<View>
 						<View style={[styles.row, { marginHorizontal: 7 }]}>
 							<Text variant="titleLarge">{t("schedules")}:</Text>
@@ -114,19 +94,18 @@ export function MedicineForm(props: Props) {
 								<Button
 									mode="contained-tonal"
 									icon="plus"
-									onPress={() => scheduleActions.open()}
+									onPress={() => scheduleActions.open(getValues())}
 								>
 									{t("add")}
 								</Button>
 							</View>
 						</View>
 						<View>
-							{schedules.map((schedule) => (
+							{schedules.map((schedule, i) => (
 								<ScheduleCard
-									key={schedule.id}
+									key={schedule._id}
 									data={schedule}
-									edit={false}
-									onPress={() => scheduleActions.open(schedule.id)}
+									onPress={() => scheduleActions.open(getValues(), i)}
 								/>
 							))}
 						</View>

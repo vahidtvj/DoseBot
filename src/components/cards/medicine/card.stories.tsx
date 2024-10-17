@@ -1,5 +1,5 @@
+import { data } from "@/db/mock/medicine"
 import { withSafeView } from "@/decorators"
-import { data } from "@/models/mock/medicine"
 import type { Meta, StoryObj } from "@storybook/react"
 import { MedicineCard } from "."
 
