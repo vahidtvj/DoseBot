@@ -1,12 +1,14 @@
 import { addDoseOnCreate } from "@/logic/dose"
 import { removeNotification, updateNotifications } from "@/logic/notification"
-import { and, asc, eq, inArray } from "drizzle-orm"
+import { and, asc, eq, inArray, sql } from "drizzle-orm"
 import * as schema from "../schema"
 import type { IDoseCreate } from "../types"
 import { db } from "./client"
 type IMedicine = schema.IMedicine
 type ISchedule = schema.ISchedule
 type IDosing = schema.IDosing
+
+// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 export const getAllMeds = db.query.medicine.findMany({
 	where: eq(schema.medicine.removed, false),
@@ -293,16 +295,10 @@ export const changeDoseStatus = async (
 	})
 
 	let updateCountBy = 0
-	let newCount = -1
 	if (!data || data.status === status) return
 
 	if (data.status !== "confirm" && status === "confirm") updateCountBy = -1
 	else if (data.status === "confirm" && status !== "confirm") updateCountBy = 1
-
-	if (data.medicineId && updateCountBy !== 0) {
-		const med = await getMed(data.medicineId)
-		if (med?.inventoryEnabled) newCount = med.inventoryCount + updateCountBy
-	}
 
 	await removeNotification(id)
 	await db.transaction(async (tx) => {
@@ -310,10 +306,12 @@ export const changeDoseStatus = async (
 			.update(schema.dose)
 			.set({ status: status })
 			.where(eq(schema.dose.id, id))
-		if (data.medicineId && newCount >= 0)
+		if (data.medicineId && updateCountBy !== 0)
 			await tx
 				.update(schema.medicine)
-				.set({ inventoryCount: newCount })
+				.set({
+					inventoryCount: sql`${schema.medicine.inventoryCount} + ${updateCountBy}`,
+				})
 				.where(eq(schema.medicine.id, data.medicineId))
 	})
 }
