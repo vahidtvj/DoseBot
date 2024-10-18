@@ -288,7 +288,7 @@ export const insertDoses = async (data: IDoseCreate[]) => {
 
 export const changeDoseStatus = async (
 	id: number,
-	status: "skip" | "confirm",
+	status: "skip" | "confirm" | "pending",
 ) => {
 	const data = await db.query.dose.findFirst({
 		where: eq(schema.dose.id, id),

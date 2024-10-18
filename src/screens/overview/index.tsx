@@ -1,10 +1,11 @@
 import { DoseCard } from "@/components/cards/dose"
-import { changeDoseStatus, getPendingDoseListFull } from "@/db"
+import { type IDoseFull, changeDoseStatus, getPendingDoseListFull } from "@/db"
 import type { HomeTabScreenProps } from "@/routes/types"
 import { useAppState } from "@/stores/app"
 import { useLiveQuery } from "drizzle-orm/expo-sqlite"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { FlatList, StyleSheet, View } from "react-native"
+import { Snackbar } from "react-native-paper"
 export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	const firstLaunch = useAppState((state) => state.firstLaunch)
 
@@ -13,6 +14,20 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	}, [firstLaunch, navigation])
 	const { data } = useLiveQuery(getPendingDoseListFull)
 
+	const [snackVisible, setSnackVisible] = useState(false)
+	const [snackDose, setSnackDose] = useState<IDoseFull | undefined>()
+
+	function onClick(dose: IDoseFull, action: "skip" | "confirm") {
+		return changeDoseStatus(dose.id, action).then(() => {
+			setSnackDose(dose)
+			setSnackVisible(true)
+		})
+	}
+	async function undo() {
+		if (!snackDose) return
+		setSnackVisible(false)
+		await changeDoseStatus(snackDose.id, "pending")
+	}
 	return (
 		<View style={styles.page}>
 			<FlatList
@@ -21,11 +36,21 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 				renderItem={({ item }) => (
 					<DoseCard
 						{...item}
-						onConfirm={() => changeDoseStatus(item.id, "confirm")}
-						onSkip={() => changeDoseStatus(item.id, "skip")}
+						onConfirm={() => onClick(item, "confirm")}
+						onSkip={() => onClick(item, "skip")}
 					/>
 				)}
 			/>
+			<Snackbar
+				visible={snackVisible}
+				onDismiss={() => setSnackVisible(false)}
+				action={{
+					label: "Undo",
+					onPress: undo,
+				}}
+			>
+				{`Updated medicine "${snackDose?.medicine?.name}"`}
+			</Snackbar>
 		</View>
 	)
 }
