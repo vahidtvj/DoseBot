@@ -28,36 +28,43 @@ import Constants from "expo-constants"
 // App
 import { useFonts } from "expo-font"
 import "react-native-gesture-handler"
+import * as SplashScreen from "expo-splash-screen"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
+
+SplashScreen.preventAutoHideAsync()
 const MainApp =
 	Constants.expoConfig?.extra?.storybookEnabled === "true"
 		? require("./.storybook")
 		: require("./src/main")
 
-// TODO: Temporary
-import { Text, View } from "react-native"
+import { useCallback, useEffect, useState } from "react"
 function App() {
-	const { error, success } = useMigrations(db, migrations)
+	const [isLoading, setIsLoading] = useState(true)
+	const { success: migrationsLoaded } = useMigrations(db, migrations)
+	let fontsLoaded = !__DEV__
 
 	if (__DEV__) {
 		useDrizzleStudio(expoDb)
 		// load custom icon font
 		// required for dev only to update the font file without the need for a dev build
-		const [fontsLoaded] = useFonts({
+		fontsLoaded = useFonts({
 			customIcon: require("./assets/fonts/customIcon.ttf"),
-		})
-		if (!fontsLoaded) return null
+		})[0]
 	}
-	if (error) {
-		return (
-			<View>
-				<Text>Migration error: {error.message}</Text>
-			</View>
-		)
-	}
-	if (!success) return <Text>Loading</Text>
+
+	useEffect(() => {
+		if (fontsLoaded && migrationsLoaded) setIsLoading(false)
+	}, [fontsLoaded, migrationsLoaded])
+
+	const onLayoutRootView = useCallback(async () => {
+		if (!isLoading && migrationsLoaded) {
+			await SplashScreen.hideAsync()
+		}
+	}, [isLoading, migrationsLoaded])
+
+	if (isLoading) return null
 	return (
-		<GestureHandlerRootView style={{ flex: 1 }}>
+		<GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
 			<BaseLayout>
 				<MainApp.default />
 			</BaseLayout>
