@@ -40,6 +40,7 @@ export default function Page({
 
 	function onSubmit(data: IMedicineCreate) {
 		updateFullMed({ med: data, schedules: schedules || [] })
+		navigation.goBack()
 	}
 	if (id && !medicine) return null
 	return (

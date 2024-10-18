@@ -1,3 +1,4 @@
+import { addDoseOnCreate } from "@/logic/dose"
 import { removeNotification, updateNotifications } from "@/logic/notification"
 import { and, asc, eq, inArray } from "drizzle-orm"
 import * as schema from "../schema"
@@ -21,6 +22,12 @@ export const getAllMeds = db.query.medicine.findMany({
 export const getMed = (id: number) =>
 	db.query.medicine.findFirst({
 		where: eq(schema.medicine.id, id),
+		with: {
+			schedules: {
+				with: { dosing: true },
+				orderBy: [asc(schema.schedule.startDate)],
+			},
+		},
 	})
 
 export const getSchedules = (medId: number) =>
@@ -53,8 +60,12 @@ export const deleteMed = async (id: number) => {
 
 	await db.transaction(async (tx) => {
 		if (pendingDoseIds.length > 0) {
+			console.log("here")
+
 			removeNotification(pendingDoseIds)
-			tx.delete(schema.dose).where(inArray(schema.dose.id, pendingDoseIds))
+			await tx
+				.delete(schema.dose)
+				.where(inArray(schema.dose.id, pendingDoseIds))
 		}
 
 		// check for existing doses already in user progress (besides the ones we just removed)
@@ -64,10 +75,11 @@ export const deleteMed = async (id: number) => {
 			})) === undefined
 		)
 			// nothing found. just remove
-			tx.delete(schema.medicine).where(eq(schema.medicine.id, id)).run()
+			await tx.delete(schema.medicine).where(eq(schema.medicine.id, id)).run()
 		else {
 			// set removed field so its not shown for user but it still shows up and can be queried in user history/progress
-			tx.update(schema.medicine)
+			await tx
+				.update(schema.medicine)
 				.set({ removed: true })
 				.where(eq(schema.medicine.id, id))
 		}
@@ -159,17 +171,19 @@ export const updateFullMed = async (data: {
 			),
 		)
 
-		await Promise.all(
+		const dosingIds = await Promise.all(
 			data.schedules.flatMap((sc, i) =>
 				sc.dosing.map(
 					async (x) =>
-						await tx
-							.insert(schema.dosing)
-							.values({ ...x, scheduleId: scIds[i] }),
+						(
+							await tx
+								.insert(schema.dosing)
+								.values({ ...x, scheduleId: scIds[i] })
+								.returning()
+						)[0].id,
 				),
 			),
 		)
-
 		// for (let i = 0; i < data.schedules.length; i++) {
 		// 	const sc = data.schedules[i];
 		// 	for(const el of sc.dosing)
@@ -236,8 +250,8 @@ export const updateFullMed = async (data: {
 				.delete(schema.dose)
 				.where(inArray(schema.dose.id, pendingDoseList))
 		}
-		// todo create doses and scheduleAlerts
 	})
+	addDoseOnCreate(medId)
 }
 
 export const getDoseFull = async (id: number) =>
@@ -267,7 +281,7 @@ export const insertDoses = async (data: IDoseCreate[]) => {
 		await db.insert(schema.dose).values(data).returning()
 	).map((x) => x.id)
 	const doses = await getDoseListFull(doseIds)
-	updateNotifications(doses)
+	await updateNotifications(doses)
 }
 
 export const changeDoseStatus = async (
