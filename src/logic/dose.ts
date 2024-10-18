@@ -3,6 +3,7 @@ import {
 	type IDoseFull,
 	changeDoseStatus,
 	getAllMeds,
+	getMed,
 	getPendingDoseListFull,
 	insertDoses,
 } from "@/db"
@@ -11,6 +12,15 @@ import { useAppState } from "@/stores/app"
 import { isFuture, isToday, startOfToday, startOfTomorrow } from "date-fns"
 import { getDosage } from "./getDosage"
 const noop = () => {}
+
+export async function addDoseOnCreate(medId?: number) {
+	if (!medId) return
+	const med = await getMed(medId)
+	if (!med) return
+
+	const list = getDosage([med])
+	await insertDoses(list)
+}
 
 async function addDoses(tomorrow = false) {
 	const data = await getAllMeds.execute()
