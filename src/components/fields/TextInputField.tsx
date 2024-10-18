@@ -28,8 +28,7 @@ export function TextInputField<T extends object>(
 			/>
 			{!noHelper && hasError && (
 				<HelperText type="error" visible={hasError}>
-					{/*  TODO translate errors*/}
-					{fieldState.error?.type}
+					{fieldState.error?.message}
 				</HelperText>
 			)}
 		</View>
