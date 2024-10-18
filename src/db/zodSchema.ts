@@ -62,7 +62,7 @@ export const FormScheduleSchema: z.ZodType<IScheduleFullCreate> = z.union([
 		interval: z.coerce
 			.number()
 			.min(2)
-			.refine((val) => val % 1 === 0, { message: "Not an Integer" }),
+			.refine((val) => val % 1 === 0, { params: { i18n: "no_decimal" } }),
 		days: z.preprocess(() => null, z.null()) as z.ZodType<null>,
 	}),
 	baseSchedule.extend({

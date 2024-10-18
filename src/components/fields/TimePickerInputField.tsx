@@ -53,7 +53,7 @@ export function TimePickerInputField<T extends FieldValues>(
 			{!noHelper && hasError && (
 				<HelperText type="error" visible={hasError}>
 					{/*  TODO translate errors*/}
-					{fieldState.error?.type}
+					{fieldState.error?.message}
 				</HelperText>
 			)}
 			<TimePickerModal
