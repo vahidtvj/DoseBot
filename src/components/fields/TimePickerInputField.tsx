@@ -21,10 +21,11 @@ export function TimePickerInputField<T extends FieldValues>(
 		Omit<TextInputProps, "value" | "onChange" | "readOnly" | "right"> & {
 			containerStyle?: StyleProp<ViewStyle>
 			noHelper?: boolean
+			readOnly?: boolean
 		},
 ) {
 	const { field, fieldState } = useController(props)
-	const { containerStyle, noHelper, ...rest } = useProps(props)
+	const { containerStyle, noHelper, readOnly, ...rest } = useProps(props)
 	const hasError = fieldState.error !== undefined
 
 	const value = field.value && toTimeString(field.value)
@@ -47,7 +48,13 @@ export function TimePickerInputField<T extends FieldValues>(
 				readOnly
 				error={hasError}
 				{...rest}
-				right={<TextInput.Icon icon="clock" onPress={() => setVisible(true)} />}
+				right={
+					<TextInput.Icon
+						disabled={readOnly}
+						icon="clock"
+						onPress={() => setVisible(true)}
+					/>
+				}
 			/>
 
 			{!noHelper && hasError && (

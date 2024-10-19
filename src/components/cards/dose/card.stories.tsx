@@ -33,8 +33,8 @@ export const Multiple: Story = {
 				<DoseCard
 					key={item.item.id}
 					{...item.item}
-					onConfirm={() => {}}
-					onSkip={() => {}}
+					onConfirm={async () => {}}
+					onSkip={async () => {}}
 				/>
 			)}
 		/>

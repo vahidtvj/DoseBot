@@ -1,3 +1,4 @@
+import { LoadingPage } from "@/components/common/loadingPage"
 import { MedicineForm } from "@/components/forms/medicine"
 import { type IMedicineCreate, deleteMed, updateFullMed } from "@/db"
 import type { RootStackScreenProps } from "@/routes/types"
@@ -42,7 +43,8 @@ export default function Page({
 		updateFullMed({ med: data, schedules: schedules || [] })
 		navigation.goBack()
 	}
-	if (id && !medicine) return null
+	const isLoading = id && !medicine
+	if (isLoading) return <LoadingPage />
 	return (
 		<View style={styles.page}>
 			<MedicineForm

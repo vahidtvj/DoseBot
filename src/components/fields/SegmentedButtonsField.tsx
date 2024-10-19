@@ -7,16 +7,19 @@ import {
 
 export function SegmentedButtonsField<T extends object>(
 	props: UseControllerProps<T> &
-		Omit<SegmentedButtonsProps, "value" | "onValueChange">,
+		Omit<SegmentedButtonsProps, "value" | "onValueChange"> & {
+			readOnly?: boolean
+		},
 ) {
 	const { field } = useController(props)
 	const rest = useProps(props)
+	const { readOnly } = props
 	// const hasError = fieldState.error !== undefined
 
 	return (
 		<SegmentedButtons
 			value={field.value}
-			onValueChange={field.onChange}
+			onValueChange={!readOnly ? field.onChange : () => {}}
 			{...rest}
 		/>
 	)

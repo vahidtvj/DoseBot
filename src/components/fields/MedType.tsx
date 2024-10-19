@@ -6,9 +6,12 @@ import { View } from "react-native"
 import { Chip } from "react-native-paper"
 import { ItemPicker } from "../pickers/itemPicker"
 
-export function MedTypeField<T extends object>(props: UseControllerProps<T>) {
+export function MedTypeField<T extends object>(
+	props: UseControllerProps<T> & { readOnly?: boolean },
+) {
 	const { t } = useTranslation()
 	const { field } = useController(props)
+	const { readOnly } = props
 	// const rest = useProps(props)
 	// const hasError = fieldState.error !== undefined
 
@@ -23,7 +26,12 @@ export function MedTypeField<T extends object>(props: UseControllerProps<T>) {
 
 	return (
 		<View>
-			<Chip mode="flat" icon={MedIconMap[value]} onPress={() => setOpen(true)}>
+			<Chip
+				disabled={readOnly}
+				mode="flat"
+				icon={MedIconMap[value]}
+				onPress={() => setOpen(true)}
+			>
 				{t(`medType.${value}`)}
 			</Chip>
 			<ItemPicker
