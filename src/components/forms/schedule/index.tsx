@@ -44,83 +44,84 @@ export function ScheduleForm(props: Props) {
 
 	return (
 		<View style={styles.page}>
-			<View style={styles.pageContent}>
-				<SegmentedButtonsField
-					readOnly={isProcessing}
-					control={control}
-					name="type"
-					buttons={[
-						{
-							value: "Daily",
-							label: t("medicine.daily"),
-							icon: "calendar-today",
-						},
-						{
-							value: "EveryXdays",
-							label: t("medicine.everyXday"),
-							icon: "calendar-sync",
-						},
-						{
-							value: "Weekly",
-							label: t("medicine.weekly"),
-							icon: "calendar-week",
-						},
-					]}
-				/>
-				{type === "Weekly" && (
-					<View>
-						<WeekdayPickerField
+			<ScrollView>
+				<View style={styles.pageContent}>
+					<SegmentedButtonsField
+						readOnly={isProcessing}
+						control={control}
+						name="type"
+						buttons={[
+							{
+								value: "Daily",
+								label: t("medicine.daily"),
+								icon: "calendar-today",
+							},
+							{
+								value: "EveryXdays",
+								label: t("medicine.everyXday"),
+								icon: "calendar-sync",
+							},
+							{
+								value: "Weekly",
+								label: t("medicine.weekly"),
+								icon: "calendar-week",
+							},
+						]}
+					/>
+					{type === "Weekly" && (
+						<View>
+							<WeekdayPickerField
+								readOnly={isProcessing}
+								control={control}
+								name="days"
+								defaultValue={[]}
+							/>
+						</View>
+					)}
+					{type === "EveryXdays" && (
+						<TextInputField
+							control={control}
+							name="interval"
+							mode="outlined"
+							label={t("medicine.interval")}
+							inputMode="numeric"
+							right={<TextInput.Affix text={t("medicine.daysAffix")} />}
+							// @ts-ignore I have no idea why this is an error! */
+							defaultValue={2}
+							readOnly={isProcessing}
+						/>
+					)}
+					<View style={styles.dateView}>
+						{/* TODO date picker locales */}
+						{/* TODO picker icon hit box very small */}
+						<DatePickerInputField
 							readOnly={isProcessing}
 							control={control}
-							name="days"
-							defaultValue={[]}
+							name="startDate"
+							label={t("startDate")}
+							mode="outlined"
+							containerStyle={styles.date}
+						/>
+						<DatePickerInputField
+							readOnly={isProcessing}
+							control={control}
+							name="endDate"
+							label={t("endDate")}
+							mode="outlined"
+							containerStyle={styles.date}
 						/>
 					</View>
-				)}
-				{type === "EveryXdays" && (
-					<TextInputField
-						control={control}
-						name="interval"
-						mode="outlined"
-						label={t("medicine.interval")}
-						inputMode="numeric"
-						right={<TextInput.Affix text={t("medicine.daysAffix")} />}
-						// @ts-ignore I have no idea why this is an error! */
-						defaultValue={2}
-						readOnly={isProcessing}
-					/>
-				)}
-				<View style={styles.dateView}>
-					{/* TODO date picker locales */}
-					{/* TODO picker icon hit box very small */}
-					<DatePickerInputField
-						readOnly={isProcessing}
-						control={control}
-						name="startDate"
-						label={t("startDate")}
-						mode="outlined"
-						containerStyle={styles.date}
-					/>
-					<DatePickerInputField
-						readOnly={isProcessing}
-						control={control}
-						name="endDate"
-						label={t("endDate")}
-						mode="outlined"
-						containerStyle={styles.date}
-					/>
-				</View>
-				<View style={styles.addTime}>
-					<Button
-						disabled={isProcessing}
-						mode="contained"
-						icon="plus"
-						onPress={addDose}
-					>
-						{t("medicine.addDose")}
-					</Button>
-				</View>
-				<ScrollView>
+					<View style={styles.addTime}>
+						<Button
+							disabled={isProcessing}
+							mode="contained"
+							icon="plus"
+							onPress={addDose}
+						>
+							{t("medicine.addDose")}
+						</Button>
+					</View>
+
 					<View style={styles.doses}>
 						{dosingArray.fields.map((dose, i) => (
 							<DosingCard
@@ -132,8 +133,8 @@ export function ScheduleForm(props: Props) {
 							/>
 						))}
 					</View>
-				</ScrollView>
-			</View>
+				</View>
+			</ScrollView>
 			<FAB
 				mode="flat"
 				icon="content-save"
