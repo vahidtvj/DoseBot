@@ -12,13 +12,15 @@ import { HelperText, TextInput, type TextInputProps } from "react-native-paper"
 export function DatePickerInputField<T extends FieldValues>(
 	props: UseControllerProps<T> &
 		Omit<TextInputProps, "value" | "onChange" | "readOnly" | "right"> & {
+			readOnly?: boolean
 			containerStyle?: StyleProp<ViewStyle>
 			minDate?: Date
 			maxDate?: Date
 		},
 ) {
 	const { field, fieldState } = useController(props)
-	const { containerStyle, minDate, maxDate, ...rest } = useProps(props)
+	const { containerStyle, minDate, maxDate, readOnly, ...rest } =
+		useProps(props)
 	const hasError = fieldState.error !== undefined
 	const { format } = useDateFunc()
 
@@ -32,6 +34,7 @@ export function DatePickerInputField<T extends FieldValues>(
 				{...rest}
 				right={
 					<TextInput.Icon
+						disabled={readOnly}
 						icon="calendar"
 						onPress={() =>
 							datePicker.open({

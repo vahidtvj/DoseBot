@@ -1,3 +1,4 @@
+import { LoadingPage } from "@/components/common/loadingPage"
 import { ScheduleForm } from "@/components/forms/schedule"
 import type { IScheduleFullCreate } from "@/db"
 import type { RootStackScreenProps } from "@/routes/types"
@@ -16,7 +17,7 @@ export default function Page({
 
 	const { t } = useTranslation()
 	const { schedules, setSchedule, removeSchedule } = useMedicineFormState()
-	if (index !== undefined && !schedules) return null
+	if (index !== undefined && !schedules) return <LoadingPage />
 	const data = index !== undefined && schedules ? schedules[index] : undefined
 	const key = data?._id
 
@@ -35,6 +36,11 @@ export default function Page({
 	}, [navigation, t, schedules, index, onDelete])
 
 	function onSubmit(data: IScheduleFullCreate) {
+		navigation.setOptions({
+			headerRight: () => (
+				<Appbar.Action disabled={true} icon="delete" onPress={onDelete} />
+			),
+		})
 		setSchedule(data, key)
 		navigation.goBack()
 	}

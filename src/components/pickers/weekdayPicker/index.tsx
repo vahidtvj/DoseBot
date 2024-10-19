@@ -7,9 +7,10 @@ import { Button } from "react-native-paper"
 type Props = {
 	selected: Weekday[]
 	onSelect: (days: Weekday[]) => void
+	readOnly?: boolean
 }
 export function WeekdayPicker(props: Props) {
-	const { selected } = props
+	const { selected, readOnly } = props
 	const { t } = useTranslation()
 	const { getOrderedWeekdays } = useDateUtils()
 	const days = getOrderedWeekdays()
@@ -25,7 +26,7 @@ export function WeekdayPicker(props: Props) {
 				<Button
 					key={day}
 					mode={selected.includes(day) ? "contained" : "elevated"}
-					onPress={() => onSelect(day)}
+					onPress={() => !readOnly && onSelect(day)}
 				>
 					{t(`date.${day}`)}
 				</Button>

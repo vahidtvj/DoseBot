@@ -6,14 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { type SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { ScrollView, StyleSheet, View } from "react-native"
-import {
-	Button,
-	Card,
-	FAB,
-	SegmentedButtons,
-	Surface,
-	Text,
-} from "react-native-paper"
+import { Button, Card, FAB, Surface, Text } from "react-native-paper"
 import { type Inputs, type Props, defaultValues, schema } from "./data"
 
 export function MedicineForm(props: Props) {
@@ -22,10 +15,12 @@ export function MedicineForm(props: Props) {
 	const { scheduleActions } = props
 	const { t } = useTranslation()
 
-	const { control, handleSubmit, watch, getValues } = useForm<Inputs>({
-		defaultValues: data,
-		resolver: zodResolver(schema),
-	})
+	const { control, handleSubmit, watch, getValues, formState } =
+		useForm<Inputs>({
+			defaultValues: data,
+			resolver: zodResolver(schema),
+		})
+	const isProcessing = formState.isSubmitting || formState.isSubmitSuccessful
 
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
 		props.onSubmit(data)
@@ -41,13 +36,18 @@ export function MedicineForm(props: Props) {
 						name="name"
 						mode="outlined"
 						label={t("medicineName")}
+						readOnly={isProcessing}
 					/>
 
 					<View style={{ flexDirection: "row", gap: 12 }}>
 						<Surface style={{ padding: 8, flex: 1 }}>
 							<View style={styles.row}>
 								<Text variant="bodyLarge">{t("medicine.type")}:</Text>
-								<MedTypeField control={control} name="type" />
+								<MedTypeField
+									control={control}
+									name="type"
+									readOnly={isProcessing}
+								/>
 							</View>
 						</Surface>
 						<TextInputField
@@ -57,13 +57,18 @@ export function MedicineForm(props: Props) {
 							mode="outlined"
 							dense
 							label={t("intakeAdvice")}
+							readOnly={isProcessing}
 						/>
 					</View>
 					<Card>
 						<Card.Content style={styles.card}>
 							<View style={styles.row}>
 								<Text variant="bodyLarge">{t("inventory")}: </Text>
-								<CheckboxField control={control} name="inventoryEnabled" />
+								<CheckboxField
+									control={control}
+									name="inventoryEnabled"
+									readOnly={isProcessing}
+								/>
 							</View>
 							{inventoryEnabled && (
 								<View style={styles.inv}>
@@ -74,6 +79,7 @@ export function MedicineForm(props: Props) {
 										label={t("count")}
 										inputMode="numeric"
 										containerStyle={{ flexGrow: 1 }}
+										readOnly={isProcessing}
 									/>
 									<TextInputField
 										control={control}
@@ -82,6 +88,7 @@ export function MedicineForm(props: Props) {
 										label={t("threshold")}
 										inputMode="numeric"
 										containerStyle={{ flexGrow: 1 }}
+										readOnly={isProcessing}
 									/>
 								</View>
 							)}
@@ -95,6 +102,7 @@ export function MedicineForm(props: Props) {
 									mode="contained-tonal"
 									icon="plus"
 									onPress={() => scheduleActions.open(getValues())}
+									disabled={isProcessing}
 								>
 									{t("add")}
 								</Button>
@@ -105,7 +113,9 @@ export function MedicineForm(props: Props) {
 								<ScheduleCard
 									key={schedule._id}
 									data={schedule}
-									onPress={() => scheduleActions.open(getValues(), i)}
+									onPress={() =>
+										!isProcessing && scheduleActions.open(getValues(), i)
+									}
 								/>
 							))}
 						</View>
@@ -118,6 +128,8 @@ export function MedicineForm(props: Props) {
 				style={styles.fab}
 				label={t("save")}
 				onPress={handleSubmit(onSubmit)}
+				loading={isProcessing}
+				disabled={isProcessing}
 			/>
 		</View>
 	)

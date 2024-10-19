@@ -8,11 +8,12 @@ import { Card, IconButton, TextInput } from "react-native-paper"
 
 type IProps = {
 	onRemove?: () => void
+	readOnly?: boolean
 }
 
 export function DosingCard(props: UseControllerProps<Inputs> & IProps) {
 	const { t } = useTranslation()
-
+	const { readOnly } = props
 	const i = Number.parseInt(props.name.split(".").pop() || "")
 
 	return (
@@ -24,6 +25,7 @@ export function DosingCard(props: UseControllerProps<Inputs> & IProps) {
 					dense
 					mode="outlined"
 					label={t("time")}
+					readOnly={readOnly}
 				/>
 				<TextInputField
 					control={props.control}
@@ -34,8 +36,13 @@ export function DosingCard(props: UseControllerProps<Inputs> & IProps) {
 					label={t("amount")}
 					inputMode="numeric"
 					right={<TextInput.Icon icon={"pill"} />}
+					readOnly={readOnly}
 				/>
-				<IconButton icon="delete" onPress={() => props.onRemove?.()} />
+				<IconButton
+					disabled={readOnly}
+					icon="delete"
+					onPress={() => props.onRemove?.()}
+				/>
 			</Card.Content>
 		</Card>
 	)

@@ -2,17 +2,21 @@ import { MedIconMap } from "@/constants"
 import type { IDoseFull } from "@/db"
 import { useDateUtils } from "@/utils"
 import { isPast } from "date-fns"
+import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Button, Card, IconButton, Text, useTheme } from "react-native-paper"
 
 type IProps = IDoseFull & {
-	onConfirm: (id: number) => void
-	onSkip: (id: number) => void
+	onConfirm: (id: number) => Promise<void>
+	onSkip: (id: number) => Promise<void>
 }
 
 export function DoseCard(props: IProps) {
 	const theme = useTheme()
+	const [isProcessing, setIsProcessing] = useState<"skip" | "confirm" | false>(
+		false,
+	)
 	const { amount: dose, time, status, id, medicine } = props
 	if (!medicine) return
 	const { name: title, type, note } = medicine
@@ -26,6 +30,12 @@ export function DoseCard(props: IProps) {
 	} else if (status === "skip" || isPast(time))
 		timeStyle = { color: theme.colors.error }
 
+	async function handleAction(action: "skip" | "confirm", id: number) {
+		setIsProcessing(action)
+		if (action === "skip") await props.onSkip(id)
+		else await props.onConfirm(id)
+		setIsProcessing(false)
+	}
 	return (
 		<Card mode="contained" style={styles.card}>
 			<Card.Title
@@ -58,10 +68,20 @@ export function DoseCard(props: IProps) {
 
 			<Card.Actions>
 				{showBtns && (
-					<Button onPress={() => props.onSkip(id)}>{t("medicine.skip")}</Button>
+					<Button
+						disabled={!!isProcessing}
+						loading={isProcessing === "skip"}
+						onPress={() => handleAction("skip", id)}
+					>
+						{t("medicine.skip")}
+					</Button>
 				)}
 				{showBtns && (
-					<Button onPress={() => props.onConfirm(id)}>
+					<Button
+						disabled={!!isProcessing}
+						loading={isProcessing === "confirm"}
+						onPress={() => handleAction("confirm", id)}
+					>
 						{t("medicine.confirm")}
 					</Button>
 				)}

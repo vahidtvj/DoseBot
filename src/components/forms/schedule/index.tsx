@@ -18,10 +18,11 @@ export function ScheduleForm(props: Props) {
 	const data = props.data || defaultValues
 	const { t } = useTranslation()
 
-	const { control, handleSubmit, watch } = useForm<Inputs>({
+	const { control, handleSubmit, watch, formState } = useForm<Inputs>({
 		defaultValues: data,
 		resolver: zodResolver(schema),
 	})
+	const isProcessing = formState.isSubmitting || formState.isSubmitSuccessful
 
 	const dosingArray = useFieldArray({
 		keyName: "_id",
@@ -45,6 +46,7 @@ export function ScheduleForm(props: Props) {
 		<View style={styles.page}>
 			<View style={styles.pageContent}>
 				<SegmentedButtonsField
+					readOnly={isProcessing}
 					control={control}
 					name="type"
 					buttons={[
@@ -68,6 +70,7 @@ export function ScheduleForm(props: Props) {
 				{type === "Weekly" && (
 					<View>
 						<WeekdayPickerField
+							readOnly={isProcessing}
 							control={control}
 							name="days"
 							defaultValue={[]}
@@ -84,12 +87,14 @@ export function ScheduleForm(props: Props) {
 						right={<TextInput.Affix text={t("medicine.daysAffix")} />}
 						// @ts-ignore I have no idea why this is an error! */
 						defaultValue={2}
+						readOnly={isProcessing}
 					/>
 				)}
 				<View style={styles.dateView}>
 					{/* TODO date picker locales */}
 					{/* TODO picker icon hit box very small */}
 					<DatePickerInputField
+						readOnly={isProcessing}
 						control={control}
 						name="startDate"
 						label={t("startDate")}
@@ -97,6 +102,7 @@ export function ScheduleForm(props: Props) {
 						containerStyle={styles.date}
 					/>
 					<DatePickerInputField
+						readOnly={isProcessing}
 						control={control}
 						name="endDate"
 						label={t("endDate")}
@@ -105,7 +111,12 @@ export function ScheduleForm(props: Props) {
 					/>
 				</View>
 				<View style={styles.addTime}>
-					<Button mode="contained" icon="plus" onPress={addDose}>
+					<Button
+						disabled={isProcessing}
+						mode="contained"
+						icon="plus"
+						onPress={addDose}
+					>
 						{t("medicine.addDose")}
 					</Button>
 				</View>
@@ -113,6 +124,7 @@ export function ScheduleForm(props: Props) {
 					<View style={styles.doses}>
 						{dosingArray.fields.map((dose, i) => (
 							<DosingCard
+								readOnly={isProcessing}
 								key={dose._id}
 								control={control}
 								name={`dosing.${i}`}
