@@ -62,8 +62,6 @@ export const deleteMed = async (id: number) => {
 
 	await db.transaction(async (tx) => {
 		if (pendingDoseIds.length > 0) {
-			console.log("here")
-
 			removeNotification(pendingDoseIds)
 			await tx
 				.delete(schema.dose)
@@ -96,44 +94,7 @@ export const updateFullMed = async (data: {
 }) => {
 	let medId = data.med.id
 	const create = !medId
-	// const { med } = data
-	if (medId) {
-		// if its an update (medicine exists)
-		// const oldData = await getMed(medId)
-		// if (!oldData)
-		// 	throw new Error(
-		// 		`Could not find the specified database entry: medicine ${medId}`,
-		// 	)
-		// const { schedules: oldSchedules, ...oldMed } = oldData
-		// if (oldMed.removed === true)
-		// 	throw new Error(
-		// 		`Can not update removed database entry: medicine ${medId}`,
-		// 	)
-		// const pendingDoseList = await db.query.dose.findMany({
-		// 	where: and(
-		// 		eq(schema.dose.medicineId, medId),
-		// 		eq(schema.dose.status, "pending"),
-		// 	),
-		// })
-		// if (pendingDoseList.length > 0 && oldSchedules.length > 0) {
-		// 	// make a changed list
-		// 	// TODO compare and make a changed schedule list
-		// 	// if medicine table scheme has changed update the following then update MedCheck type definition
-		// 	const MedTypeIsSame: Equal<typeof oldMed, MedCheck> = true
-		// 	if (!MedTypeIsSame) throw new Error("non equal types")
-		// 	if (med.paused === true) {
-		// 		removeNotification(pendingDoseList.map((x) => x.id))
-		// 	} else if (
-		// 		oldMed.name !== med.name ||
-		// 		oldMed.type !== med.type ||
-		// 		oldMed.note !== med.note
-		// 	) {
-		// 		// TODO update all pending
-		// 	}
-		// 	// update the dose table and notifs for the changed schedules
-		// 	// ! include this in transaction??
-		// }
-	}
+
 	await db.transaction(async (tx) => {
 		medId = (
 			await tx
@@ -143,34 +104,29 @@ export const updateFullMed = async (data: {
 				.returning()
 		)[0].id
 
-		// const ids = data.schedules.map((x) => x.id).filter((x) => x !== undefined)
-		// await db
-		// 	.delete(schema.schedule)
-		// 	.where(
-		// 		and(
-		// 			eq(schema.schedule.medicineId, medId),
-		// 			notInArray(schema.schedule.id, ids),
-		// 		),
-		// 	)
-		if (!create)
-			await tx
-				.delete(schema.schedule)
-				.where(eq(schema.schedule.medicineId, medId))
+		if (!create) {
+			const ids = (
+				await tx
+					.delete(schema.schedule)
+					.where(eq(schema.schedule.medicineId, medId))
+					.returning()
+			).map((x) => x.id)
+			if (ids.length > 0)
+				await tx
+					.delete(schema.dosing)
+					.where(inArray(schema.dosing.scheduleId, ids))
+		}
 
 		const scIds = await Promise.all(
-			data.schedules.map(
-				async (sc) =>
-					(
-						await tx
-							.insert(schema.schedule)
-							.values({ ...sc, medicineId: medId })
-							// .onConflictDoUpdate({
-							// 	target: schema.schedule.id,
-							// 	set: { ...sc, medicineId: medId },
-							// })
-							.returning()
-					)[0].id,
-			),
+			data.schedules.map(async (sc) => {
+				const { dosing, ...rest } = sc
+				return (
+					await tx
+						.insert(schema.schedule)
+						.values({ ...rest, medicineId: medId, id: undefined })
+						.returning()
+				)[0].id
+			}),
 		)
 
 		const dosingIds = await Promise.all(
@@ -180,64 +136,12 @@ export const updateFullMed = async (data: {
 						(
 							await tx
 								.insert(schema.dosing)
-								.values({ ...x, scheduleId: scIds[i] })
+								.values({ ...x, scheduleId: scIds[i], id: undefined })
 								.returning()
 						)[0].id,
 				),
 			),
 		)
-		// for (let i = 0; i < data.schedules.length; i++) {
-		// 	const sc = data.schedules[i];
-		// 	for(const el of sc.dosing)
-		// 	{
-
-		// 	}
-		// }
-
-		// if (!medId)
-		// 	medId = (await db.insert(schema.medicine).values(data.med).returning())[0]
-		// 		.id
-		// else {
-		// 	await db.update(schema.medicine).set(data.med)
-
-		// 	const ids = data.schedules.map((x) => x.id).filter((x) => x !== undefined)
-		// 	await db
-		// 		.delete(schema.schedule)
-		// 		.where(
-		// 			and(
-		// 				eq(schema.schedule.medicineId, medId),
-		// 				notInArray(schema.schedule.id, ids),
-		// 			),
-		// 		)
-
-		// 	for (const sc of data.schedules)
-		// 		if (sc.id)
-		// 			await db
-		// 				.update(schema.schedule)
-		// 				.set(sc)
-		// 				.where(eq(schema.schedule.id, sc.id))
-		// }
-		// const insertList = data.schedules
-		// 	.filter((x) => x.id === undefined)
-		// 	.map((x) => ({
-		// 		...x,
-		// 		medicineId: medId,
-		// 	}))
-		// const scheduleIds = (
-		// 	await db.insert(schema.schedule).values(insertList).returning()
-		// ).map((x) => x.id)
-
-		// const dosingIds = (
-		// 	await db
-		// 		.insert(schema.dosing)
-		// 		.values(
-		// 			data.schedules.flatMap((x, i) =>
-		// 				x.dosing.map((y) => ({ ...y, scheduleId: scheduleIds[i] })),
-		// 			),
-		// 		)
-		// 		.returning()
-		// ).map((x) => x.id)
-
 		if (!create) {
 			const pendingDoseList = (
 				await tx.query.dose.findMany({
