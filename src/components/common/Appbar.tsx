@@ -9,12 +9,11 @@ export function PaperAppbar(props: RootHeaderProps) {
 	const theme = useAppTheme()
 	const Right = options.headerRight?.({ canGoBack: back !== undefined })
 
-	// @ts-ignore TODO fix type
+	// @ts-expect-error this works btw
 	const openDrawer = () => navigation.openDrawer()
 
 	return (
-		// TODO change appBar color
-		<Appbar.Header style={{ backgroundColor: theme.colors.secondaryContainer }}>
+		<Appbar.Header style={{ backgroundColor: theme.colors.surfaceVariant }}>
 			{!back && <Appbar.Action icon="menu" onPress={openDrawer} />}
 			{back ? <Appbar.BackAction onPress={navigation.goBack} /> : null}
 			<Appbar.Content title={title} />

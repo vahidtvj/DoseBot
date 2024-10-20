@@ -18,7 +18,6 @@ export function AppDrawer(props: DrawerContentComponentProps) {
 				<Drawer.Item
 					label={t("navigation.permissions")}
 					icon="lock"
-					// TODO fix type
 					onPress={() => navigation.navigate("Permissions")}
 				/>
 				<Drawer.Item
