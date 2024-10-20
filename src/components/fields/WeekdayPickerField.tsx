@@ -20,7 +20,6 @@ export function WeekdayPickerField<T extends object>(
 			/>
 			{hasError && (
 				<HelperText type="error" visible={hasError}>
-					{/*  TODO translate errors*/}
 					{fieldState.error?.message}
 				</HelperText>
 			)}

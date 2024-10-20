@@ -48,7 +48,6 @@ export function DatePickerInputField<T extends FieldValues>(
 				}
 			/>
 			<HelperText type="error" visible={hasError}>
-				{/*  TODO translate errors*/}
 				{fieldState.error?.message}
 			</HelperText>
 		</View>
