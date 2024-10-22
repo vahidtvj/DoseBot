@@ -43,7 +43,7 @@ export function App() {
 			<Stack.Screen
 				name="Permissions"
 				component={Permissions}
-				options={{ headerShown: true, title: t("navigation.permissions") }}
+				options={{ headerShown: false, title: t("navigation.permissions") }}
 			/>
 			<Stack.Screen
 				name="Settings"

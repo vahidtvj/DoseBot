@@ -88,6 +88,26 @@ const en = {
 			fa: "فارسی",
 		},
 	},
+	permissions: {
+		welcome: "Welcome to DoseBot",
+		notification: "Notification",
+		notificationSub:
+			"DoseBot requires notification permission for medication alerts.",
+		channels: "Channels",
+		channel: {
+			med: "Medication",
+			inv: "Inventory",
+		},
+		exactAlarm: "Exact Alarm",
+		exactAlarmSub: "This is required to have accurate, on-time notifications.",
+		batteryOpt: "Battery Optimization",
+		batteryOptSub:
+			"The default battery optimization settings might prevent DoseBot's background process from running. The background process schedules dose notifications every day, and without this, the alert system might misbehave.",
+		autostart: "Autostart",
+		autostartSub:
+			"After a reboot, the background process stops and requires manually launching DoseBot. Enabling this will ensure DoseBot can always run, even after a reboot.",
+		go: "Let's go",
+	},
 	select: "Select",
 	cancel: "Cancel",
 	today: "Today",
