@@ -23,7 +23,7 @@ export async function showAlert(props: Props) {
 		subtitle: i18n.t("medicine.pill", { count: props.amount }),
 		android: {
 			channelId,
-			smallIcon: "ic_launcher", // optional, defaults to 'ic_launcher'.
+			smallIcon: "notification_icon", // optional, defaults to 'ic_launcher'.
 			// pressAction is needed if you want the notification to open the app when pressed
 			pressAction: {
 				id: "default",
@@ -63,7 +63,7 @@ export async function scheduleAlert(props: Props) {
 			android: {
 				channelId,
 
-				smallIcon: "ic_launcher", // optional, defaults to 'ic_launcher'.
+				smallIcon: "notification_icon", // optional, defaults to 'ic_launcher'.
 				// pressAction is needed if you want the notification to open the app when pressed
 				pressAction: {
 					id: "default",
