@@ -50,11 +50,6 @@ export function App() {
 				component={Settings}
 				options={{ headerShown: true, title: t("navigation.settings") }}
 			/>
-			<Stack.Screen
-				name="Test"
-				component={TestScreen}
-				options={{ headerShown: true }}
-			/>
 		</Stack.Navigator>
 	)
 }

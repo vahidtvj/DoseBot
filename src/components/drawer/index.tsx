@@ -20,11 +20,6 @@ export function AppDrawer(props: DrawerContentComponentProps) {
 					icon="lock"
 					onPress={() => navigation.navigate("Permissions")}
 				/>
-				<Drawer.Item
-					label="TestScreen"
-					icon="bug"
-					onPress={() => navigation.navigate("Test")}
-				/>
 				<Drawer.Item label={t("navigation.rate")} icon="star" />
 				<Drawer.Item label={t("navigation.about")} icon="information" />
 			</Drawer.Section>
