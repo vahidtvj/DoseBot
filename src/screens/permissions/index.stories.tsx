@@ -1,11 +1,10 @@
-import { withAppbar } from "@/decorators"
+import { withSafeView } from "@/decorators"
 import type { Meta, StoryObj } from "@storybook/react"
 import App from "."
 
 const meta = {
 	component: App,
 	title: "Screens/Permissions",
-	decorators: [withAppbar],
 } satisfies Meta<typeof App>
 
 export default meta
@@ -13,5 +12,5 @@ export default meta
 type Story = StoryObj<typeof App>
 
 export const Primary: Story = {
-	render: () => <App />,
+	render: (props) => <App {...props} />,
 }

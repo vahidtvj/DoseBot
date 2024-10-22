@@ -9,8 +9,8 @@ type Props<T> = TextProps<T> & {
 	containerStyle?: ViewProps
 }
 
-export function DoseView<T extends never>(props: Props<T>) {
-	const { icon, iconSize, iconColor, containerStyle, ...rest } = props
+export function IconText<T extends never>(props: Props<T>) {
+	const { icon, iconSize, iconColor, containerStyle, children, ...rest } = props
 	const theme = useAppTheme()
 
 	return (
@@ -22,7 +22,7 @@ export function DoseView<T extends never>(props: Props<T>) {
 					color={iconColor}
 				/>
 			)}
-			<Text {...rest}>Lorem Ipsum</Text>
+			<Text {...rest}>{children}</Text>
 		</View>
 	)
 }
