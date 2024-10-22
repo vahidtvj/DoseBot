@@ -183,6 +183,7 @@ export const clearPendingDoses = async (idList: number[]) =>
 		.where(inArray(schema.dose.id, idList))
 
 export const insertDoses = async (data: IDoseCreate[]) => {
+	if (data.length === 0) return
 	const doseIds = await (
 		await db.insert(schema.dose).values(data).returning()
 	).map((x) => x.id)
