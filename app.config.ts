@@ -54,6 +54,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 		storybookEnabled: process.env.STORYBOOK_ENABLED,
 		sentryDsn: process.env.SENTRY_DSN,
 	},
+	notification: {
+		icon: "./assets/notification-icon.png",
+	},
 	plugins: [
 		"expo-localization",
 		[
