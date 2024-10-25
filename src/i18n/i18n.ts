@@ -1,19 +1,15 @@
 import i18next from "i18next"
 import "intl-pluralrules"
 import { initReactI18next } from "react-i18next"
-import * as en from "./en"
-import * as fa from "./fa"
 
 import { useUIStore } from "@/stores/uiStore"
 import { z } from "zod"
 import { makeZodI18nMap } from "zod-i18n-map"
+import { resources } from "./resources"
 
 i18next.use(initReactI18next).init({
 	lng: useUIStore.getState().lang, // if you're using a language detector, do not define the lng option
-	resources: {
-		en,
-		fa,
-	},
+	resources,
 	fallbackLng: "en",
 	// if you see an error like: "Argument of type 'DefaultTFuncReturn' is not assignable to parameter of type xyz"
 	// set returnNull to false (and also in the i18next.d.ts options)

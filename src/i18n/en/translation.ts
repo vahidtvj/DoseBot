@@ -83,7 +83,7 @@ const en = {
 		materialYou: "Material You",
 		language: "Language",
 		languages: {
-			system: "System", //  languages are always translated regardless of user choice (always fallback to English)
+			system: "System",
 			en: "English",
 			fa: "فارسی",
 		},
