@@ -8,9 +8,12 @@ Sentry.init({
 	dsn: sentryDsn,
 	debug: false, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
 	enabled: !__DEV__,
+	sendDefaultPii: false,
 	beforeSend(event) {
-		if (useConfigState.getState().sentryEnabled) return event
-		return null
+		if (!useConfigState.getState().sentryEnabled) return null
+		event.user = undefined
+		event.request = undefined
+		return event
 	},
 })
 
