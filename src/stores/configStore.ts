@@ -1,15 +1,17 @@
+import type { Language } from "@/constants"
 import { createSuperJSONStorage, zustandStorage } from "@/utils/mmkvStorage"
 import { create } from "zustand"
 import { persist, subscribeWithSelector } from "zustand/middleware"
 
 type IState = {
-	lang: "system" | "en" | "fa"
+	lang: "system" | Language
 	colorScheme: "system" | "dark" | "light"
 	useMaterialYou: boolean
+	sentryEnabled: boolean
 }
 type Actions = {
 	update: (state: Partial<IState>) => void
-	toggle: (param: BooleanKeys<IState>) => void
+	toggle: (param: BooleanKeys<IState>, value?: boolean) => void
 	toggleColorScheme: () => void
 }
 
@@ -20,10 +22,11 @@ export const useConfigState = create<IState & Actions>()(
 				lang: "system",
 				colorScheme: "system",
 				useMaterialYou: true,
+				sentryEnabled: false,
 				update: (state) => set({ ...state }),
-				toggle: (param) => {
+				toggle: (param, value) => {
 					const oldValue = get()[param]
-					set({ [param]: !oldValue })
+					set({ [param]: value ?? !oldValue })
 				},
 				toggleColorScheme: () => {
 					const theme = get().colorScheme
