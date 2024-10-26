@@ -1,4 +1,6 @@
-import type { ConfigContext, ExpoConfig } from "@expo/config"
+import type { ExpoConfig } from "@expo/config"
+import { AndroidConfig, withAndroidColorsNight } from "@expo/config-plugins"
+
 const APP_VARIANT = process.env.APP_VARIANT
 
 let packageName = "com.vahidtvj.DoseBotDev"
@@ -11,8 +13,7 @@ if (APP_VARIANT === "preview") {
 	packageName = "com.vahidtvj.DoseBot"
 }
 
-export default ({ config }: ConfigContext): ExpoConfig => ({
-	...config,
+const config: ExpoConfig = {
 	name: name,
 	slug: "DoseBot",
 	version: "0.0.1",
@@ -76,4 +77,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
 			},
 		],
 	],
+}
+
+module.exports = withAndroidColorsNight(config, async (config) => {
+	config.modResults = AndroidConfig.Colors.assignColorValue(config.modResults, {
+		name: "colorPrimaryDark",
+		value: "#000000",
+	})
+	return config
 })
