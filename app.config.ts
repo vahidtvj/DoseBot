@@ -79,6 +79,7 @@ const config: ExpoConfig = {
 	],
 }
 
+// sets status bar to black. splash screen when using dark mode had white status bar before
 module.exports = withAndroidColorsNight(config, async (config) => {
 	config.modResults = AndroidConfig.Colors.assignColorValue(config.modResults, {
 		name: "colorPrimaryDark",
