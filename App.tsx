@@ -1,13 +1,17 @@
+import { useConfigState } from "@/stores/configStore"
 // ! The imports in this file should be in order
 // ! These comments are necessary
 // import group 1
 import * as Sentry from "@sentry/react-native"
-
 const sentryDsn = Constants.expoConfig?.extra?.sentryDsn
 Sentry.init({
 	dsn: sentryDsn,
 	debug: false, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
 	enabled: !__DEV__,
+	beforeSend(event) {
+		if (useConfigState.getState().sentryEnabled) return event
+		return null
+	},
 })
 
 // import group 2

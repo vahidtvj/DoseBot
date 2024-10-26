@@ -11,3 +11,18 @@ export const Weekdays: Weekday[] = [
 	"Fri",
 	"Sat",
 ]
+
+export type Language = "en" | "fa"
+
+export const languages: { key: Language; label: string; subtitle?: string }[] =
+	[
+		{
+			key: "en",
+			label: "English",
+		},
+		{
+			key: "fa",
+			label: "فارسی",
+			subtitle: "Persian",
+		},
+	]

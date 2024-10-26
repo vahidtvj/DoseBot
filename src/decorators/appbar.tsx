@@ -5,7 +5,7 @@ export const withAppbar = (Story: StoryFn, _context: StoryContext) => {
 	const theme = useTheme()
 	return (
 		<>
-			<Appbar.Header style={{ backgroundColor: theme.colors.backdrop }}>
+			<Appbar.Header style={{ backgroundColor: theme.colors.surfaceVariant }}>
 				<Appbar.BackAction onPress={() => {}} />
 				<Appbar.Content title="Test Appbar" />
 				<Appbar.Action icon="calendar" onPress={() => {}} />
