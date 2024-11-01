@@ -12,21 +12,21 @@ type Props = {
 	onDismiss: () => void
 	rtl?: boolean
 	mode: "clock" | "input"
+	labels?: {
+		titleClock?: string
+		titleInput?: string
+		time?: { am: string; pm: string }
+		btns?: { ok: string; cancel: string }
+	}
 }
 export function TimePicker(props: Props) {
-	const { open, onDismiss, onSelect, use24Hour, rtl = false } = props
+	const { open, onDismiss, onSelect, use24Hour, rtl = false, labels } = props
 	const [value, setValue] = useState(props.value || new Date())
 	const [mode, setMode] = useState(props.mode)
 	const [active, setActive] = useState<"none" | "hour" | "minute">(
 		mode === "input" ? "none" : "hour",
 	)
 
-	const labels = {
-		titleClock: "Select Time",
-		titleInput: "Enter Time",
-		time: { am: "AM", pm: "PM" },
-		btns: { ok: "OK", cancel: "Cancel" },
-	}
 	const minute = value.getMinutes()
 	const hour24 = value.getHours()
 	const hour = use24Hour ? hour24 : hour24 % 12 || 12
@@ -97,9 +97,11 @@ export function TimePicker(props: Props) {
 						{ backgroundColor: theme.colors.surface },
 					]}
 				>
-					<Text variant="titleSmall" style={{ marginBottom: 20 }}>
-						{mode === "clock" ? labels.titleClock : labels.titleInput}
-					</Text>
+					{labels?.titleClock && labels.titleInput && (
+						<Text variant="titleSmall" style={{ marginBottom: 20 }}>
+							{mode === "clock" ? labels.titleClock : labels.titleInput}
+						</Text>
+					)}
 					<View style={{ gap: 36, alignItems: "center" }}>
 						<TimeInputFull
 							active={active}
@@ -111,7 +113,7 @@ export function TimePicker(props: Props) {
 							onChange={onChange}
 							setActive={setActive}
 							rtl={rtl}
-							labels={labels.time}
+							labels={labels}
 							refs={{ hour: hourRef, minute: minuteRef }}
 						/>
 						{mode === "clock" && active === "hour" && (
@@ -152,10 +154,10 @@ export function TimePicker(props: Props) {
 							}}
 						>
 							<Button compact mode="text" onPress={onDismiss}>
-								{labels.btns.cancel}
+								{labels?.btns?.cancel || "Cancel"}
 							</Button>
 							<Button compact mode="text" onPress={handleSubmit}>
-								{labels.btns.ok}
+								{labels?.btns?.ok || "OK"}
 							</Button>
 						</View>
 					</View>
