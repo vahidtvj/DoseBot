@@ -8,6 +8,8 @@ type IState = {
 	colorScheme: "system" | "dark" | "light"
 	useMaterialYou: boolean
 	sentryEnabled: boolean
+	use24Hour: boolean
+	timePickerMode: "clock" | "input"
 }
 type Actions = {
 	update: (state: Partial<IState>) => void
@@ -23,6 +25,8 @@ export const useConfigState = create<IState & Actions>()(
 				colorScheme: "system",
 				useMaterialYou: true,
 				sentryEnabled: false,
+				use24Hour: false,
+				timePickerMode: "clock",
 				update: (state) => set({ ...state }),
 				toggle: (param, value) => {
 					const oldValue = get()[param]

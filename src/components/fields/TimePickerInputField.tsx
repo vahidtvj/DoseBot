@@ -1,7 +1,6 @@
+import { timePicker } from "@/components/pickers/timepicker"
 import { useProps } from "@/utils"
-import { useDateFunc } from "@/utils"
 import { toTimeString } from "@/utils"
-import { useState } from "react"
 import {
 	type FieldValues,
 	type UseControllerProps,
@@ -9,12 +8,6 @@ import {
 } from "react-hook-form"
 import { type StyleProp, View, type ViewStyle } from "react-native"
 import { HelperText, TextInput, type TextInputProps } from "react-native-paper"
-import { TimePickerModal } from "react-native-paper-dates"
-
-type TimePickerReturnType = {
-	hours: number
-	minutes: number
-}
 
 export function TimePickerInputField<T extends FieldValues>(
 	props: UseControllerProps<T> &
@@ -29,16 +22,11 @@ export function TimePickerInputField<T extends FieldValues>(
 	const hasError = fieldState.error !== undefined
 
 	const value = field.value && toTimeString(field.value)
-	const [visible, setVisible] = useState(false)
+	const time = field.value && new Date(field.value)
 
-	function onPickerClose(time?: TimePickerReturnType) {
-		setVisible(false)
+	function onPickerClose(time?: Date) {
 		if (!time) return
-		const { hours, minutes } = time
-		const date = new Date()
-		date.setHours(hours)
-		date.setMinutes(minutes)
-		field.onChange(date)
+		field.onChange(time)
 	}
 
 	return (
@@ -52,7 +40,12 @@ export function TimePickerInputField<T extends FieldValues>(
 					<TextInput.Icon
 						disabled={readOnly}
 						icon="clock"
-						onPress={() => setVisible(true)}
+						onPress={() =>
+							timePicker.open({
+								value: time,
+								onSelect: onPickerClose,
+							})
+						}
 					/>
 				}
 			/>
@@ -62,11 +55,11 @@ export function TimePickerInputField<T extends FieldValues>(
 					{fieldState.error?.message}
 				</HelperText>
 			)}
-			<TimePickerModal
+			{/* <TimePickerModal
 				visible={visible}
 				onDismiss={() => onPickerClose()}
 				onConfirm={(time) => onPickerClose(time)}
-			/>
+			/> */}
 		</View>
 	)
 }
