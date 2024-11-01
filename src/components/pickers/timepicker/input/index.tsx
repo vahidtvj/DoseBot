@@ -15,8 +15,7 @@ type Props = {
 	editable: boolean
 	rtl: boolean
 	labels?: {
-		am: string
-		pm: string
+		time?: { am: string; pm: string }
 	}
 	refs: {
 		hour: RefObject<TextInputR>
@@ -35,7 +34,7 @@ export function TimeInputFull(props: Props) {
 		editable,
 		rtl,
 		refs,
-		labels = { am: "AM", pm: "PM" },
+		labels,
 	} = props
 	const theme = useAppTheme()
 
@@ -92,7 +91,7 @@ export function TimeInputFull(props: Props) {
 						style={styles.AMButton}
 						onPress={() => onAMPM("am")}
 					>
-						{labels.am}
+						{labels?.time?.am || "AM"}
 					</Button>
 					<Button
 						compact
@@ -100,7 +99,7 @@ export function TimeInputFull(props: Props) {
 						style={styles.PMButton}
 						onPress={() => onAMPM("pm")}
 					>
-						{labels.pm}
+						{labels?.time?.pm || "PM"}
 					</Button>
 				</View>
 			)}

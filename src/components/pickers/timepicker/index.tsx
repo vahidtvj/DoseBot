@@ -48,7 +48,7 @@ const useStore = create<State>()((set) => ({
 }))
 
 export function TimePickerModal() {
-	const { i18n } = useTranslation()
+	const { i18n, t } = useTranslation()
 	const rtl = i18n.dir() === "rtl"
 
 	const { isOpen, onSelect, close, value, use24Hour, mode } = useStore()
@@ -63,6 +63,7 @@ export function TimePickerModal() {
 			onDismiss={close}
 			onSelect={onSelect}
 			use24Hour={use24Hour}
+			labels={{ btns: { cancel: t("cancel"), ok: t("ok") } }}
 		/>
 	)
 }

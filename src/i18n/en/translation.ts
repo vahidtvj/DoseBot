@@ -110,6 +110,7 @@ const en = {
 	},
 	select: "Select",
 	cancel: "Cancel",
+	ok: "OK",
 	today: "Today",
 } as const
 
