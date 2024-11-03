@@ -29,7 +29,7 @@ export function MedicineForm(props: Props) {
 	const inventoryEnabled = watch("inventoryEnabled")
 	return (
 		<View style={styles.page}>
-			<ScrollView>
+			<ScrollView contentContainerStyle={styles.scrollView}>
 				<View style={styles.content}>
 					<TextInputField
 						control={control}
@@ -139,6 +139,7 @@ const styles = StyleSheet.create({
 	page: {
 		flex: 1,
 	},
+	scrollView: { paddingBottom: 76 },
 	content: {
 		flex: 1,
 		margin: 10,
