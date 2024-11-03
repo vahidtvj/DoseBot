@@ -85,12 +85,18 @@ const en = {
 			en: "English",
 			fa: "فارسی",
 		},
+		timeFormat: "فرمت ساعت",
+		timeFormats: {
+			hour24: "24 ساعته",
+			hour12: "12 ساعته",
+		},
+		notifications: "اعلان‌ها",
 	},
 	permissions: {
 		welcome: "به DoseBot خوش آمدید",
 		notification: "اعلان",
 		notificationSub: "DoseBot به اجازه اعلان برای هشدارهای دارویی نیاز دارد.",
-		channels: "کانال‌های اعلان",
+		alertSettings: "تنظیمات اعلان",
 		channel: {
 			med: "دارو",
 			inv: "موجودی",

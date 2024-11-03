@@ -87,13 +87,19 @@ const en = {
 			en: "English",
 			fa: "فارسی",
 		},
+		timeFormat: "Time Format",
+		timeFormats: {
+			hour24: "24-hour",
+			hour12: "12-hour",
+		},
+		notifications: "Notifications",
 	},
 	permissions: {
 		welcome: "Welcome to DoseBot",
 		notification: "Notification",
 		notificationSub:
 			"DoseBot requires notification permission for medication alerts.",
-		channels: "Channels",
+		alertSettings: "Alert Settings",
 		channel: {
 			med: "Medication",
 			inv: "Inventory",

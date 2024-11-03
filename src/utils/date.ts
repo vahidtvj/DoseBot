@@ -1,33 +1,36 @@
 import { type Weekday, Weekdays } from "@/constants"
 import type { IScheduleFullCreate } from "@/db"
+import { useConfigState } from "@/stores/configStore"
 import { format, isPast, isToday, isTomorrow, isYesterday } from "date-fns"
 import { format as jFormat } from "date-fns-jalali"
 import { useTranslation } from "react-i18next"
 
-// TODO translate this func
-export function formatAlertTime(date: Date) {
-	if (isToday(date))
-		return date.toLocaleTimeString([], {
-			hour: "2-digit",
-			minute: "2-digit",
-		})
+export function formatAlertTime(date: Date, use24Hour?: boolean) {
+	if (isToday(date)) return toTimeString(date)
 
+	const is24Hour = use24Hour ?? useConfigState.getState().use24Hour
 	return date.toLocaleDateString([], {
 		hour: "2-digit",
 		minute: "2-digit",
+		hour12: !is24Hour,
 	})
 }
 
-export function toTimeString(date: Date) {
+export function toTimeString(date: Date, use24Hour?: boolean) {
+	const is24Hour = use24Hour ?? useConfigState.getState().use24Hour
 	return date.toLocaleTimeString(undefined, {
 		hour: "2-digit",
 		minute: "2-digit",
+		hour12: !is24Hour,
 	})
 }
 
 export const useDateUtils = () => {
 	const { t, i18n } = useTranslation()
 	const iFormat = i18n.language === "fa" ? jFormat : format
+	const use24Hour = useConfigState((x) => x.use24Hour)
+	const timeFormat = `${use24Hour ? "HH" : "hh"}:mm${use24Hour ? "" : "aa"}`
+	const dateTimeFormat = `P, ${timeFormat}`
 
 	function getOrderedWeekdays(): Weekday[] {
 		return i18n.language === "fa"
@@ -52,17 +55,18 @@ export const useDateUtils = () => {
 			return schedule.days?.map((day) => t(`date.${day}`)).join(t("join"))
 		}
 	}
-	function formatAlertTime(date: Date) {
-		if (isToday(date)) return iFormat(date, "p")
-		if (isYesterday(date)) return `${t("yesterday")} ${iFormat(date, "p")}`
-		if (isTomorrow(date)) return `${t("tomorrow")} ${iFormat(date, "p")}`
+	function formatDoseTime(date: Date) {
+		if (isToday(date)) return iFormat(date, timeFormat)
+		if (isYesterday(date))
+			return `${t("yesterday")} ${iFormat(date, timeFormat)}`
+		if (isTomorrow(date)) return `${t("tomorrow")} ${iFormat(date, timeFormat)}`
 		// return date.toLocaleDateString("fa", {
 		// 	hour: "2-digit",
 		// 	minute: "2-digit",
 		// })
-		return iFormat(date, "Pp")
+		return iFormat(date, dateTimeFormat)
 	}
-	const formatDoseTime = (date: Date) => iFormat(date, "p")
+	const formatDosingTime = (date: Date) => iFormat(date, timeFormat)
 
 	const formatDate = (date: Date) => iFormat(date, "P")
 
@@ -70,8 +74,8 @@ export const useDateUtils = () => {
 		formatDate,
 		getScheduleText,
 		getOrderedWeekdays,
-		formatAlertTime,
 		formatDoseTime,
+		formatDosingTime,
 	}
 }
 
