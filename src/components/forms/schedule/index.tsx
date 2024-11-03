@@ -44,7 +44,7 @@ export function ScheduleForm(props: Props) {
 
 	return (
 		<View style={styles.page}>
-			<ScrollView>
+			<ScrollView contentContainerStyle={styles.scrollView}>
 				<View style={styles.pageContent}>
 					<SegmentedButtonsField
 						readOnly={isProcessing}
@@ -148,6 +148,7 @@ const styles = StyleSheet.create({
 	page: {
 		flex: 1,
 	},
+	scrollView: { paddingBottom: 76 },
 	pageContent: {
 		margin: 10,
 		gap: 16,
@@ -161,7 +162,6 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		gap: 12,
-		marginTop: 6,
 	},
 	date: {
 		flexGrow: 1,
@@ -179,6 +179,6 @@ const styles = StyleSheet.create({
 		bottom: 0,
 	},
 	doses: {
-		gap: 16,
+		gap: 12,
 	},
 })
