@@ -22,6 +22,7 @@ export default function Page({
 	return (
 		<View style={styles.page}>
 			<FlatList
+				contentContainerStyle={styles.scrollView}
 				data={meds.data}
 				renderItem={(item) => (
 					<MedicineCard
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
 	page: {
 		flex: 1,
 	},
+	scrollView: { paddingBottom: 76 },
 	fab: {
 		position: "absolute",
 		margin: 20,
