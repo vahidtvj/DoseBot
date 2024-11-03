@@ -86,8 +86,6 @@ export function ScheduleForm(props: Props) {
 							label={t("medicine.interval")}
 							inputMode="numeric"
 							right={<TextInput.Affix text={t("medicine.daysAffix")} />}
-							// @ts-ignore I have no idea why this is an error! */
-							defaultValue={2}
 							readOnly={isProcessing}
 						/>
 					)}
