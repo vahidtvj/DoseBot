@@ -23,7 +23,7 @@ export function DoseCard(props: IProps) {
 	const { t } = useTranslation()
 	const showBtns = status === "pending"
 
-	const { formatAlertTime } = useDateUtils()
+	const { formatDoseTime } = useDateUtils()
 	let timeStyle = {}
 	if (status === "confirm") {
 		timeStyle = { color: theme.colors.primary }
@@ -49,7 +49,7 @@ export function DoseCard(props: IProps) {
 						<Text variant="bodyMedium">× {dose}</Text>
 					</View>
 				)}
-				subtitle={formatAlertTime(time)}
+				subtitle={formatDoseTime(time)}
 				subtitleStyle={timeStyle}
 			/>
 			<Card.Content style={styles.content}>

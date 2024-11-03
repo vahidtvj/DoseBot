@@ -113,7 +113,9 @@ export default function Page({
 							}}
 						>
 							<View style={{ flex: 1 }}>
-								<Text variant="titleMedium">{t("permissions.channels")}</Text>
+								<Text variant="titleMedium">
+									{t("permissions.alertSettings")}
+								</Text>
 							</View>
 
 							<Chip

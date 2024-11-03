@@ -16,7 +16,7 @@ export function ScheduleCard(props: Props) {
 	const theme = useAppTheme()
 	const { t } = useTranslation()
 
-	const { getScheduleText, formatDoseTime, formatDate } = useDateUtils()
+	const { getScheduleText, formatDosingTime, formatDate } = useDateUtils()
 
 	return (
 		<Card mode="contained" style={styles.card} onPress={() => onPress?.()}>
@@ -43,7 +43,7 @@ export function ScheduleCard(props: Props) {
 						<View>
 							{dosing.map((dose, i) => (
 								<View key={i} style={styles.row}>
-									<Text variant="bodySmall">{formatDoseTime(dose.time)}</Text>
+									<Text variant="bodySmall">{formatDosingTime(dose.time)}</Text>
 									<Text
 										variant="bodySmall"
 										style={{ color: theme.colors.secondary }}

@@ -7,6 +7,7 @@ notifee.createChannel({
 	lights: true,
 	vibration: true,
 	importance: AndroidImportance.HIGH,
+	sound: "default",
 })
 
 notifee.createChannel({
@@ -15,4 +16,5 @@ notifee.createChannel({
 	lights: true,
 	vibration: true,
 	importance: AndroidImportance.DEFAULT,
+	sound: "default",
 })
