@@ -18,7 +18,15 @@ export async function addDoseOnCreate(medId?: number) {
 	const med = await getMed(medId)
 	if (!med) return
 
+	const { doseStoreDay } = useAppState.getState()
+
 	const list = getDosage([med])
+	// if it has added alerts for tomorrow then also generate for this one manually
+	// if not then wait for algorithm to run
+	if (doseStoreDay && isFuture(doseStoreDay)) {
+		list.push(...getDosage([med], startOfTomorrow()))
+	}
+
 	await insertDoses(list)
 }
 
@@ -52,10 +60,10 @@ export async function onScheduleRunEvent() {
 	// ! check to add new doses
 	// first launch ?
 	if (!doseStoreDay) await addDoses()
-	// // * we have already scheduled for tomorrow
+	// * we have already scheduled for tomorrow
 	else if (isFuture(doseStoreDay)) noop()
-	// // doseStoreDay isPast (!isFuture) & no dose generated for today
+	// doseStoreDay isPast (!isFuture) & no dose generated for today
 	else if (!isToday(doseStoreDay)) await addDoses()
-	// // doseStoreDay isToday but we are past refill hour
+	// doseStoreDay isToday but we are past refill hour
 	else if (now.getHours() >= Constants.rescheduleHour) await addDoses(true) // run for tomorrow
 }
