@@ -16,10 +16,11 @@ export function DatePickerInputField<T extends FieldValues>(
 			containerStyle?: StyleProp<ViewStyle>
 			minDate?: Date
 			maxDate?: Date
+			noHelper?: boolean
 		},
 ) {
 	const { field, fieldState } = useController(props)
-	const { containerStyle, minDate, maxDate, readOnly, ...rest } =
+	const { containerStyle, minDate, maxDate, readOnly, noHelper, ...rest } =
 		useProps(props)
 	const hasError = fieldState.error !== undefined
 	const { format } = useDateFunc()
@@ -47,9 +48,11 @@ export function DatePickerInputField<T extends FieldValues>(
 					/>
 				}
 			/>
-			<HelperText type="error" visible={hasError}>
-				{fieldState.error?.message}
-			</HelperText>
+			{!noHelper && hasError && (
+				<HelperText type="error" visible={hasError}>
+					{fieldState.error?.message}
+				</HelperText>
+			)}
 		</View>
 	)
 }
