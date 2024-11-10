@@ -102,7 +102,7 @@ const data: IMedicineFull[] = [
 				id: 5,
 				medicineId: 1,
 				type: "Daily",
-				startDate: new Date(Date.now() + 1000 * 60 * 60 * 3),
+				startDate: startOfTomorrow(),
 				endDate: null,
 				days: null,
 				interval: null,
