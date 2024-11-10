@@ -4,4 +4,7 @@ const StringOrUndefined = z
 	.union([z.literal("").transform(() => undefined), z.string()])
 	.optional()
 
-export const zExtras = { StringOrUndefined }
+const EmptyStingToUdefined = <T>(type: z.ZodType<T>) =>
+	z.preprocess((x) => (x === "" ? undefined : x), type) as z.ZodType<T>
+
+export const zExtras = { StringOrUndefined, EmptyStingToUdefined }

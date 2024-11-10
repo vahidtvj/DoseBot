@@ -17,9 +17,17 @@ export default meta
 type Story = StoryObj<typeof MedicineForm>
 
 export const Primary: Story = {
-	render: (args) => <MedicineForm {...args} />,
+	render: (args) => (
+		<MedicineForm {...args} onSubmit={(data) => console.log(data)} />
+	),
 }
 
 export const Create: Story = {
-	render: (args) => <MedicineForm {...args} data={undefined} />,
+	render: (args) => (
+		<MedicineForm
+			{...args}
+			data={undefined}
+			onSubmit={(data) => console.log(data)}
+		/>
+	),
 }

@@ -18,9 +18,17 @@ export default meta
 type Story = StoryObj<typeof ScheduleForm>
 
 export const Primary: Story = {
-	render: (args) => <ScheduleForm {...args} />,
+	render: (args) => (
+		<ScheduleForm {...args} onSubmit={(data) => console.log(data)} />
+	),
 }
 
 export const Create: Story = {
-	render: (args) => <ScheduleForm {...args} data={undefined} />,
+	render: (args) => (
+		<ScheduleForm
+			{...args}
+			data={undefined}
+			onSubmit={(data) => console.log(data)}
+		/>
+	),
 }
