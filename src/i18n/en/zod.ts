@@ -1,22 +1,22 @@
 const zod = {
 	errors: {
-		invalid_type: "Expected {{expected}}, received {{received}}",
+		invalid_type: "Expected {{expected}} but got {{received}} instead",
 		invalid_type_received_undefined: "Required",
 		invalid_type_received_null: "Required",
-		invalid_literal: "Invalid literal value, expected {{expected}}",
-		unrecognized_keys: "Unrecognized key(s) in object: {{- keys}}",
-		invalid_union: "Invalid input",
+		invalid_literal: "Value does not match expected literal: {{expected}}",
+		unrecognized_keys: "Unrecognized key(s): {{- keys}}",
+		invalid_union: "Invalid input, does not match any expected type",
 		invalid_union_discriminator:
-			"Invalid discriminator value. Expected {{- options}}",
+			"Invalid discriminator value. Choose from {{- options}}",
 		invalid_enum_value:
-			"Invalid enum value. Expected {{- options}}, received '{{received}}'",
+			"Invalid choice. Expected one of {{- options}}, but got '{{received}}'",
 		invalid_arguments: "Invalid function arguments",
 		invalid_return_type: "Invalid function return type",
 		invalid_date: "Invalid date",
 		custom: "Invalid input",
 		invalid_intersection_types: "Intersection results could not be merged",
-		not_multiple_of: "Number must be a multiple of {{multipleOf}}",
-		not_finite: "Number must be finite",
+		not_multiple_of: "Must be a multiple of {{multipleOf}}",
+		not_finite: "Must be finite",
 		invalid_string: {
 			email: "Invalid {{validation}}",
 			url: "Invalid {{validation}}",
@@ -29,19 +29,19 @@ const zod = {
 		},
 		too_small: {
 			array: {
-				exact: "Array must contain exactly {{minimum}} element(s)",
-				inclusive: "Array must contain at least {{minimum}} element(s)",
-				not_inclusive: "Array must contain more than {{minimum}} element(s)",
+				exact: "Must contain exactly {{minimum}} element(s)",
+				inclusive: "Must contain at least {{minimum}} element(s)",
+				not_inclusive: "Must contain more than {{minimum}} element(s)",
 			},
 			string: {
-				exact: "String must contain exactly {{minimum}} character(s)",
-				inclusive: "String must contain at least {{minimum}} character(s)",
-				not_inclusive: "String must contain over {{minimum}} character(s)",
+				exact: "Must contain exactly {{minimum}} character(s)",
+				inclusive: "Must contain at least {{minimum}} character(s)",
+				not_inclusive: "Must contain over {{minimum}} character(s)",
 			},
 			number: {
-				exact: "Number must be exactly {{minimum}}",
-				inclusive: "Number must be greater than or equal to {{minimum}}",
-				not_inclusive: "Number must be greater than {{minimum}}",
+				exact: "Must be exactly {{minimum}}",
+				inclusive: "Must be greater than or equal to {{minimum}}",
+				not_inclusive: "Must be greater than {{minimum}}",
 			},
 			set: {
 				exact: "Invalid input",
@@ -49,27 +49,26 @@ const zod = {
 				not_inclusive: "Invalid input",
 			},
 			date: {
-				exact: "Date must be exactly {{- minimum, datetime}}",
-				inclusive:
-					"Date must be greater than or equal to {{- minimum, datetime}}",
-				not_inclusive: "Date must be greater than {{- minimum, datetime}}",
+				exact: "Must be exactly {{- minimum, datetime}}",
+				inclusive: "Must be greater than or equal to {{- minimum, datetime}}",
+				not_inclusive: "Must be greater than {{- minimum, datetime}}",
 			},
 		},
 		too_big: {
 			array: {
-				exact: "Array must contain exactly {{maximum}} element(s)",
-				inclusive: "Array must contain at most {{maximum}} element(s)",
-				not_inclusive: "Array must contain less than {{maximum}} element(s)",
+				exact: "Must contain exactly {{maximum}} element(s)",
+				inclusive: "Must contain at most {{maximum}} element(s)",
+				not_inclusive: "Must must contain less than {{maximum}} element(s)",
 			},
 			string: {
-				exact: "String must contain exactly {{maximum}} character(s)",
-				inclusive: "String must contain at most {{maximum}} character(s)",
-				not_inclusive: "String must contain under {{maximum}} character(s)",
+				exact: "Must contain exactly {{maximum}} character(s)",
+				inclusive: "Must contain at most {{maximum}} character(s)",
+				not_inclusive: "Must contain under {{maximum}} character(s)",
 			},
 			number: {
-				exact: "Number must be exactly {{maximum}}",
-				inclusive: "Number must be less than or equal to {{maximum}}",
-				not_inclusive: "Number must be less than {{maximum}}",
+				exact: "Must be exactly {{maximum}}",
+				inclusive: "Must be less than or equal to {{maximum}}",
+				not_inclusive: "Must be less than {{maximum}}",
 			},
 			set: {
 				exact: "Invalid input",
@@ -77,10 +76,9 @@ const zod = {
 				not_inclusive: "Invalid input",
 			},
 			date: {
-				exact: "Date must be exactly {{- maximum, datetime}}",
-				inclusive:
-					"Date must be smaller than or equal to {{- maximum, datetime}}",
-				not_inclusive: "Date must be smaller than {{- maximum, datetime}}",
+				exact: "Must be exactly {{- maximum, datetime}}",
+				inclusive: "Must be smaller than or equal to {{- maximum, datetime}}",
+				not_inclusive: "Must be smaller than {{- maximum, datetime}}",
 			},
 		},
 	},

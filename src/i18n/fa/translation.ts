@@ -113,7 +113,7 @@ const en = {
 	},
 	select: "انتخاب",
 	cancel: "انصراف",
-	OK: "تایید",
+	ok: "تایید",
 	today: "امروز",
 } as const
 

@@ -1,4 +1,5 @@
 import type { IMedicineType, Weekday } from "@/constants/index"
+import { zExtras } from "@/utils"
 import { z } from "zod"
 import type { IMedicineCreate, IScheduleFullCreate } from "./types"
 
@@ -25,13 +26,14 @@ export const WeekdaySchema: z.ZodType<Weekday> = z.union([
 	z.literal("Fri"),
 ])
 
-// TODO zod errors + translations
 export const FormMedicineSchema: z.ZodType<IMedicineCreate> = z.object({
 	id: z.number().optional(),
 	name: z.string().min(1),
 	inventoryEnabled: z.boolean(),
-	inventoryCount: z.coerce.number(),
-	inventoryNotifyOn: z.coerce.number(),
+	inventoryCount: zExtras.EmptyStingToUdefined(z.coerce.number().nonnegative()),
+	inventoryNotifyOn: zExtras.EmptyStingToUdefined(
+		z.coerce.number().nonnegative(),
+	),
 	type: MedicineTypeSchema,
 	paused: z.boolean(),
 	note: z.string().nullable(),
@@ -50,7 +52,6 @@ const baseSchedule = z.object({
 		}),
 	),
 })
-// TODO zod errors + translations
 export const FormScheduleSchema: z.ZodType<IScheduleFullCreate> = z.union([
 	baseSchedule.extend({
 		type: z.literal("Daily"),
