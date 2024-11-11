@@ -103,6 +103,8 @@ export function DatePicker(props: IProps) {
 						gap: 12,
 						height: 48,
 						alignItems: "center",
+						justifyContent: "center",
+						minWidth: 172,
 					}}
 				>
 					<Text variant="titleLarge">{format(dateHeader, "MMMM")}</Text>
@@ -226,14 +228,6 @@ export function DatePicker(props: IProps) {
 						/>
 					</View>
 					<View style={styles.buttons}>
-						{/* <Button
-							onPress={thisMonth}
-							mode="text"
-							textColor={theme.colors.secondary}
-							icon="calendar-today"
-						>
-							{t("today")}
-						</Button> */}
 						<IconButton
 							icon={isRTL ? "arrow-down-right" : "arrow-down-left"}
 							onPress={thisMonth}
@@ -271,6 +265,7 @@ const styles = StyleSheet.create({
 		margin: 20,
 		borderRadius: 12,
 		alignSelf: "center",
+		alignItems: "center",
 	},
 	header: {
 		flexDirection: "row",
@@ -283,6 +278,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	buttons: {
+		alignSelf: "stretch",
 		flexDirection: "row",
 		justifyContent: "space-between",
 		padding: 12,
