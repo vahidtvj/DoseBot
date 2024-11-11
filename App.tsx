@@ -1,8 +1,9 @@
 import { useConfigState } from "@/stores/configStore"
+import * as Sentry from "@sentry/react-native"
 // ! The imports in this file should be in order
 // ! These comments are necessary
 // import group 1
-import * as Sentry from "@sentry/react-native"
+import Constants from "expo-constants"
 const sentryDsn = Constants.expoConfig?.extra?.sentryDsn
 Sentry.init({
 	dsn: sentryDsn,
@@ -31,7 +32,6 @@ import "@/logic/registerEvents"
 import "@/utils/notifications"
 
 import { BaseLayout } from "@/layout/base"
-import Constants from "expo-constants"
 // App
 import { useFonts } from "expo-font"
 import "react-native-gesture-handler"
@@ -40,7 +40,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler"
 
 SplashScreen.preventAutoHideAsync()
 const MainApp =
-	Constants.expoConfig?.extra?.storybookEnabled === "true"
+	process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === "true"
 		? require("./.storybook")
 		: require("./src/main")
 

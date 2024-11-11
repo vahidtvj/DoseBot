@@ -1,9 +1,7 @@
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-import url from "url"
 import { NativeModules } from "react-native"
 import { storage } from "../src/utils/mmkvStorage"
 import { view } from "./storybook.requires"
-const { hostname } = url.parse(NativeModules.SourceCode.scriptURL)
+const { hostname } = new URL(NativeModules.SourceCode.scriptURL)
 
 async function getItem(key: string): Promise<string | null> {
 	return storage.getString(key) || null
@@ -18,7 +16,6 @@ const StorybookUIRoot = view.getStorybookUI({
 		setItem: setItem,
 	},
 	onDeviceUI: false,
-	isUIHidden: true,
 	shouldPersistSelection: true,
 	enableWebsockets: true,
 	host: hostname || "",
