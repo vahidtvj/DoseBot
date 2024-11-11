@@ -1,7 +1,7 @@
 import { center } from "@/decorators"
 import { useArgs } from "@storybook/preview-api"
 import type { Meta, StoryObj } from "@storybook/react"
-import { View } from "react-native"
+import { useRef } from "react"
 import { TimeInputFull } from "./index"
 
 const meta = {
@@ -35,12 +35,15 @@ export const Primary: Story = {
 		function setActive(input: "hour" | "minute") {
 			setArgs({ active: input })
 		}
+		const hourRef = useRef(null)
+		const minuteRef = useRef(null)
 		return (
 			<TimeInputFull
 				{...args}
 				onChange={onChange}
 				onAMPM={onAMPM}
 				setActive={setActive}
+				refs={{ hour: hourRef, minute: minuteRef }}
 			/>
 		)
 	},

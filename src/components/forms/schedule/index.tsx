@@ -9,10 +9,7 @@ import { TextInputField } from "@/components/fields/TextInputField"
 import { WeekdayPickerField } from "@/components/fields/WeekdayPickerField"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { type SubmitHandler, useFieldArray, useForm } from "react-hook-form"
-import { enGB, registerTranslation } from "react-native-paper-dates"
 import { type Inputs, type Props, defaultValues, schema } from "./data"
-
-registerTranslation("en-GB", enGB)
 
 export function ScheduleForm(props: Props) {
 	const data = props.data || defaultValues

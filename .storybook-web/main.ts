@@ -1,7 +1,4 @@
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-import path from "path"
-import type { StorybookConfig } from "@storybook/react-webpack5"
-// const { hostname } = url.parse(NativeModules.SourceCode.scriptURL)
+import type { StorybookConfig } from "@storybook/react-vite"
 
 type ServerStorybookConfig = StorybookConfig & {
 	reactNativeServerOptions: { host: string; port: number }
@@ -12,7 +9,7 @@ const main: ServerStorybookConfig = {
 	addons: [
 		// "@storybook/addon-links",
 		"@storybook/addon-essentials",
-		"@storybook/addon-react-native-web",
+		// "@storybook/addon-react-native-web",
 		"@storybook/addon-react-native-server",
 	],
 	reactNativeServerOptions: {
@@ -21,16 +18,12 @@ const main: ServerStorybookConfig = {
 	},
 	// logLevel: 'debug',
 	framework: {
-		name: "@storybook/react-webpack5",
+		name: "@storybook/react-vite",
 		options: {},
 	},
-	async webpackFinal(config, _options) {
-		const alias = {
-			...config.resolve?.alias,
-			"@": path.resolve(__dirname, "../src"),
-		}
-		config.resolve = { ...config.resolve, alias }
-		return config
+	core: {
+		builder: "@storybook/builder-vite",
+		disableTelemetry: true,
 	},
 }
 
