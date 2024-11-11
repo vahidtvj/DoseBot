@@ -1,3 +1,4 @@
+import { Fonts } from "@/config"
 import { useAppTheme } from "@/theme"
 import { forwardRef, useCallback, useEffect, useState } from "react"
 import { type TextInput as TextInputR, TouchableOpacity } from "react-native"
@@ -55,6 +56,11 @@ export const TimeInput = forwardRef<TextInputR, TimeInputProps>(
 			props.onChange(value)
 		}, [inputValue, input, props.onChange])
 
+		const fontSize =
+			theme.fonts.displayLarge.fontFamily === Fonts.IRANSansMobile
+				? theme.fonts.displayMedium.fontSize
+				: theme.fonts.displayLarge.fontSize
+
 		return (
 			<TouchableOpacity onPress={props.onPress}>
 				<TextInput
@@ -76,8 +82,7 @@ export const TimeInput = forwardRef<TextInputR, TimeInputProps>(
 							height: 80,
 							minWidth: 96,
 							textAlign: "center",
-							fontFamily: theme.fonts.displayLarge.fontFamily,
-							fontSize: theme.fonts.displayLarge.fontSize,
+							fontSize: fontSize,
 						},
 					]}
 					value={inputValue}

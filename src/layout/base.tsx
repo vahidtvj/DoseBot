@@ -2,6 +2,7 @@ import { PaperStatusBar } from "@/components/common/PaperStatusBar"
 import { DatePickerModal } from "@/components/pickers/datepicker"
 import "@/i18n/i18n"
 import { TimePickerModal } from "@/components/pickers/timepicker"
+import { Fonts } from "@/config"
 import { useConfigState } from "@/stores/configStore"
 import { useUIStore } from "@/stores/uiStore"
 import { darkTheme, lightTheme } from "@/theme"
@@ -50,7 +51,7 @@ export function BaseLayout({ children }: Props) {
 			lang === "fa"
 				? {
 						fonts: configureFonts({
-							config: { fontFamily: "IRANSansMobile(FaNum)" },
+							config: { fontFamily: Fonts.IRANSansMobile },
 							isV3: true,
 						}),
 					}
