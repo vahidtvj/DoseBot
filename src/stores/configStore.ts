@@ -1,5 +1,7 @@
+import { Constants } from "@/config"
 import type { CalendarSystem, Language } from "@/constants"
 import { createSuperJSONStorage, zustandStorage } from "@/utils/mmkvStorage"
+import { startOfToday } from "date-fns"
 import { create } from "zustand"
 import { persist, subscribeWithSelector } from "zustand/middleware"
 
@@ -11,6 +13,7 @@ type IState = {
 	use24Hour: boolean
 	timePickerMode: "clock" | "input"
 	calendar: CalendarSystem
+	invAlertTime: Date
 }
 type Actions = {
 	update: (state: Partial<IState>) => void
@@ -29,6 +32,9 @@ export const useConfigState = create<IState & Actions>()(
 				use24Hour: false,
 				timePickerMode: "clock",
 				calendar: "georgian",
+				invAlertTime: new Date(
+					startOfToday().getTime() + Constants.invAlertHour * 60 * 60 * 1000,
+				),
 				update: (state) => set({ ...state }),
 				toggle: (param, value) => {
 					const oldValue = get()[param]
