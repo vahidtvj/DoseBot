@@ -96,6 +96,7 @@ const en = {
 			persian: "شمسی",
 			georgian: "میلادی",
 		},
+		invAlertTime: "زمان هشدار موحودی",
 	},
 	permissions: {
 		welcome: "به DoseBot خوش آمدید",

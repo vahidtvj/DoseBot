@@ -8,6 +8,7 @@ import { Channels } from "@/config"
 import { useConfigState } from "@/stores/configStore"
 import { usePermissionStore } from "@/stores/permissions"
 import { useAppTheme } from "@/theme"
+import { useDateUtils } from "@/utils"
 import notifee from "@notifee/react-native"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
@@ -41,7 +42,8 @@ export default function Page() {
 	const { t } = useTranslation()
 	const sentryDialogStore = useSentryConsentDialog()
 	const { doseChannel, invChannel, checkPermissions } = usePermissionStore()
-	const { onCalendar, onLanguage } = useLogic()
+	const { onCalendar, onLanguage, onInvAlertTime } = useLogic()
+	const { toTimeString } = useDateUtils()
 	useEffect(() => {
 		checkPermissions()
 		const appStateListener = AppState.addEventListener("focus", () =>
@@ -131,6 +133,14 @@ export default function Page() {
 							{t("permissions.channel.inv")}
 						</Chip>
 					</View>
+				</View>
+				<View style={styles.item}>
+					<IconText variant="bodyLarge" icon="clock-alert-outline">
+						{t("settings.invAlertTime")}
+					</IconText>
+					<Chip onPress={() => onInvAlertTime()}>
+						{toTimeString(store.invAlertTime)}
+					</Chip>
 				</View>
 			</ItemGroup>
 			<ItemGroup title="Analytics">

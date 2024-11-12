@@ -21,7 +21,9 @@ type Props = {
 }
 export function TimePicker(props: Props) {
 	const { open, onDismiss, onSelect, use24Hour, rtl = false, labels } = props
-	const [value, setValue] = useState(props.value || new Date())
+	const [value, setValue] = useState(
+		props.value ? new Date(props.value) : new Date(),
+	)
 	const [mode, setMode] = useState(props.mode)
 	const [active, setActive] = useState<"none" | "hour" | "minute">(
 		mode === "input" ? "none" : "hour",

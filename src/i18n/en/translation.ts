@@ -98,6 +98,7 @@ const en = {
 			persian: "Persian",
 			georgian: "Georgian",
 		},
+		invAlertTime: "Inventory Alert Time",
 	},
 	permissions: {
 		welcome: "Welcome to DoseBot",

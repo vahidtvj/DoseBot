@@ -1,4 +1,4 @@
-import { showAlert } from "@/components/notification"
+import { showAlert, showInventoryAlert } from "@/components/notification"
 import type { IDoseFull } from "@/db"
 import { center } from "@/decorators"
 import notifee, {
@@ -52,6 +52,19 @@ function testDoseAlert() {
 	}
 	showAlert(dose)
 }
+function testInvAlert() {
+	showInventoryAlert({
+		id: 1,
+		inventoryCount: 2,
+		inventoryNotifyOn: 10,
+		inventoryEnabled: true,
+		name: "Acetaminophen",
+		type: "pill",
+		paused: false,
+		removed: false,
+		note: null,
+	})
+}
 
 type SettingState = {
 	auth: boolean
@@ -101,7 +114,7 @@ function NotificationTestScreen() {
 					<Button mode="outlined" onPress={testDoseAlert}>
 						dose notification
 					</Button>
-					<Button mode="outlined" onPress={testDoseAlert}>
+					<Button mode="outlined" onPress={testInvAlert}>
 						inventory notification
 					</Button>
 				</View>

@@ -1,4 +1,5 @@
 import { showPicker } from "@/components/pickers/radioPicker"
+import { timePicker } from "@/components/pickers/timepicker"
 import {
 	type CalendarSystem,
 	CalendarSystems,
@@ -34,5 +35,11 @@ export const useLogic = () => {
 			],
 			selected: useConfigState.getState().lang,
 		})
-	return { onCalendar, onLanguage }
+
+	const onInvAlertTime = () =>
+		timePicker.open({
+			value: useConfigState.getState().invAlertTime,
+			onSelect: (time) => useConfigState.setState({ invAlertTime: time }),
+		})
+	return { onCalendar, onLanguage, onInvAlertTime }
 }

@@ -5,6 +5,7 @@ import React from "react"
 import { StyleSheet, View } from "react-native"
 import { Button, Text } from "react-native-paper"
 
+import { onScheduleRunEvent } from "@/logic/dose"
 import {
 	BACKGROUND_FETCH_TASK,
 	registerBackgroundFetchAsync,
@@ -62,10 +63,20 @@ function BackgroundFetchScreen() {
 					? "Unregister BackgroundFetch task"
 					: "Register BackgroundFetch task"}
 			</Button>
+			<Button mode="contained" onPress={() => onScheduleRunEvent()}>
+				Run backgroud task
+			</Button>
 			<Text>
 				{state.doseStoreDay
-					? new Date(state.doseStoreDay).toLocaleString()
-					: "asd"}
+					? `dose store day: ${new Date(state.doseStoreDay).toLocaleString()}`
+					: "no dose day"}
+			</Text>
+			<Text>
+				{state.inventoryAlertDay
+					? `inv alert day: ${new Date(
+							state.inventoryAlertDay,
+						).toLocaleString()}`
+					: "no inv day"}
 			</Text>
 		</View>
 	)
@@ -76,6 +87,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
+		gap: 12,
 	},
 	textContainer: {
 		margin: 10,

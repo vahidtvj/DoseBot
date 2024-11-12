@@ -10,7 +10,7 @@ type State = {
 	mode?: "clock" | "input"
 	use24Hour?: boolean
 	onSelect: (date: Date, mode?: "clock" | "input") => void
-	onDismiss?: () => void
+	onDismiss: () => void
 	close: () => void
 	open: (props: {
 		value?: Date
@@ -23,6 +23,7 @@ type State = {
 const useStore = create<State>()((set) => ({
 	isOpen: false,
 	onSelect: () => {},
+	onDismiss: () => {},
 	close: () => set({ isOpen: false }),
 	open: (props) => {
 		const { value } = props
@@ -51,7 +52,7 @@ export function TimePickerModal() {
 	const { i18n, t } = useTranslation()
 	const rtl = i18n.dir() === "rtl"
 
-	const { isOpen, onSelect, close, value, use24Hour, mode } = useStore()
+	const { isOpen, onSelect, onDismiss, value, use24Hour, mode } = useStore()
 
 	return (
 		<TimePicker
@@ -60,7 +61,7 @@ export function TimePickerModal() {
 			mode={mode ?? "clock"}
 			open={isOpen}
 			value={value}
-			onDismiss={close}
+			onDismiss={onDismiss}
 			onSelect={onSelect}
 			use24Hour={use24Hour}
 			labels={{ btns: { cancel: t("cancel"), ok: t("ok") } }}
