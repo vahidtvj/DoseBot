@@ -4,7 +4,7 @@ import notifee from "@notifee/react-native"
 
 type Props = unknown
 // Todo inventory notifications
-export async function showInventoryAlert(props: Props) {
+export async function showInventoryAlert(_props: Props) {
 	// await notifee.requestPermission()
 	// const channelId = await notifee.createChannel(Channels.inventory)
 	// await notifee.displayNotification({

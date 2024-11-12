@@ -26,3 +26,6 @@ export const languages: { key: Language; label: string; subtitle?: string }[] =
 			subtitle: "Persian",
 		},
 	]
+
+export type CalendarSystem = "georgian" | "persian"
+export const CalendarSystems: CalendarSystem[] = ["georgian", "persian"]

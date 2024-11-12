@@ -129,7 +129,7 @@ export const updateFullMed = async (data: {
 			}),
 		)
 
-		const dosingIds = await Promise.all(
+		const _dosingIds = await Promise.all(
 			data.schedules.flatMap((sc, i) =>
 				sc.dosing.map(
 					async (x) =>

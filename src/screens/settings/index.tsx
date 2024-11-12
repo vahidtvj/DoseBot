@@ -13,7 +13,7 @@ import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { AppState, StyleSheet, View } from "react-native"
 import { Chip, Surface, Switch, Text } from "react-native-paper"
-import { onLanguage } from "./logic"
+import { useLogic } from "./logic"
 
 function ItemGroup(props: {
 	icon?: string
@@ -41,7 +41,7 @@ export default function Page() {
 	const { t } = useTranslation()
 	const sentryDialogStore = useSentryConsentDialog()
 	const { doseChannel, invChannel, checkPermissions } = usePermissionStore()
-
+	const { onCalendar, onLanguage } = useLogic()
 	useEffect(() => {
 		checkPermissions()
 		const appStateListener = AppState.addEventListener("focus", () =>
@@ -101,16 +101,18 @@ export default function Page() {
 							: t("settings.timeFormats.hour12")}
 					</Chip>
 				</View>
-				{/* <View style={styles.item}>
+				<View style={styles.item}>
 					<IconText variant="bodyLarge" icon="calendar-text">
-						Calendar
+						{t("settings.calendar")}
 					</IconText>
-					<Chip>Georgian</Chip>
-				</View> */}
+					<Chip onPress={onCalendar}>
+						{t(`settings.calendars.${store.calendar}`)}
+					</Chip>
+				</View>
 			</ItemGroup>
 			<ItemGroup title={t("settings.notifications")}>
 				<View style={styles.item}>
-					<IconText variant="bodyLarge" icon="bell-ring">
+					<IconText variant="bodyLarge" icon="bell-ring-outline">
 						{t("permissions.alertSettings")}
 					</IconText>
 					<View style={styles.row}>

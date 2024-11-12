@@ -1,6 +1,6 @@
 import { timePicker } from "@/components/pickers/timepicker"
 import { useProps } from "@/utils"
-import { toTimeString } from "@/utils"
+import { useDateUtils } from "@/utils"
 import {
 	type FieldValues,
 	type UseControllerProps,
@@ -20,6 +20,7 @@ export function TimePickerInputField<T extends FieldValues>(
 	const { field, fieldState } = useController(props)
 	const { containerStyle, noHelper, readOnly, ...rest } = useProps(props)
 	const hasError = fieldState.error !== undefined
+	const { toTimeString } = useDateUtils()
 
 	const value = field.value && toTimeString(field.value)
 	const time = field.value && new Date(field.value)

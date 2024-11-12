@@ -1,3 +1,4 @@
+import { useConfigState } from "@/stores/configStore"
 import { useUIStore } from "@/stores/uiStore"
 import { create } from "zustand"
 import * as dateFns from "./default"
@@ -9,7 +10,7 @@ type DateFNStore = {
 }
 
 function initStore() {
-	const useJalali = useUIStore.getState().lang === "fa"
+	const useJalali = useConfigState.getState().calendar === "persian"
 	const func = useJalali ? jDateFns : dateFns
 	const today = new Date()
 	const date = func.startOfWeek(today)
@@ -35,11 +36,21 @@ useUIStore.subscribe(
 	() => useStore.setState(initStore),
 )
 
-export function useDateFunc() {
-	// TODO get from lang
-	const useJalali = useUIStore((x) => x.lang) === "fa"
+function useDateFunc() {
+	const calendar = useConfigState((x) => x.calendar)
+	const useJalali = calendar === "persian"
 	const func = useJalali ? jDateFns : dateFns
 	const { weekdays, monthNames } = useStore()
 
 	return { ...func, weekdays, monthNames }
 }
+
+useDateFunc.get = () => {
+	const { calendar } = useConfigState.getState()
+	const useJalali = calendar === "persian"
+	const func = useJalali ? jDateFns : dateFns
+
+	return { ...func }
+}
+
+export { useDateFunc }
