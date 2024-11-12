@@ -29,4 +29,24 @@ export const globalTypes = {
 			dynamicTitle: true,
 		},
 	},
+	use24Hour: {
+		description: "Time mode",
+		toolbar: {
+			title: "Time mode",
+			icon: "watch",
+			items: [
+				{ value: false, title: "12-Hour" },
+				{ value: true, title: "24-Hour" },
+			],
+			showName: true,
+		},
+	},
+	calendar: {
+		description: "Calendar system",
+		toolbar: {
+			icon: "calendar",
+			items: ["georgian", "persian"],
+			dynamicTitle: true,
+		},
+	},
 }

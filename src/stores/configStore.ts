@@ -1,4 +1,4 @@
-import type { Language } from "@/constants"
+import type { CalendarSystem, Language } from "@/constants"
 import { createSuperJSONStorage, zustandStorage } from "@/utils/mmkvStorage"
 import { create } from "zustand"
 import { persist, subscribeWithSelector } from "zustand/middleware"
@@ -10,6 +10,7 @@ type IState = {
 	sentryEnabled: boolean
 	use24Hour: boolean
 	timePickerMode: "clock" | "input"
+	calendar: CalendarSystem
 }
 type Actions = {
 	update: (state: Partial<IState>) => void
@@ -27,6 +28,7 @@ export const useConfigState = create<IState & Actions>()(
 				sentryEnabled: false,
 				use24Hour: false,
 				timePickerMode: "clock",
+				calendar: "georgian",
 				update: (state) => set({ ...state }),
 				toggle: (param, value) => {
 					const oldValue = get()[param]

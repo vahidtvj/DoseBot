@@ -93,6 +93,11 @@ const en = {
 			hour12: "12-hour",
 		},
 		notifications: "Notifications",
+		calendar: "Calendar",
+		calendars: {
+			persian: "Persian",
+			georgian: "Georgian",
+		},
 	},
 	permissions: {
 		welcome: "Welcome to DoseBot",

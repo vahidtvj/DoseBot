@@ -91,6 +91,11 @@ const en = {
 			hour12: "12 ساعته",
 		},
 		notifications: "اعلان‌ها",
+		calendar: "نوع تاریخ",
+		calendars: {
+			persian: "شمسی",
+			georgian: "میلادی",
+		},
 	},
 	permissions: {
 		welcome: "به DoseBot خوش آمدید",
