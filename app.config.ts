@@ -21,6 +21,7 @@ const config: ExpoConfig = {
 	icon: "./assets/appicon.png",
 	userInterfaceStyle: "light",
 	assetBundlePatterns: ["**/*"],
+	scheme: packageName,
 	ios: {
 		supportsTablet: true,
 		bundleIdentifier: packageName,
