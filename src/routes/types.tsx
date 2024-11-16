@@ -25,6 +25,7 @@ export type RootStackParamList = {
 	Test: undefined
 	MedicineDetail: { id?: number }
 	MedicineSchedule: { index?: number }
+	Debug: undefined
 }
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =

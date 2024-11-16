@@ -13,6 +13,7 @@ import {
 	DarkTheme as NavigationDarkTheme,
 	DefaultTheme as NavigationDefaultTheme,
 } from "@react-navigation/native"
+import * as Linking from "expo-linking"
 import * as Updates from "expo-updates"
 import { useEffect, useMemo } from "react"
 import { useTranslation } from "react-i18next"
@@ -26,6 +27,8 @@ import {
 // import { Icon } from "react-native-paper"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 
+const prefix = Linking.createURL("/")
+
 type Props = {
 	children: React.ReactNode
 }
@@ -35,6 +38,10 @@ export function BaseLayout({ children }: Props) {
 	const colorScheme = useUIStore((state) => state.colorScheme)
 	const lang = useUIStore((state) => state.lang)
 	const shouldBeRTL = lang === "fa"
+
+	const linking = {
+		prefixes: [prefix],
+	}
 
 	useEffect(() => {
 		if (shouldBeRTL !== I18nManager.isRTL && Platform.OS !== "web") {
@@ -103,7 +110,7 @@ export function BaseLayout({ children }: Props) {
 				},
 			}}
 		>
-			<NavigationContainer theme={navTheme}>
+			<NavigationContainer theme={navTheme} linking={linking}>
 				<View style={[styles.safeView]}>{children}</View>
 			</NavigationContainer>
 			<DatePickerModal />
