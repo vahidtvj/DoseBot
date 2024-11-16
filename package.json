@@ -6,8 +6,8 @@
 		"dev": "concurrently -r 'npm:dev_a' 'npm:storybook'",
 		"dev_a": "concurrently --hide 0 'npm:storybook-server'",
 		"start": "expo start",
-		"android": "expo start --android",
-		"ios": "expo start --ios",
+		"android": "expo run:android",
+		"ios": "expo run:ios",
 		"web": "expo start --web",
 		"format": "biome format --write .",
 		"lint": "biome lint .",
@@ -21,7 +21,8 @@
 		"storybook": "cross-env EXPO_PUBLIC_STORYBOOK_ENABLED='true' expo start",
 		"storybook-server": "storybook dev -p 6006 -c ./.storybook-web",
 		"test": "jest",
-		"migrate": "drizzle-kit generate"
+		"migrate": "drizzle-kit generate",
+		"prebuild": "expo prebuild --pnpm -p android"
 	},
 	"dependencies": {
 		"@expo/vector-icons": "^14.0.2",
