@@ -1,3 +1,4 @@
+import { useDebugStore } from "@/stores/debugStore"
 // import * as Sentry from "@sentry/react-native"
 import * as BackgroundFetch from "expo-background-fetch"
 import { onScheduleRunEvent } from "./dose"
@@ -17,6 +18,7 @@ export async function unregisterBackgroundFetchAsync() {
 }
 
 export function AppLaunch() {
+	useDebugStore.getState().push({ time: new Date(), type: "AppLaunch" })
 	onScheduleRunEvent()
 	registerBackgroundFetchAsync()
 }

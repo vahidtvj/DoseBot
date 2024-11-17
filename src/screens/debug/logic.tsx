@@ -1,8 +1,4 @@
-import {
-	BACKGROUND_FETCH_TASK,
-	registerBackgroundFetchAsync,
-	unregisterBackgroundFetchAsync,
-} from "@/logic/events"
+import { BACKGROUND_FETCH_TASK } from "@/logic/events"
 import * as BackgroundFetch from "expo-background-fetch"
 import * as TaskManager from "expo-task-manager"
 import { useEffect, useState } from "react"
