@@ -1,14 +1,17 @@
 import type { RootStackScreenProps } from "@/routes/types"
 import { useAppState } from "@/stores/app"
 import { useConfigState } from "@/stores/configStore"
+import { useDebugStore } from "@/stores/debugStore"
 import { ScrollView, StyleSheet, View } from "react-native"
-import { Button, IconButton, Text } from "react-native-paper"
+import { Chip, IconButton, Text } from "react-native-paper"
 import { useLogic } from "./logic"
 
 export default function Page(_props: RootStackScreenProps<"Debug">) {
 	const { isFetchRegistered, fetchStatus, checkFetchStatus } = useLogic()
 	const { doseStoreDay, inventoryAlertDay } = useAppState()
 	const { invAlertTime } = useConfigState()
+	const { backgroundRuns, enabled, setEnabled } = useDebugStore()
+
 	return (
 		<View style={styles.page}>
 			<ScrollView contentContainerStyle={styles.content}>
@@ -32,6 +35,20 @@ export default function Page(_props: RootStackScreenProps<"Debug">) {
 						<Text>{`DoseStoreDay: ${doseStoreDay?.toLocaleString()}`}</Text>
 						<Text>{`InventoryAlertDay: ${inventoryAlertDay?.toLocaleString()}`}</Text>
 						<Text>{`InvAlertTime: ${invAlertTime?.toLocaleTimeString()}`}</Text>
+					</View>
+				</View>
+
+				<View>
+					<View style={styles.row}>
+						<Text variant="titleMedium">Background fetch runs</Text>
+						<Chip onPress={() => setEnabled(!enabled)}>
+							{enabled ? "Disable" : "Enable"}
+						</Chip>
+					</View>
+					<View>
+						{backgroundRuns.map((run, i) => (
+							<Text key={i}>{`${run.type} ${run.time.toLocaleString()}`}</Text>
+						))}
 					</View>
 				</View>
 			</ScrollView>
