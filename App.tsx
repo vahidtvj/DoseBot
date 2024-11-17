@@ -1,3 +1,7 @@
+// import group 3
+import "@/logic/registerEvents"
+import "@/utils/notifications"
+
 import { useConfigState } from "@/stores/configStore"
 import * as Sentry from "@sentry/react-native"
 // ! The imports in this file should be in order
@@ -26,10 +30,6 @@ import { useMigrations } from "drizzle-orm/expo-sqlite/migrator"
 // sqlite - drizzle
 import { useDrizzleStudio } from "expo-drizzle-studio-plugin"
 import migrations from "./drizzle/migrations"
-
-// import group 3
-import "@/logic/registerEvents"
-import "@/utils/notifications"
 
 import { BaseLayout } from "@/layout/base"
 // App

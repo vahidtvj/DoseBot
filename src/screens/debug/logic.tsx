@@ -16,8 +16,8 @@ export const useLogic = () => {
 		const isRegistered = await TaskManager.isTaskRegisteredAsync(
 			BACKGROUND_FETCH_TASK,
 		)
-		// @ts-ignore
-		setFetchStatus(BackgroundFetch.BackgroundFetchStatus[status])
+		if (status !== null)
+			setFetchStatus(BackgroundFetch.BackgroundFetchStatus[status])
 		setIsRegistered(isRegistered)
 	}
 
