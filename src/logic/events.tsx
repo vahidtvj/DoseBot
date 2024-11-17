@@ -1,6 +1,7 @@
 import { useDebugStore } from "@/stores/debugStore"
 // import * as Sentry from "@sentry/react-native"
 import * as BackgroundFetch from "expo-background-fetch"
+import * as TaskManager from "expo-task-manager"
 import { onScheduleRunEvent } from "./dose"
 
 export const BACKGROUND_FETCH_TASK = "backgroundWorker"
@@ -17,8 +18,11 @@ export async function unregisterBackgroundFetchAsync() {
 	return BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK)
 }
 
-export function AppLaunch() {
+export async function AppLaunch() {
 	useDebugStore.getState().push({ time: new Date(), type: "AppLaunch" })
 	onScheduleRunEvent()
-	registerBackgroundFetchAsync()
+	const isRegistered = await TaskManager.isTaskRegisteredAsync(
+		BACKGROUND_FETCH_TASK,
+	)
+	if (!isRegistered) registerBackgroundFetchAsync()
 }
