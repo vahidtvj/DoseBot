@@ -170,7 +170,7 @@ export const useCalendar = (props: UseCalendarProps) => {
 			days = [...days, ...postPadding]
 			return days
 		},
-		[getDaysInMonth, startOfMonth, startOfMonth, subMonths, getDay, weekdays],
+		[getDaysInMonth, startOfMonth, subMonths, getDay, weekdays],
 	)
 
 	const days = useMemo(() => getDays(props.date), [props.date, getDays])
