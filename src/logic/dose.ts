@@ -4,7 +4,6 @@ import {
 	type IDoseFull,
 	changeDoseStatus,
 	getAllMeds,
-	getMed,
 	getPendingDoseListFull,
 	insertDoses,
 } from "@/db"
@@ -14,23 +13,6 @@ import { useConfigState } from "@/stores/configStore"
 import { isFuture, isToday, startOfToday, startOfTomorrow } from "date-fns"
 import { getDosage } from "./getDosage"
 const noop = () => {}
-
-export async function addDoseOnCreate(medId?: number) {
-	if (!medId) return
-	const med = await getMed(medId)
-	if (!med) return
-
-	const { doseStoreDay } = useAppState.getState()
-
-	const list = getDosage([med])
-	// if it has added alerts for tomorrow then also generate for this one manually
-	// if not then wait for algorithm to run
-	if (doseStoreDay && isFuture(doseStoreDay)) {
-		list.push(...getDosage([med], startOfTomorrow()))
-	}
-
-	await insertDoses(list)
-}
 
 async function addDoses(tomorrow = false) {
 	const data = await getAllMeds.execute()

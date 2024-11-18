@@ -14,7 +14,7 @@ export default defineConfig({
 			"react-native-linear-gradient": "react-native-web-linear-gradient",
 			"react-native-mmkv": path.resolve(
 				__dirname,
-				".storybook/mocks/react-native-mmkv.js",
+				".storybook-web/mocks/react-native-mmkv.ts",
 			),
 			"@": path.resolve(__dirname, "./src"),
 		},

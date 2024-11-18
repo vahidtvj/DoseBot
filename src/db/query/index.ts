@@ -1,5 +1,5 @@
-import { addDoseOnCreate } from "@/logic/dose"
 import { removeNotification, updateNotifications } from "@/logic/notification"
+import { addDoseOnCreate } from "@/logic/onCreate"
 import { and, asc, eq, inArray, sql } from "drizzle-orm"
 import * as schema from "../schema"
 import type { IDoseCreate } from "../types"
@@ -157,7 +157,12 @@ export const updateFullMed = async (data: {
 				.where(inArray(schema.dose.id, pendingDoseList))
 		}
 	})
-	addDoseOnCreate(medId)
+	if (!medId) return
+	const med = await getMed(medId)
+	if (!med) return
+	const doses = addDoseOnCreate(med)
+	if (doses.length === 0) return
+	insertDoses(doses)
 }
 
 export const getDoseFull = async (id: number) =>

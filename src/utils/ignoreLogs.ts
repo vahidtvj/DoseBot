@@ -1,10 +1,7 @@
 import { LogBox } from "react-native"
 
 if (__DEV__) {
-	const ignoreWarns = [
-		"Non-serializable values were found in the navigation state",
-		"Require cycle:",
-	]
+	const ignoreWarns: string[] = []
 
 	const warn = console.warn
 	console.warn = (...arg) => {

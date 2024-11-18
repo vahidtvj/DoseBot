@@ -100,7 +100,7 @@ export default function Page({
 						<Permission
 							title={t("permissions.notification")}
 							subtitle={t("permissions.notificationSub")}
-							icon="bell"
+							icon="bell-ring-outline"
 							allowed={auth}
 							onClick={() => notifee.requestPermission()}
 						/>
