@@ -3,7 +3,7 @@ import { ScheduleForm } from "@/components/forms/schedule"
 import type { IScheduleFullCreate } from "@/db"
 import type { RootStackScreenProps } from "@/routes/types"
 import { randomUUID } from "expo-crypto"
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Appbar } from "react-native-paper"
@@ -21,10 +21,10 @@ export default function Page({
 	const data = index !== undefined && schedules ? schedules[index] : undefined
 	const key = data?._id
 
-	function onDelete() {
+	const onDelete = useCallback(() => {
 		if (key) removeSchedule(key)
 		navigation.goBack()
-	}
+	}, [key, navigation, removeSchedule])
 
 	useEffect(() => {
 		if (index === undefined || !schedules || !schedules[index].id)

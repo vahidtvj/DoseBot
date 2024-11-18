@@ -3,7 +3,7 @@ import { MedicineForm } from "@/components/forms/medicine"
 import { type IMedicineCreate, deleteMed, updateFullMed } from "@/db"
 import type { RootStackScreenProps } from "@/routes/types"
 import { randomUUID } from "expo-crypto"
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Appbar } from "react-native-paper"
@@ -16,11 +16,11 @@ export default function Page({
 	const { t } = useTranslation()
 	const { medicine, schedules, setMed } = useMedicineFormState()
 
-	function onDelete() {
+	const onDelete = useCallback(() => {
 		if (!id) return
 		deleteMed(id)
 		navigation.goBack()
-	}
+	}, [id, navigation])
 
 	useEffect(() => {
 		if (!id) navigation.setOptions({ title: t("navigation.newMed") })

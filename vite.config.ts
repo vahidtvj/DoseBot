@@ -12,6 +12,10 @@ export default defineConfig({
 		alias: {
 			// "react-native": "react-native-web",
 			"react-native-linear-gradient": "react-native-web-linear-gradient",
+			"react-native-mmkv": path.resolve(
+				__dirname,
+				".storybook/mocks/react-native-mmkv.js",
+			),
 			"@": path.resolve(__dirname, "./src"),
 		},
 	},
