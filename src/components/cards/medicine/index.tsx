@@ -4,11 +4,15 @@ import { hasEnded, hasStarted, useDateUtils } from "@/utils"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Card, IconButton, Text, useTheme } from "react-native-paper"
-type IProps = IMedicineFull & { onPress?: (id: number) => void }
+
+type IProps = IMedicineFull & {
+	onPress?: (id: number) => void
+	cardTitleRight?: (props: { size: number }) => React.ReactElement
+}
 
 export function MedicineCard(props: IProps) {
 	const theme = useTheme()
-	const { name, onPress, id, type, schedules, ...data } = props
+	const { name, onPress, id, type, schedules, cardTitleRight, ...data } = props
 	const { t } = useTranslation()
 	const { getScheduleText } = useDateUtils()
 
@@ -20,6 +24,7 @@ export function MedicineCard(props: IProps) {
 				left={(props) => (
 					<IconButton icon={MedIconMap[type]} style={styles.icon} {...props} />
 				)}
+				right={cardTitleRight}
 			/>
 			<Card.Content style={styles.content}>
 				<View style={styles.body}>

@@ -70,6 +70,7 @@ const en = {
 		medications: "دارو‌ها",
 		newMed: "داروی جدید",
 		newSchedule: "دوز جدید",
+		travelCalculator: "ماشین حساب سفر",
 	},
 	settings: {
 		theme: "تم",
@@ -121,6 +122,11 @@ const en = {
 	cancel: "انصراف",
 	ok: "تایید",
 	today: "امروز",
+	numDays: "{{count}} روز",
+	duration: "مدت زمان",
+	selectAll: "انتخاب همه",
+	calculate: "محاسبه",
+	reset: "بازنشانی",
 } as const
 
 export default en
