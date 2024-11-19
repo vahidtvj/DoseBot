@@ -33,7 +33,7 @@ export const data: IMedicineFull[] = [
 					{
 						id: 2,
 						scheduleId: 1,
-						amount: 1,
+						amount: 2,
 						time: new Date(today.getTime() + 14 * 3600 * 1000),
 					},
 					{
@@ -96,7 +96,7 @@ export const data: IMedicineFull[] = [
 				id: 3,
 				medicineId: 2,
 				type: "EveryXdays",
-				interval: 2,
+				interval: 3,
 				startDate: today,
 				endDate: null,
 				days: null,

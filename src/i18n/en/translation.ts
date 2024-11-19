@@ -71,6 +71,7 @@ const en = {
 		medications: "Medications",
 		newMed: "New Medication",
 		newSchedule: "New Schedule",
+		travelCalculator: "Travel Calculator",
 	},
 
 	settings: {
@@ -124,6 +125,12 @@ const en = {
 	cancel: "Cancel",
 	ok: "OK",
 	today: "Today",
+	numDays_one: "{{count}} day",
+	numDays_other: "{{count}} days",
+	duration: "Duration",
+	selectAll: "Select All",
+	calculate: "Calculate",
+	reset: "Reset",
 } as const
 
 export default en

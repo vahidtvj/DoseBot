@@ -25,6 +25,7 @@ export type RootStackParamList = {
 	Test: undefined
 	MedicineDetail: { id?: number }
 	MedicineSchedule: { index?: number }
+	TravelCalculator: undefined
 	Debug: undefined
 }
 
