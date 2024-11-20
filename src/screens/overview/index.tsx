@@ -1,11 +1,13 @@
 import { DoseCard } from "@/components/cards/dose"
+import { AnimatedFlatList } from "@/components/common"
 import { type IDoseFull, changeDoseStatus, getPendingDoseListFull } from "@/db"
 import type { HomeTabScreenProps } from "@/routes/types"
 import { useAppState } from "@/stores/app"
 import { useLiveQuery } from "drizzle-orm/expo-sqlite"
 import { useEffect, useState } from "react"
-import { FlatList, StyleSheet, View } from "react-native"
+import { ScrollView, StyleSheet, View } from "react-native"
 import { Snackbar } from "react-native-paper"
+
 export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	const firstLaunch = useAppState((state) => state.firstLaunch)
 
@@ -30,7 +32,7 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	}
 	return (
 		<View style={styles.page}>
-			<FlatList
+			<AnimatedFlatList
 				data={data}
 				keyExtractor={(item) => String(item.id)}
 				renderItem={({ item }) => (

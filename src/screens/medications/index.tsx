@@ -1,13 +1,15 @@
 import { MedicineCard } from "@/components/cards/medicine"
-import { FlatList, StyleSheet, View } from "react-native"
+import { StyleSheet, View } from "react-native"
 import { FAB } from "react-native-paper"
 
 import { getAllMeds } from "@/db"
 import { useLiveQuery } from "drizzle-orm/expo-sqlite"
 
+import { AnimatedFlatList } from "@/components/common"
 import type { HomeTabScreenProps } from "@/routes/types"
 import { useTranslation } from "react-i18next"
 import { useMedicineFormState } from "../medicineDetail/store"
+
 export default function Page({
 	navigation,
 }: HomeTabScreenProps<"Medications">) {
@@ -21,7 +23,7 @@ export default function Page({
 	}
 	return (
 		<View style={styles.page}>
-			<FlatList
+			<AnimatedFlatList
 				contentContainerStyle={styles.scrollView}
 				data={meds.data}
 				renderItem={(item) => (
