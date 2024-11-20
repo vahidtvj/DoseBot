@@ -50,7 +50,7 @@ export function travelCalculator(props: {
 					const endDay = (startDay + rem - 1) % 7
 					for (const day of sc.days) {
 						const i = Weekdays.findIndex((x) => x === day)
-						if (endDay > startDay) m += i >= startDay && i <= endDay ? 1 : 0
+						if (endDay >= startDay) m += i >= startDay && i <= endDay ? 1 : 0
 						else m += i >= startDay || i <= endDay ? 1 : 0
 					}
 				}
