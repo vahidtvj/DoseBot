@@ -32,6 +32,7 @@ const config: ExpoConfig = {
 		},
 	},
 	android: {
+		softwareKeyboardLayoutMode: "pan",
 		splash: {
 			image: "./assets/splash-screen.png",
 			backgroundColor: "#ffffff",
