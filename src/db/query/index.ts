@@ -220,7 +220,12 @@ export const changeDoseStatus = async (
 			await tx
 				.update(schema.medicine)
 				.set({
-					inventoryCount: sql`${schema.medicine.inventoryCount} + ${updateCountBy}`,
+					inventoryCount: sql`
+      CASE 
+        WHEN ${schema.medicine.inventoryCount} + ${updateCountBy} < 0 THEN 0 
+        ELSE ${schema.medicine.inventoryCount} + ${updateCountBy} 
+      END
+    `,
 				})
 				.where(eq(schema.medicine.id, data.medicineId))
 	})
