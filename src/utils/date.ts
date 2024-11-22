@@ -17,7 +17,7 @@ export function formatAlertTime(date: Date) {
 }
 
 export const useDateUtils = () => {
-	const { format } = useDateFunc()
+	const { format, differenceInCalendarDays } = useDateFunc()
 	const { t, i18n } = useTranslation()
 	const use24Hour = useConfigState((x) => x.use24Hour)
 	const timeFormat = `${use24Hour ? "HH" : "hh"}:mm${use24Hour ? "" : " aa"}`
@@ -64,6 +64,13 @@ export const useDateUtils = () => {
 
 	const formatDate = (date: Date) => format(date, "P")
 
+	const formatNextDose = (date: Date) => {
+		const days = differenceInCalendarDays(date, new Date())
+		if (days <= 0) return format(date, timeFormat)
+		if (days === 1) return `${t("tomorrow")} ${format(date, timeFormat)}`
+		return `${t("numDays", { count: days })} ${format(date, timeFormat)}`
+	}
+
 	return {
 		formatDate,
 		getScheduleText,
@@ -71,6 +78,7 @@ export const useDateUtils = () => {
 		formatDoseTime,
 		formatDosingTime,
 		toTimeString,
+		formatNextDose,
 	}
 }
 

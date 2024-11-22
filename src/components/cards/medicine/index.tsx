@@ -1,6 +1,8 @@
 import { MedIconMap } from "@/constants"
 import type { IMedicineFull } from "@/db"
+import { getNextDose } from "@/logic/getDosage"
 import { hasEnded, hasStarted, useDateUtils } from "@/utils"
+import { useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Card, IconButton, Text, useTheme } from "react-native-paper"
@@ -8,28 +10,42 @@ import { Card, IconButton, Text, useTheme } from "react-native-paper"
 type IProps = IMedicineFull & {
 	onPress?: (id: number) => void
 	cardTitleRight?: (props: { size: number }) => React.ReactElement
+	noNextDose?: boolean
 }
 
 export function MedicineCard(props: IProps) {
 	const theme = useTheme()
-	const { name, onPress, id, type, schedules, cardTitleRight, ...data } = props
+	const { onPress, cardTitleRight, noNextDose, ...data } = props
 	const { t } = useTranslation()
-	const { getScheduleText } = useDateUtils()
+	const { getScheduleText, formatNextDose } = useDateUtils()
+
+	const nextDose = useMemo(() => {
+		if (noNextDose) return null
+		return getNextDose(data)
+	}, [noNextDose, data])
 
 	return (
-		<Card mode="contained" style={styles.card} onPress={() => onPress?.(id)}>
+		<Card
+			mode="contained"
+			style={styles.card}
+			onPress={() => onPress?.(data.id)}
+		>
 			<Card.Title
-				title={name}
+				title={data.name}
 				titleVariant="titleLarge"
 				left={(props) => (
-					<IconButton icon={MedIconMap[type]} style={styles.icon} {...props} />
+					<IconButton
+						icon={MedIconMap[data.type]}
+						style={styles.icon}
+						{...props}
+					/>
 				)}
 				right={cardTitleRight}
 			/>
 			<Card.Content style={styles.content}>
 				<View style={styles.body}>
 					<View style={styles.left}>
-						{schedules.map((schedule, i) => (
+						{data.schedules.map((schedule, i) => (
 							<View key={i} style={styles.row}>
 								<Text
 									variant="bodyLarge"
@@ -56,6 +72,13 @@ export function MedicineCard(props: IProps) {
 								)}
 							</View>
 						))}
+						{!noNextDose && nextDose && (
+							<View style={{ paddingTop: 6 }}>
+								<Text variant="labelLarge">{`${t("nextDose")}: ${formatNextDose(
+									nextDose.time,
+								)}`}</Text>
+							</View>
+						)}
 					</View>
 				</View>
 				<View style={styles.right}>

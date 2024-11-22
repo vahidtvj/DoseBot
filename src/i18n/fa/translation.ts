@@ -98,6 +98,7 @@ const en = {
 			georgian: "میلادی",
 		},
 		invAlertTime: "زمان هشدار موحودی",
+		showNextDose: "نمایش دوز بعدی",
 	},
 	permissions: {
 		welcome: "به DoseBot خوش آمدید",
@@ -127,6 +128,7 @@ const en = {
 	selectAll: "انتخاب همه",
 	calculate: "محاسبه",
 	reset: "بازنشانی",
+	nextDose: "دوز بعدی",
 } as const
 
 export default en
