@@ -39,6 +39,7 @@ function MedicineCardField(
 	return (
 		<MedicineCard
 			{...med}
+			noNextDose
 			cardTitleRight={() => (
 				<View style={{ paddingRight: 16 }}>
 					<Checkbox

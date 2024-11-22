@@ -100,6 +100,7 @@ const en = {
 			georgian: "Georgian",
 		},
 		invAlertTime: "Inventory Alert Time",
+		showNextDose: "Show next dose",
 	},
 	permissions: {
 		welcome: "Welcome to DoseBot",
@@ -131,6 +132,7 @@ const en = {
 	selectAll: "Select All",
 	calculate: "Calculate",
 	reset: "Reset",
+	nextDose: "Next Dose",
 } as const
 
 export default en

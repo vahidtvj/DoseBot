@@ -83,6 +83,15 @@ export default function Page() {
 						onValueChange={() => store.toggle("useMaterialYou")}
 					/>
 				</View>
+				<View style={styles.item}>
+					<IconText variant="bodyLarge" icon="clipboard-text-clock">
+						{t("settings.showNextDose")}
+					</IconText>
+					<Switch
+						value={store.showNextDose}
+						onValueChange={() => store.toggle("showNextDose")}
+					/>
+				</View>
 			</ItemGroup>
 			<ItemGroup title="Locale">
 				<View style={styles.item}>

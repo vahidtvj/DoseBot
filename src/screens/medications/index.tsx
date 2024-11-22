@@ -7,6 +7,7 @@ import { useLiveQuery } from "drizzle-orm/expo-sqlite"
 
 import { AnimatedFlatList } from "@/components/common"
 import type { HomeTabScreenProps } from "@/routes/types"
+import { useConfigState } from "@/stores/configStore"
 import { useTranslation } from "react-i18next"
 import { useMedicineFormState } from "../medicineDetail/store"
 
@@ -21,6 +22,9 @@ export default function Page({
 		useMedicineFormState.getState().getData(id)
 		navigation.navigate("MedicineDetail", { id })
 	}
+
+	const showNextDose = useConfigState((x) => x.showNextDose)
+
 	return (
 		<View style={styles.page}>
 			<AnimatedFlatList
@@ -31,6 +35,7 @@ export default function Page({
 						{...item.item}
 						key={item.item.id}
 						onPress={(id) => openMed(id)}
+						noNextDose={!showNextDose}
 					/>
 				)}
 			/>

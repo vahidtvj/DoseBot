@@ -14,6 +14,7 @@ type IState = {
 	timePickerMode: "clock" | "input"
 	calendar: CalendarSystem
 	invAlertTime: Date
+	showNextDose: boolean
 }
 type Actions = {
 	update: (state: Partial<IState>) => void
@@ -35,6 +36,7 @@ export const useConfigState = create<IState & Actions>()(
 				invAlertTime: new Date(
 					startOfToday().getTime() + Constants.invAlertHour * 60 * 60 * 1000,
 				),
+				showNextDose: true,
 				update: (state) => set({ ...state }),
 				toggle: (param, value) => {
 					const oldValue = get()[param]
