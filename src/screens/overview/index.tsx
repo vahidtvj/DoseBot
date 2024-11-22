@@ -3,13 +3,23 @@ import { AnimatedFlatList } from "@/components/common"
 import { type IDoseFull, changeDoseStatus, getPendingDoseListFull } from "@/db"
 import type { HomeTabScreenProps } from "@/routes/types"
 import { useAppState } from "@/stores/app"
+import { useFocusEffect } from "@react-navigation/native"
 import { useLiveQuery } from "drizzle-orm/expo-sqlite"
-import { useEffect, useState } from "react"
-import { ScrollView, StyleSheet, View } from "react-native"
+import { useCallback, useEffect, useState } from "react"
+import { StyleSheet, View } from "react-native"
 import { Snackbar } from "react-native-paper"
 
 export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	const firstLaunch = useAppState((state) => state.firstLaunch)
+
+	const [_, setTick] = useState(0)
+
+	useFocusEffect(
+		useCallback(() => {
+			const interval = setInterval(() => setTick((prev) => prev + 1), 10000)
+			return () => clearInterval(interval)
+		}, []),
+	)
 
 	useEffect(() => {
 		if (firstLaunch) navigation.navigate("Permissions")
