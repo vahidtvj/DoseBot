@@ -1,13 +1,19 @@
 import { DoseCard } from "@/components/cards/dose"
 import { AnimatedFlatList } from "@/components/common"
-import { type IDoseFull, changeDoseStatus, getPendingDoseListFull } from "@/db"
+import {
+	type IDoseFull,
+	changeDoseStatus,
+	getAllMeds,
+	getPendingDoseListFull,
+} from "@/db"
 import type { HomeTabScreenProps } from "@/routes/types"
 import { useAppState } from "@/stores/app"
 import { useFocusEffect } from "@react-navigation/native"
 import { useLiveQuery } from "drizzle-orm/expo-sqlite"
 import { useCallback, useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
-import { Snackbar } from "react-native-paper"
+import { Snackbar, Text } from "react-native-paper"
 
 export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	const firstLaunch = useAppState((state) => state.firstLaunch)
@@ -25,9 +31,12 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 		if (firstLaunch) navigation.navigate("Permissions")
 	}, [firstLaunch, navigation])
 	const { data } = useLiveQuery(getPendingDoseListFull)
+	const noMeds = useLiveQuery(getAllMeds).data.length === 0
 
 	const [snackVisible, setSnackVisible] = useState(false)
 	const [snackDose, setSnackDose] = useState<IDoseFull | undefined>()
+
+	const { t } = useTranslation()
 
 	function onClick(dose: IDoseFull, action: "skip" | "confirm") {
 		return changeDoseStatus(dose.id, action).then(() => {
@@ -42,17 +51,26 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	}
 	return (
 		<View style={styles.page}>
-			<AnimatedFlatList
-				data={data}
-				keyExtractor={(item) => String(item.id)}
-				renderItem={({ item }) => (
-					<DoseCard
-						{...item}
-						onConfirm={() => onClick(item, "confirm")}
-						onSkip={() => onClick(item, "skip")}
-					/>
-				)}
-			/>
+			{data.length > 0 && (
+				<AnimatedFlatList
+					data={data}
+					keyExtractor={(item) => String(item.id)}
+					renderItem={({ item }) => (
+						<DoseCard
+							{...item}
+							onConfirm={() => onClick(item, "confirm")}
+							onSkip={() => onClick(item, "skip")}
+						/>
+					)}
+				/>
+			)}
+			{data.length === 0 && (
+				<View style={styles.messageContainer}>
+					<Text variant="bodyLarge" style={styles.message}>
+						{noMeds ? t("noMedsDoseScreen") : t("noDoses")}
+					</Text>
+				</View>
+			)}
 			<Snackbar
 				visible={snackVisible}
 				onDismiss={() => setSnackVisible(false)}
@@ -70,5 +88,14 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 const styles = StyleSheet.create({
 	page: {
 		flex: 1,
+	},
+	messageContainer: {
+		justifyContent: "center",
+		flex: 1,
+		alignItems: "center",
+		paddingHorizontal: 24,
+	},
+	message: {
+		textAlign: "center",
 	},
 })
