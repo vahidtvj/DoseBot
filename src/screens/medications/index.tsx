@@ -1,6 +1,6 @@
 import { MedicineCard } from "@/components/cards/medicine"
 import { StyleSheet, View } from "react-native"
-import { FAB } from "react-native-paper"
+import { FAB, Text } from "react-native-paper"
 
 import { getAllMeds } from "@/db"
 import { useLiveQuery } from "drizzle-orm/expo-sqlite"
@@ -27,18 +27,27 @@ export default function Page({
 
 	return (
 		<View style={styles.page}>
-			<AnimatedFlatList
-				contentContainerStyle={styles.scrollView}
-				data={meds.data}
-				renderItem={(item) => (
-					<MedicineCard
-						{...item.item}
-						key={item.item.id}
-						onPress={(id) => openMed(id)}
-						noNextDose={!showNextDose}
-					/>
-				)}
-			/>
+			{meds.data.length > 0 && (
+				<AnimatedFlatList
+					contentContainerStyle={styles.scrollView}
+					data={meds.data}
+					renderItem={(item) => (
+						<MedicineCard
+							{...item.item}
+							key={item.item.id}
+							onPress={(id) => openMed(id)}
+							noNextDose={!showNextDose}
+						/>
+					)}
+				/>
+			)}
+			{meds.data.length === 0 && (
+				<View style={styles.messageContainer}>
+					<Text variant="bodyLarge" style={styles.message}>
+						{t("noMeds")}
+					</Text>
+				</View>
+			)}
 			<FAB
 				mode="flat"
 				icon="plus"
@@ -60,5 +69,14 @@ const styles = StyleSheet.create({
 		margin: 20,
 		right: 0,
 		bottom: 0,
+	},
+	messageContainer: {
+		justifyContent: "center",
+		flex: 1,
+		alignItems: "center",
+		paddingHorizontal: 24,
+	},
+	message: {
+		textAlign: "center",
 	},
 })

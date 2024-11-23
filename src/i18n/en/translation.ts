@@ -133,6 +133,11 @@ const en = {
 	calculate: "Calculate",
 	reset: "Reset",
 	nextDose: "Next Dose",
+	noMeds:
+		"Looks like you haven't added any medications yet! Tap the '+' button to get started.",
+	noMedsDoseScreen:
+		"No doses yet! Switch to the Medications tab and add your medications to get started.",
+	noDoses: "All done for today! No more doses left.",
 } as const
 
 export default en
