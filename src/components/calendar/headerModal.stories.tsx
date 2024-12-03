@@ -5,7 +5,7 @@ import { View } from "react-native"
 import { Text } from "react-native-paper"
 import { HeaderModal } from "./headerModal"
 const meta = {
-	title: "Pickers/DatePicker/header",
+	title: "Components/Calendar/header",
 	component: HeaderModal,
 	decorators: [withSafeView],
 	args: {

@@ -1,25 +1,47 @@
 import { useAppTheme } from "@/theme"
 import {
 	FlatList,
+	type StyleProp,
 	StyleSheet,
 	TouchableWithoutFeedback,
 	View,
+	type ViewStyle,
 } from "react-native"
 import { Text } from "react-native-paper"
-import { useCalendar } from "./logic"
+import { useMonthView } from "./logic"
 
-type Props = {
-	date: Date
+type Props<T extends string> = {
+	month: Date
 	onSelect?: (day: number) => void
-	hasToday: boolean
-	selectedDay: number
+	selectedDay?: number
 	today: Date
 	start?: number
 	end?: number
+	itemStyle?: {
+		active?: StyleProp<ViewStyle>
+		inactive?: StyleProp<ViewStyle>
+		weekdays?: StyleProp<ViewStyle>
+	}
+	dots?: (T | undefined)[]
+	dotsStyle?: { [key in T]: StyleProp<ViewStyle> }
+	showSelection?: boolean
+	noToday?: boolean
+	todayStyle?: "bar" | "color"
 }
-export function Calendar(props: Props) {
-	const { hasToday, selectedDay, onSelect, end, start } = props
-	const { todayDate, days, isActiveDay } = useCalendar(props)
+export function MonthView<T extends string>(props: Props<T>) {
+	const {
+		selectedDay,
+		onSelect,
+		end,
+		start,
+		itemStyle,
+		dots,
+		dotsStyle,
+		showSelection,
+		todayStyle = "bar",
+		noToday,
+	} = props
+	const { todayDate, days, isActiveDay } = useMonthView(props)
 
 	const theme = useAppTheme()
 
@@ -32,8 +54,16 @@ export function Calendar(props: Props) {
 				columnWrapperStyle={styles.itemGap}
 				renderItem={(data) => {
 					const isActive = isActiveDay(data.index, data.item)
-					const isSelected = isActive && (data.item as number) === selectedDay
-					const isToday = isActive && hasToday && todayDate === data.item
+					const isSelected =
+						isActive &&
+						showSelection &&
+						selectedDay !== undefined &&
+						(data.item as number) === selectedDay
+					const isToday =
+						!noToday &&
+						isActive &&
+						todayDate !== undefined &&
+						todayDate === data.item
 					const isAllowed =
 						isActive &&
 						(!end || (data.item as number) <= end) &&
@@ -50,6 +80,13 @@ export function Calendar(props: Props) {
 									isSelected && {
 										backgroundColor: theme.colors.primary,
 									},
+									isActive && itemStyle?.active,
+									!isActive && itemStyle?.inactive,
+									data.index < 7 && itemStyle?.weekdays,
+									isToday &&
+										todayStyle === "color" && {
+											backgroundColor: theme.colors.primaryContainer,
+										},
 								]}
 							>
 								<Text
@@ -71,7 +108,22 @@ export function Calendar(props: Props) {
 								>
 									{data.item}
 								</Text>
-								{isToday && !isSelected && (
+								{isActive &&
+									dots &&
+									typeof data.item === "number" &&
+									dots[data.item - 1] !== undefined && (
+										<View
+											style={[
+												{
+													borderWidth: 3,
+													borderRadius: 100,
+													borderColor: theme.colors.primary,
+												},
+												dotsStyle?.[dots[data.item - 1]],
+											]}
+										/>
+									)}
+								{todayStyle === "bar" && isToday && !isSelected && (
 									<View
 										style={[
 											styles.today,

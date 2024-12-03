@@ -26,4 +26,5 @@ export {
 	isBefore,
 	subDays,
 	differenceInCalendarDays,
+	isSameMonth,
 } from "date-fns"
