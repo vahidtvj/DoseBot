@@ -138,6 +138,7 @@ const en = {
 	noMedsDoseScreen:
 		"No doses yet! Switch to the Medications tab and add your medications to get started.",
 	noDoses: "All done for today! No more doses left.",
+	grant: "Grant",
 } as const
 
 export default en

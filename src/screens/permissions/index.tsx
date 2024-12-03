@@ -22,6 +22,7 @@ function Permission(props: {
 	icon?: string
 }) {
 	const { title, allowed, subtitle, onClick, icon } = props
+	const { t } = useTranslation()
 	return (
 		<View
 			style={{
@@ -43,7 +44,7 @@ function Permission(props: {
 				icon={allowed !== undefined ? (allowed ? "check" : "close") : undefined}
 				onPress={onClick}
 			>
-				Grant
+				{t("grant")}
 			</Button>
 		</View>
 	)
