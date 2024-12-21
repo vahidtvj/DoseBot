@@ -25,6 +25,7 @@ export {
 	subDays,
 	differenceInCalendarDays,
 	isSameMonth,
+	endOfMonth,
 } from "date-fns-jalali"
 import {
 	type FormatOptions,

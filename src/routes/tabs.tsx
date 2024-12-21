@@ -1,3 +1,4 @@
+import HistoryScreen from "@/screens/history"
 import MedScreen from "@/screens/medications"
 import OverviewScreen from "@/screens/overview"
 import { useTranslation } from "react-i18next"
@@ -14,6 +15,11 @@ export function Tabs(_props: RootStackScreenProps<"Home">) {
 				name="Overview"
 				component={OverviewScreen}
 				options={{ tabBarIcon: "home", title: t("navigation.overview") }}
+			/>
+			<Tab.Screen
+				name="History"
+				component={HistoryScreen}
+				options={{ tabBarIcon: "history", title: t("navigation.history") }}
 			/>
 			<Tab.Screen
 				name="Medications"

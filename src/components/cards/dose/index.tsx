@@ -8,8 +8,9 @@ import { StyleSheet, View } from "react-native"
 import { Button, Card, IconButton, Text, useTheme } from "react-native-paper"
 
 type IProps = IDoseFull & {
-	onConfirm: (id: number) => Promise<void>
-	onSkip: (id: number) => Promise<void>
+	onConfirm?: (id: number) => Promise<void>
+	onSkip?: (id: number) => Promise<void>
+	historyMode?: boolean
 }
 
 export function DoseCard(props: IProps) {
@@ -17,23 +18,24 @@ export function DoseCard(props: IProps) {
 	const [isProcessing, setIsProcessing] = useState<"skip" | "confirm" | false>(
 		false,
 	)
-	const { amount: dose, time, status, id, medicine } = props
+	const { amount: dose, time, status, id, medicine, historyMode } = props
 	if (!medicine) return
 	const { name: title, type, note } = medicine
 	const { t } = useTranslation()
-	const showBtns = status === "pending"
+	const showBtns = !historyMode && status === "pending"
 
 	const { formatDoseTime } = useDateUtils()
 	let timeStyle = {}
-	if (status === "confirm") {
+	if (historyMode && status === "pending") timeStyle = {}
+	else if (status === "confirm") {
 		timeStyle = { color: theme.colors.primary }
 	} else if (status === "skip" || isPast(time))
 		timeStyle = { color: theme.colors.error }
 
 	async function handleAction(action: "skip" | "confirm", id: number) {
 		setIsProcessing(action)
-		if (action === "skip") await props.onSkip(id)
-		else await props.onConfirm(id)
+		if (action === "skip") await props.onSkip?.(id)
+		else await props.onConfirm?.(id)
 		setIsProcessing(false)
 	}
 	return (

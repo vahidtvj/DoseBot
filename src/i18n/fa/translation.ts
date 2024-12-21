@@ -66,6 +66,7 @@ const en = {
 		about: "درباره",
 		medDetails: "جزئیات دارو",
 		scheduleDetails: "جزئیات دوز‌ها",
+		history: "تاریخچه",
 		overview: "دوز‌ها",
 		medications: "دارو‌ها",
 		newMed: "داروی جدید",
