@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="ITOIDC2_aDeneG0i0kby" name="Page-1">
-        <mxGraphModel dx="1274" dy="954" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="1370" dy="974" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -8,150 +8,210 @@
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="48" value="" style="ellipse;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="420" y="375" width="30" height="30" as="geometry"/>
+                    <mxGeometry x="420" y="305" width="30" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="63" value="" style="edgeStyle=none;rounded=1;html=1;" parent="1" source="51" target="62" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="51" value="Background&lt;br&gt;Service" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="485" y="360" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="485" y="290" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="53" value="" style="edgeStyle=none;rounded=1;html=1;" parent="1" source="54" target="55" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="54" value="" style="ellipse;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="420" y="470" width="30" height="30" as="geometry"/>
+                    <mxGeometry x="420" y="400" width="30" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="64" value="" style="edgeStyle=none;rounded=1;html=1;" parent="1" source="55" target="62" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="55" value="Phone Startup" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="485" y="455" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="485" y="385" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="56" value="" style="edgeStyle=none;rounded=1;html=1;" parent="1" source="57" target="58" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="57" value="" style="ellipse;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="420" y="575" width="30" height="30" as="geometry"/>
+                    <mxGeometry x="420" y="505" width="30" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="99" value="" style="edgeStyle=none;html=1;" parent="1" source="58" target="62" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="58" value="App Launch" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="485" y="560" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="59" value="" style="edgeStyle=none;rounded=1;html=1;" parent="1" source="60" target="61" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="60" value="" style="ellipse;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="420" y="670" width="30" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="101" value="" style="edgeStyle=none;html=1;" parent="1" source="61" target="100" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="61" value="New Med Entry" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="485" y="655" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="75" value="" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="62" target="74" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="78" value="isPassed&lt;br&gt;(doseInitDate+1 9PM)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="75" vertex="1" connectable="0">
-                    <mxGeometry x="0.136" y="1" relative="1" as="geometry">
-                        <mxPoint as="offset"/>
-                    </mxGeometry>
+                    <mxGeometry x="485" y="490" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="77" value="" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="62" target="76" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="79" value="isPassed&lt;br&gt;(doseInitDate+1 3AM)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="77" vertex="1" connectable="0">
+                <mxCell id="79" value="isPassed&lt;br&gt;(doseInitDate 3AM)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="77" vertex="1" connectable="0">
                     <mxGeometry x="0.1269" y="-1" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
+                <mxCell id="122" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="62" target="121">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="123" value="no inv alert shown today&lt;br&gt;&amp;amp;&amp;amp; isPassed&lt;br&gt;(invAlertTime 8PM)" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="122">
+                    <mxGeometry x="-0.0905" y="-3" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="135" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="62" target="133">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <mxCell id="62" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="670" y="360" width="5" height="260" as="geometry"/>
+                    <mxGeometry x="670" y="290" width="5" height="260" as="geometry"/>
                 </mxCell>
                 <mxCell id="93" value="" style="edgeStyle=none;html=1;" parent="1" source="74" target="92" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="74" value="Refill doseStore" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="840" y="360" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="970" y="90" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="81" value="" style="edgeStyle=none;html=1;" parent="1" source="76" target="82" edge="1">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="1060" y="485" as="targetPoint"/>
+                        <mxPoint x="1060" y="415" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="76" value="Clear old doses&lt;br&gt;(skip pending)" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="840" y="455" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="840" y="385" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="82" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" parent="1" vertex="1">
-                    <mxGeometry x="1070" y="470" width="30" height="30" as="geometry"/>
+                    <mxGeometry x="1070" y="400" width="30" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="96" value="" style="edgeStyle=none;html=1;" parent="1" source="92" target="94" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="92" value="Schedule &lt;br&gt;Notifications" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="1040" y="360" width="120" height="60" as="geometry"/>
+                    <mxGeometry x="1170" y="90" width="120" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="94" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" parent="1" vertex="1">
-                    <mxGeometry x="1220" y="375" width="30" height="30" as="geometry"/>
+                    <mxGeometry x="1350" y="105" width="30" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="103" value="" style="edgeStyle=none;html=1;" parent="1" source="100" target="102" edge="1">
+                <mxCell id="127" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="121" target="126">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="100" value="Generate Dose&lt;br&gt;From now" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="685" y="655" width="120" height="60" as="geometry"/>
+                <mxCell id="128" value="low inv?" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="127">
+                    <mxGeometry x="-0.2658" y="-2" relative="1" as="geometry">
+                        <mxPoint x="9" y="-2" as="offset"/>
+                    </mxGeometry>
                 </mxCell>
-                <mxCell id="105" value="" style="edgeStyle=none;html=1;" parent="1" source="102" target="104" edge="1">
+                <mxCell id="121" value="get inventory" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="840" y="490" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="124" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="1">
+                    <mxGeometry x="1270" y="505" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="129" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="126" target="124">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="102" value="Schedule&lt;br&gt;Notification&lt;br&gt;for Med" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="885" y="655" width="120" height="60" as="geometry"/>
+                <mxCell id="126" value="display inv &lt;br&gt;notification" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="1070" y="490" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="104" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" parent="1" vertex="1">
-                    <mxGeometry x="1070" y="670" width="30" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="108" value="" style="edgeStyle=none;html=1;" parent="1" source="106" target="107" edge="1">
+                <mxCell id="141" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="130" target="92">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="106" value="" style="ellipse;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="420" y="765" width="30" height="30" as="geometry"/>
+                <mxCell id="130" value="Refill doseStore&lt;br&gt;for tommorow" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="1170" y="190" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="112" value="" style="edgeStyle=none;html=1;" parent="1" source="107" target="111" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="107" value="Edit Med&amp;nbsp;&lt;br&gt;Schedule" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="485" y="750" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="113" value="" style="edgeStyle=none;html=1;" parent="1" source="111" target="100" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="111" value="Remove all&lt;br&gt;doses for med" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="685" y="750" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="114" value="" style="edgeStyle=none;html=1;" parent="1" source="115" target="116" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="115" value="" style="ellipse;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="420" y="865" width="30" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="118" value="" style="edgeStyle=none;html=1;" parent="1" source="116" target="117" edge="1">
-                    <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="116" value="Edit info/alarm settings" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="485" y="850" width="120" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="119" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="117" target="102" edge="1">
+                <mxCell id="136" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="133" target="74">
                     <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="950" y="880" as="targetPoint"/>
+                        <mxPoint x="900" y="160" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="945" y="880"/>
+                            <mxPoint x="900" y="120"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="117" value="Edit All doses&lt;br&gt;for med" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" parent="1" vertex="1">
-                    <mxGeometry x="685" y="850" width="120" height="60" as="geometry"/>
+                <mxCell id="137" value="first launch? or &lt;br&gt;no dose added today?" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="136">
+                    <mxGeometry x="-0.2458" y="1" relative="1" as="geometry">
+                        <mxPoint x="1" y="17" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="140" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="133" target="139">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="133" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="860" y="280" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="142" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="139" target="130">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1090" y="220"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="143" value="isPast&lt;br&gt;rescheduleHour 8PM" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="142">
+                    <mxGeometry x="0.0143" y="-2" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="145" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="139" target="144">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="139" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="1050" y="280" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="144" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="1">
+                    <mxGeometry x="1215" y="305" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="146" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="147" target="148">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="147" value="" style="ellipse;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="420" y="775" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="152" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="148" target="151">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="148" value="Add/Update Med" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="485" y="760" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="163" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="149" target="156">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="149" value="Generate Dose&lt;br&gt;for today" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="820" y="760" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="150" value="" style="edgeStyle=none;html=1;" edge="1" parent="1" source="151" target="149">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="151" value="Remove all&lt;br&gt;doses for med" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="650" y="760" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="169" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="153" target="168">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="153" value="Schedule &lt;br&gt;Notifications" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="1150" y="760" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="158" style="edgeStyle=none;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="156" target="161">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1045" y="680" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="159" value="already scheduled tomorrow" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="158">
+                    <mxGeometry x="0.4533" relative="1" as="geometry">
+                        <mxPoint y="16" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="164" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="156" target="153">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="156" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="1005" y="750" width="80" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="165" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="161" target="153">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1210" y="640"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="161" value="Generate Dose&lt;br&gt;for tomorrow" style="whiteSpace=wrap;html=1;fillColor=none;rounded=1;" vertex="1" parent="1">
+                    <mxGeometry x="985" y="610" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="168" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="1">
+                    <mxGeometry x="1340" y="775" width="30" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

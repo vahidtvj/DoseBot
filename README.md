@@ -6,6 +6,9 @@ DoseBot is a free, open-source, and privacy-friendly medication reminder app for
 ## Features
 - Interactive system notifications
 - Inventory management
+- Travel Calculator
+- Medication History/Progress
+- Multi-Lingual (currently English, Persian)
 - Material design with Light/Dark support
 
 > This app is currently under heavy development therefore it's not ready for everyday use 
