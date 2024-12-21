@@ -67,6 +67,7 @@ const en = {
 		about: "About",
 		medDetails: "Medicine Details",
 		scheduleDetails: "Schedule Details",
+		history: "History",
 		overview: "Overview",
 		medications: "Medications",
 		newMed: "New Medication",

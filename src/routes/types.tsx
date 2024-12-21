@@ -27,6 +27,7 @@ export type RootStackParamList = {
 	MedicineSchedule: { index?: number }
 	TravelCalculator: undefined
 	Debug: undefined
+	HistoryDay: { dayTimestamp: number }
 }
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
@@ -38,6 +39,7 @@ export type RootStackScreenProps<T extends keyof RootStackParamList> =
 // ----------------
 export type HomeTabParamList = {
 	Overview: undefined
+	History: undefined
 	Medications: undefined
 }
 

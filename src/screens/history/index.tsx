@@ -1,15 +1,51 @@
-import { Calendar } from "@/components/calendar"
-import type { RootStackScreenProps } from "@/routes/types"
-import { useAppState } from "@/stores/app"
-import { useConfigState } from "@/stores/configStore"
-import { useDebugStore } from "@/stores/debugStore"
-import { ScrollView, StyleSheet, View } from "react-native"
-import { Chip, IconButton, Text } from "react-native-paper"
+import { HistoryCalendar } from "@/components/views/history/historyCalendar"
+import { type IDose, getDoseHistory } from "@/db"
+import type { HomeTabScreenProps } from "@/routes/types"
+import { useFocusEffect } from "@react-navigation/native"
+import { useCallback, useRef, useState } from "react"
+import { StyleSheet, View } from "react-native"
 
-export default function Page(_props: RootStackScreenProps<"Debug">) {
+export default function Page({ navigation }: HomeTabScreenProps<"History">) {
+	const window = useRef<{ [key: number]: { start: Date; end: Date } }>([])
+	const [data, setData] = useState<{ [key: number]: IDose[] }>([])
+
+	const getNewData = useCallback(
+		async (props: {
+			[key: number]: {
+				start: Date
+				end: Date
+			}
+		}) => {
+			const newData = Object.fromEntries(
+				await Promise.all(
+					Object.entries(props).map(async ([k, v]) => [
+						Number(k),
+						await getDoseHistory(v),
+					]),
+				),
+			)
+			window.current = props
+			setData(newData)
+		},
+		[],
+	)
+
+	useFocusEffect(
+		useCallback(() => {
+			if (Object.keys(window.current).length === 0) return
+			getNewData(window.current)
+		}, [getNewData]),
+	)
+
 	return (
 		<View style={styles.page}>
-			{/* <Calendar date={new Date()} selectedDay={1} today={new Date()} /> */}
+			<HistoryCalendar
+				data={data}
+				getNewData={getNewData}
+				onSelect={(date) =>
+					navigation.navigate("HistoryDay", { dayTimestamp: date.getTime() })
+				}
+			/>
 		</View>
 	)
 }
@@ -17,6 +53,9 @@ export default function Page(_props: RootStackScreenProps<"Debug">) {
 const styles = StyleSheet.create({
 	page: {
 		flex: 1,
+	},
+	calendar: {
+		alignItems: "center",
 	},
 	content: {
 		padding: 12,

@@ -27,4 +27,5 @@ export {
 	subDays,
 	differenceInCalendarDays,
 	isSameMonth,
+	endOfMonth,
 } from "date-fns"

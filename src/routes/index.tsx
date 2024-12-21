@@ -1,6 +1,7 @@
 import { PaperAppbar } from "@/components/common"
 import { AppDrawer } from "@/components/drawer"
 import Debug from "@/screens/debug"
+import HistoryDay from "@/screens/historyDay"
 import MedicineDetail from "@/screens/medicineDetail"
 import MedicineSchedule from "@/screens/medicineSchedule"
 import Permissions from "@/screens/permissions"
@@ -55,6 +56,11 @@ export function App() {
 				name="TravelCalculator"
 				component={TravelCalculator}
 				options={{ headerShown: true, title: t("navigation.travelCalculator") }}
+			/>
+			<Stack.Screen
+				name="HistoryDay"
+				component={HistoryDay}
+				options={{ headerShown: true, title: "" }}
 			/>
 			<Stack.Screen
 				name="Debug"

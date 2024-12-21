@@ -1,6 +1,6 @@
 import { removeNotification, updateNotifications } from "@/logic/notification"
 import { addDoseOnCreate } from "@/logic/onCreate"
-import { and, asc, eq, inArray, sql } from "drizzle-orm"
+import { and, asc, desc, eq, gte, inArray, lte, ne, sql } from "drizzle-orm"
 import * as schema from "../schema"
 import type { IDoseCreate } from "../types"
 import { db } from "./client"
@@ -180,6 +180,39 @@ export const getPendingDoseListFull = db.query.dose.findMany({
 	orderBy: asc(schema.dose.time),
 	with: { medicine: { columns: { name: true, note: true, type: true } } },
 })
+
+type getDoseHistoryProps = {
+	start: Date
+	end: Date
+}
+export const getDoseHistory = ({ start, end }: getDoseHistoryProps) =>
+	db.query.dose.findMany({
+		orderBy: asc(schema.dose.time),
+		where: and(gte(schema.dose.time, start), lte(schema.dose.time, end)),
+	})
+
+export const getDoseHistoryFull = ({ start, end }: getDoseHistoryProps) =>
+	db.query.dose.findMany({
+		orderBy: asc(schema.dose.time),
+		where: and(gte(schema.dose.time, start), lte(schema.dose.time, end)),
+		with: { medicine: true },
+	})
+
+export const getDoseDateRange = async () => {
+	const start = (
+		await db.query.dose.findFirst({
+			orderBy: asc(schema.dose.time),
+			columns: { time: true },
+		})
+	)?.time
+	const end = (
+		await db.query.dose.findFirst({
+			orderBy: desc(schema.dose.time),
+			columns: { time: true },
+		})
+	)?.time
+	return { start, end }
+}
 
 export const clearPendingDoses = async (idList: number[]) =>
 	await db
