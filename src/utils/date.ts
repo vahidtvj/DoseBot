@@ -9,7 +9,7 @@ export function formatAlertTime(date: Date) {
 	const { format } = useDateFunc.get()
 	const { use24Hour } = useConfigState.getState()
 	const timeFormat = `${use24Hour ? "HH" : "hh"}:mm${use24Hour ? "" : " aa"}`
-	const dateTimeFormat = `P, ${timeFormat}`
+	const dateTimeFormat = `${timeFormat}`
 
 	if (isToday(date)) return format(date, timeFormat)
 
