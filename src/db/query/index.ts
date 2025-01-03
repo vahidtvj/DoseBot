@@ -298,11 +298,11 @@ export const getDoseSummery = async <T extends string = string>(
 	return results
 }
 
-export const clearPendingDoses = async (idList: number[]) =>
-	await db
-		.update(schema.dose)
-		.set({ status: "skip" })
-		.where(inArray(schema.dose.id, idList))
+// export const clearPendingDoses = async (idList: number[]) =>
+// 	await db
+// 		.update(schema.dose)
+// 		.set({ status: "skip" })
+// 		.where(inArray(schema.dose.id, idList))
 
 export const insertDoses = async (data: IDoseCreate[]) => {
 	if (data.length === 0) return
