@@ -140,6 +140,15 @@ const en = {
 		"No doses yet! Switch to the Medications tab and add your medications to get started.",
 	noDoses: "All done for today! No more doses left.",
 	grant: "Grant",
+	calendar: "Calendar",
+	summary: "Summary",
+	allMeds: "All Medications",
+	filter: "Filter",
+	medHistory: {
+		lastMonth: "Past Month",
+		last6Month: "Past 6 Month",
+		all: "All Time",
+	},
 } as const
 
 export default en

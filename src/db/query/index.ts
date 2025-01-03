@@ -1,6 +1,18 @@
 import { removeNotification, updateNotifications } from "@/logic/notification"
 import { addDoseOnCreate } from "@/logic/onCreate"
-import { and, asc, desc, eq, gte, inArray, lte, ne, sql } from "drizzle-orm"
+import {
+	and,
+	asc,
+	between,
+	count,
+	desc,
+	eq,
+	gte,
+	inArray,
+	lte,
+	ne,
+	sql,
+} from "drizzle-orm"
 import * as schema from "../schema"
 import type { IDoseCreate } from "../types"
 import { db } from "./client"
@@ -184,11 +196,16 @@ export const getPendingDoseListFull = db.query.dose.findMany({
 type getDoseHistoryProps = {
 	start: Date
 	end: Date
+	medId?: number
 }
-export const getDoseHistory = ({ start, end }: getDoseHistoryProps) =>
+export const getDoseHistory = ({ start, end, medId }: getDoseHistoryProps) =>
 	db.query.dose.findMany({
 		orderBy: asc(schema.dose.time),
-		where: and(gte(schema.dose.time, start), lte(schema.dose.time, end)),
+		where: and(
+			gte(schema.dose.time, start),
+			lte(schema.dose.time, end),
+			...(medId !== undefined ? [eq(schema.dose.medicineId, medId)] : []),
+		),
 	})
 
 export const getDoseHistoryFull = ({ start, end }: getDoseHistoryProps) =>
@@ -212,6 +229,73 @@ export const getDoseDateRange = async () => {
 		})
 	)?.time
 	return { start, end }
+}
+
+type getDoseSummeryProps<T extends string = string> = {
+	dateRanges: Record<
+		T,
+		{
+			start: Date | null
+			end: Date | null
+		}
+	>
+}
+export const getDoseSummery = async <T extends string = string>(
+	props: getDoseSummeryProps<T>,
+) => {
+	const { dateRanges } = props
+
+	const medIds = (
+		await db.query.medicine.findMany({ columns: { id: true } })
+	).map((x) => x.id)
+
+	const results = await Promise.all(
+		medIds.map(async (medId) => {
+			const data = await Promise.all(
+				Object.entries(dateRanges).map(async ([rangeKey, range]) => {
+					const { start, end } = range as {
+						start: Date | null
+						end: Date | null
+					}
+
+					const [confirmed, total] = await Promise.all([
+						db
+							.select({ count: count() })
+							.from(schema.dose)
+							.where(
+								and(
+									eq(schema.dose.medicineId, medId),
+									eq(schema.dose.status, "confirm"),
+									...(start && end
+										? [between(schema.dose.time, start, end)]
+										: []),
+								),
+							)
+							.then((res) => res[0]?.count || 0),
+
+						db
+							.select({ count: count() })
+							.from(schema.dose)
+							.where(
+								and(
+									eq(schema.dose.medicineId, medId),
+									...(start && end
+										? [between(schema.dose.time, start, end)]
+										: []),
+								),
+							)
+							.then((res) => res[0]?.count || 0),
+					])
+
+					return { range: rangeKey as T, confirmed, total }
+				}),
+			)
+
+			return { medId, data }
+		}),
+	)
+
+	return results
 }
 
 export const clearPendingDoses = async (idList: number[]) =>

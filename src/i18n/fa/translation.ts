@@ -136,6 +136,15 @@ const en = {
 		"هنوز دوزی ثبت نشده! به تب داروها برید و داروهاتون رو اضافه کنید تا شروع کنید.",
 	noDoses: "کار امروز تموم شد! دیگه دوزی باقی نمونده.",
 	grant: "اجازه دادن",
+	calendar: "تقویم",
+	summary: "خلاصه",
+	allMeds: "تمام داروها",
+	filter: "فیلتر",
+	medHistory: {
+		lastMonth: "ماه گذشته",
+		last6Month: "۶ ماه گذشته",
+		all: "از زمان شروع",
+	},
 } as const
 
 export default en
