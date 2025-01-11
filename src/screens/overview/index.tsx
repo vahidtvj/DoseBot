@@ -30,8 +30,9 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	useEffect(() => {
 		if (firstLaunch) navigation.navigate("Permissions")
 	}, [firstLaunch, navigation])
-	const { data } = useLiveQuery(getPendingDoseListFull)
-	const noMeds = useLiveQuery(getAllMeds).data.length === 0
+	const meds = useLiveQuery(getAllMeds)
+	const { data } = useLiveQuery(getPendingDoseListFull, [meds.updatedAt])
+	const noMeds = meds.data.length === 0
 
 	const [snackVisible, setSnackVisible] = useState(false)
 	const [snackDose, setSnackDose] = useState<IDoseFull | undefined>()
