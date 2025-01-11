@@ -40,7 +40,9 @@ export default function Page({
 	}
 
 	function onSubmit(data: IMedicineCreate) {
-		updateFullMed({ med: data, schedules: schedules || [] })
+		// TODO wait for submit + isProcessing
+		const sc = schedules?.map(({ _id, ...rest }) => rest)
+		updateFullMed({ med: data, schedules: sc || [] })
 		navigation.goBack()
 	}
 	const isLoading = id && !medicine

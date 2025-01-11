@@ -42,11 +42,13 @@ export const FormMedicineSchema: z.ZodType<IMedicineCreate> = z.object({
 
 const baseSchedule = z.object({
 	id: z.number().optional(),
+	medicineId: z.number().optional(),
 	startDate: z.date(),
 	endDate: z.date().nullable(),
 	dosing: z.array(
 		z.object({
 			id: z.number().optional(),
+			scheduleId: z.number().optional(),
 			time: z.date(),
 			amount: z.coerce.number().positive(),
 		}),
