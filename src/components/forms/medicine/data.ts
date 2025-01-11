@@ -9,7 +9,7 @@ export type Props = {
 	data?: IMedicineCreate
 	schedules?: (IScheduleFullCreate & { _id: string })[]
 } & {
-	onSubmit: (data: Omit<IMedicineCreate, "id">) => void
+	onSubmit: (data: Omit<IMedicineCreate, "id">) => Promise<void>
 	scheduleActions: {
 		open: (medData: IMedicineCreate, id?: number) => void
 	}

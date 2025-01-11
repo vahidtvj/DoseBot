@@ -18,7 +18,7 @@ type Story = StoryObj<typeof MedicineForm>
 
 export const Primary: Story = {
 	render: (args) => (
-		<MedicineForm {...args} onSubmit={(data) => console.log(data)} />
+		<MedicineForm {...args} onSubmit={async (data) => console.log(data)} />
 	),
 }
 
@@ -27,7 +27,7 @@ export const Create: Story = {
 		<MedicineForm
 			{...args}
 			data={undefined}
-			onSubmit={(data) => console.log(data)}
+			onSubmit={async (data) => console.log(data)}
 		/>
 	),
 }
