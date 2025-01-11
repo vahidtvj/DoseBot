@@ -39,11 +39,10 @@ export default function Page({
 		},
 	}
 
-	function onSubmit(data: IMedicineCreate) {
-		// TODO wait for submit + isProcessing
+	async function onSubmit(data: IMedicineCreate) {
 		const sc = schedules?.map(({ _id, ...rest }) => rest)
-		updateFullMed({ med: data, schedules: sc || [] })
-		navigation.goBack()
+		if (await updateFullMed({ med: data, schedules: sc || [] }))
+			navigation.goBack()
 	}
 	const isLoading = id && !medicine
 	if (isLoading) return <LoadingPage />
