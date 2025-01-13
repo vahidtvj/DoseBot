@@ -18,32 +18,14 @@ jobs:
 
       - uses: actions/setup-java@v4
         with:
-          distribution: 'temurin' # See 'Supported distributions' for available options
-          java-version: '17'
+          distribution: "temurin" # See 'Supported distributions' for available options
+          java-version: "17"
 
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 21
 
-      # - uses: pnpm/action-setup@v3
-      #   name: Install pnpm
-      #   with:
-      #     version: 8
-      #     run_install: false
-
-      # - name: Get pnpm store directory
-      #   shell: bash
-      #   run: |
-      #     echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      # - uses: actions/cache@v3
-      #   name: Setup pnpm cache
-      #   with:
-      #     path: ${{ env.STORE_PATH }}
-      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-pnpm-store-
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -60,7 +42,7 @@ jobs:
 
       - name: Build
         run: pnpm run build-dev-local
-        env: 
+        env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
           SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
@@ -73,3 +55,26 @@ jobs:
           name: dev-build
           path: |
             dist/dev-build.apk
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: "dev-${{ github.sha }}"
+          release_name: "Development Build ${{ github.sha }}"
+          draft: false
+          prerelease: true
+          body: |
+            [View Commit](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/dev-build.apk
+          asset_name: dev-build.apk
+          asset_content_type: application/vnd.android.package-archive
