@@ -7,16 +7,17 @@ import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
 import { Card, IconButton, Text, useTheme } from "react-native-paper"
 
-type IProps = IMedicineFull & {
+type IProps = {
 	onPress?: (id: number) => void
 	cardTitleRight?: (props: { size: number }) => React.ReactElement
 	noNextDose?: boolean
 	extraData?: React.ReactElement
+	data: IMedicineFull
 }
 
 export function MedicineCard(props: IProps) {
 	const theme = useTheme()
-	const { onPress, cardTitleRight, noNextDose, extraData, ...data } = props
+	const { onPress, cardTitleRight, noNextDose, extraData, data } = props
 	const { t } = useTranslation()
 	const { getScheduleText, formatNextDose } = useDateUtils()
 
