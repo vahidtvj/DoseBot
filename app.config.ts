@@ -26,19 +26,19 @@ const config: ExpoConfig = {
 	ios: {
 		supportsTablet: true,
 		bundleIdentifier: packageName,
-		splash: {
-			image: "./assets/splash-screen.png",
-			backgroundColor: "#ffffff",
-			dark: { backgroundColor: "#000000", image: "./assets/splash-screen.png" },
-		},
+		// splash: {
+		// 	image: "./assets/splash-screen.png",
+		// 	backgroundColor: "#ffffff",
+		// 	dark: { backgroundColor: "#000000", image: "./assets/splash-screen.png" },
+		// },
 	},
 	android: {
 		softwareKeyboardLayoutMode: "pan",
-		splash: {
-			image: "./assets/splash-screen.png",
-			backgroundColor: "#ffffff",
-			dark: { backgroundColor: "#000000", image: "./assets/splash-screen.png" },
-		},
+		// splash: {
+		// 	image: "./assets/splash-screen.png",
+		// 	backgroundColor: "#ffffff",
+		// 	dark: { backgroundColor: "#000000", image: "./assets/splash-screen.png" },
+		// },
 		adaptiveIcon: {
 			foregroundImage: "./assets/adaptive-foreground.png",
 			backgroundColor: "#ffffff",
@@ -62,6 +62,18 @@ const config: ExpoConfig = {
 		icon: "./assets/notification-icon.png",
 	},
 	plugins: [
+		[
+			"expo-splash-screen",
+			{
+				backgroundColor: "#ffffff",
+				image: "./assets/splash-new.png",
+				dark: {
+					image: "./assets/splash-new.png",
+					backgroundColor: "#000000",
+				},
+				imageWidth: 256,
+			},
+		],
 		"expo-localization",
 		[
 			"@sentry/react-native/expo",
@@ -83,10 +95,11 @@ const config: ExpoConfig = {
 }
 
 // sets status bar to black. splash screen when using dark mode had white status bar before
-module.exports = withAndroidColorsNight(config, async (config) => {
-	config.modResults = AndroidConfig.Colors.assignColorValue(config.modResults, {
-		name: "colorPrimaryDark",
-		value: "#000000",
-	})
-	return config
-})
+// module.exports = withAndroidColorsNight(config, async (config) => {
+// 	config.modResults = AndroidConfig.Colors.assignColorValue(config.modResults, {
+// 		name: "colorPrimaryDark",
+// 		value: "#000000",
+// 	})
+// 	return config
+// })
+module.exports = config
