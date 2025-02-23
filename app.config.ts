@@ -22,6 +22,7 @@ const config: ExpoConfig = {
 	userInterfaceStyle: "light",
 	assetBundlePatterns: ["**/*"],
 	scheme: packageName,
+	newArchEnabled: true,
 	ios: {
 		supportsTablet: true,
 		bundleIdentifier: packageName,
