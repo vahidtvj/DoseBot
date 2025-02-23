@@ -104,13 +104,17 @@ export function BaseLayout({ children }: Props) {
 			settings={{
 				icon: (s) => {
 					if (s.name.startsWith("$"))
+						// @ts-ignore not sure why but works
 						return <CustomIcon {...s} name={s.name.slice(1)} />
-
+					// @ts-ignore not sure why but works
 					return <Icon {...s} />
 				},
 			}}
 		>
-			<NavigationContainer theme={navTheme} linking={linking}>
+			<NavigationContainer
+				theme={{ ...navTheme, fonts: NavigationDefaultTheme.fonts }}
+				linking={linking}
+			>
 				<View style={[styles.safeView]}>{children}</View>
 			</NavigationContainer>
 			<DatePickerModal />
