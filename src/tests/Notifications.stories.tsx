@@ -1,4 +1,8 @@
-import { showAlert, showInventoryAlert } from "@/components/notification"
+import {
+	scheduleAlert,
+	showAlert,
+	showInventoryAlert,
+} from "@/components/notification"
 import type { IDoseFull } from "@/db"
 import { center } from "@/decorators"
 import notifee, {
@@ -51,6 +55,19 @@ function testDoseAlert() {
 		time: new Date(),
 	}
 	showAlert(dose)
+}
+function testDoseScheduleAlert() {
+	const dose: IDoseFull = {
+		id: 255255,
+		amount: 2,
+		medicineId: 255255,
+		medicine: { name: "Acetaminophen", type: "pill", note: "notenote" },
+		status: "pending",
+		time: new Date(Date.now() + 1000 * 60 * 5),
+	}
+	console.log(dose.time.toLocaleString())
+
+	scheduleAlert(dose)
 }
 function testInvAlert() {
 	showInventoryAlert({
@@ -110,12 +127,17 @@ function NotificationTestScreen() {
 		<View>
 			<List.Section>
 				<List.Subheader>Test notifications</List.Subheader>
-				<View style={styles.row}>
-					<Button mode="outlined" onPress={testDoseAlert}>
-						dose notification
-					</Button>
-					<Button mode="outlined" onPress={testInvAlert}>
-						inventory notification
+				<View style={{ gap: 12 }}>
+					<View style={styles.row}>
+						<Button mode="outlined" onPress={testDoseAlert}>
+							dose notification
+						</Button>
+						<Button mode="outlined" onPress={testInvAlert}>
+							inventory notification
+						</Button>
+					</View>
+					<Button mode="outlined" onPress={testDoseScheduleAlert}>
+						scheduled notification
 					</Button>
 				</View>
 			</List.Section>
