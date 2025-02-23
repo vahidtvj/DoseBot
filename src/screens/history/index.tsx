@@ -134,9 +134,7 @@ export default function Page({ navigation }: HomeTabScreenProps<"History">) {
 						keyExtractor={(x) => String(x.id)}
 						renderItem={({ item }) => (
 							<MedicineCard
-								{...item}
-								schedules={[]}
-								inventoryEnabled={false}
+								data={{ ...item, inventoryEnabled: false, schedules: [] }}
 								extraData={
 									<View style={{ alignSelf: "flex-start" }}>
 										{summery
