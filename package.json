@@ -22,7 +22,7 @@
 		"storybook-server": "storybook dev -p 6006 -c ./.storybook-web",
 		"test": "jest",
 		"migrate": "drizzle-kit generate",
-		"prebuild": "expo prebuild --pnpm -p android"
+		"prebuild": "expo prebuild -p android"
 	},
 	"dependencies": {
 		"@expo/vector-icons": "^14.0.4",
@@ -113,5 +113,6 @@
 			"node_modules/(?!(?:.pnpm/)?((jest-)?react-native|@react-native(-community)?|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg))"
 		]
 	},
-	"private": true
+	"private": true,
+	"trustedDependencies": ["@biomejs/biome", "@sentry/cli", "@swc/core"]
 }
