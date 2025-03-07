@@ -1,5 +1,12 @@
 const en = {
 	appName: "DoseBot",
+	app: {
+		about: "برنامه متن‌باز برای مدیریت دارو و سلامت",
+		build: "نسخه",
+		version: "ویرایش",
+		sourceCode: "کد سورس",
+		license: "لایسنس",
+	},
 	medicine: {
 		skip: "رد کردن",
 		confirm: "تایید",
