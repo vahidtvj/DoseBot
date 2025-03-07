@@ -62,7 +62,7 @@ export default function Page(_props: RootStackScreenProps<"About">) {
 				? "preview"
 				: "production"
 	const version =
-		variant !== "development" ? nativeApplicationVersion : nativeBuildVersion
+		variant === "production" ? nativeApplicationVersion : nativeBuildVersion
 
 	const { t } = useTranslation()
 	return (
