@@ -233,7 +233,7 @@ export const updateFullMed = async (data: {
 				updateDoseList = await tx.query.dose.findMany({
 					where: and(
 						eq(schema.dose.medicineId, medId),
-						eq(schema.dose.status, "pending"),
+						ne(schema.dose.status, "pending"),
 					),
 					with: { medicine: true },
 				})
