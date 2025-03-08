@@ -7,7 +7,7 @@ const meta = {
 	title: "Cards/MedicineCard",
 	component: MedicineCard,
 	decorators: [withSafeView],
-	args: { data: data[0] },
+	args: data[0],
 	argTypes: {},
 } satisfies Meta<typeof MedicineCard>
 
@@ -22,7 +22,7 @@ export const Multiple: Story = {
 	render: () => (
 		<>
 			{data.map((item) => (
-				<MedicineCard data={item} key={item.id} />
+				<MedicineCard {...item} key={item.id} />
 			))}
 		</>
 	),

@@ -38,7 +38,7 @@ function MedicineCardField(
 
 	return (
 		<MedicineCard
-			data={med}
+			{...med}
 			noNextDose
 			cardTitleRight={() => (
 				<View style={{ paddingRight: 16 }}>
@@ -181,7 +181,9 @@ export function TravelCalcForm(props: Props) {
 				keyExtractor={(x) => String(x.id)}
 				renderItem={(props) => (
 					<MedicineCard
-						data={{ ...props.item, schedules: [], inventoryEnabled: false }}
+						{...props.item}
+						schedules={[]}
+						inventoryEnabled={false}
 						cardTitleRight={() => (
 							<View style={{ paddingRight: 16 }}>
 								<Text

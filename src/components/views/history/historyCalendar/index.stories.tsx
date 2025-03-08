@@ -38,7 +38,7 @@ export const Primary: Story = {
 				getNewData={(props) => {
 					setData(
 						Object.fromEntries(
-							Object.entries(props).map(([k, _v]) => [
+							Object.entries(props).map(([k, v]) => [
 								Number(k),
 								[
 									{

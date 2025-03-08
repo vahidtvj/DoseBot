@@ -33,7 +33,7 @@ export default function Page({
 					data={meds.data}
 					renderItem={(item) => (
 						<MedicineCard
-							data={item.item}
+							{...item.item}
 							key={item.item.id}
 							onPress={(id) => openMed(id)}
 							noNextDose={!showNextDose}
