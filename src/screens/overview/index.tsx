@@ -28,7 +28,7 @@ export default function Page({ navigation }: HomeTabScreenProps<"Overview">) {
 	)
 
 	useEffect(() => {
-		if (firstLaunch) navigation.navigate("App", { screen: "Permissions" })
+		if (firstLaunch) navigation.navigate("Permissions")
 	}, [firstLaunch, navigation])
 	const meds = useLiveQuery(getAllMeds)
 	const { data } = useLiveQuery(getPendingDoseListFull, [meds.updatedAt])

@@ -13,21 +13,17 @@ export function AppDrawer(props: DrawerContentComponentProps) {
 					label={t("navigation.settings")}
 					icon="cog"
 					active={false}
-					onPress={() => navigation.navigate("App", { screen: "Settings" })}
+					onPress={() => navigation.navigate("Settings")}
 				/>
 				<Drawer.Item
 					label={t("navigation.permissions")}
 					icon="lock"
-					onPress={() => navigation.navigate("App", { screen: "Permissions" })}
+					onPress={() => navigation.navigate("Permissions")}
 				/>
 				<Drawer.Item
 					label={t("navigation.travelCalculator")}
 					icon="calculator"
-					onPress={() =>
-						navigation.navigate("App", {
-							screen: "TravelCalculator",
-						})
-					}
+					onPress={() => navigation.navigate("TravelCalculator")}
 				/>
 				<Drawer.Item label={t("navigation.rate")} icon="star" />
 				<Drawer.Item label={t("navigation.about")} icon="information" />
