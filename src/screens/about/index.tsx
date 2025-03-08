@@ -1,10 +1,22 @@
+import { IconText } from "@/components/common/IconText"
 import { GithubLink, LicenseLink } from "@/constants"
 import type { RootStackScreenProps } from "@/routes/types"
 import { useAppTheme } from "@/theme"
-import { applicationId, nativeApplicationVersion } from "expo-application"
+import {
+	applicationId,
+	nativeApplicationVersion,
+	nativeBuildVersion,
+} from "expo-application"
 import { useTranslation } from "react-i18next"
 import { Image, Linking, ScrollView, StyleSheet, View } from "react-native"
-import { Button, IconButton, Surface, Text } from "react-native-paper"
+import {
+	Button,
+	Card,
+	Chip,
+	IconButton,
+	Surface,
+	Text,
+} from "react-native-paper"
 import { SafeAreaView } from "react-native-safe-area-context"
 
 function InfoCard(props: {
@@ -49,7 +61,8 @@ export default function Page(_props: RootStackScreenProps<"About">) {
 			: appId === "DoseBotPreview"
 				? "preview"
 				: "production"
-	const version = nativeApplicationVersion
+	const version =
+		variant === "production" ? nativeApplicationVersion : nativeBuildVersion
 
 	const { t } = useTranslation()
 	return (

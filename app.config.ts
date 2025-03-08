@@ -1,4 +1,5 @@
 import type { ExpoConfig } from "@expo/config"
+import { AndroidConfig, withAndroidColorsNight } from "@expo/config-plugins"
 
 const APP_VARIANT = process.env.APP_VARIANT
 
@@ -15,7 +16,7 @@ if (APP_VARIANT === "preview") {
 const config: ExpoConfig = {
 	name: name,
 	slug: "DoseBot",
-	version: "0.1.0",
+	version: "0.0.1",
 	orientation: "portrait",
 	icon: "./assets/appicon.png",
 	userInterfaceStyle: "light",
@@ -25,9 +26,19 @@ const config: ExpoConfig = {
 	ios: {
 		supportsTablet: true,
 		bundleIdentifier: packageName,
+		// splash: {
+		// 	image: "./assets/splash-screen.png",
+		// 	backgroundColor: "#ffffff",
+		// 	dark: { backgroundColor: "#000000", image: "./assets/splash-screen.png" },
+		// },
 	},
 	android: {
 		softwareKeyboardLayoutMode: "pan",
+		// splash: {
+		// 	image: "./assets/splash-screen.png",
+		// 	backgroundColor: "#ffffff",
+		// 	dark: { backgroundColor: "#000000", image: "./assets/splash-screen.png" },
+		// },
 		adaptiveIcon: {
 			foregroundImage: "./assets/adaptive-foreground.png",
 			backgroundColor: "#ffffff",
@@ -46,7 +57,6 @@ const config: ExpoConfig = {
 		},
 		storybookEnabled: process.env.STORYBOOK_ENABLED,
 		sentryDsn: process.env.SENTRY_DSN,
-		commitSha: process.env.GITHUB_SHA || "unknown",
 	},
 	notification: {
 		icon: "./assets/notification-icon.png",
@@ -84,4 +94,12 @@ const config: ExpoConfig = {
 	],
 }
 
+// sets status bar to black. splash screen when using dark mode had white status bar before
+// module.exports = withAndroidColorsNight(config, async (config) => {
+// 	config.modResults = AndroidConfig.Colors.assignColorValue(config.modResults, {
+// 		name: "colorPrimaryDark",
+// 		value: "#000000",
+// 	})
+// 	return config
+// })
 module.exports = config
