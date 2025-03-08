@@ -30,11 +30,7 @@ export function AppDrawer(props: DrawerContentComponentProps) {
 					}
 				/>
 				<Drawer.Item label={t("navigation.rate")} icon="star" />
-				<Drawer.Item
-					label={t("navigation.about")}
-					icon="information"
-					onPress={() => navigation.navigate("App", { screen: "About" })}
-				/>
+				<Drawer.Item label={t("navigation.about")} icon="information" />
 			</Drawer.Section>
 		</SafePage>
 	)

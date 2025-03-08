@@ -1,12 +1,5 @@
 const en = {
 	appName: "DoseBot",
-	app: {
-		about: "An open-source medication & healthcare tracker",
-		build: "Build",
-		version: "Version",
-		sourceCode: "Source Code",
-		license: "License",
-	},
 	medicine: {
 		skip: "Skip",
 		confirm: "Confirm",

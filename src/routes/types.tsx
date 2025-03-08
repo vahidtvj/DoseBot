@@ -26,7 +26,6 @@ export type RootStackParamList = {
 	MedicineDetail: { id?: number }
 	MedicineSchedule: { index?: number }
 	TravelCalculator: undefined
-	About: undefined
 	Debug: undefined
 	HistoryDay: { dayTimestamp: number }
 }
