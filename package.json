@@ -1,6 +1,5 @@
 {
 	"name": "dosebot",
-	"version": "0.0.1",
 	"main": "node_modules/expo/AppEntry.js",
 	"scripts": {
 		"dev": "concurrently -r 'npm:dev_a' 'npm:storybook'",
