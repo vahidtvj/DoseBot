@@ -1,9 +1,7 @@
-import Constants from "expo-constants"
+import { NativeModules } from "react-native"
 import { storage } from "../src/utils/mmkvStorage"
 import { view } from "./storybook.requires"
-const hostname = Constants.expoConfig?.hostUri
-	? Constants.expoConfig.hostUri.split(":")[0]
-	: ""
+const { hostname } = new URL(NativeModules.SourceCode.scriptURL)
 
 async function getItem(key: string): Promise<string | null> {
 	return storage.getString(key) || null
@@ -20,7 +18,7 @@ const StorybookUIRoot = view.getStorybookUI({
 	onDeviceUI: false,
 	shouldPersistSelection: true,
 	enableWebsockets: true,
-	host: hostname,
+	host: hostname || "",
 	port: 7007,
 	secured: false,
 })
