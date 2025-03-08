@@ -11,16 +11,44 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v3
         with:
-          bun-version: 1.2.4
+          node-version: 21
+
+      # - uses: pnpm/action-setup@v3
+      #   name: Install pnpm
+      #   with:
+      #     version: 8
+      #     run_install: false
+
+      # - name: Get pnpm store directory
+      #   shell: bash
+      #   run: |
+      #     echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      # - uses: actions/cache@v3
+      #   name: Setup pnpm cache
+      #   with:
+      #     path: ${{ env.STORE_PATH }}
+      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-pnpm-store-
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Install dependencies
-        run: bun install
+        run: pnpm install
+
+      # - name: Setup Biome
+      #   uses: biomejs/setup-biome@v2
+      #   with:
+      #     version: latest
 
       - name: Run Biome
-        run: bunx biome ci . --vcs-use-ignore-file=true
+        run: pnpm exec biome ci . --vcs-use-ignore-file=true
 
       - name: Run tsc
-        run: bun ts:check
+        run: pnpm ts:check
