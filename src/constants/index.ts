@@ -29,3 +29,7 @@ export const languages: { key: Language; label: string; subtitle?: string }[] =
 
 export type CalendarSystem = "georgian" | "persian"
 export const CalendarSystems: CalendarSystem[] = ["georgian", "persian"]
+
+export const GithubLink = "https://github.com/vahidtvj/dosebot"
+export const LicenseLink =
+	"https://github.com/vahidtvj/DoseBot/blob/master/LICENSE"
