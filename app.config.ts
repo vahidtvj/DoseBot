@@ -16,7 +16,7 @@ if (APP_VARIANT === "preview") {
 const config: ExpoConfig = {
 	name: name,
 	slug: "DoseBot",
-	version: "0.0.1",
+	version: "0.1.0",
 	orientation: "portrait",
 	icon: "./assets/appicon.png",
 	userInterfaceStyle: "light",

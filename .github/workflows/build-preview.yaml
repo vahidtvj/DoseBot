@@ -60,16 +60,22 @@ jobs:
           path: |
             dist/build.apk
 
+      - name: Get Version
+        id: get_version
+        run: echo "version=$(grep -oP 'version:\s*"\K[0-9]+\.[0-9]+\.[0-9]+' app.config.ts)" >> $GITHUB_ENV
+
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "preview-${{ github.sha }}"
-          release_name: "Preview Build ${{ github.sha }}"
+          tag_name: "preview-v${{ env.version }}"
+          release_name: "preview-v${{ env.version }}"
           draft: true
           prerelease: true
+          body: |
+            [View Commit](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
 
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
