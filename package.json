@@ -39,6 +39,7 @@
 		"drizzle-orm": "^0.33.0",
 		"drizzle-zod": "^0.5.1",
 		"expo": "~51.0.11",
+		"expo-application": "^6.0.2",
 		"expo-background-fetch": "~12.0.1",
 		"expo-constants": "^16.0.2",
 		"expo-crypto": "^13.0.2",
