@@ -31,8 +31,8 @@ function initStore() {
 }
 
 const useStore = create<DateFNStore>()(() => initStore())
-useUIStore.subscribe(
-	(x) => x.lang,
+useConfigState.subscribe(
+	(x) => x.calendar,
 	() => useStore.setState(initStore),
 )
 
