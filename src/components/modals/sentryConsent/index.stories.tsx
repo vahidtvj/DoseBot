@@ -5,19 +5,19 @@ import { randomUUID } from "expo-crypto"
 import { useEffect } from "react"
 import { View } from "react-native"
 import { Text } from "react-native-paper"
-import { SentryDiolog } from "./dialog"
+import { SentryDialog } from "./dialog"
 const meta = {
 	title: "Modals/SentryDiolog",
-	component: SentryDiolog,
+	component: SentryDialog,
 	decorators: [withSafeView],
 	args: {
 		visible: true,
 	},
 	argTypes: {},
-} satisfies Meta<typeof SentryDiolog>
+} satisfies Meta<typeof SentryDialog>
 
 export default meta
-type Story = StoryObj<typeof SentryDiolog>
+type Story = StoryObj<typeof SentryDialog>
 
 export const Primary: Story = {
 	render: (args) => {
@@ -44,7 +44,7 @@ export const Primary: Story = {
 				<Text variant="displayLarge">Random Text</Text>
 				<Text variant="displayLarge">Random Text</Text>
 				<Text variant="displayLarge">Random Text</Text>
-				<SentryDiolog
+				<SentryDialog
 					{...args}
 					key={randomUUID()}
 					onDismiss={onDismiss}

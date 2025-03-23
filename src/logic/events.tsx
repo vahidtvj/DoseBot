@@ -1,5 +1,4 @@
 import { useDebugStore } from "@/stores/debugStore"
-// import * as Sentry from "@sentry/react-native"
 import * as BackgroundFetch from "expo-background-fetch"
 import * as TaskManager from "expo-task-manager"
 import { onScheduleRunEvent } from "./dose"

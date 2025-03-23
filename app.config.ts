@@ -55,20 +55,12 @@ const config: ExpoConfig = {
 			projectId: process.env.PROJECT_ID,
 		},
 		storybookEnabled: process.env.STORYBOOK_ENABLED,
-		sentryDsn: process.env.SENTRY_DSN,
 	},
 	notification: {
 		icon: "./assets/notification-icon.png",
 	},
 	plugins: [
 		"expo-localization",
-		[
-			"@sentry/react-native/expo",
-			{
-				organization: process.env.SENTRY_ORG,
-				project: process.env.SENTRY_PROJECT,
-			},
-		],
 		[
 			"expo-font",
 			{

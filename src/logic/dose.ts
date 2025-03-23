@@ -9,7 +9,6 @@ import {
 } from "@/db"
 import { useAppState } from "@/stores/app"
 import { useConfigState } from "@/stores/configStore"
-// import * as Sentry from "@sentry/react-native"
 import { isFuture, isToday, startOfToday, startOfTomorrow } from "date-fns"
 import { getDosage } from "./getDosage"
 const noop = () => {}

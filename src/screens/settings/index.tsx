@@ -1,8 +1,4 @@
 import { IconText } from "@/components/common/IconText"
-import {
-	SentryDiolog,
-	useSentryConsentDialog,
-} from "@/components/modals/sentryConsent"
 import { RadioPickerGlobal } from "@/components/pickers/radioPicker"
 import { Channels } from "@/config"
 import { useConfigState } from "@/stores/configStore"
@@ -40,7 +36,6 @@ function ItemGroup(props: {
 export default function Page() {
 	const store = useConfigState()
 	const { t } = useTranslation()
-	const sentryDialogStore = useSentryConsentDialog()
 	const { doseChannel, invChannel, checkPermissions } = usePermissionStore()
 	const { onCalendar, onLanguage, onInvAlertTime } = useLogic()
 	const { toTimeString } = useDateUtils()
@@ -152,7 +147,7 @@ export default function Page() {
 					</Chip>
 				</View>
 			</ItemGroup>
-			<ItemGroup title="Analytics">
+			{/* <ItemGroup title="Analytics">
 				<View style={styles.item}>
 					<IconText variant="bodyLarge" icon="chart-arc">
 						Data Collection
@@ -162,9 +157,8 @@ export default function Page() {
 						onValueChange={() => sentryDialogStore.show()}
 					/>
 				</View>
-			</ItemGroup>
+			</ItemGroup> */}
 			<RadioPickerGlobal />
-			<SentryDiolog {...sentryDialogStore} />
 		</View>
 	)
 }
