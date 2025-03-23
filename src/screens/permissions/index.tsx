@@ -1,8 +1,4 @@
 import { IconText } from "@/components/common/IconText"
-import {
-	SentryDiolog,
-	useSentryConsentDialog,
-} from "@/components/modals/sentryConsent"
 import { Channels } from "@/config"
 import type { RootStackScreenProps } from "@/routes/types"
 import { useAppState } from "@/stores/app"
@@ -61,7 +57,6 @@ export default function Page({
 		invChannel,
 		hasAutoStart,
 	} = usePermissionStore()
-	const sentryDialogStore = useSentryConsentDialog()
 	const { t } = useTranslation()
 	useEffect(() => {
 		checkPermissions()
@@ -72,12 +67,11 @@ export default function Page({
 			appStateListener?.remove()
 		}
 	}, [checkPermissions])
-	const firstLaunch = useAppState((x) => x.firstLaunch)
+	// const firstLaunch = useAppState((x) => x.firstLaunch)
 
 	function onSubmit() {
-		if (firstLaunch) sentryDialogStore.show()
-		else navigation.goBack()
 		useAppState.setState({ firstLaunch: false })
+		navigation.goBack()
 	}
 	return (
 		<SafeAreaView style={styles.page}>
@@ -168,17 +162,6 @@ export default function Page({
 					</Button>
 				</View>
 			</ScrollView>
-			<SentryDiolog
-				{...sentryDialogStore}
-				onDismiss={() => {
-					navigation.goBack()
-					sentryDialogStore.onDismiss()
-				}}
-				onSubmit={(agree) => {
-					navigation.goBack()
-					sentryDialogStore.onSubmit(agree)
-				}}
-			/>
 		</SafeAreaView>
 	)
 }

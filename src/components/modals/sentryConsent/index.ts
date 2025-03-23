@@ -1,2 +1,2 @@
-export { SentryDiolog } from "./dialog"
+export { SentryDialog } from "./dialog"
 export { useSentryConsentDialog } from "./store"

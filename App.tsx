@@ -2,26 +2,6 @@
 import "@/logic/registerEvents"
 import "@/utils/notifications"
 
-import { useConfigState } from "@/stores/configStore"
-import * as Sentry from "@sentry/react-native"
-// ! The imports in this file should be in order
-// ! These comments are necessary
-// import group 1
-import Constants from "expo-constants"
-const sentryDsn = Constants.expoConfig?.extra?.sentryDsn
-Sentry.init({
-	dsn: sentryDsn,
-	debug: false, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
-	enabled: !__DEV__,
-	sendDefaultPii: false,
-	beforeSend(event) {
-		if (!useConfigState.getState().sentryEnabled) return null
-		event.user = undefined
-		event.request = undefined
-		return event
-	},
-})
-
 // import group 2
 import "@/utils/ignoreLogs"
 
@@ -78,5 +58,4 @@ function App() {
 		</GestureHandlerRootView>
 	)
 }
-export default Sentry.wrap(App)
-// export default App
+export default App

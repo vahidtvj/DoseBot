@@ -1,13 +1,11 @@
 // biome-ignore lint/style/useNodejsImportProtocol: <explanation>
 const path = require("path")
-// const { getDefaultConfig } = require("expo/metro-config")
-const { getSentryExpoConfig } = require("@sentry/react-native/metro")
+const { getDefaultConfig } = require("expo/metro-config")
+
 const withStorybook = require("@storybook/react-native/metro/withStorybook")
 
 /** @type {import('expo/metro-config').MetroConfig} */
-// const config = getDefaultConfig(__dirname)
-// This replaces `const config = getDefaultConfig(__dirname);`
-const config = getSentryExpoConfig(__dirname)
+const config = getDefaultConfig(__dirname)
 
 config.transformer.unstable_allowRequireContext = true
 

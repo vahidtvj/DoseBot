@@ -8,7 +8,7 @@ type Props = {
 	onSubmit: (agree: boolean) => void
 }
 // TODO user consent form
-export function SentryDiolog({ visible, onDismiss, onSubmit }: Props) {
+export function SentryDialog({ visible, onDismiss, onSubmit }: Props) {
 	const theme = useAppTheme()
 	return (
 		<Portal>
