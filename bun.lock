@@ -61,7 +61,7 @@
         "@react-native-community/slider": "4.5.6",
         "@react-native/babel-preset": "^0.79.2",
         "@storybook/addon-essentials": "^8.6.14",
-        "@storybook/addon-react-native-server": "^0.0.6",
+        "@storybook/addon-react-native-server": "github:vahidtvj/addon-react-native-server#release",
         "@storybook/builder-vite": "^8.6.14",
         "@storybook/react": "^8.6.14",
         "@storybook/react-native": "^8.6.4",
@@ -579,7 +579,7 @@
 
     "@storybook/addon-outline": ["@storybook/addon-outline@8.6.14", "", { "dependencies": { "@storybook/global": "^5.0.0", "ts-dedent": "^2.0.0" }, "peerDependencies": { "storybook": "^8.6.14" } }, "sha512-CW857JvN6OxGWElqjlzJO2S69DHf+xO3WsEfT5mT3ZtIjmsvRDukdWfDU9bIYUFyA2lFvYjncBGjbK+I91XR7w=="],
 
-    "@storybook/addon-react-native-server": ["@storybook/addon-react-native-server@0.0.6", "", { "dependencies": { "ws": "^8.16.0" } }, "sha512-swNZiftCTn9ZVD9ycHBrHR6kFN46p7q66B9YUDpi4b2Xm9zfaqsyN2+xf+FO5cdbhfi84xsrsfo6O1uOad5+BA=="],
+    "@storybook/addon-react-native-server": ["@storybook/addon-react-native-server@github:vahidtvj/addon-react-native-server#78110e2", { "dependencies": { "ws": "^8.16.0" } }, "vahidtvj-addon-react-native-server-78110e2"],
 
     "@storybook/addon-toolbars": ["@storybook/addon-toolbars@8.6.14", "", { "peerDependencies": { "storybook": "^8.6.14" } }, "sha512-W/wEXT8h3VyZTVfWK/84BAcjAxTdtRiAkT2KAN0nbSHxxB5KEM1MjKpKu2upyzzMa3EywITqbfy4dP6lpkVTwQ=="],
 
