@@ -38,7 +38,7 @@ type Props<T extends string> = {
 		inactive?: StyleProp<ViewStyle>
 		weekdays?: StyleProp<ViewStyle>
 	}
-	control?: RefObject<Methods>
+	control?: RefObject<Methods | null>
 	noHeader?: boolean
 	dots?: { [monthIndex: number]: (T | undefined)[] }
 	dotsStyle?: { [key in T]: StyleProp<ViewStyle> }

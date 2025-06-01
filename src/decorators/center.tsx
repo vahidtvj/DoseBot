@@ -1,12 +1,8 @@
 import type { StoryContext, StoryFn } from "@storybook/react"
 import { StyleSheet, View } from "react-native"
 
-export const center = (Story: StoryFn, _context: StoryContext) => {
-	return (
-		<View style={styles.view}>
-			<Story />
-		</View>
-	)
+export const center = (Story: StoryFn, context: StoryContext) => {
+	return <View style={styles.view}>{Story(context.args, context)}</View>
 }
 const styles = StyleSheet.create({
 	view: {

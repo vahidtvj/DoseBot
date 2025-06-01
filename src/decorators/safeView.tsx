@@ -4,13 +4,13 @@ import React from "react"
 import { StyleSheet } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
 
-export const withSafeView = (Story: StoryFn, _context: StoryContext) => {
+export const withSafeView = (Story: StoryFn, context: StoryContext) => {
 	const theme = useAppTheme()
 	return (
 		<SafeAreaView
 			style={[styles.page, { backgroundColor: theme.colors.background }]}
 		>
-			<Story />
+			{Story(context.args, context)}
 		</SafeAreaView>
 	)
 }

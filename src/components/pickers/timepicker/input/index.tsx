@@ -18,8 +18,8 @@ type Props = {
 		time?: { am: string; pm: string }
 	}
 	refs: {
-		hour: RefObject<TextInputR>
-		minute: RefObject<TextInputR>
+		hour: RefObject<TextInputR | null>
+		minute: RefObject<TextInputR | null>
 	}
 }
 export function TimeInputFull(props: Props) {

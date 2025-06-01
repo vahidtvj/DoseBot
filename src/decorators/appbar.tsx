@@ -1,7 +1,7 @@
 import type { StoryContext, StoryFn } from "@storybook/react"
 import { Appbar, useTheme } from "react-native-paper"
 
-export const withAppbar = (Story: StoryFn, _context: StoryContext) => {
+export const withAppbar = (Story: StoryFn, context: StoryContext) => {
 	const theme = useTheme()
 	return (
 		<>
@@ -11,7 +11,7 @@ export const withAppbar = (Story: StoryFn, _context: StoryContext) => {
 				<Appbar.Action icon="calendar" onPress={() => {}} />
 				<Appbar.Action icon="magnify" onPress={() => {}} />
 			</Appbar.Header>
-			<Story />
+			{Story(context.args, context)}
 		</>
 	)
 }
