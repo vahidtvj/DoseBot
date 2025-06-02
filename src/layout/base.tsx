@@ -13,8 +13,8 @@ import {
 	DarkTheme as NavigationDarkTheme,
 	DefaultTheme as NavigationDefaultTheme,
 } from "@react-navigation/native"
+import { reloadAppAsync } from "expo"
 import * as Linking from "expo-linking"
-import * as Updates from "expo-updates"
 import { useEffect, useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { StyleSheet, View } from "react-native"
@@ -47,7 +47,8 @@ export function BaseLayout({ children }: Props) {
 		if (shouldBeRTL !== I18nManager.isRTL && Platform.OS !== "web") {
 			I18nManager.allowRTL(shouldBeRTL)
 			I18nManager.forceRTL(shouldBeRTL)
-			Updates.reloadAsync()
+			// Updates.reloadAsync()
+			reloadAppAsync()
 		}
 	}, [shouldBeRTL])
 

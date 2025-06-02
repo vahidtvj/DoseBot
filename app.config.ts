@@ -10,6 +10,9 @@ if (APP_VARIANT === "preview") {
 } else if (APP_VARIANT === "production") {
 	name = "DoseBot"
 	packageName = "com.vahidtvj.DoseBot"
+} else if (APP_VARIANT === "test") {
+	name = "DoseBotTest"
+	packageName = "com.vahidtvj.DoseBotTest"
 }
 
 const config: ExpoConfig = {
