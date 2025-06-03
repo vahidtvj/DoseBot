@@ -175,8 +175,8 @@ importers:
         specifier: ^8.4.2
         version: 8.4.2(@types/react@18.2.79)(storybook@8.4.2(prettier@2.8.8))(webpack-sources@3.2.3)
       '@storybook/addon-react-native-server':
-        specifier: ^0.0.6
-        version: 0.0.6
+        specifier: github:vahidtvj/addon-react-native-server#release
+        version: https://codeload.github.com/vahidtvj/addon-react-native-server/tar.gz/78110e25a6f6665ba92e73b9ded1cfda47dde0a3
       '@storybook/builder-vite':
         specifier: ^8.4.2
         version: 8.4.2(storybook@8.4.2(prettier@2.8.8))(vite@5.4.11(@types/node@22.9.0)(terser@5.36.0))(webpack-sources@3.2.3)
@@ -2288,8 +2288,9 @@ packages:
     peerDependencies:
       storybook: ^8.4.2
 
-  '@storybook/addon-react-native-server@0.0.6':
-    resolution: {integrity: sha512-swNZiftCTn9ZVD9ycHBrHR6kFN46p7q66B9YUDpi4b2Xm9zfaqsyN2+xf+FO5cdbhfi84xsrsfo6O1uOad5+BA==}
+  '@storybook/addon-react-native-server@https://codeload.github.com/vahidtvj/addon-react-native-server/tar.gz/78110e25a6f6665ba92e73b9ded1cfda47dde0a3':
+    resolution: {tarball: https://codeload.github.com/vahidtvj/addon-react-native-server/tar.gz/78110e25a6f6665ba92e73b9ded1cfda47dde0a3}
+    version: 0.0.6
 
   '@storybook/addon-toolbars@8.4.2':
     resolution: {integrity: sha512-DidzW/NQS224niMJIjcJI2ls83emqygUcS9GYNGgdc5Xwro/TPgGYOXP2qnXgYUxXQTHbrxmIbHdEehxC7CcYQ==}
@@ -9489,7 +9490,7 @@ snapshots:
       storybook: 8.4.2(prettier@2.8.8)
       ts-dedent: 2.2.0
 
-  '@storybook/addon-react-native-server@0.0.6':
+  '@storybook/addon-react-native-server@https://codeload.github.com/vahidtvj/addon-react-native-server/tar.gz/78110e25a6f6665ba92e73b9ded1cfda47dde0a3':
     dependencies:
       ws: 8.18.0
     transitivePeerDependencies:
