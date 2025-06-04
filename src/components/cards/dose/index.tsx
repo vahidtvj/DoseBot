@@ -18,7 +18,7 @@ export function DoseCard(props: IProps) {
 	const [isProcessing, setIsProcessing] = useState<"skip" | "confirm" | false>(
 		false,
 	)
-	const { amount: dose, time, status, id, medicine, historyMode } = props
+	const { amount, time, status, id, medicine, historyMode } = props
 	if (!medicine) return
 	const { name: title, type, note } = medicine
 	const { t } = useTranslation()
@@ -48,7 +48,9 @@ export function DoseCard(props: IProps) {
 				)}
 				right={() => (
 					<View style={styles.right}>
-						<Text variant="bodyMedium">× {dose}</Text>
+						<Text variant="bodyMedium">
+							{t(`medicine.units.${medicine.unit}`, { count: amount })}
+						</Text>
 					</View>
 				)}
 				subtitle={formatDoseTime(time)}

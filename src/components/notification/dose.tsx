@@ -10,17 +10,20 @@ type Props = Omit<IDoseFull, "medId">
 
 // TODO show icon. fix subtitle amount affix
 export async function showAlert(props: Props) {
+	if (!props.medicine) return
 	// Request permissions (required for iOS)
 	await notifee.requestPermission()
 	// Create a channel (required for Android)
 	const channelId = await notifee.createChannel(Channels.dose)
-	const note = props.medicine?.note ? props.medicine.note : undefined
+	const note = props.medicine.note ? props.medicine.note : undefined
 	// Display a notification
 	await notifee.displayNotification({
 		id: String(props.id),
 		title: props.medicine?.name,
 		body: `${formatAlertTime(props.time)}${note ? `<br>${note}` : ""}`,
-		subtitle: i18n.t("medicine.pill", { count: props.amount }),
+		subtitle: i18n.t(`medicine.units.${props.medicine.unit}`, {
+			count: props.amount,
+		}),
 		android: {
 			channelId,
 			smallIcon: "notification_icon", // optional, defaults to 'ic_launcher'.
@@ -47,19 +50,21 @@ export async function showAlert(props: Props) {
 }
 
 export async function scheduleAlert(props: Props) {
+	if (!props.medicine) return
 	if (isPast(props.time)) return
 	// Request permissions (required for iOS)
 	await notifee.requestPermission()
 	// Create a channel (required for Android)
 	const channelId = await notifee.createChannel(Channels.dose)
-	const note = props.medicine?.note ? props.medicine.note : undefined
-	// Display a notification
+	const note = props.medicine.note ? props.medicine.note : undefined
 	await notifee.createTriggerNotification(
 		{
 			id: String(props.id),
 			title: props.medicine?.name,
 			body: `${formatAlertTime(props.time)}${note ? `<br>${note}` : ""}`,
-			subtitle: i18n.t("medicine.pill", { count: props.amount }),
+			subtitle: i18n.t(`medicine.units.${props.medicine.unit}`, {
+				count: props.amount,
+			}),
 			android: {
 				channelId,
 

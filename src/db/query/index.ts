@@ -254,17 +254,23 @@ export const updateFullMed = async (data: {
 export const getDoseFull = async (id: number) =>
 	await db.query.dose.findFirst({
 		where: eq(schema.dose.id, id),
-		with: { medicine: { columns: { name: true, note: true, type: true } } },
+		with: {
+			medicine: { columns: { name: true, note: true, type: true, unit: true } },
+		},
 	})
 export const getDoseListFull = async (idList: number[]) =>
 	await db.query.dose.findMany({
 		where: inArray(schema.dose.id, idList),
-		with: { medicine: { columns: { name: true, note: true, type: true } } },
+		with: {
+			medicine: { columns: { name: true, note: true, type: true, unit: true } },
+		},
 	})
 export const getPendingDoseListFull = db.query.dose.findMany({
 	where: eq(schema.dose.status, "pending"),
 	orderBy: asc(schema.dose.time),
-	with: { medicine: { columns: { name: true, note: true, type: true } } },
+	with: {
+		medicine: { columns: { name: true, note: true, type: true, unit: true } },
+	},
 })
 
 type getDoseHistoryProps = {

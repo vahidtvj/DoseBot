@@ -7,7 +7,7 @@ type IDose = schema.IDose
 export type IScheduleFull = ISchedule & { dosing: schema.IDosing[] }
 export type IMedicineFull = IMedicine & { schedules: IScheduleFull[] }
 export type IDoseFull = IDose & {
-	medicine: Pick<IMedicine, "name" | "note" | "type"> | null
+	medicine: Pick<IMedicine, "name" | "note" | "type" | "unit"> | null
 }
 
 export type IMedicineCreate = WithOptional<IMedicine, "id">

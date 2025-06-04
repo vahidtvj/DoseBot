@@ -50,7 +50,12 @@ function testDoseAlert() {
 		id: 255255,
 		amount: 2,
 		medicineId: 255255,
-		medicine: { name: "Acetaminophen", type: "pill", note: "notenote" },
+		medicine: {
+			name: "Acetaminophen",
+			type: "pill",
+			note: "notenote",
+			unit: "pill",
+		},
 		status: "pending",
 		time: new Date(),
 	}
@@ -61,7 +66,12 @@ function testDoseScheduleAlert() {
 		id: 255255,
 		amount: 2,
 		medicineId: 255255,
-		medicine: { name: "Acetaminophen", type: "pill", note: "notenote" },
+		medicine: {
+			name: "Acetaminophen",
+			type: "pill",
+			note: "notenote",
+			unit: "pill",
+		},
 		status: "pending",
 		time: new Date(Date.now() + 1000 * 60 * 5),
 	}
@@ -77,6 +87,7 @@ function testInvAlert() {
 		inventoryEnabled: true,
 		name: "Acetaminophen",
 		type: "pill",
+		unit: "pill",
 		paused: false,
 		removed: false,
 		note: null,

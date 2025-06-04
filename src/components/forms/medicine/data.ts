@@ -26,6 +26,7 @@ export const defaultValues: Inputs = {
 	inventoryNotifyOn: 0,
 	paused: false,
 	type: "pill",
+	unit: "pill",
 	note: "",
 	removed: false,
 }

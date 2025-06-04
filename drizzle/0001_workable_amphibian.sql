@@ -1,0 +1,1 @@
+ALTER TABLE `medicine` ADD `unit` text NOT NULL;

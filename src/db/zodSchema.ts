@@ -1,4 +1,4 @@
-import type { IMedicineType, Weekday } from "@/constants/index"
+import type { IMedicineType, IMedicineUnit, Weekday } from "@/constants/index"
 import { zExtras } from "@/utils"
 import { z } from "zod"
 import type { IMedicineCreate, IScheduleFullCreate } from "./types"
@@ -6,7 +6,6 @@ import type { IMedicineCreate, IScheduleFullCreate } from "./types"
 export const MedicineTypeSchema: z.ZodType<IMedicineType> = z.union([
 	z.literal("pill"),
 	z.literal("injection"),
-	z.literal("iv"),
 	z.literal("drop"),
 	z.literal("suppository"),
 	z.literal("inhaler"),
@@ -14,6 +13,71 @@ export const MedicineTypeSchema: z.ZodType<IMedicineType> = z.union([
 	z.literal("spray"),
 	z.literal("patch"),
 	z.literal("generic"),
+])
+
+export const MedicineUnitSchema: z.ZodType<IMedicineUnit> = z.union([
+	z.literal("pill"),
+	z.literal("injection"),
+	z.literal("dose"),
+	z.literal("drop"),
+	z.literal("suppository"),
+	z.literal("puff"),
+	z.literal("ml"),
+	z.literal("tsp"),
+	z.literal("tbsp"),
+	z.literal("spray"),
+	z.literal("patch"),
+])
+const baseMedicine = z.object({
+	id: z.number().optional(),
+	name: z.string().min(1),
+	inventoryEnabled: z.boolean(),
+	inventoryCount: zExtras.EmptyStingToUdefined(z.coerce.number().nonnegative()),
+	inventoryNotifyOn: zExtras.EmptyStingToUdefined(
+		z.coerce.number().nonnegative(),
+	),
+	paused: z.boolean(),
+	note: z.string().nullable(),
+	removed: z.boolean().nullable(),
+})
+
+export const FormMedicineSchema: z.ZodType<IMedicineCreate> = z.union([
+	baseMedicine.extend({
+		type: z.literal("pill"),
+		unit: z.literal("pill"),
+	}),
+	baseMedicine.extend({
+		type: z.literal("injection"),
+		unit: z.literal("injection"),
+	}),
+	baseMedicine.extend({
+		type: z.literal("drop"),
+		unit: z.literal("drop"),
+	}),
+	baseMedicine.extend({
+		type: z.literal("suppository"),
+		unit: z.literal("suppository"),
+	}),
+	baseMedicine.extend({
+		type: z.literal("inhaler"),
+		unit: z.literal("puff"),
+	}),
+	baseMedicine.extend({
+		type: z.literal("syrup"),
+		unit: z.union([z.literal("ml"), z.literal("tsp"), z.literal("tbsp")]),
+	}),
+	baseMedicine.extend({
+		type: z.literal("spray"),
+		unit: z.literal("spray"),
+	}),
+	baseMedicine.extend({
+		type: z.literal("patch"),
+		unit: z.literal("patch"),
+	}),
+	baseMedicine.extend({
+		type: z.literal("generic"),
+		unit: z.literal("dose"),
+	}),
 ])
 
 export const WeekdaySchema: z.ZodType<Weekday> = z.union([
@@ -25,20 +89,6 @@ export const WeekdaySchema: z.ZodType<Weekday> = z.union([
 	z.literal("Thu"),
 	z.literal("Fri"),
 ])
-
-export const FormMedicineSchema: z.ZodType<IMedicineCreate> = z.object({
-	id: z.number().optional(),
-	name: z.string().min(1),
-	inventoryEnabled: z.boolean(),
-	inventoryCount: zExtras.EmptyStingToUdefined(z.coerce.number().nonnegative()),
-	inventoryNotifyOn: zExtras.EmptyStingToUdefined(
-		z.coerce.number().nonnegative(),
-	),
-	type: MedicineTypeSchema,
-	paused: z.boolean(),
-	note: z.string().nullable(),
-	removed: z.boolean().nullable(),
-})
 
 const baseSchedule = z.object({
 	id: z.number().optional(),

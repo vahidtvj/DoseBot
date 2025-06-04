@@ -1,8 +1,11 @@
 import { ScheduleCard } from "@/components/cards/schedule"
 import { CheckboxField } from "@/components/fields/CheckboxField"
 import { MedTypeField } from "@/components/fields/MedType"
+import { PickerField } from "@/components/fields/PickerField"
 import { TextInputField } from "@/components/fields/TextInputField"
+import { medUnits } from "@/constants"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useEffect } from "react"
 import { type SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { ScrollView, StyleSheet, View } from "react-native"
@@ -15,7 +18,7 @@ export function MedicineForm(props: Props) {
 	const { scheduleActions } = props
 	const { t } = useTranslation()
 
-	const { control, handleSubmit, watch, getValues, formState } =
+	const { control, handleSubmit, watch, getValues, formState, setValue } =
 		useForm<Inputs>({
 			defaultValues: data,
 			resolver: zodResolver(schema),
@@ -27,6 +30,14 @@ export function MedicineForm(props: Props) {
 	}
 
 	const inventoryEnabled = watch("inventoryEnabled")
+	const type = watch("type")
+
+	useEffect(() => {
+		const unit = getValues("unit")
+		if (unit in medUnits[type]) return
+
+		setValue("unit", medUnits[type][0])
+	}, [type, setValue, getValues])
 	return (
 		<View style={styles.page}>
 			<ScrollView contentContainerStyle={styles.scrollView}>
@@ -50,16 +61,30 @@ export function MedicineForm(props: Props) {
 								/>
 							</View>
 						</Surface>
-						<TextInputField
-							containerStyle={{ flex: 1 }}
-							control={control}
-							name="note"
-							mode="outlined"
-							dense
-							label={t("intakeAdvice")}
-							readOnly={isProcessing}
-						/>
+						<Surface style={{ padding: 8, flex: 1 }}>
+							<View style={styles.row}>
+								<Text variant="bodyLarge">{t("medicine.unit")}:</Text>
+								<PickerField
+									control={control}
+									name="unit"
+									readOnly={isProcessing || medUnits[type].length === 1}
+									values={medUnits[type].map((x) => ({
+										key: x,
+										label: t(`medicine.unitLabels.${x}`),
+									}))}
+								/>
+							</View>
+						</Surface>
 					</View>
+					<TextInputField
+						containerStyle={{ flex: 1 }}
+						control={control}
+						name="note"
+						mode="outlined"
+						dense
+						label={t("intakeAdvice")}
+						readOnly={isProcessing}
+					/>
 					<Card>
 						<Card.Content style={styles.card}>
 							<View style={styles.row}>

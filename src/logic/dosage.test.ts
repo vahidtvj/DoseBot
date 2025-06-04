@@ -11,6 +11,7 @@ const data: IMedicineFull[] = [
 		inventoryNotifyOn: 0,
 		inventoryEnabled: false,
 		type: "pill",
+		unit: "pill",
 		note: null,
 		paused: false,
 		removed: false,

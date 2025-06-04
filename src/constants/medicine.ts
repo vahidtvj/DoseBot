@@ -1,7 +1,6 @@
 export type IMedicineType =
 	| "pill"
 	| "injection"
-	| "iv"
 	| "drop"
 	| "suppository"
 	| "inhaler"
@@ -9,10 +8,22 @@ export type IMedicineType =
 	| "spray"
 	| "patch"
 	| "generic"
+export type IMedicineUnit =
+	| "pill"
+	| "injection"
+	| "dose"
+	| "drop"
+	| "suppository"
+	| "puff"
+	| "ml"
+	| "tsp"
+	| "tbsp"
+	| "spray"
+	| "patch"
+
 export const MedTypeList: IMedicineType[] = [
 	"pill",
 	"injection",
-	"iv",
 	"drop",
 	"suppository",
 	"inhaler",
@@ -25,7 +36,6 @@ export const MedTypeList: IMedicineType[] = [
 export const MedIconMap: { [key in IMedicineType]: string } = {
 	pill: "pill",
 	injection: "needle",
-	iv: "iv-bag",
 	drop: "eyedropper",
 	suppository: "$suppository",
 	inhaler: "$inhaler",
@@ -33,6 +43,18 @@ export const MedIconMap: { [key in IMedicineType]: string } = {
 	spray: "spray",
 	patch: "bandage",
 	generic: "medical-bag",
+}
+
+export const medUnits: { [key in IMedicineType]: IMedicineUnit[] } = {
+	pill: ["pill"],
+	injection: ["injection"],
+	drop: ["drop"],
+	suppository: ["suppository"],
+	inhaler: ["puff"],
+	syrup: ["ml", "tsp", "tbsp"],
+	spray: ["spray"],
+	patch: ["patch"],
+	generic: ["dose"],
 }
 
 export type DoseStatus = "pending" | "skip" | "confirm"

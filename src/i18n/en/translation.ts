@@ -11,11 +11,10 @@ const en = {
 		skip: "Skip",
 		confirm: "Confirm",
 		pills: "pills",
-		pill_one: "{{count}} pill",
-		pill_other: "{{count}} pills",
 		remaining: "{{count}} left",
 		daily: "Daily",
-		dailyDose: "{{count}} times daily",
+		dailyDose_one: "{{count}} time daily",
+		dailyDose_other: "{{count}} times daily",
 		everyXday: "Every X Day",
 		interval: "Interval",
 		daysAffix: "days",
@@ -23,6 +22,54 @@ const en = {
 		weekly: "Weekly",
 		type: "Type",
 		addDose: "Add Dose",
+		unit: "Unit",
+		unitLabels: {
+			pill: "pill",
+			injection: "injection",
+			dose: "dose",
+			drop: "drop",
+			suppository: "suppository",
+			puff: "puff",
+			ml: "ml",
+			tsp: "tsp",
+			tbsp: "tbsp",
+			spray: "spray",
+			patch: "patch",
+		},
+		units: {
+			pill_one: "{{count}} pill",
+			pill_other: "{{count}} pills",
+
+			injection_one: "{{count}} injection",
+			injection_other: "{{count}} injections",
+
+			dose_one: "{{count}} dose",
+			dose_other: "{{count}} doses",
+
+			drop_one: "{{count}} drop",
+			drop_other: "{{count}} drops",
+
+			suppository_one: "{{count}} suppository",
+			suppository_other: "{{count}} suppositories",
+
+			puff_one: "{{count}} puff",
+			puff_other: "{{count}} puffs",
+
+			ml_one: "{{count}} ml",
+			ml_other: "{{count}} ml",
+
+			tsp_one: "{{count}} tsp",
+			tsp_other: "{{count}} tsp",
+
+			tbsp_one: "{{count}} tbsp",
+			tbsp_other: "{{count}} tbsp",
+
+			spray_one: "{{count}} spray",
+			spray_other: "{{count}} sprays",
+
+			patch_one: "{{count}} patch",
+			patch_other: "{{count}} patches",
+		},
 	},
 	medType: {
 		pill: "Pill",

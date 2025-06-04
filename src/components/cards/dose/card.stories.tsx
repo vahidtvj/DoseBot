@@ -9,7 +9,12 @@ const meta = {
 	component: DoseCard,
 	decorators: [withSafeView],
 	args: {
-		medicine: { name: "Acetaminophen", type: "pill", note: "After meal" },
+		medicine: {
+			name: "Acetaminophen",
+			type: "pill",
+			note: "After meal",
+			unit: "pill",
+		},
 		time: new Date(Date.now() - 1000 * 60 * 60),
 		amount: 2,
 		status: "pending",

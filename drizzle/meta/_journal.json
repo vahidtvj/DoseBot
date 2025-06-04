@@ -8,6 +8,13 @@
 			"when": 1729784723661,
 			"tag": "0000_public_silver_sable",
 			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "6",
+			"when": 1748943334789,
+			"tag": "0001_workable_amphibian",
+			"breakpoints": true
 		}
 	]
 }
